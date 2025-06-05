@@ -21,8 +21,8 @@
     "prepublishOnly": "pnpm run build && pnpm test",
     "release": "./scripts/release.sh",
     "cli": "ts-node -r tsconfig-paths/register src/cli/index.ts",
-    "example:news": "ts-node -r tsconfig-paths/register examples/news-scraper.ts",
-    "example:products": "ts-node -r tsconfig-paths/register examples/advanced-product-scraper.ts",
+    "example:news": "ts-node -r tsconfig-paths/register --project tsconfig.examples.json examples/news-scraper.ts",
+    "example:products": "ts-node -r tsconfig-paths/register --project tsconfig.examples.json examples/advanced-product-scraper.ts",
     "postinstall": "pnpm dlx playwright install"
   },
   "keywords": [

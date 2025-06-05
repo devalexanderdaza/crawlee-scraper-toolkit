@@ -6,7 +6,7 @@ import {
   CachePlugin,
   MetricsPlugin,
   createLogger
-} from 'crawlee-scraper-toolkit';
+} from '../src';
 
 // Example: E-commerce product scraper with advanced features
 const productScraperDefinition: ScraperDefinition<string, any> = {
@@ -42,10 +42,7 @@ const productScraperDefinition: ScraperDefinition<string, any> = {
           'Pragma': 'no-cache',
         });
         
-        // Set a realistic user agent
-        await context.page.setUserAgent(
-          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-        );
+        
       },
     ],
     
