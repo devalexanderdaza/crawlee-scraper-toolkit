@@ -28,6 +28,6 @@ module.exports = {
     node: true,
     es6: true,
   },
-  ignorePatterns: ['dist/', 'node_modules/', '*.js', 'examples/'],
+  ignorePatterns: ['dist/', 'node_modules/', '*.js', 'examples/', 'tests/'],
 };
 

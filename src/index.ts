@@ -1,3 +1,40 @@
+/**
+ * @fileoverview Crawlee Scraper Toolkit - Main Entry Point
+ * 
+ * A comprehensive TypeScript toolkit for building robust web scrapers with Crawlee,
+ * featuring maximum configurability, plugin system, and CLI generator.
+ * 
+ * @author Alexander Daza <dev.alexander.daza@gmail.com>
+ * @version 1.0.0
+ * @license MIT
+ * 
+ * @example
+ * ```typescript
+ * import { CrawleeScraperEngine, createConfig, ScraperDefinition } from 'crawlee-scraper-toolkit';
+ * 
+ * // Create a simple scraper
+ * const scraper: ScraperDefinition = {
+ *   id: 'my-scraper',
+ *   name: 'My Web Scraper',
+ *   url: 'https://example.com',
+ *   navigation: { type: 'direct', config: {} },
+ *   waitStrategy: { type: 'selector', config: { selector: 'body' } },
+ *   requiresCaptcha: false,
+ *   parse: async (context) => {
+ *     return {
+ *       title: await context.page.textContent('h1'),
+ *       content: await context.page.textContent('p')
+ *     };
+ *   }
+ * };
+ * 
+ * // Configure and run
+ * const config = createConfig().build();
+ * const engine = new CrawleeScraperEngine(config);
+ * const result = await engine.execute(scraper, 'input');
+ * ```
+ */
+
 // Core exports
 export { CrawleeScraperEngine } from './core/scraper';
 export { BrowserPool, defaultBrowserPoolConfig } from './core/browser-pool';

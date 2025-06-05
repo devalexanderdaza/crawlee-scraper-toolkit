@@ -1,0 +1,67 @@
+{
+  "entryPoints": ["src/index.ts"],
+  "out": "docs/api",
+  "plugin": [
+    "typedoc-plugin-markdown",
+    "typedoc-plugin-missing-exports"
+  ],
+  "theme": "markdown",
+  "readme": "README.md",
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeExternals": true,
+  "hideGenerator": true,
+  "sort": ["source-order"],
+  "kindSortOrder": [
+    "Document",
+    "Project",
+    "Module",
+    "Namespace",
+    "Enum",
+    "Class",
+    "Interface",
+    "TypeAlias",
+    "Constructor",
+    "Property",
+    "Variable",
+    "Function",
+    "Accessor",
+    "Method"
+  ],
+  "categorizeByGroup": true,
+  "defaultCategory": "Other",
+  "categoryOrder": [
+    "Classes",
+    "Interfaces", 
+    "Types",
+    "Functions",
+    "Variables",
+    "*"
+  ],
+  "gitRevision": "main",
+  "gitRemote": "origin",
+  "includeVersion": true,
+  "validation": {
+    "notExported": true,
+    "invalidLink": true,
+    "notDocumented": false
+  },
+  "treatWarningsAsErrors": false,
+  "skipErrorChecking": false,
+  "cleanOutputDir": true,
+  "searchInComments": true,
+  "searchInDocuments": true,
+  "blockTags": [
+    "@fileoverview",
+    "@version",
+    "@author",
+    "@license",
+    "@param",
+    "@returns",
+    "@throws",
+    "@example",
+    "@see",
+    "@since",
+    "@deprecated"
+  ]
+}

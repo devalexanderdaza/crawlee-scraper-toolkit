@@ -1,0 +1,13 @@
+[**crawlee-scraper-toolkit v1.0.0**](../README.md)
+
+***
+
+[crawlee-scraper-toolkit](../globals.md) / ValidationResult
+
+# Type Alias: ValidationResult
+
+> **ValidationResult** = `true` \| `string`
+
+Defined in: utils/validators.ts:6
+
+Validation result type

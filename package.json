@@ -17,8 +17,16 @@
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix",
     "format": "prettier --write src/**/*.ts",
+    "docs": "typedoc",
+    "docs:watch": "typedoc --watch",
+    "docs:serve": "pnpm docs && cd docs/api && python3 -m http.server 8080",
+    "docs:html": "typedoc --theme default --out docs/html",
+    "docs:json": "typedoc --json docs/api.json",
+    "docs:build": "./scripts/docs.sh",
+    "docs:clean": "rm -rf docs/",
+    "docs:preview": "pnpm run docs:build && pnpm run docs:serve",
     "prepare": "husky install",
-    "prepublishOnly": "pnpm run build && pnpm test",
+    "prepublishOnly": "pnpm run build && pnpm test && pnpm run docs",
     "release": "./scripts/release.sh",
     "cli": "ts-node -r tsconfig-paths/register src/cli/index.ts",
     "example:news": "ts-node -r tsconfig-paths/register --project tsconfig.examples.json examples/news-scraper.ts",
@@ -49,6 +57,7 @@
     "url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/issues"
   },
   "homepage": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit#readme",
+  "documentation": "https://devalexanderdaza.github.io/crawlee-scraper-toolkit",
   "dependencies": {
     "chalk": "^5.3.0",
     "commander": "^11.1.0",
@@ -80,6 +89,9 @@
     "ts-jest": "^29.2.0",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
+    "typedoc": "^0.28.5",
+    "typedoc-plugin-markdown": "^4.6.4",
+    "typedoc-plugin-missing-exports": "^4.0.0",
     "typescript": "^5.5.2"
   },
   "engines": {
