@@ -12248,7 +12248,7 @@
 		},
 		{
 			"kind": "code",
-			"text": "```bash\n   git clone https://github.com/yourusername/crawlee-scraper-toolkit.git\n   cd crawlee-scraper-toolkit\n   pnpm install\n   ```"
+			"text": "```bash\n   git clone https://github.com/devalexanderdaza/crawlee-scraper-toolkit.git\n   cd crawlee-scraper-toolkit\n   pnpm install\n   ```"
 		},
 		{
 			"kind": "text",
@@ -12397,7 +12397,7 @@
 		},
 		{
 			"kind": "text",
-			"text": ") file for details.\n\n## 🙏 Acknowledgments\n\n- Built on top of [Crawlee](https://crawlee.dev/) and [Playwright](https://playwright.dev/)\n- Inspired by the need for a more configurable and extensible scraping toolkit\n- Thanks to all contributors and the open-source community\n\n## 📞 Support\n\n- 📖 [Documentation](https://github.com/yourusername/crawlee-scraper-toolkit/wiki)\n- 🐛 [Issue Tracker](https://github.com/yourusername/crawlee-scraper-toolkit/issues)\n- 💬 [Discussions](https://github.com/yourusername/crawlee-scraper-toolkit/discussions)\n\n---\n\nMade with ❤️ by the Crawlee Scraper Toolkit team"
+			"text": ") file for details.\n\n## 🙏 Acknowledgments\n\n- Built on top of [Crawlee](https://crawlee.dev/) and [Playwright](https://playwright.dev/)\n- Inspired by the need for a more configurable and extensible scraping toolkit\n- Thanks to all contributors and the open-source community\n\n## 📞 Support\n\n- 📖 [Documentation](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/wiki)\n- 🐛 [Issue Tracker](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/issues)\n- 💬 [Discussions](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/discussions)\n\n---\n\nMade with ❤️ by the Crawlee Scraper Toolkit team"
 		}
 	],
 	"symbolIdMap": {

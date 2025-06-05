@@ -237,7 +237,7 @@ logging:
   // Create README
   const readmeContent = `# ${config.name}
 
-A web scraper project built with [Crawlee Scraper Toolkit](https://github.com/yourusername/crawlee-scraper-toolkit).
+A web scraper project built with [Crawlee Scraper Toolkit](https://github.com/devalexanderdaza/crawlee-scraper-toolkit).
 
 ## Getting Started
 
@@ -272,7 +272,7 @@ Edit \`config/scraper.config.yaml\` to customize the scraper engine behavior.
 
 ## Documentation
 
-See the [Crawlee Scraper Toolkit documentation](https://github.com/yourusername/crawlee-scraper-toolkit#readme) for detailed usage instructions.
+See the [Crawlee Scraper Toolkit documentation](https://github.com/devalexanderdaza/crawlee-scraper-toolkit#readme) for detailed usage instructions.
 `;
 
   writeFileSync(join(projectDir, 'README.md'), readmeContent);

@@ -499,7 +499,7 @@ We welcome contributions! Please follow these guidelines:
 
 1. **Fork and Clone**
    ```bash
-   git clone https://github.com/yourusername/crawlee-scraper-toolkit.git
+   git clone https://github.com/devalexanderdaza/crawlee-scraper-toolkit.git
    cd crawlee-scraper-toolkit
    pnpm install
    ```
@@ -602,9 +602,9 @@ This project is licensed under the MIT License - see the [LICENSE](_media/LICENS
 
 ## 📞 Support
 
-- 📖 [Documentation](https://github.com/yourusername/crawlee-scraper-toolkit/wiki)
-- 🐛 [Issue Tracker](https://github.com/yourusername/crawlee-scraper-toolkit/issues)
-- 💬 [Discussions](https://github.com/yourusername/crawlee-scraper-toolkit/discussions)
+- 📖 [Documentation](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/wiki)
+- 🐛 [Issue Tracker](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/issues)
+- 💬 [Discussions](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/discussions)
 
 ---
 
