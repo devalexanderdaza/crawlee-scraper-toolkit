@@ -32,52 +32,70 @@ export interface ConfigFile {
 /**
  * Zod schema for browser pool configuration
  */
-const browserPoolConfigSchema = z.object({
-  maxSize: z.number().int().min(1).max(20).default(5),
-  maxAge: z.number().int().min(60000).default(30 * 60 * 1000),
-  launchOptions: z.object({
-    headless: z.boolean().default(true),
-    args: z.array(z.string()).default([
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--disable-dev-shm-usage',
-    ]),
-    timeout: schemas.timeout.default(30000),
-  }).default({}),
-  cleanupInterval: z.number().int().min(60000).default(5 * 60 * 1000),
-}).default({});
+const browserPoolConfigSchema = z
+  .object({
+    maxSize: z.number().int().min(1).max(20).default(5),
+    maxAge: z
+      .number()
+      .int()
+      .min(60000)
+      .default(30 * 60 * 1000),
+    launchOptions: z
+      .object({
+        headless: z.boolean().default(true),
+        args: z
+          .array(z.string())
+          .default(['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']),
+        timeout: schemas.timeout.default(30000),
+      })
+      .default({}),
+    cleanupInterval: z
+      .number()
+      .int()
+      .min(60000)
+      .default(5 * 60 * 1000),
+  })
+  .default({});
 
 /**
  * Zod schema for scraper execution options
  */
-const scraperExecutionOptionsSchema = z.object({
-  retries: schemas.retryCount.default(3),
-  retryDelay: z.number().int().min(100).default(1000),
-  timeout: schemas.timeout.default(30000),
-  useProxyRotation: z.boolean().default(false),
-  headers: z.record(z.string()).default({}),
-  userAgent: z.string().optional(),
-  javascript: z.boolean().default(true),
-  loadImages: z.boolean().default(false),
-  viewport: z.object({
-    width: z.number().int().min(320).max(3840).default(1920),
-    height: z.number().int().min(240).max(2160).default(1080),
-  }).default({}),
-}).default({});
+const scraperExecutionOptionsSchema = z
+  .object({
+    retries: schemas.retryCount.default(3),
+    retryDelay: z.number().int().min(100).default(1000),
+    timeout: schemas.timeout.default(30000),
+    useProxyRotation: z.boolean().default(false),
+    headers: z.record(z.string()).default({}),
+    userAgent: z.string().optional(),
+    javascript: z.boolean().default(true),
+    loadImages: z.boolean().default(false),
+    viewport: z
+      .object({
+        width: z.number().int().min(320).max(3840).default(1920),
+        height: z.number().int().min(240).max(2160).default(1080),
+      })
+      .default({}),
+  })
+  .default({});
 
 /**
  * Zod schema for scraper engine configuration
  */
-const scraperEngineConfigSchema = z.object({
-  browserPool: browserPoolConfigSchema,
-  defaultOptions: scraperExecutionOptionsSchema,
-  plugins: z.array(z.string()).default([]),
-  globalHooks: z.record(z.array(z.any())).default({}),
-  logging: z.object({
-    level: z.enum(['debug', 'info', 'warn', 'error']).default('info'),
-    format: z.enum(['json', 'text']).default('text'),
-  }).default({}),
-}).default({});
+const scraperEngineConfigSchema = z
+  .object({
+    browserPool: browserPoolConfigSchema,
+    defaultOptions: scraperExecutionOptionsSchema,
+    plugins: z.array(z.string()).default([]),
+    globalHooks: z.record(z.array(z.any())).default({}),
+    logging: z
+      .object({
+        level: z.enum(['debug', 'info', 'warn', 'error']).default('info'),
+        format: z.enum(['json', 'text']).default('text'),
+      })
+      .default({}),
+  })
+  .default({});
 
 /**
  * Configuration manager for the scraper toolkit
@@ -117,9 +135,9 @@ export class ConfigManager {
 
     const content = readFileSync(filePath, 'utf-8');
     const configFile = this.parseConfigFile(content, filePath);
-    
+
     this.sources.set('file', configFile.default || {});
-    
+
     // Load profiles
     if (configFile.profiles) {
       for (const [name, profile] of Object.entries(configFile.profiles)) {
@@ -245,7 +263,7 @@ export class ConfigManager {
    */
   validateConfig(config?: Partial<ScraperEngineConfig>): { valid: boolean; errors: string[] } {
     const configToValidate = config || this.config;
-    
+
     try {
       scraperEngineConfigSchema.parse(configToValidate);
       return { valid: true, errors: [] };
@@ -283,7 +301,7 @@ export class ConfigManager {
    */
   private parseConfigFile(content: string, filePath: string): ConfigFile {
     const ext = filePath.split('.').pop()?.toLowerCase();
-    
+
     try {
       if (ext === 'json') {
         return JSON.parse(content);
@@ -309,7 +327,7 @@ export class ConfigManager {
     ];
 
     const mergedConfig = merge({}, ...sources);
-    
+
     try {
       this.config = scraperEngineConfigSchema.parse(mergedConfig);
     } catch (error) {
@@ -407,4 +425,3 @@ export class ConfigBuilder {
 export function createConfig(): ConfigBuilder {
   return new ConfigBuilder();
 }
-

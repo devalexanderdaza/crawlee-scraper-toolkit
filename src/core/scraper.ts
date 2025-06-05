@@ -1,19 +1,18 @@
 import { EventEmitter } from 'eventemitter3';
-import { 
-  ScraperEngine, 
-  ScraperDefinition, 
-  ScraperResult, 
+import {
+  ScraperEngine,
+  ScraperDefinition,
+  ScraperResult,
   ScraperExecutionOptions,
   ScraperContext,
   ScraperHook,
   HookHandler,
   ScraperPlugin,
   ScraperEvents,
-  ScraperEngineConfig
+  ScraperEngineConfig,
 } from './types';
 import { BrowserPool } from './browser-pool';
 import { Logger } from '@/utils/logger';
-import { validateInput, validateOutput } from '@/utils/validators';
 
 /**
  * Main scraper engine implementation
@@ -44,7 +43,7 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
   ): Promise<ScraperResult<Output>> {
     const startTime = Date.now();
     const executionOptions = { ...this.config.defaultOptions, ...definition.options, ...options };
-    
+
     this.logger.info('Starting scraper execution', {
       scraperId: definition.id,
       input: typeof input === 'string' ? input : '[object]',
@@ -67,7 +66,7 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
 
     for (attempts = 1; attempts <= executionOptions.retries + 1; attempts++) {
       const instance = await this.browserPool.acquire();
-      
+
       try {
         const context: ScraperContext<Input, Output> = {
           input,
@@ -80,9 +79,9 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
 
         // Execute hooks and scraper logic
         await this.executeHooks('beforeRequest', context, definition);
-        
+
         const result = await this.executeScraper(definition, context);
-        
+
         context.result = result;
         await this.executeHooks('afterRequest', context, definition);
         await this.executeHooks('onSuccess', context, definition);
@@ -97,12 +96,11 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
 
         const successResult = this.createSuccessResult(definition.id, result, attempts, startTime);
         this.emit('scraper:success', { scraperId: definition.id, result: successResult });
-        
-        return successResult;
 
+        return successResult;
       } catch (error) {
         lastError = error instanceof Error ? error : new Error(String(error));
-        
+
         this.logger.warn('Scraper execution attempt failed', {
           scraperId: definition.id,
           attempt: attempts,
@@ -126,15 +124,37 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
           await this.executeHooks('onRetry', context, definition);
           await this.delay(executionOptions.retryDelay);
         }
-
       } finally {
         this.browserPool.release(instance);
       }
     }
 
-    const errorResult = this.createErrorResult(definition.id, lastError!, attempts - 1, startTime);
-    this.emit('scraper:error', { scraperId: definition.id, error: lastError! });
-    
+    if (lastError === undefined) {
+      // This path should ideally not be reached if the loop logic ensures lastError is set on failure.
+      // Creating a generic error to handle this unexpected state.
+      const undefinedError = new Error(
+        'Scraper execution failed, but no specific error was captured by lastError.'
+      );
+      this.logger.error(
+        'Critical: lastError is undefined after retry loop. This may indicate a logic flaw.',
+        {
+          scraperId: definition.id,
+        }
+      );
+      const errorResult = this.createErrorResult(
+        definition.id,
+        undefinedError,
+        attempts - 1,
+        startTime
+      );
+      this.emit('scraper:error', { scraperId: definition.id, error: undefinedError });
+      return errorResult;
+    }
+
+    // If we reach here, lastError is defined and is of type Error due to the check above.
+    const errorResult = this.createErrorResult(definition.id, lastError, attempts - 1, startTime);
+    this.emit('scraper:error', { scraperId: definition.id, error: lastError });
+
     return errorResult;
   }
 
@@ -164,11 +184,11 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
    * Install a plugin
    */
   use(plugin: ScraperPlugin): void {
-    this.logger.info('Installing plugin', { 
-      name: plugin.name, 
-      version: plugin.version 
+    this.logger.info('Installing plugin', {
+      name: plugin.name,
+      version: plugin.version,
     });
-    
+
     this.plugins.set(plugin.name, plugin);
     plugin.install(this);
   }
@@ -201,14 +221,14 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
    */
   async shutdown(): Promise<void> {
     this.logger.info('Shutting down scraper engine');
-    
+
     // Uninstall plugins
     for (const plugin of this.plugins.values()) {
       if (plugin.uninstall) {
         plugin.uninstall(this);
       }
     }
-    
+
     await this.browserPool.shutdown();
     this.logger.info('Scraper engine shutdown complete');
   }
@@ -224,7 +244,7 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
 
     // Set page options
     await page.setViewportSize(options.viewport);
-    
+
     if (options.userAgent) {
       await page.setExtraHTTPHeaders({ 'User-Agent': options.userAgent });
     }
@@ -260,11 +280,11 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
 
       case 'form':
         await page.goto(definition.url, { timeout: context.options.timeout });
-        
+
         if (navigation.config.inputSelector) {
           await page.fill(navigation.config.inputSelector, String(input));
         }
-        
+
         if (navigation.config.submitSelector) {
           await page.click(navigation.config.submitSelector);
         }
@@ -438,4 +458,3 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 }
-

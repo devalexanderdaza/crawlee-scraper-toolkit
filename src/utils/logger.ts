@@ -4,10 +4,10 @@ import winston from 'winston';
  * Logger interface for the scraper toolkit
  */
 export interface Logger {
-  debug(message: string, meta?: any): void;
-  info(message: string, meta?: any): void;
-  warn(message: string, meta?: any): void;
-  error(message: string, meta?: any): void;
+  debug(message: string, meta?: unknown): void;
+  info(message: string, meta?: unknown): void;
+  warn(message: string, meta?: unknown): void;
+  error(message: string, meta?: unknown): void;
 }
 
 /**
@@ -47,10 +47,7 @@ export function createLogger(config: LoggerConfig): Logger {
   if (config.console) {
     transports.push(
       new winston.transports.Console({
-        format: winston.format.combine(
-          winston.format.colorize(),
-          ...formats
-        ),
+        format: winston.format.combine(winston.format.colorize(), ...formats),
       })
     );
   }
@@ -76,8 +73,8 @@ export function createLogger(config: LoggerConfig): Logger {
  * Default logger configuration
  */
 export const defaultLoggerConfig: LoggerConfig = {
-  level: (process.env.LOG_LEVEL as any) || 'info',
-  format: (process.env.LOG_FORMAT as any) || 'text',
+  level: (process.env.LOG_LEVEL ?? 'info') as LoggerConfig['level'],
+  format: (process.env.LOG_FORMAT ?? 'text') as LoggerConfig['format'],
   console: true,
 };
 
@@ -85,4 +82,3 @@ export const defaultLoggerConfig: LoggerConfig = {
  * Create default logger
  */
 export const defaultLogger = createLogger(defaultLoggerConfig);
-

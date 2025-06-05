@@ -48,7 +48,9 @@ export const validators = {
    * Validate non-empty string
    */
   nonEmptyString: (value: string): ValidationResult => {
-    return (typeof value === 'string' && value.trim().length > 0) || 'Value must be a non-empty string';
+    return (
+      (typeof value === 'string' && value.trim().length > 0) || 'Value must be a non-empty string'
+    );
   },
 
   /**
@@ -61,18 +63,24 @@ export const validators = {
   /**
    * Validate array with minimum length
    */
-  minArrayLength: (minLength: number) => (value: unknown[]): ValidationResult => {
-    return (Array.isArray(value) && value.length >= minLength) || 
-           `Array must have at least ${minLength} items`;
-  },
+  minArrayLength:
+    (minLength: number) =>
+    (value: unknown[]): ValidationResult => {
+      return (
+        (Array.isArray(value) && value.length >= minLength) ||
+        `Array must have at least ${minLength} items`
+      );
+    },
 
   /**
    * Validate object has required properties
    */
-  hasProperties: (properties: string[]) => (value: Record<string, any>): ValidationResult => {
-    const missing = properties.filter(prop => !(prop in value));
-    return missing.length === 0 || `Missing required properties: ${missing.join(', ')}`;
-  },
+  hasProperties:
+    (properties: string[]) =>
+    (value: Record<string, unknown>): ValidationResult => {
+      const missing = properties.filter(prop => !(prop in value));
+      return missing.length === 0 || `Missing required properties: ${missing.join(', ')}`;
+    },
 };
 
 /**
@@ -118,7 +126,10 @@ export const schemas = {
 /**
  * Validate input function (for backward compatibility)
  */
-export function validateInput(input: unknown, validator?: (input: any) => ValidationResult): ValidationResult {
+export function validateInput(
+  input: unknown,
+  validator?: (input: unknown) => ValidationResult
+): ValidationResult {
   if (!validator) return true;
   return validator(input);
 }
@@ -126,8 +137,10 @@ export function validateInput(input: unknown, validator?: (input: any) => Valida
 /**
  * Validate output function (for backward compatibility)
  */
-export function validateOutput(output: unknown, validator?: (output: any) => ValidationResult): ValidationResult {
+export function validateOutput(
+  output: unknown,
+  validator?: (output: unknown) => ValidationResult
+): ValidationResult {
   if (!validator) return true;
   return validator(output);
 }
-

@@ -11,8 +11,8 @@ export class RetryPlugin implements ScraperPlugin {
   private backoffMultiplier: number;
 
   constructor(options: { maxBackoffDelay?: number; backoffMultiplier?: number } = {}) {
-    this.maxBackoffDelay = options.maxBackoffDelay || 30000;
-    this.backoffMultiplier = options.backoffMultiplier || 2;
+    this.maxBackoffDelay = options.maxBackoffDelay ?? 30000;
+    this.backoffMultiplier = options.backoffMultiplier ?? 2;
   }
 
   install(scraper: ScraperEngine): void {
@@ -36,11 +36,11 @@ export class CachePlugin implements ScraperPlugin {
   name = 'cache';
   version = '1.0.0';
 
-  private cache = new Map<string, { data: any; timestamp: number; ttl: number }>();
+  private cache = new Map<string, { data: unknown; timestamp: number; ttl: number }>();
   private defaultTtl: number;
 
   constructor(options: { defaultTtl?: number } = {}) {
-    this.defaultTtl = options.defaultTtl || 5 * 60 * 1000; // 5 minutes
+    this.defaultTtl = options.defaultTtl ?? 5 * 60 * 1000; // 5 minutes
   }
 
   install(scraper: ScraperEngine): void {
@@ -161,8 +161,8 @@ export class RateLimitPlugin implements ScraperPlugin {
   private defaultWindow: number;
 
   constructor(options: { defaultLimit?: number; defaultWindow?: number } = {}) {
-    this.defaultLimit = options.defaultLimit || 10;
-    this.defaultWindow = options.defaultWindow || 60000; // 1 minute
+    this.defaultLimit = options.defaultLimit ?? 10;
+    this.defaultWindow = options.defaultWindow ?? 60000; // 1 minute
   }
 
   install(scraper: ScraperEngine): void {
@@ -170,28 +170,33 @@ export class RateLimitPlugin implements ScraperPlugin {
   }
 
   private async checkRateLimit(context: ScraperContext): Promise<void> {
-    const domain = new URL(context.page.url() || 'http://localhost').hostname;
+    const domain = new URL(context.page.url() ?? 'http://localhost').hostname;
     const now = Date.now();
-    
-    if (!this.requests.has(domain)) {
-      this.requests.set(domain, []);
+
+    let domainRequests = this.requests.get(domain);
+    if (domainRequests === undefined) {
+      domainRequests = [];
+      this.requests.set(domain, domainRequests);
     }
 
-    const domainRequests = this.requests.get(domain)!;
-    
     // Remove old requests outside the window
     const cutoff = now - this.defaultWindow;
-    while (domainRequests.length > 0 && domainRequests[0] < cutoff) {
+    // The condition `domainRequests[0] !== undefined` correctly handles empty arrays
+    // and ensures `domainRequests[0]` is treated as a number for the comparison,
+    // which is necessary if `noUncheckedIndexedAccess` is enabled.
+    while (domainRequests[0] !== undefined && domainRequests[0] < cutoff) {
       domainRequests.shift();
     }
 
     // Check if we're at the limit
     if (domainRequests.length >= this.defaultLimit) {
       const oldestRequest = domainRequests[0];
-      const waitTime = this.defaultWindow - (now - oldestRequest);
-      
-      if (waitTime > 0) {
-        await new Promise(resolve => setTimeout(resolve, waitTime));
+      if (oldestRequest !== undefined) {
+        const waitTime = this.defaultWindow - (now - oldestRequest);
+
+        if (waitTime > 0) {
+          await new Promise(resolve => setTimeout(resolve, waitTime));
+        }
       }
     }
 
@@ -204,7 +209,7 @@ export class RateLimitPlugin implements ScraperPlugin {
    */
   getStats(): Record<string, { requests: number; window: number }> {
     const stats: Record<string, { requests: number; window: number }> = {};
-    
+
     for (const [domain, requests] of this.requests.entries()) {
       stats[domain] = {
         requests: requests.length,
@@ -229,12 +234,15 @@ export class MetricsPlugin implements ScraperPlugin {
     failedRequests: 0,
     totalDuration: 0,
     averageDuration: 0,
-    scraperStats: new Map<string, {
-      requests: number;
-      successes: number;
-      failures: number;
-      totalDuration: number;
-    }>(),
+    scraperStats: new Map<
+      string,
+      {
+        requests: number;
+        successes: number;
+        failures: number;
+        totalDuration: number;
+      }
+    >(),
   };
 
   install(scraper: ScraperEngine): void {
@@ -287,4 +295,3 @@ export class MetricsPlugin implements ScraperPlugin {
     };
   }
 }
-

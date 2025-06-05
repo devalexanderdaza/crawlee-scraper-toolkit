@@ -1,4 +1,4 @@
-import { Browser, BrowserContext, chromium, Page, LaunchOptions } from 'playwright';
+import { chromium, Page, LaunchOptions } from 'playwright';
 import { EventEmitter } from 'eventemitter3';
 import { v4 as uuidv4 } from 'uuid';
 import { BrowserInstance, BrowserPoolConfig } from './types';
@@ -11,7 +11,7 @@ export class BrowserPool extends EventEmitter {
   private pool: BrowserInstance[] = [];
   private config: BrowserPoolConfig;
   private logger: Logger;
-  private cleanupTimer?: NodeJS.Timeout;
+  private cleanupTimer?: ReturnType<typeof setTimeout>;
   private isShuttingDown = false;
 
   constructor(config: BrowserPoolConfig, logger: Logger) {
@@ -33,35 +33,35 @@ export class BrowserPool extends EventEmitter {
     const availableInstance = this.pool.find(instance => !instance.inUse);
 
     if (availableInstance) {
-      this.logger.debug('Reusing browser instance from pool', { 
-        instanceId: availableInstance.id 
+      this.logger.debug('Reusing browser instance from pool', {
+        instanceId: availableInstance.id,
       });
-      
+
       // Check if page is still valid
       if (availableInstance.page.isClosed()) {
         this.logger.debug('Page closed, creating new page in existing context', {
-          instanceId: availableInstance.id
+          instanceId: availableInstance.id,
         });
         availableInstance.page = await availableInstance.context.newPage();
       }
 
       availableInstance.inUse = true;
       availableInstance.lastUsed = Date.now();
-      
+
       this.emit('pool:acquire', { instanceId: availableInstance.id });
       return availableInstance;
     }
 
     // Create new instance if pool is not full
     if (this.pool.length < this.config.maxSize) {
-      this.logger.debug('Creating new browser instance', { 
+      this.logger.debug('Creating new browser instance', {
         poolSize: this.pool.length,
-        maxSize: this.config.maxSize 
+        maxSize: this.config.maxSize,
       });
-      
+
       const instance = await this.createInstance();
       this.pool.push(instance);
-      
+
       this.emit('pool:acquire', { instanceId: instance.id });
       return instance;
     }
@@ -76,19 +76,19 @@ export class BrowserPool extends EventEmitter {
    */
   release(instance: BrowserInstance): void {
     const poolInstance = this.pool.find(i => i.id === instance.id);
-    
+
     if (poolInstance) {
       poolInstance.inUse = false;
       poolInstance.lastUsed = Date.now();
-      
-      this.logger.debug('Released browser instance to pool', { 
-        instanceId: poolInstance.id 
+
+      this.logger.debug('Released browser instance to pool', {
+        instanceId: poolInstance.id,
       });
-      
+
       this.emit('pool:release', { instanceId: poolInstance.id });
     } else {
       this.logger.warn('Attempted to release unknown browser instance', {
-        instanceId: instance.id
+        instanceId: instance.id,
       });
     }
   }
@@ -121,14 +121,14 @@ export class BrowserPool extends EventEmitter {
     const instancesToRemove: BrowserInstance[] = [];
 
     for (const instance of this.pool) {
-      if (!instance.inUse && (now - instance.lastUsed) > this.config.maxAge) {
+      if (!instance.inUse && now - instance.lastUsed > this.config.maxAge) {
         instancesToRemove.push(instance);
       }
     }
 
     if (instancesToRemove.length > 0) {
-      this.logger.debug('Cleaning up old browser instances', { 
-        count: instancesToRemove.length 
+      this.logger.debug('Cleaning up old browser instances', {
+        count: instancesToRemove.length,
       });
 
       for (const instance of instancesToRemove) {
@@ -156,7 +156,7 @@ export class BrowserPool extends EventEmitter {
 
     const closePromises = this.pool.map(instance => this.destroyInstance(instance));
     await Promise.all(closePromises);
-    
+
     this.pool = [];
     this.logger.info('Browser pool shutdown complete');
   }
@@ -174,9 +174,10 @@ export class BrowserPool extends EventEmitter {
     const browser = await chromium.launch(launchOptions);
     const context = await browser.newContext({
       viewport: { width: 1920, height: 1080 },
-      userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      userAgent:
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
     });
-    
+
     const page = await context.newPage();
     const id = uuidv4();
 
@@ -220,18 +221,19 @@ export class BrowserPool extends EventEmitter {
 
       const checkInterval = setInterval(() => {
         const availableInstance = this.pool.find(instance => !instance.inUse);
-        
+
         if (availableInstance) {
           clearInterval(checkInterval);
           clearTimeout(timeout);
-          
+
           availableInstance.inUse = true;
           availableInstance.lastUsed = Date.now();
-          
+
           // Check if page is still valid
           if (availableInstance.page.isClosed()) {
-            availableInstance.context.newPage()
-              .then(page => {
+            availableInstance.context
+              .newPage()
+              .then((page: Page) => {
                 availableInstance.page = page;
                 resolve(availableInstance);
               })
@@ -279,4 +281,3 @@ export const defaultBrowserPoolConfig: BrowserPoolConfig = {
   },
   cleanupInterval: 5 * 60 * 1000, // 5 minutes
 };
-

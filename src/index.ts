@@ -21,13 +21,7 @@ export type {
 } from './core/types';
 
 // Plugin exports
-export {
-  RetryPlugin,
-  CachePlugin,
-  ProxyPlugin,
-  RateLimitPlugin,
-  MetricsPlugin,
-} from './plugins';
+export { RetryPlugin, CachePlugin, ProxyPlugin, RateLimitPlugin, MetricsPlugin } from './plugins';
 
 // Utility exports
 export { createLogger, defaultLogger } from './utils/logger';
@@ -45,4 +39,3 @@ export { getTemplate, getAvailableTemplates } from './cli/templates';
 
 // Re-export commonly used types from dependencies
 export type { Page, Browser, BrowserContext } from 'playwright';
-
