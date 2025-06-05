@@ -10,7 +10,7 @@
   "scripts": {
     "build": "./scripts/build.sh",
     "build:tsc": "tsc && chmod +x dist/cli/index.js",
-    "dev": "ts-node src/index.ts",
+    "dev": "ts-node -r tsconfig-paths/register src/index.ts",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
@@ -20,9 +20,9 @@
     "prepare": "husky install",
     "prepublishOnly": "pnpm run build && pnpm test",
     "release": "./scripts/release.sh",
-    "cli": "ts-node src/cli/index.ts",
-    "example:news": "ts-node examples/news-scraper.ts",
-    "example:products": "ts-node examples/advanced-product-scraper.ts",
+    "cli": "ts-node -r tsconfig-paths/register src/cli/index.ts",
+    "example:news": "ts-node -r tsconfig-paths/register examples/news-scraper.ts",
+    "example:products": "ts-node -r tsconfig-paths/register examples/advanced-product-scraper.ts",
     "postinstall": "pnpm dlx playwright install"
   },
   "keywords": [
@@ -79,6 +79,7 @@
     "prettier": "^3.1.0",
     "ts-jest": "^29.2.0",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.5.2"
   },
   "engines": {
