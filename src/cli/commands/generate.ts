@@ -2,7 +2,7 @@ import inquirer from 'inquirer';
 import chalk from 'chalk';
 import ora from 'ora';
 import { existsSync, mkdirSync, writeFileSync } from 'fs';
-import { join, resolve } from 'path';
+import { join } from 'path';
 import { getTemplate } from '../templates';
 
 /**
@@ -149,7 +149,10 @@ async function promptForConfig(options: GenerateOptions): Promise<ScraperConfig>
 /**
  * Prompt for template-specific configuration
  */
-async function promptForTemplateConfig(template: TemplateType, url: string): Promise<Partial<ScraperConfig>> {
+async function promptForTemplateConfig(
+  template: TemplateType,
+  _url: string
+): Promise<Partial<ScraperConfig>> {
   const config: Partial<ScraperConfig> = {
     navigation: { type: 'direct' },
     waitStrategy: { type: 'timeout', duration: 2000 },

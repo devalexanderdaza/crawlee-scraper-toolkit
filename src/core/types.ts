@@ -47,7 +47,7 @@ export interface ScraperExecutionOptions {
   /** Custom headers */
   headers: Record<string, string>;
   /** User agent string */
-  userAgent?: string;
+  userAgent: string;
   /** Whether to enable JavaScript */
   javascript: boolean;
   /** Whether to load images */

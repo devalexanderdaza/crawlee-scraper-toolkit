@@ -209,27 +209,6 @@ main().catch(console.error);
     indexContent.trim()
   );
 
-  // Create default configuration
-  const defaultConfig = {
-    browserPool: {
-      maxSize: 3,
-      maxAge: 1800000,
-      launchOptions: {
-        headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
-      },
-    },
-    defaultOptions: {
-      retries: 3,
-      timeout: 30000,
-      loadImages: false,
-    },
-    logging: {
-      level: 'info',
-      format: 'text',
-    },
-  };
-
   writeFileSync(
     join(projectDir, 'config', 'scraper.config.yaml'),
     `# Crawlee Scraper Toolkit Configuration

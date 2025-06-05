@@ -17,6 +17,19 @@ A comprehensive TypeScript toolkit for building robust web scrapers with Crawlee
 
 ## 📦 Installation
 
+### Prerequisites
+
+- Node.js >= 20.0.0
+- pnpm >= 8.0.0 (recommended package manager)
+
+### Install with pnpm (recommended)
+
+```bash
+pnpm add crawlee-scraper-toolkit
+```
+
+### Install with npm
+
 ```bash
 npm install crawlee-scraper-toolkit
 ```
@@ -26,15 +39,15 @@ npm install crawlee-scraper-toolkit
 ### 1. Initialize a New Project
 
 ```bash
-npx crawlee-scraper init my-scraper-project
+pnpm dlx crawlee-scraper init my-scraper-project
 cd my-scraper-project
-npm install
+pnpm install
 ```
 
 ### 2. Generate Your First Scraper
 
 ```bash
-npx crawlee-scraper generate
+pnpm dlx crawlee-scraper generate
 ```
 
 Follow the interactive prompts to configure your scraper.
@@ -42,7 +55,7 @@ Follow the interactive prompts to configure your scraper.
 ### 3. Run the Scraper
 
 ```bash
-npx crawlee-scraper run --scraper=my-scraper --input="search term"
+pnpm dlx crawlee-scraper run --scraper=my-scraper --input="search term"
 ```
 
 ## 🔧 Programmatic Usage

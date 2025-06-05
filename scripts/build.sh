@@ -12,7 +12,7 @@ rm -rf dist/
 
 # Run TypeScript compiler
 echo "📦 Compiling TypeScript..."
-npx tsc
+pnpm exec tsc
 
 # Make CLI executable
 echo "🔧 Making CLI executable..."

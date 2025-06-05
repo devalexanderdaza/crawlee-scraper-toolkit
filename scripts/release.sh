@@ -65,25 +65,25 @@ esac
 # Run tests
 echo ""
 echo -e "${BLUE}🧪 Running tests...${NC}"
-npm test
+pnpm test
 
 # Run linting
 echo ""
 echo -e "${BLUE}🔍 Running linter...${NC}"
-npm run lint
+pnpm run lint
 
 # Build the project
 echo ""
 echo -e "${BLUE}🏗️  Building project...${NC}"
-npm run build
+pnpm run build
 
 # Bump version
 echo ""
 echo -e "${BLUE}📈 Bumping version...${NC}"
 if [ "$CHOICE" = "4" ]; then
-    npm version $CUSTOM_VERSION --no-git-tag-version
+    pnpm version $CUSTOM_VERSION --no-git-tag-version
 else
-    npm version $VERSION_TYPE --no-git-tag-version
+    pnpm version $VERSION_TYPE --no-git-tag-version
 fi
 
 NEW_VERSION=$(node -p "require('./package.json').version")
@@ -130,7 +130,7 @@ git push origin "v${NEW_VERSION}"
 # Publish to npm
 echo ""
 echo -e "${BLUE}📦 Publishing to npm...${NC}"
-npm publish
+pnpm publish
 
 echo ""
 echo -e "${GREEN}🎉 Successfully released version ${NEW_VERSION}!${NC}"

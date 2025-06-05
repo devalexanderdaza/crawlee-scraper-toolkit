@@ -14,6 +14,24 @@ import {
 import { BrowserPool } from './browser-pool';
 import { Logger } from '@/utils/logger';
 
+// Helper interfaces for navigation configs
+interface FormConfig {
+  inputSelector?: string;
+  submitSelector?: string;
+}
+
+interface SelectorConfig {
+  selector?: string;
+}
+
+interface ResponseConfig {
+  urlPattern?: string;
+}
+
+interface TimeoutConfig {
+  duration?: number;
+}
+
 /**
  * Main scraper engine implementation
  */
@@ -21,7 +39,7 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
   private browserPool: BrowserPool;
   private logger: Logger;
   private config: ScraperEngineConfig;
-  private definitions = new Map<string, ScraperDefinition>();
+  private definitions = new Map<string, ScraperDefinition<unknown, unknown>>();
   private plugins = new Map<string, ScraperPlugin>();
   private globalHooks = new Map<ScraperHook, HookHandler[]>();
 
@@ -57,7 +75,7 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
       if (validation !== true) {
         const error = new Error(`Input validation failed: ${validation}`);
         this.emit('scraper:error', { scraperId: definition.id, error });
-        return this.createErrorResult(definition.id, error, 0, startTime);
+        return this.createErrorResult<Output>(definition.id, error, 0, startTime);
       }
     }
 
@@ -141,7 +159,7 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
           scraperId: definition.id,
         }
       );
-      const errorResult = this.createErrorResult(
+      const errorResult = this.createErrorResult<Output>(
         definition.id,
         undefinedError,
         attempts - 1,
@@ -152,7 +170,12 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
     }
 
     // If we reach here, lastError is defined and is of type Error due to the check above.
-    const errorResult = this.createErrorResult(definition.id, lastError, attempts - 1, startTime);
+    const errorResult = this.createErrorResult<Output>(
+      definition.id,
+      lastError,
+      attempts - 1,
+      startTime
+    );
     this.emit('scraper:error', { scraperId: definition.id, error: lastError });
 
     return errorResult;
@@ -163,7 +186,7 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
    */
   register<Input, Output>(definition: ScraperDefinition<Input, Output>): void {
     this.logger.info('Registering scraper definition', { scraperId: definition.id });
-    this.definitions.set(definition.id, definition);
+    this.definitions.set(definition.id, definition as ScraperDefinition<unknown, unknown>);
   }
 
   /**
@@ -200,7 +223,10 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
     if (!this.globalHooks.has(hook)) {
       this.globalHooks.set(hook, []);
     }
-    this.globalHooks.get(hook)!.push(handler);
+    const handlers = this.globalHooks.get(hook);
+    if (handlers) {
+      handlers.push(handler);
+    }
   }
 
   /**
@@ -278,23 +304,26 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
         await page.goto(definition.url, { timeout: context.options.timeout });
         break;
 
-      case 'form':
+      case 'form': {
         await page.goto(definition.url, { timeout: context.options.timeout });
+        const formConfig = navigation.config as FormConfig;
 
-        if (navigation.config.inputSelector) {
-          await page.fill(navigation.config.inputSelector, String(input));
+        if (formConfig.inputSelector) {
+          await page.fill(formConfig.inputSelector, String(input));
         }
 
-        if (navigation.config.submitSelector) {
-          await page.click(navigation.config.submitSelector);
+        if (formConfig.submitSelector) {
+          await page.click(formConfig.submitSelector);
         }
         break;
+      }
 
-      case 'api':
+      case 'api': {
         // For API-based navigation, construct URL with parameters
         const url = this.buildApiUrl(definition.url, input, navigation.config);
         await page.goto(url, { timeout: context.options.timeout });
         break;
+      }
 
       case 'custom':
         // Custom navigation logic should be handled in the parse function
@@ -316,28 +345,34 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
     const { waitStrategy } = definition;
 
     switch (waitStrategy.type) {
-      case 'selector':
-        if (waitStrategy.config.selector) {
-          await page.waitForSelector(waitStrategy.config.selector, {
+      case 'selector': {
+        const selectorConfig = waitStrategy.config as SelectorConfig;
+        if (selectorConfig.selector) {
+          await page.waitForSelector(selectorConfig.selector, {
             timeout: options.timeout,
           });
         }
         break;
+      }
 
-      case 'response':
-        if (waitStrategy.config.urlPattern) {
+      case 'response': {
+        const responseConfig = waitStrategy.config as ResponseConfig;
+        if (responseConfig.urlPattern) {
           await page.waitForResponse(
-            response => response.url().includes(waitStrategy.config.urlPattern),
+            response => response.url().includes(responseConfig.urlPattern ?? ''),
             { timeout: options.timeout }
           );
         }
         break;
+      }
 
-      case 'timeout':
-        if (waitStrategy.config.duration) {
-          await page.waitForTimeout(waitStrategy.config.duration);
+      case 'timeout': {
+        const timeoutConfig = waitStrategy.config as TimeoutConfig;
+        if (timeoutConfig.duration) {
+          await page.waitForTimeout(timeoutConfig.duration);
         }
         break;
+      }
 
       case 'custom':
         // Custom wait logic should be handled in the parse function
@@ -357,7 +392,7 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
     definition: ScraperDefinition<Input, Output>
   ): Promise<void> {
     // Execute global hooks
-    const globalHandlers = this.globalHooks.get(hook) || [];
+    const globalHandlers = this.globalHooks.get(hook) ?? [];
     for (const handler of globalHandlers) {
       try {
         await handler(context);
@@ -370,7 +405,7 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
     }
 
     // Execute definition-specific hooks
-    const definitionHandlers = definition.hooks?.[hook] || [];
+    const definitionHandlers = definition.hooks?.[hook] ?? [];
     for (const handler of definitionHandlers) {
       try {
         await handler(context);
@@ -387,8 +422,8 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
   /**
    * Build API URL with parameters
    */
-  private buildApiUrl(baseUrl: string, input: any, config: any): string {
-    if (config.paramName && typeof input === 'string') {
+  private buildApiUrl(baseUrl: string, input: unknown, config: Record<string, unknown>): string {
+    if (config.paramName && typeof config.paramName === 'string' && typeof input === 'string') {
       const url = new URL(baseUrl);
       url.searchParams.set(config.paramName, input);
       return url.toString();
@@ -422,12 +457,12 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
   /**
    * Create error result
    */
-  private createErrorResult(
+  private createErrorResult<Output = unknown>(
     scraperId: string,
     error: Error,
     attempts: number,
     startTime: number
-  ): ScraperResult {
+  ): ScraperResult<Output> {
     return {
       success: false,
       error,

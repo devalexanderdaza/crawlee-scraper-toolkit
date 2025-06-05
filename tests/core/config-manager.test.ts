@@ -7,7 +7,7 @@ describe('ConfigManager', () => {
   const testConfigPath = join(__dirname, 'test-config.yaml');
 
   beforeEach(() => {
-    configManager = new ConfigManager();
+    configManager = new ConfigManager(false); // Disable autoLoad to avoid external config interference
   });
 
   afterEach(() => {
@@ -165,7 +165,7 @@ profiles:
       const validConfig = {
         browserPool: {
           maxSize: 5,
-          maxAge: 30000,
+          maxAge: 60000, // Changed from 30000 to 60000 to meet minimum requirement
         },
         defaultOptions: {
           retries: 3,

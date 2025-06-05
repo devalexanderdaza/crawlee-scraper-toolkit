@@ -67,7 +67,7 @@ const scraperExecutionOptionsSchema = z
     timeout: schemas.timeout.default(30000),
     useProxyRotation: z.boolean().default(false),
     headers: z.record(z.string()).default({}),
-    userAgent: z.string().optional(),
+    userAgent: z.string().default('Mozilla/5.0 (compatible; Crawlee-Scraper-Toolkit/1.0)'),
     javascript: z.boolean().default(true),
     loadImages: z.boolean().default(false),
     viewport: z
@@ -105,9 +105,11 @@ export class ConfigManager {
   private profiles = new Map<string, ConfigProfile>();
   private sources = new Map<ConfigSource, Partial<ScraperEngineConfig>>();
 
-  constructor() {
+  constructor(autoLoad: boolean = true) {
     this.config = this.getDefaultConfig();
-    this.loadConfiguration();
+    if (autoLoad) {
+      this.loadConfiguration();
+    }
   }
 
   /**
@@ -136,7 +138,19 @@ export class ConfigManager {
     const content = readFileSync(filePath, 'utf-8');
     const configFile = this.parseConfigFile(content, filePath);
 
-    this.sources.set('file', configFile.default || {});
+    // If configFile has 'default' or 'profiles' keys, treat it as a structured config file
+    // Otherwise, treat the entire content as direct configuration
+    let configToApply: Partial<ScraperEngineConfig>;
+
+    if (configFile.default ?? configFile.profiles ?? configFile.extends) {
+      // Structured config file format
+      configToApply = configFile.default ?? {};
+    } else {
+      // Direct config format - use the entire parsed content as config
+      configToApply = configFile as Partial<ScraperEngineConfig>;
+    }
+
+    this.sources.set('file', configToApply);
 
     // Load profiles
     if (configFile.profiles) {
@@ -162,75 +176,75 @@ export class ConfigManager {
   loadFromEnv(): void {
     const envConfig: Partial<ScraperEngineConfig> = {};
 
+    // Get current configuration as defaults
+    const currentConfig = this.getDefaultConfig();
+
     // Browser pool configuration
-    if (process.env.BROWSER_POOL_SIZE) {
+    if (
+      process.env.BROWSER_POOL_SIZE ??
+      process.env.BROWSER_MAX_AGE_MS ??
+      process.env.BROWSER_HEADLESS ??
+      process.env.BROWSER_ARGS
+    ) {
       envConfig.browserPool = {
-        ...envConfig.browserPool,
-        maxSize: parseInt(process.env.BROWSER_POOL_SIZE, 10),
-      };
-    }
-
-    if (process.env.BROWSER_MAX_AGE_MS) {
-      envConfig.browserPool = {
-        ...envConfig.browserPool,
-        maxAge: parseInt(process.env.BROWSER_MAX_AGE_MS, 10),
-      };
-    }
-
-    if (process.env.BROWSER_HEADLESS !== undefined) {
-      envConfig.browserPool = {
-        ...envConfig.browserPool,
+        maxSize: process.env.BROWSER_POOL_SIZE
+          ? parseInt(process.env.BROWSER_POOL_SIZE, 10)
+          : currentConfig.browserPool.maxSize,
+        maxAge: process.env.BROWSER_MAX_AGE_MS
+          ? parseInt(process.env.BROWSER_MAX_AGE_MS, 10)
+          : currentConfig.browserPool.maxAge,
         launchOptions: {
-          ...envConfig.browserPool?.launchOptions,
-          headless: process.env.BROWSER_HEADLESS !== 'false',
+          headless:
+            process.env.BROWSER_HEADLESS !== undefined
+              ? process.env.BROWSER_HEADLESS !== 'false'
+              : currentConfig.browserPool.launchOptions.headless,
+          args: process.env.BROWSER_ARGS
+            ? process.env.BROWSER_ARGS.split(' ')
+            : currentConfig.browserPool.launchOptions.args,
+          timeout: currentConfig.browserPool.launchOptions.timeout,
         },
-      };
-    }
-
-    if (process.env.BROWSER_ARGS) {
-      envConfig.browserPool = {
-        ...envConfig.browserPool,
-        launchOptions: {
-          ...envConfig.browserPool?.launchOptions,
-          args: process.env.BROWSER_ARGS.split(' '),
-        },
+        cleanupInterval: currentConfig.browserPool.cleanupInterval,
       };
     }
 
     // Default execution options
-    if (process.env.SCRAPING_MAX_RETRIES) {
+    if (
+      process.env.SCRAPING_MAX_RETRIES ??
+      process.env.SCRAPING_TIMEOUT ??
+      process.env.SCRAPING_USER_AGENT
+    ) {
       envConfig.defaultOptions = {
-        ...envConfig.defaultOptions,
-        retries: parseInt(process.env.SCRAPING_MAX_RETRIES, 10),
-      };
-    }
-
-    if (process.env.SCRAPING_TIMEOUT) {
-      envConfig.defaultOptions = {
-        ...envConfig.defaultOptions,
-        timeout: parseInt(process.env.SCRAPING_TIMEOUT, 10),
-      };
-    }
-
-    if (process.env.SCRAPING_USER_AGENT) {
-      envConfig.defaultOptions = {
-        ...envConfig.defaultOptions,
-        userAgent: process.env.SCRAPING_USER_AGENT,
+        retries: process.env.SCRAPING_MAX_RETRIES
+          ? parseInt(process.env.SCRAPING_MAX_RETRIES, 10)
+          : currentConfig.defaultOptions.retries,
+        retryDelay: currentConfig.defaultOptions.retryDelay,
+        timeout: process.env.SCRAPING_TIMEOUT
+          ? parseInt(process.env.SCRAPING_TIMEOUT, 10)
+          : currentConfig.defaultOptions.timeout,
+        useProxyRotation: currentConfig.defaultOptions.useProxyRotation,
+        headers: currentConfig.defaultOptions.headers,
+        userAgent: process.env.SCRAPING_USER_AGENT ?? currentConfig.defaultOptions.userAgent,
+        javascript: currentConfig.defaultOptions.javascript,
+        loadImages: currentConfig.defaultOptions.loadImages,
+        viewport: currentConfig.defaultOptions.viewport,
       };
     }
 
     // Logging configuration
-    if (process.env.LOG_LEVEL) {
-      envConfig.logging = {
-        ...envConfig.logging,
-        level: process.env.LOG_LEVEL as any,
-      };
-    }
+    if (process.env.LOG_LEVEL ?? process.env.LOG_FORMAT) {
+      const validLevels = ['debug', 'info', 'warn', 'error'] as const;
+      const validFormats = ['json', 'text'] as const;
 
-    if (process.env.LOG_FORMAT) {
       envConfig.logging = {
-        ...envConfig.logging,
-        format: process.env.LOG_FORMAT as any,
+        level:
+          process.env.LOG_LEVEL &&
+          validLevels.includes(process.env.LOG_LEVEL as 'debug' | 'info' | 'warn' | 'error')
+            ? (process.env.LOG_LEVEL as 'debug' | 'info' | 'warn' | 'error')
+            : currentConfig.logging.level,
+        format:
+          process.env.LOG_FORMAT && validFormats.includes(process.env.LOG_FORMAT as 'json' | 'text')
+            ? (process.env.LOG_FORMAT as 'json' | 'text')
+            : currentConfig.logging.format,
       };
     }
 
@@ -262,7 +276,7 @@ export class ConfigManager {
    * Validate configuration
    */
   validateConfig(config?: Partial<ScraperEngineConfig>): { valid: boolean; errors: string[] } {
-    const configToValidate = config || this.config;
+    const configToValidate = config ?? this.config;
 
     try {
       scraperEngineConfigSchema.parse(configToValidate);
@@ -320,10 +334,10 @@ export class ConfigManager {
    */
   private rebuildConfig(): void {
     const sources = [
-      this.sources.get('default') || {},
-      this.sources.get('file') || {},
-      this.sources.get('env') || {},
-      this.sources.get('programmatic') || {},
+      this.sources.get('default') ?? {},
+      this.sources.get('file') ?? {},
+      this.sources.get('env') ?? {},
+      this.sources.get('programmatic') ?? {},
     ];
 
     const mergedConfig = merge({}, ...sources);
@@ -383,7 +397,14 @@ export class ConfigBuilder {
    * Set browser pool configuration
    */
   browserPool(config: Partial<BrowserPoolConfig>): ConfigBuilder {
-    this.config.browserPool = { ...this.config.browserPool, ...config };
+    const merged = { ...this.config.browserPool };
+    if (config.maxSize !== undefined) merged.maxSize = config.maxSize;
+    if (config.maxAge !== undefined) merged.maxAge = config.maxAge;
+    if (config.cleanupInterval !== undefined) merged.cleanupInterval = config.cleanupInterval;
+    if (config.launchOptions) {
+      merged.launchOptions = { ...merged.launchOptions, ...config.launchOptions };
+    }
+    this.config.browserPool = merged as BrowserPoolConfig;
     return this;
   }
 
@@ -391,7 +412,17 @@ export class ConfigBuilder {
    * Set default execution options
    */
   defaultOptions(options: Partial<ScraperExecutionOptions>): ConfigBuilder {
-    this.config.defaultOptions = { ...this.config.defaultOptions, ...options };
+    const merged = { ...this.config.defaultOptions };
+    if (options.retries !== undefined) merged.retries = options.retries;
+    if (options.retryDelay !== undefined) merged.retryDelay = options.retryDelay;
+    if (options.timeout !== undefined) merged.timeout = options.timeout;
+    if (options.useProxyRotation !== undefined) merged.useProxyRotation = options.useProxyRotation;
+    if (options.headers !== undefined) merged.headers = options.headers;
+    if (options.userAgent !== undefined) merged.userAgent = options.userAgent;
+    if (options.javascript !== undefined) merged.javascript = options.javascript;
+    if (options.loadImages !== undefined) merged.loadImages = options.loadImages;
+    if (options.viewport !== undefined) merged.viewport = options.viewport;
+    this.config.defaultOptions = merged as ScraperExecutionOptions;
     return this;
   }
 
@@ -399,15 +430,24 @@ export class ConfigBuilder {
    * Add plugins
    */
   plugins(plugins: string[]): ConfigBuilder {
-    this.config.plugins = [...(this.config.plugins || []), ...plugins];
+    this.config.plugins = [...(this.config.plugins ?? []), ...plugins];
     return this;
   }
 
   /**
    * Set logging configuration
    */
-  logging(config: { level?: string; format?: string }): ConfigBuilder {
-    this.config.logging = { ...this.config.logging, ...config };
+  logging(config: {
+    level?: 'debug' | 'info' | 'warn' | 'error';
+    format?: 'json' | 'text';
+  }): ConfigBuilder {
+    const merged = { ...this.config.logging };
+    if (config.level !== undefined) merged.level = config.level;
+    if (config.format !== undefined) merged.format = config.format;
+    this.config.logging = merged as {
+      level: 'debug' | 'info' | 'warn' | 'error';
+      format: 'json' | 'text';
+    };
     return this;
   }
 

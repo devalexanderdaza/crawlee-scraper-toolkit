@@ -267,7 +267,7 @@ export class MetricsPlugin implements ScraperPlugin {
   }
 
   private recordDuration(context: ScraperContext): void {
-    if (context.metadata.startTime) {
+    if (context.metadata.startTime && typeof context.metadata.startTime === 'number') {
       const duration = Date.now() - context.metadata.startTime;
       this.metrics.totalDuration += duration;
       this.metrics.averageDuration = this.metrics.totalDuration / this.metrics.totalRequests;

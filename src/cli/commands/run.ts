@@ -47,7 +47,10 @@ export async function runScraper(options: RunOptions): Promise<void> {
     }
 
     const config = configManager.getConfig();
-    const logger = createLogger(config.logging);
+    const logger = createLogger({
+      ...config.logging,
+      console: true
+    });
 
     // Initialize scraper engine
     const engine = new CrawleeScraperEngine(config, logger);
