@@ -2,28 +2,68 @@ import {
   CrawleeScraperEngine, 
   ScraperDefinition, 
   createConfig,
+  configManager,
   RetryPlugin,
   CachePlugin,
   MetricsPlugin,
   createLogger
 } from '../src';
+import { ScraperContext } from '../src/core/types';
+
+// Define the product interface
+interface Product {
+  id: string | number;
+  name: string;
+  price: {
+    current: number;
+    original?: number;
+    currency: string;
+    discount?: number;
+  };
+  rating: {
+    average: number;
+    count: number;
+  };
+  availability: boolean;
+  images: string[];
+  url: string;
+  brand?: string;
+  category?: string;
+  description?: string;
+}
+
+// Define the output interface
+interface ProductSearchResult {
+  searchQuery: string;
+  products: Product[];
+  totalFound: number;
+  metadata: {
+    title: string;
+    url: string;
+    timestamp: string;
+    userAgent: string;
+  };
+  pagination: {
+    currentPage: number;
+    totalPages: number;
+    hasMore: boolean;
+  };
+}
 
 // Example: E-commerce product scraper with advanced features
-const productScraperDefinition: ScraperDefinition<string, any> = {
+const productScraperDefinition: ScraperDefinition<string, ProductSearchResult> = {
   id: 'product-scraper',
   name: 'E-commerce Product Scraper',
   description: 'Scrapes product information from e-commerce sites',
-  url: 'https://example-shop.com/search',
+  url: 'https://httpbin.org/json', // Using httpbin as a demo URL
   navigation: {
-    type: 'api',
-    config: {
-      paramName: 'q',
-    },
+    type: 'direct',
+    config: {},
   },
   waitStrategy: {
-    type: 'response',
+    type: 'selector',
     config: {
-      urlPattern: '/api/products',
+      selector: 'body',
     },
   },
   requiresCaptcha: false,
@@ -31,7 +71,7 @@ const productScraperDefinition: ScraperDefinition<string, any> = {
   // Custom hooks for advanced functionality
   hooks: {
     beforeRequest: [
-      async (context) => {
+      async (context: any) => {
         console.log(`🔍 Starting product search for: ${context.input}`);
         
         // Set custom headers to appear more like a real browser
@@ -47,7 +87,7 @@ const productScraperDefinition: ScraperDefinition<string, any> = {
     ],
     
     afterRequest: [
-      async (context) => {
+      async (context: any) => {
         console.log(`✅ Completed product search for: ${context.input}`);
         
         // Save screenshot if enabled
@@ -62,7 +102,7 @@ const productScraperDefinition: ScraperDefinition<string, any> = {
     ],
     
     onError: [
-      async (context) => {
+      async (context: any) => {
         console.error(`❌ Product search failed for: ${context.input}`, context.error?.message);
         
         // Save error screenshot
@@ -79,14 +119,18 @@ const productScraperDefinition: ScraperDefinition<string, any> = {
     ],
     
     onRetry: [
-      async (context) => {
+      async (context: any) => {
         console.log(`🔄 Retrying product search for: ${context.input} (attempt ${context.attempt})`);
         
         // Clear cookies and local storage on retry
         await context.page.context().clearCookies();
         await context.page.evaluate(() => {
-          localStorage.clear();
-          sessionStorage.clear();
+          if (typeof localStorage !== 'undefined') {
+            localStorage.clear();
+          }
+          if (typeof sessionStorage !== 'undefined') {
+            sessionStorage.clear();
+          }
         });
         
         // Wait a bit longer between retries
@@ -95,59 +139,80 @@ const productScraperDefinition: ScraperDefinition<string, any> = {
     ],
   },
   
-  parse: async (context) => {
+  parse: async (context: ScraperContext<string, ProductSearchResult>): Promise<ProductSearchResult> => {
     const { page, input } = context;
     
-    // Wait for the API response
-    const response = await page.waitForResponse(
-      res => res.url().includes('/api/products') && res.status() === 200,
-      { timeout: 30000 }
-    );
-    
-    // Parse the API response
-    const apiData = await response.json();
-    
-    // Process and structure the data
-    const products = apiData.products?.map((product: any) => ({
-      id: product.id,
-      name: product.name || product.title,
-      price: {
-        current: product.price?.current || product.currentPrice,
-        original: product.price?.original || product.originalPrice,
-        currency: product.price?.currency || 'USD',
-        discount: product.price?.discount || null,
-      },
-      rating: {
-        average: product.rating?.average || product.averageRating,
-        count: product.rating?.count || product.reviewCount,
-      },
-      availability: product.availability || product.inStock,
-      images: product.images || [],
-      url: product.url || product.productUrl,
-      brand: product.brand,
-      category: product.category,
-      description: product.description?.substring(0, 500), // Limit description length
-    })) || [];
-    
-    // Extract additional page metadata
-    const metadata = await page.evaluate(() => ({
-      title: document.title,
-      url: window.location.href,
-      timestamp: new Date().toISOString(),
-      userAgent: navigator.userAgent,
-    }));
-    
-    return {
-      searchQuery: input,
-      products,
-      totalFound: products.length,
-      metadata,
-      pagination: {
-        currentPage: apiData.pagination?.currentPage || 1,
-        totalPages: apiData.pagination?.totalPages || 1,
-        hasMore: apiData.pagination?.hasMore || false,
-      },
-    };
+    // For demo purposes, simulate API response since we can't use real e-commerce sites
+    // In a real scenario, this would wait for actual API responses
+    try {
+      // Simulate waiting for API response by navigating to a demo page
+      await page.goto('https://httpbin.org/json', { waitUntil: 'networkidle' });
+      
+      // Get the demo JSON response (we don't actually use it, just for demo)
+      await page.textContent('body');
+      
+      // Create mock product data for demonstration
+      const products: Product[] = Array.from({ length: 3 }, (_, i) => ({
+        id: `product-${i + 1}`,
+        name: `Sample Product ${i + 1} - ${input}`,
+        price: {
+          current: 99.99 + (i * 50),
+          original: 149.99 + (i * 50),
+          currency: 'USD',
+          discount: 33,
+        },
+        rating: {
+          average: 4.5 - (i * 0.1),
+          count: 150 + (i * 25),
+        },
+        availability: true,
+        images: [`https://example.com/image${i + 1}.jpg`],
+        url: `https://example.com/product/${i + 1}`,
+        brand: `Brand ${String.fromCharCode(65 + i)}`,
+        category: 'Electronics',
+        description: `High-quality product related to ${input} with excellent features and specifications.`,
+      }));
+      
+      // Extract page metadata
+      const metadata = await page.evaluate(() => ({
+        title: document.title || 'Demo Page',
+        url: window.location.href,
+        timestamp: new Date().toISOString(),
+        userAgent: navigator.userAgent,
+      }));
+      
+      return {
+        searchQuery: input,
+        products,
+        totalFound: products.length,
+        metadata,
+        pagination: {
+          currentPage: 1,
+          totalPages: 1,
+          hasMore: false,
+        },
+      };
+    } catch (error) {
+      console.warn('Demo parsing fallback due to error:', error);
+      
+      // Fallback result for demo
+      return {
+        searchQuery: input,
+        products: [],
+        totalFound: 0,
+        metadata: {
+          title: 'Demo Failed',
+          url: page.url(),
+          timestamp: new Date().toISOString(),
+          userAgent: 'Demo User Agent',
+        },
+        pagination: {
+          currentPage: 1,
+          totalPages: 1,
+          hasMore: false,
+        },
+      };
+    }
   },
   
   // Input validation
@@ -201,6 +266,7 @@ async function main() {
       maxAge: 30 * 60 * 1000, // 30 minutes
       launchOptions: {
         headless: process.env.HEADLESS !== 'false',
+        timeout: 30000,
         args: [
           '--no-sandbox',
           '--disable-setuid-sandbox',
@@ -230,8 +296,11 @@ async function main() {
     })
     .build();
 
-  // Initialize engine
-  const engine = new CrawleeScraperEngine(config, logger);
+  // Update the global config manager
+  configManager.updateConfig(config);
+
+  // Initialize engine with the configured manager
+  const engine = new CrawleeScraperEngine(configManager.getConfig(), logger);
   
   // Install plugins
   console.log('📦 Installing plugins...');
@@ -258,11 +327,11 @@ async function main() {
     const result = await engine.execute(productScraperDefinition, searchQuery);
     const duration = Date.now() - startTime;
     
-    if (result.success) {
+    if (result.success && result.data) {
       console.log(`\n🎉 Successfully found ${result.data.totalFound} products in ${duration}ms`);
       
       // Display products
-      result.data.products.slice(0, 5).forEach((product: any, index: number) => {
+      result.data.products.slice(0, 5).forEach((product: Product, index: number) => {
         console.log(`\n${index + 1}. ${product.name}`);
         console.log(`   💰 Price: ${product.price.currency} ${product.price.current}`);
         if (product.price.discount) {
