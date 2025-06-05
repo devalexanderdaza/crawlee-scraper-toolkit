@@ -8,7 +8,7 @@
 
 > `const` **schemas**: `object`
 
-Defined in: utils/validators.ts:89
+Defined in: [utils/validators.ts:89](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L89)
 
 Common Zod schemas
 

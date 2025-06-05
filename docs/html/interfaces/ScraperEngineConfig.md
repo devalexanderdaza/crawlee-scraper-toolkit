@@ -6,7 +6,7 @@
 
 # Interface: ScraperEngineConfig
 
-Defined in: core/types.ts:217
+Defined in: [core/types.ts:217](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L217)
 
 Configuration for the scraper engine
 
@@ -16,7 +16,7 @@ Configuration for the scraper engine
 
 > **browserPool**: [`BrowserPoolConfig`](BrowserPoolConfig.md)
 
-Defined in: core/types.ts:218
+Defined in: [core/types.ts:218](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L218)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: core/types.ts:218
 
 > **defaultOptions**: [`ScraperExecutionOptions`](ScraperExecutionOptions.md)
 
-Defined in: core/types.ts:219
+Defined in: [core/types.ts:219](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L219)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: core/types.ts:219
 
 > **plugins**: `string`[]
 
-Defined in: core/types.ts:220
+Defined in: [core/types.ts:220](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L220)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: core/types.ts:220
 
 > **globalHooks**: `Partial`\<`Record`\<[`ScraperHook`](../type-aliases/ScraperHook.md), [`HookHandler`](../type-aliases/HookHandler.md)[]\>\>
 
-Defined in: core/types.ts:221
+Defined in: [core/types.ts:221](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L221)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: core/types.ts:221
 
 > **logging**: `object`
 
-Defined in: core/types.ts:222
+Defined in: [core/types.ts:222](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L222)
 
 #### level
 

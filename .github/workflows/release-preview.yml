@@ -1,0 +1,148 @@
+name: Release Preview
+
+on:
+  pull_request:
+    branches: [ main ]
+    types: [ opened, synchronize, reopened ]
+
+jobs:
+  release-preview:
+    name: Release Preview
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.base.ref == 'main'
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🏗️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: '9'
+          run_install: false
+
+      - name: 📥 Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🏗️ Build project
+        run: pnpm run build
+
+      - name: 🔍 Analyze commits for release
+        id: semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Run semantic-release in dry-run mode to get next version
+          OUTPUT=$(npx semantic-release --dry-run --no-ci 2>&1 || true)
+          echo "semantic_release_output<<EOF" >> $GITHUB_OUTPUT
+          echo "$OUTPUT" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          
+          # Extract version if found
+          NEXT_VERSION=$(echo "$OUTPUT" | grep -oP 'The next release version is \K[0-9]+\.[0-9]+\.[0-9]+' || echo "")
+          echo "next_version=$NEXT_VERSION" >> $GITHUB_OUTPUT
+          
+          # Check if release will happen
+          if echo "$OUTPUT" | grep -q "The next release version is"; then
+            echo "will_release=true" >> $GITHUB_OUTPUT
+          else
+            echo "will_release=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: 📝 Generate changelog preview
+        if: steps.semantic-release.outputs.will_release == 'true'
+        run: |
+          pnpm run changelog > changelog_preview.md
+          echo "## 📋 Changelog Preview" >> $GITHUB_ENV
+          echo "" >> $GITHUB_ENV
+          cat changelog_preview.md >> $GITHUB_ENV
+
+      - name: 💬 Comment on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+
+            const botComment = comments.find(comment => 
+              comment.user.type === 'Bot' && 
+              comment.body.includes('🚀 Release Preview')
+            );
+
+            const willRelease = '${{ steps.semantic-release.outputs.will_release }}' === 'true';
+            const nextVersion = '${{ steps.semantic-release.outputs.next_version }}';
+            
+            let body;
+            
+            if (willRelease) {
+              body = `## 🚀 Release Preview
+              
+              This PR will trigger a **${nextVersion}** release when merged to main.
+              
+              ### 📦 What will be released:
+              - **Version**: ${nextVersion}
+              - **Documentation**: Will be auto-generated and deployed
+              - **NPM Package**: Will be published automatically
+              - **GitHub Release**: Will be created with release notes
+              
+              ### 🔍 Semantic Release Analysis:
+              \`\`\`
+              ${{ steps.semantic-release.outputs.semantic_release_output }}
+              \`\`\`
+              
+              ### ✅ Pre-release Checklist:
+              - [ ] All tests are passing
+              - [ ] Documentation is up to date
+              - [ ] Examples are working
+              - [ ] Breaking changes are documented
+              
+              ---
+              *This comment is automatically updated by the Release Preview workflow.*`;
+            } else {
+              body = `## 🚀 Release Preview
+              
+              This PR **will not** trigger a release when merged to main.
+              
+              ### 📋 Analysis:
+              No releasable changes detected based on conventional commits.
+              
+              ### 💡 To trigger a release, ensure your commits follow conventional format:
+              - \`feat:\` for new features (minor release)
+              - \`fix:\` for bug fixes (patch release)  
+              - \`BREAKING CHANGE:\` for breaking changes (major release)
+              
+              ### 🔍 Semantic Release Analysis:
+              \`\`\`
+              ${{ steps.semantic-release.outputs.semantic_release_output }}
+              \`\`\`
+              
+              ---
+              *This comment is automatically updated by the Release Preview workflow.*`;
+            }
+
+            if (botComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+                body: body
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: body
+              });
+            }

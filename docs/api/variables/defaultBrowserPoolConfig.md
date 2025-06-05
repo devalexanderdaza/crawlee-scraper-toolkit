@@ -8,6 +8,6 @@
 
 > `const` **defaultBrowserPoolConfig**: [`BrowserPoolConfig`](../interfaces/BrowserPoolConfig.md)
 
-Defined in: core/browser-pool.ts:266
+Defined in: [core/browser-pool.ts:266](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L266)
 
 Default browser pool configuration

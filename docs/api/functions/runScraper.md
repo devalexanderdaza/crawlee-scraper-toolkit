@@ -8,7 +8,7 @@
 
 > **runScraper**(`options`): `Promise`\<`void`\>
 
-Defined in: cli/commands/run.ts:21
+Defined in: [cli/commands/run.ts:21](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/run.ts#L21)
 
 Run a scraper
 

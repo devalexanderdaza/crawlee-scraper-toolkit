@@ -3,3 +3,4 @@
 
 npm run lint:fix && npm run format && npm test
 
+pnpm lint && pnpm format:check

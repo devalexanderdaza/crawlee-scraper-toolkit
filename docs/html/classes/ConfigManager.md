@@ -6,7 +6,7 @@
 
 # Class: ConfigManager
 
-Defined in: core/config-manager.ts:103
+Defined in: [core/config-manager.ts:103](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L103)
 
 Configuration manager for the scraper toolkit
 
@@ -16,7 +16,7 @@ Configuration manager for the scraper toolkit
 
 > **new ConfigManager**(`autoLoad`): `ConfigManager`
 
-Defined in: core/config-manager.ts:108
+Defined in: [core/config-manager.ts:108](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L108)
 
 #### Parameters
 
@@ -34,7 +34,7 @@ Defined in: core/config-manager.ts:108
 
 > **getConfig**(): [`ScraperEngineConfig`](../interfaces/ScraperEngineConfig.md)
 
-Defined in: core/config-manager.ts:118
+Defined in: [core/config-manager.ts:118](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L118)
 
 Get the current configuration
 
@@ -48,7 +48,7 @@ Get the current configuration
 
 > **updateConfig**(`updates`): `void`
 
-Defined in: core/config-manager.ts:125
+Defined in: [core/config-manager.ts:125](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L125)
 
 Update configuration programmatically
 
@@ -68,7 +68,7 @@ Update configuration programmatically
 
 > **loadFromFile**(`filePath`): `void`
 
-Defined in: core/config-manager.ts:133
+Defined in: [core/config-manager.ts:133](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L133)
 
 Load configuration from file
 
@@ -88,7 +88,7 @@ Load configuration from file
 
 > **loadFromEnv**(): `void`
 
-Defined in: core/config-manager.ts:176
+Defined in: [core/config-manager.ts:176](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L176)
 
 Load configuration from environment variables
 
@@ -102,7 +102,7 @@ Load configuration from environment variables
 
 > **applyProfile**(`profileName`): `void`
 
-Defined in: core/config-manager.ts:258
+Defined in: [core/config-manager.ts:258](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L258)
 
 Apply a configuration profile
 
@@ -122,7 +122,7 @@ Apply a configuration profile
 
 > **getProfiles**(): [`ConfigProfile`](../-internal-/interfaces/ConfigProfile.md)[]
 
-Defined in: core/config-manager.ts:271
+Defined in: [core/config-manager.ts:271](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L271)
 
 Get available profiles
 
@@ -136,7 +136,7 @@ Get available profiles
 
 > **validateConfig**(`config?`): `object`
 
-Defined in: core/config-manager.ts:278
+Defined in: [core/config-manager.ts:278](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L278)
 
 Validate configuration
 
@@ -164,7 +164,7 @@ Validate configuration
 
 > **exportConfig**(`format`): `string`
 
-Defined in: core/config-manager.ts:298
+Defined in: [core/config-manager.ts:298](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L298)
 
 Export current configuration
 

@@ -6,7 +6,7 @@
 
 # Interface: WaitStrategy
 
-Defined in: core/types.ts:97
+Defined in: [core/types.ts:97](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L97)
 
 Wait strategy for determining when page is ready
 
@@ -16,7 +16,7 @@ Wait strategy for determining when page is ready
 
 > **type**: `"custom"` \| `"selector"` \| `"response"` \| `"timeout"`
 
-Defined in: core/types.ts:98
+Defined in: [core/types.ts:98](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L98)
 
 ***
 
@@ -24,4 +24,4 @@ Defined in: core/types.ts:98
 
 > **config**: `Record`\<`string`, `unknown`\>
 
-Defined in: core/types.ts:99
+Defined in: [core/types.ts:99](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L99)

@@ -6,7 +6,7 @@
 
 # Interface: ConfigFile
 
-Defined in: core/config-manager.ts:26
+Defined in: [core/config-manager.ts:26](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L26)
 
 Configuration file format
 
@@ -16,7 +16,7 @@ Configuration file format
 
 > `optional` **profiles**: `Record`\<`string`, [`ConfigProfile`](ConfigProfile.md)\>
 
-Defined in: core/config-manager.ts:27
+Defined in: [core/config-manager.ts:27](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L27)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: core/config-manager.ts:27
 
 > `optional` **default**: `Partial`\<[`ScraperEngineConfig`](../../interfaces/ScraperEngineConfig.md)\>
 
-Defined in: core/config-manager.ts:28
+Defined in: [core/config-manager.ts:28](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L28)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: core/config-manager.ts:28
 
 > `optional` **extends**: `string`[]
 
-Defined in: core/config-manager.ts:29
+Defined in: [core/config-manager.ts:29](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L29)

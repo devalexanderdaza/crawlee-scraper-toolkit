@@ -6,7 +6,7 @@
 
 # Class: ProxyPlugin
 
-Defined in: plugins/index.ts:98
+Defined in: [plugins/index.ts:98](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L98)
 
 Proxy rotation plugin
 
@@ -20,7 +20,7 @@ Proxy rotation plugin
 
 > **new ProxyPlugin**(`proxies`): `ProxyPlugin`
 
-Defined in: plugins/index.ts:105
+Defined in: [plugins/index.ts:105](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L105)
 
 #### Parameters
 
@@ -38,7 +38,7 @@ Defined in: plugins/index.ts:105
 
 > **name**: `string` = `'proxy'`
 
-Defined in: plugins/index.ts:99
+Defined in: [plugins/index.ts:99](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L99)
 
 #### Implementation of
 
@@ -50,7 +50,7 @@ Defined in: plugins/index.ts:99
 
 > **version**: `string` = `'1.0.0'`
 
-Defined in: plugins/index.ts:100
+Defined in: [plugins/index.ts:100](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L100)
 
 #### Implementation of
 
@@ -62,7 +62,7 @@ Defined in: plugins/index.ts:100
 
 > **install**(`scraper`): `void`
 
-Defined in: plugins/index.ts:109
+Defined in: [plugins/index.ts:109](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L109)
 
 #### Parameters
 
@@ -84,7 +84,7 @@ Defined in: plugins/index.ts:109
 
 > **addProxy**(`proxy`): `void`
 
-Defined in: plugins/index.ts:127
+Defined in: [plugins/index.ts:127](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L127)
 
 Add proxy to the rotation
 
@@ -104,7 +104,7 @@ Add proxy to the rotation
 
 > **removeProxy**(`proxy`): `void`
 
-Defined in: plugins/index.ts:134
+Defined in: [plugins/index.ts:134](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L134)
 
 Remove proxy from rotation
 
@@ -124,7 +124,7 @@ Remove proxy from rotation
 
 > **getProxies**(): `string`[]
 
-Defined in: plugins/index.ts:147
+Defined in: [plugins/index.ts:147](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L147)
 
 Get current proxy list
 

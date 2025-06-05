@@ -6,7 +6,7 @@
 
 # Interface: ScraperDefinition\<Input, Output\>
 
-Defined in: core/types.ts:105
+Defined in: [core/types.ts:105](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L105)
 
 Enhanced scraper definition with crawlee integration
 
@@ -26,7 +26,7 @@ Enhanced scraper definition with crawlee integration
 
 > **id**: `string`
 
-Defined in: core/types.ts:107
+Defined in: [core/types.ts:107](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L107)
 
 Unique identifier for the scraper
 
@@ -36,7 +36,7 @@ Unique identifier for the scraper
 
 > **name**: `string`
 
-Defined in: core/types.ts:109
+Defined in: [core/types.ts:109](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L109)
 
 Human-readable name
 
@@ -46,7 +46,7 @@ Human-readable name
 
 > `optional` **description**: `string`
 
-Defined in: core/types.ts:111
+Defined in: [core/types.ts:111](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L111)
 
 Description of what this scraper does
 
@@ -56,7 +56,7 @@ Description of what this scraper does
 
 > **url**: `string`
 
-Defined in: core/types.ts:113
+Defined in: [core/types.ts:113](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L113)
 
 Base URL or URL template
 
@@ -66,7 +66,7 @@ Base URL or URL template
 
 > **navigation**: [`NavigationStrategy`](NavigationStrategy.md)
 
-Defined in: core/types.ts:115
+Defined in: [core/types.ts:115](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L115)
 
 Navigation strategy
 
@@ -76,7 +76,7 @@ Navigation strategy
 
 > **waitStrategy**: [`WaitStrategy`](WaitStrategy.md)
 
-Defined in: core/types.ts:117
+Defined in: [core/types.ts:117](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L117)
 
 Wait strategy
 
@@ -86,7 +86,7 @@ Wait strategy
 
 > **parse**: (`context`) => `Promise`\<`Output`\>
 
-Defined in: core/types.ts:119
+Defined in: [core/types.ts:119](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L119)
 
 Parse function to extract data
 
@@ -106,7 +106,7 @@ Parse function to extract data
 
 > `optional` **validateInput**: (`input`) => `string` \| `boolean`
 
-Defined in: core/types.ts:121
+Defined in: [core/types.ts:121](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L121)
 
 Validation function for input
 
@@ -126,7 +126,7 @@ Validation function for input
 
 > `optional` **validateOutput**: (`output`) => `string` \| `boolean`
 
-Defined in: core/types.ts:123
+Defined in: [core/types.ts:123](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L123)
 
 Validation function for output
 
@@ -146,7 +146,7 @@ Validation function for output
 
 > **requiresCaptcha**: `boolean`
 
-Defined in: core/types.ts:125
+Defined in: [core/types.ts:125](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L125)
 
 Whether this scraper requires CAPTCHA solving
 
@@ -156,7 +156,7 @@ Whether this scraper requires CAPTCHA solving
 
 > `optional` **rateLimit**: `object`
 
-Defined in: core/types.ts:127
+Defined in: [core/types.ts:127](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L127)
 
 Rate limiting configuration
 
@@ -174,7 +174,7 @@ Rate limiting configuration
 
 > `optional` **options**: `Partial`\<[`ScraperExecutionOptions`](ScraperExecutionOptions.md)\>
 
-Defined in: core/types.ts:132
+Defined in: [core/types.ts:132](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L132)
 
 Custom execution options
 
@@ -184,7 +184,7 @@ Custom execution options
 
 > `optional` **hooks**: `Partial`\<`Record`\<[`ScraperHook`](../type-aliases/ScraperHook.md), [`HookHandler`](../type-aliases/HookHandler.md)\<`unknown`\>[]\>\>
 
-Defined in: core/types.ts:134
+Defined in: [core/types.ts:134](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L134)
 
 Hooks for this scraper
 
@@ -194,7 +194,7 @@ Hooks for this scraper
 
 > `optional` **tags**: `string`[]
 
-Defined in: core/types.ts:136
+Defined in: [core/types.ts:136](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L136)
 
 Tags for categorization
 
@@ -204,6 +204,6 @@ Tags for categorization
 
 > `optional` **version**: `string`
 
-Defined in: core/types.ts:138
+Defined in: [core/types.ts:138](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L138)
 
 Version of the scraper definition

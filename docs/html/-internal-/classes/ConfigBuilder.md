@@ -6,7 +6,7 @@
 
 # Class: ConfigBuilder
 
-Defined in: core/config-manager.ts:393
+Defined in: [core/config-manager.ts:393](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L393)
 
 Configuration builder for fluent API
 
@@ -26,7 +26,7 @@ Configuration builder for fluent API
 
 > **browserPool**(`config`): `ConfigBuilder`
 
-Defined in: core/config-manager.ts:399
+Defined in: [core/config-manager.ts:399](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L399)
 
 Set browser pool configuration
 
@@ -46,7 +46,7 @@ Set browser pool configuration
 
 > **defaultOptions**(`options`): `ConfigBuilder`
 
-Defined in: core/config-manager.ts:414
+Defined in: [core/config-manager.ts:414](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L414)
 
 Set default execution options
 
@@ -66,7 +66,7 @@ Set default execution options
 
 > **plugins**(`plugins`): `ConfigBuilder`
 
-Defined in: core/config-manager.ts:432
+Defined in: [core/config-manager.ts:432](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L432)
 
 Add plugins
 
@@ -86,7 +86,7 @@ Add plugins
 
 > **logging**(`config`): `ConfigBuilder`
 
-Defined in: core/config-manager.ts:440
+Defined in: [core/config-manager.ts:440](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L440)
 
 Set logging configuration
 
@@ -112,7 +112,7 @@ Set logging configuration
 
 > **build**(): `Partial`\<[`ScraperEngineConfig`](../../interfaces/ScraperEngineConfig.md)\>
 
-Defined in: core/config-manager.ts:457
+Defined in: [core/config-manager.ts:457](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L457)
 
 Build the configuration
 

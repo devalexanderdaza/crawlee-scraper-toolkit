@@ -6,7 +6,7 @@
 
 # Interface: ScraperPlugin
 
-Defined in: core/types.ts:161
+Defined in: [core/types.ts:161](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L161)
 
 Plugin interface for extending scraper functionality
 
@@ -16,7 +16,7 @@ Plugin interface for extending scraper functionality
 
 > **name**: `string`
 
-Defined in: core/types.ts:162
+Defined in: [core/types.ts:162](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L162)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: core/types.ts:162
 
 > **version**: `string`
 
-Defined in: core/types.ts:163
+Defined in: [core/types.ts:163](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L163)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: core/types.ts:163
 
 > **install**: (`scraper`) => `void`
 
-Defined in: core/types.ts:164
+Defined in: [core/types.ts:164](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L164)
 
 #### Parameters
 
@@ -50,7 +50,7 @@ Defined in: core/types.ts:164
 
 > `optional` **uninstall**: (`scraper`) => `void`
 
-Defined in: core/types.ts:165
+Defined in: [core/types.ts:165](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L165)
 
 #### Parameters
 

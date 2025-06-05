@@ -1,3 +1,29 @@
+## 1.0.0 (2025-06-05)
+
+* feat: add 'examples/' to ESLint ignore patterns ([f4e3e43](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/f4e3e43))
+* feat: enhance advanced product scraper with detailed product and search result interfaces ([7c44611](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/7c44611))
+* feat: Generate comprehensive documentation for Crawlee Scraper Toolkit ([8745832](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/8745832))
+* feat: migrate from npm to pnpm for package management ([9e8b6cf](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/9e8b6cf))
+* feat: refactor scraper examples to improve module imports and enhance error handling ([1b7e321](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/1b7e321))
+* feat: update dev scripts to use tsconfig-paths for improved module resolution ([bc4a083](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/bc4a083))
+* Refactor code structure for improved readability and maintainability ([b5878a6](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/b5878a6))
+* chore(project): initial commit ([167f59e](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/167f59e))
+
+
+
+## 1.0.0 (2025-06-05)
+
+* feat: add 'examples/' to ESLint ignore patterns ([f4e3e43](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/f4e3e43))
+* feat: enhance advanced product scraper with detailed product and search result interfaces ([7c44611](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/7c44611))
+* feat: Generate comprehensive documentation for Crawlee Scraper Toolkit ([8745832](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/8745832))
+* feat: migrate from npm to pnpm for package management ([9e8b6cf](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/9e8b6cf))
+* feat: refactor scraper examples to improve module imports and enhance error handling ([1b7e321](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/1b7e321))
+* feat: update dev scripts to use tsconfig-paths for improved module resolution ([bc4a083](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/bc4a083))
+* Refactor code structure for improved readability and maintainability ([b5878a6](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/b5878a6))
+* chore(project): initial commit ([167f59e](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/167f59e))
+
+
+
 # Changelog
 
 All notable changes to this project will be documented in this file.

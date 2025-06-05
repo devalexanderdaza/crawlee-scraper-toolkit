@@ -6,7 +6,7 @@
 
 # Interface: RunOptions
 
-Defined in: cli/commands/run.ts:11
+Defined in: [cli/commands/run.ts:11](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/run.ts#L11)
 
 Run options
 
@@ -16,7 +16,7 @@ Run options
 
 > `optional` **scraper**: `string`
 
-Defined in: cli/commands/run.ts:12
+Defined in: [cli/commands/run.ts:12](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/run.ts#L12)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: cli/commands/run.ts:12
 
 > `optional` **input**: `string`
 
-Defined in: cli/commands/run.ts:13
+Defined in: [cli/commands/run.ts:13](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/run.ts#L13)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: cli/commands/run.ts:13
 
 > `optional` **config**: `string`
 
-Defined in: cli/commands/run.ts:14
+Defined in: [cli/commands/run.ts:14](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/run.ts#L14)
 
 ***
 
@@ -40,4 +40,4 @@ Defined in: cli/commands/run.ts:14
 
 > `optional` **profile**: `string`
 
-Defined in: cli/commands/run.ts:15
+Defined in: [cli/commands/run.ts:15](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/run.ts#L15)

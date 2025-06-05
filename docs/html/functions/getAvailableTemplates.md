@@ -8,7 +8,7 @@
 
 > **getAvailableTemplates**(): `object`[]
 
-Defined in: cli/templates/index.ts:842
+Defined in: [cli/templates/index.ts:842](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/templates/index.ts#L842)
 
 Get all available templates
 

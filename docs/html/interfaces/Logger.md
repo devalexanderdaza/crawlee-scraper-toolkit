@@ -6,7 +6,7 @@
 
 # Interface: Logger
 
-Defined in: utils/logger.ts:6
+Defined in: [utils/logger.ts:6](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L6)
 
 Logger interface for the scraper toolkit
 
@@ -16,7 +16,7 @@ Logger interface for the scraper toolkit
 
 > **debug**(`message`, `meta?`): `void`
 
-Defined in: utils/logger.ts:7
+Defined in: [utils/logger.ts:7](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L7)
 
 #### Parameters
 
@@ -38,7 +38,7 @@ Defined in: utils/logger.ts:7
 
 > **info**(`message`, `meta?`): `void`
 
-Defined in: utils/logger.ts:8
+Defined in: [utils/logger.ts:8](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L8)
 
 #### Parameters
 
@@ -60,7 +60,7 @@ Defined in: utils/logger.ts:8
 
 > **warn**(`message`, `meta?`): `void`
 
-Defined in: utils/logger.ts:9
+Defined in: [utils/logger.ts:9](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L9)
 
 #### Parameters
 
@@ -82,7 +82,7 @@ Defined in: utils/logger.ts:9
 
 > **error**(`message`, `meta?`): `void`
 
-Defined in: utils/logger.ts:10
+Defined in: [utils/logger.ts:10](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L10)
 
 #### Parameters
 

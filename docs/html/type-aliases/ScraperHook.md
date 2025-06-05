@@ -8,6 +8,6 @@
 
 > **ScraperHook** = `"beforeRequest"` \| `"afterRequest"` \| `"onError"` \| `"onRetry"` \| `"onSuccess"`
 
-Defined in: core/types.ts:65
+Defined in: [core/types.ts:65](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L65)
 
 Scraper hook types

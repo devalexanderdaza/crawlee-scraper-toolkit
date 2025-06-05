@@ -6,7 +6,7 @@
 
 # Interface: InitOptions
 
-Defined in: cli/commands/init.ts:10
+Defined in: [cli/commands/init.ts:10](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/init.ts#L10)
 
 Project initialization options
 
@@ -16,7 +16,7 @@ Project initialization options
 
 > `optional` **name**: `string`
 
-Defined in: cli/commands/init.ts:11
+Defined in: [cli/commands/init.ts:11](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/init.ts#L11)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: cli/commands/init.ts:11
 
 > `optional` **template**: `"basic"` \| `"advanced"`
 
-Defined in: cli/commands/init.ts:12
+Defined in: [cli/commands/init.ts:12](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/init.ts#L12)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: cli/commands/init.ts:12
 
 > `optional` **typescript**: `boolean`
 
-Defined in: cli/commands/init.ts:13
+Defined in: [cli/commands/init.ts:13](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/init.ts#L13)

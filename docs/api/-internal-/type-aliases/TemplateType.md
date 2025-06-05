@@ -8,6 +8,6 @@
 
 > **TemplateType** = `"basic"` \| `"api"` \| `"form"` \| `"advanced"`
 
-Defined in: cli/commands/generate.ts:11
+Defined in: [cli/commands/generate.ts:11](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L11)
 
 Template types available

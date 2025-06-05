@@ -6,7 +6,7 @@
 
 # Interface: ScraperExecutionOptions
 
-Defined in: core/types.ts:38
+Defined in: [core/types.ts:38](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L38)
 
 Scraper execution options
 
@@ -16,7 +16,7 @@ Scraper execution options
 
 > **retries**: `number`
 
-Defined in: core/types.ts:40
+Defined in: [core/types.ts:40](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L40)
 
 Number of retry attempts
 
@@ -26,7 +26,7 @@ Number of retry attempts
 
 > **retryDelay**: `number`
 
-Defined in: core/types.ts:42
+Defined in: [core/types.ts:42](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L42)
 
 Delay between retries in milliseconds
 
@@ -36,7 +36,7 @@ Delay between retries in milliseconds
 
 > **timeout**: `number`
 
-Defined in: core/types.ts:44
+Defined in: [core/types.ts:44](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L44)
 
 Request timeout in milliseconds
 
@@ -46,7 +46,7 @@ Request timeout in milliseconds
 
 > **useProxyRotation**: `boolean`
 
-Defined in: core/types.ts:46
+Defined in: [core/types.ts:46](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L46)
 
 Whether to use proxy rotation
 
@@ -56,7 +56,7 @@ Whether to use proxy rotation
 
 > **headers**: `Record`\<`string`, `string`\>
 
-Defined in: core/types.ts:48
+Defined in: [core/types.ts:48](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L48)
 
 Custom headers
 
@@ -66,7 +66,7 @@ Custom headers
 
 > **userAgent**: `string`
 
-Defined in: core/types.ts:50
+Defined in: [core/types.ts:50](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L50)
 
 User agent string
 
@@ -76,7 +76,7 @@ User agent string
 
 > **javascript**: `boolean`
 
-Defined in: core/types.ts:52
+Defined in: [core/types.ts:52](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L52)
 
 Whether to enable JavaScript
 
@@ -86,7 +86,7 @@ Whether to enable JavaScript
 
 > **loadImages**: `boolean`
 
-Defined in: core/types.ts:54
+Defined in: [core/types.ts:54](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L54)
 
 Whether to load images
 
@@ -96,7 +96,7 @@ Whether to load images
 
 > **viewport**: `object`
 
-Defined in: core/types.ts:56
+Defined in: [core/types.ts:56](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L56)
 
 Viewport configuration
 

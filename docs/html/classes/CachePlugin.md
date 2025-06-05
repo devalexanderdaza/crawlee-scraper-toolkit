@@ -6,7 +6,7 @@
 
 # Class: CachePlugin
 
-Defined in: plugins/index.ts:35
+Defined in: [plugins/index.ts:35](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L35)
 
 Cache plugin for caching scraper results
 
@@ -20,7 +20,7 @@ Cache plugin for caching scraper results
 
 > **new CachePlugin**(`options`): `CachePlugin`
 
-Defined in: plugins/index.ts:42
+Defined in: [plugins/index.ts:42](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L42)
 
 #### Parameters
 
@@ -40,7 +40,7 @@ Defined in: plugins/index.ts:42
 
 > **name**: `string` = `'cache'`
 
-Defined in: plugins/index.ts:36
+Defined in: [plugins/index.ts:36](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L36)
 
 #### Implementation of
 
@@ -52,7 +52,7 @@ Defined in: plugins/index.ts:36
 
 > **version**: `string` = `'1.0.0'`
 
-Defined in: plugins/index.ts:37
+Defined in: [plugins/index.ts:37](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L37)
 
 #### Implementation of
 
@@ -64,7 +64,7 @@ Defined in: plugins/index.ts:37
 
 > **install**(`scraper`): `void`
 
-Defined in: plugins/index.ts:46
+Defined in: [plugins/index.ts:46](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L46)
 
 #### Parameters
 
@@ -86,7 +86,7 @@ Defined in: plugins/index.ts:46
 
 > **clearCache**(): `void`
 
-Defined in: plugins/index.ts:80
+Defined in: [plugins/index.ts:80](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L80)
 
 Clear cache
 
@@ -100,7 +100,7 @@ Clear cache
 
 > **getCacheStats**(): `object`
 
-Defined in: plugins/index.ts:87
+Defined in: [plugins/index.ts:87](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L87)
 
 Get cache statistics
 

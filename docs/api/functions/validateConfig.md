@@ -8,7 +8,7 @@
 
 > **validateConfig**(`options`): `Promise`\<`void`\>
 
-Defined in: cli/commands/validate.ts:15
+Defined in: [cli/commands/validate.ts:15](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/validate.ts#L15)
 
 Validate scraper configuration
 

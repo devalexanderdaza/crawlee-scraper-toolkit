@@ -6,7 +6,7 @@
 
 # Interface: Template
 
-Defined in: cli/templates/index.ts:6
+Defined in: [cli/templates/index.ts:6](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/templates/index.ts#L6)
 
 Template structure
 
@@ -16,7 +16,7 @@ Template structure
 
 > **name**: `string`
 
-Defined in: cli/templates/index.ts:7
+Defined in: [cli/templates/index.ts:7](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/templates/index.ts#L7)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: cli/templates/index.ts:7
 
 > **description**: `string`
 
-Defined in: cli/templates/index.ts:8
+Defined in: [cli/templates/index.ts:8](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/templates/index.ts#L8)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: cli/templates/index.ts:8
 
 > **files**: `Record`\<`string`, `string`\>
 
-Defined in: cli/templates/index.ts:9
+Defined in: [cli/templates/index.ts:9](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/templates/index.ts#L9)

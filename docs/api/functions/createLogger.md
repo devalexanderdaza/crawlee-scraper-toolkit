@@ -8,7 +8,7 @@
 
 > **createLogger**(`config`): [`Logger`](../interfaces/Logger.md)
 
-Defined in: utils/logger.ts:26
+Defined in: [utils/logger.ts:26](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L26)
 
 Create a winston logger instance
 

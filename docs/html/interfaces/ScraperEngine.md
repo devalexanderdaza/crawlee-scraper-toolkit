@@ -6,7 +6,7 @@
 
 # Interface: ScraperEngine
 
-Defined in: core/types.ts:184
+Defined in: [core/types.ts:184](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L184)
 
 Main scraper engine interface
 
@@ -20,7 +20,7 @@ Main scraper engine interface
 
 > **execute**\<`Input`, `Output`\>(`definition`, `input`, `options?`): `Promise`\<[`ScraperResult`](ScraperResult.md)\<`Output`\>\>
 
-Defined in: core/types.ts:186
+Defined in: [core/types.ts:186](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L186)
 
 Execute a scraper with given input
 
@@ -58,7 +58,7 @@ Execute a scraper with given input
 
 > **register**\<`Input`, `Output`\>(`definition`): `void`
 
-Defined in: core/types.ts:193
+Defined in: [core/types.ts:193](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L193)
 
 Register a scraper definition
 
@@ -88,7 +88,7 @@ Register a scraper definition
 
 > **getDefinition**(`id`): `undefined` \| [`ScraperDefinition`](ScraperDefinition.md)\<`unknown`, `unknown`\>
 
-Defined in: core/types.ts:196
+Defined in: [core/types.ts:196](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L196)
 
 Get a registered scraper definition
 
@@ -108,7 +108,7 @@ Get a registered scraper definition
 
 > **listDefinitions**(): [`ScraperDefinition`](ScraperDefinition.md)\<`unknown`, `unknown`\>[]
 
-Defined in: core/types.ts:199
+Defined in: [core/types.ts:199](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L199)
 
 List all registered scrapers
 
@@ -122,7 +122,7 @@ List all registered scrapers
 
 > **use**(`plugin`): `void`
 
-Defined in: core/types.ts:202
+Defined in: [core/types.ts:202](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L202)
 
 Install a plugin
 
@@ -142,7 +142,7 @@ Install a plugin
 
 > **addHook**(`hook`, `handler`): `void`
 
-Defined in: core/types.ts:205
+Defined in: [core/types.ts:205](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L205)
 
 Add a global hook
 
@@ -166,7 +166,7 @@ Add a global hook
 
 > **removeHook**(`hook`, `handler`): `void`
 
-Defined in: core/types.ts:208
+Defined in: [core/types.ts:208](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L208)
 
 Remove a global hook
 
@@ -190,7 +190,7 @@ Remove a global hook
 
 > **shutdown**(): `Promise`\<`void`\>
 
-Defined in: core/types.ts:211
+Defined in: [core/types.ts:211](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L211)
 
 Shutdown the engine and cleanup resources
 

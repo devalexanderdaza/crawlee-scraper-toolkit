@@ -8,6 +8,6 @@
 
 > `const` **defaultLogger**: [`Logger`](../interfaces/Logger.md)
 
-Defined in: utils/logger.ts:84
+Defined in: [utils/logger.ts:84](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L84)
 
 Create default logger

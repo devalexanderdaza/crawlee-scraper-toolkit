@@ -8,6 +8,6 @@
 
 > `const` **configManager**: [`ConfigManager`](../classes/ConfigManager.md)
 
-Defined in: core/config-manager.ts:388
+Defined in: [core/config-manager.ts:388](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L388)
 
 Global configuration manager instance

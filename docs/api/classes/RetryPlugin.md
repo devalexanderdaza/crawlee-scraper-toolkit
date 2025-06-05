@@ -6,7 +6,7 @@
 
 # Class: RetryPlugin
 
-Defined in: plugins/index.ts:6
+Defined in: [plugins/index.ts:6](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L6)
 
 Retry plugin with exponential backoff
 
@@ -20,7 +20,7 @@ Retry plugin with exponential backoff
 
 > **new RetryPlugin**(`options`): `RetryPlugin`
 
-Defined in: plugins/index.ts:13
+Defined in: [plugins/index.ts:13](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L13)
 
 #### Parameters
 
@@ -44,7 +44,7 @@ Defined in: plugins/index.ts:13
 
 > **name**: `string` = `'retry'`
 
-Defined in: plugins/index.ts:7
+Defined in: [plugins/index.ts:7](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L7)
 
 #### Implementation of
 
@@ -56,7 +56,7 @@ Defined in: plugins/index.ts:7
 
 > **version**: `string` = `'1.0.0'`
 
-Defined in: plugins/index.ts:8
+Defined in: [plugins/index.ts:8](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L8)
 
 #### Implementation of
 
@@ -68,7 +68,7 @@ Defined in: plugins/index.ts:8
 
 > **install**(`scraper`): `void`
 
-Defined in: plugins/index.ts:18
+Defined in: [plugins/index.ts:18](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L18)
 
 #### Parameters
 

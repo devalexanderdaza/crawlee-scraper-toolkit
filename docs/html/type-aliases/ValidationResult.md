@@ -8,6 +8,6 @@
 
 > **ValidationResult** = `true` \| `string`
 
-Defined in: utils/validators.ts:6
+Defined in: [utils/validators.ts:6](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L6)
 
 Validation result type

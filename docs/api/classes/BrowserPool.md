@@ -6,7 +6,7 @@
 
 # Class: BrowserPool
 
-Defined in: core/browser-pool.ts:10
+Defined in: [core/browser-pool.ts:10](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L10)
 
 Enhanced browser pool with better resource management and crawlee integration
 
@@ -20,7 +20,7 @@ Enhanced browser pool with better resource management and crawlee integration
 
 > **new BrowserPool**(`config`, `logger`): `BrowserPool`
 
-Defined in: core/browser-pool.ts:17
+Defined in: [core/browser-pool.ts:17](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L17)
 
 #### Parameters
 
@@ -46,7 +46,7 @@ Defined in: core/browser-pool.ts:17
 
 > **acquire**(): `Promise`\<[`BrowserInstance`](../interfaces/BrowserInstance.md)\>
 
-Defined in: core/browser-pool.ts:27
+Defined in: [core/browser-pool.ts:27](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L27)
 
 Acquire a browser instance from the pool
 
@@ -60,7 +60,7 @@ Acquire a browser instance from the pool
 
 > **release**(`instance`): `void`
 
-Defined in: core/browser-pool.ts:77
+Defined in: [core/browser-pool.ts:77](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L77)
 
 Release a browser instance back to the pool
 
@@ -80,7 +80,7 @@ Release a browser instance back to the pool
 
 > **getStats**(): `object`
 
-Defined in: core/browser-pool.ts:99
+Defined in: [core/browser-pool.ts:99](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L99)
 
 Get pool statistics
 
@@ -110,7 +110,7 @@ Get pool statistics
 
 > **cleanupOldInstances**(): `Promise`\<`void`\>
 
-Defined in: core/browser-pool.ts:117
+Defined in: [core/browser-pool.ts:117](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L117)
 
 Cleanup old instances
 
@@ -124,7 +124,7 @@ Cleanup old instances
 
 > **shutdown**(): `Promise`\<`void`\>
 
-Defined in: core/browser-pool.ts:149
+Defined in: [core/browser-pool.ts:149](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L149)
 
 Shutdown the pool and close all browsers
 

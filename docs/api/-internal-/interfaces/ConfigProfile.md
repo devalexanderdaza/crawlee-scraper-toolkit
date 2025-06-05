@@ -6,7 +6,7 @@
 
 # Interface: ConfigProfile
 
-Defined in: core/config-manager.ts:17
+Defined in: [core/config-manager.ts:17](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L17)
 
 Configuration profile
 
@@ -16,7 +16,7 @@ Configuration profile
 
 > **name**: `string`
 
-Defined in: core/config-manager.ts:18
+Defined in: [core/config-manager.ts:18](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L18)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: core/config-manager.ts:18
 
 > `optional` **description**: `string`
 
-Defined in: core/config-manager.ts:19
+Defined in: [core/config-manager.ts:19](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L19)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: core/config-manager.ts:19
 
 > **config**: `Partial`\<[`ScraperEngineConfig`](../../interfaces/ScraperEngineConfig.md)\>
 
-Defined in: core/config-manager.ts:20
+Defined in: [core/config-manager.ts:20](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L20)

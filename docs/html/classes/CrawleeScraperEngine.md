@@ -6,7 +6,7 @@
 
 # Class: CrawleeScraperEngine
 
-Defined in: core/scraper.ts:38
+Defined in: [core/scraper.ts:38](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L38)
 
 Main scraper engine implementation
 
@@ -24,7 +24,7 @@ Main scraper engine implementation
 
 > **new CrawleeScraperEngine**(`config`, `logger`): `CrawleeScraperEngine`
 
-Defined in: core/scraper.ts:46
+Defined in: [core/scraper.ts:46](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L46)
 
 #### Parameters
 
@@ -50,7 +50,7 @@ Defined in: core/scraper.ts:46
 
 > **execute**\<`Input`, `Output`\>(`definition`, `input`, `options?`): `Promise`\<[`ScraperResult`](../interfaces/ScraperResult.md)\<`Output`\>\>
 
-Defined in: core/scraper.ts:57
+Defined in: [core/scraper.ts:57](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L57)
 
 Execute a scraper with given input
 
@@ -92,7 +92,7 @@ Execute a scraper with given input
 
 > **register**\<`Input`, `Output`\>(`definition`): `void`
 
-Defined in: core/scraper.ts:187
+Defined in: [core/scraper.ts:187](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L187)
 
 Register a scraper definition
 
@@ -126,7 +126,7 @@ Register a scraper definition
 
 > **getDefinition**(`id`): `undefined` \| [`ScraperDefinition`](../interfaces/ScraperDefinition.md)\<`unknown`, `unknown`\>
 
-Defined in: core/scraper.ts:195
+Defined in: [core/scraper.ts:195](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L195)
 
 Get a registered scraper definition
 
@@ -150,7 +150,7 @@ Get a registered scraper definition
 
 > **listDefinitions**(): [`ScraperDefinition`](../interfaces/ScraperDefinition.md)\<`unknown`, `unknown`\>[]
 
-Defined in: core/scraper.ts:202
+Defined in: [core/scraper.ts:202](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L202)
 
 List all registered scrapers
 
@@ -168,7 +168,7 @@ List all registered scrapers
 
 > **use**(`plugin`): `void`
 
-Defined in: core/scraper.ts:209
+Defined in: [core/scraper.ts:209](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L209)
 
 Install a plugin
 
@@ -192,7 +192,7 @@ Install a plugin
 
 > **addHook**(`hook`, `handler`): `void`
 
-Defined in: core/scraper.ts:222
+Defined in: [core/scraper.ts:222](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L222)
 
 Add a global hook
 
@@ -220,7 +220,7 @@ Add a global hook
 
 > **removeHook**(`hook`, `handler`): `void`
 
-Defined in: core/scraper.ts:235
+Defined in: [core/scraper.ts:235](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L235)
 
 Remove a global hook
 
@@ -248,7 +248,7 @@ Remove a global hook
 
 > **shutdown**(): `Promise`\<`void`\>
 
-Defined in: core/scraper.ts:248
+Defined in: [core/scraper.ts:248](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L248)
 
 Shutdown the engine and cleanup resources
 

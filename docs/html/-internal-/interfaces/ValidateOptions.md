@@ -6,7 +6,7 @@
 
 # Interface: ValidateOptions
 
-Defined in: cli/commands/validate.ts:8
+Defined in: [cli/commands/validate.ts:8](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/validate.ts#L8)
 
 Validation options
 
@@ -16,4 +16,4 @@ Validation options
 
 > `optional` **config**: `string`
 
-Defined in: cli/commands/validate.ts:9
+Defined in: [cli/commands/validate.ts:9](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/validate.ts#L9)

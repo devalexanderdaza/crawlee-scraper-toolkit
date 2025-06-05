@@ -6,7 +6,7 @@
 
 # Interface: ScraperResult\<Output\>
 
-Defined in: core/types.ts:144
+Defined in: [core/types.ts:144](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L144)
 
 Scraper execution result
 
@@ -22,7 +22,7 @@ Scraper execution result
 
 > **success**: `boolean`
 
-Defined in: core/types.ts:145
+Defined in: [core/types.ts:145](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L145)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: core/types.ts:145
 
 > `optional` **data**: `Output`
 
-Defined in: core/types.ts:146
+Defined in: [core/types.ts:146](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L146)
 
 ***
 
@@ -38,7 +38,7 @@ Defined in: core/types.ts:146
 
 > `optional` **error**: `Error`
 
-Defined in: core/types.ts:147
+Defined in: [core/types.ts:147](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L147)
 
 ***
 
@@ -46,7 +46,7 @@ Defined in: core/types.ts:147
 
 > **attempts**: `number`
 
-Defined in: core/types.ts:148
+Defined in: [core/types.ts:148](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L148)
 
 ***
 
@@ -54,7 +54,7 @@ Defined in: core/types.ts:148
 
 > **duration**: `number`
 
-Defined in: core/types.ts:149
+Defined in: [core/types.ts:149](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L149)
 
 ***
 
@@ -62,7 +62,7 @@ Defined in: core/types.ts:149
 
 > **metadata**: `object`
 
-Defined in: core/types.ts:150
+Defined in: [core/types.ts:150](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L150)
 
 #### scraperId
 

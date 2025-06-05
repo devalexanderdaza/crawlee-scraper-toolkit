@@ -8,7 +8,7 @@
 
 > **HookHandler**\<`T`\> = (`context`) => `Promise`\<`void`\> \| `void`
 
-Defined in: core/types.ts:70
+Defined in: [core/types.ts:70](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L70)
 
 Hook handler function
 

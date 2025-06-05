@@ -16,7 +16,8 @@
 				{
 					"fileName": "cli/commands/generate.ts",
 					"line": 59,
-					"character": 22
+					"character": 22,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L59"
 				}
 			],
 			"signatures": [
@@ -38,7 +39,8 @@
 						{
 							"fileName": "cli/commands/generate.ts",
 							"line": 59,
-							"character": 22
+							"character": 22,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L59"
 						}
 					],
 					"parameters": [
@@ -85,7 +87,8 @@
 				{
 					"fileName": "cli/commands/init.ts",
 					"line": 19,
-					"character": 22
+					"character": 22,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/init.ts#L19"
 				}
 			],
 			"signatures": [
@@ -107,7 +110,8 @@
 						{
 							"fileName": "cli/commands/init.ts",
 							"line": 19,
-							"character": 22
+							"character": 22,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/init.ts#L19"
 						}
 					],
 					"parameters": [
@@ -154,7 +158,8 @@
 				{
 					"fileName": "cli/commands/run.ts",
 					"line": 21,
-					"character": 22
+					"character": 22,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/run.ts#L21"
 				}
 			],
 			"signatures": [
@@ -176,7 +181,8 @@
 						{
 							"fileName": "cli/commands/run.ts",
 							"line": 21,
-							"character": 22
+							"character": 22,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/run.ts#L21"
 						}
 					],
 					"parameters": [
@@ -223,7 +229,8 @@
 				{
 					"fileName": "cli/commands/validate.ts",
 					"line": 15,
-					"character": 22
+					"character": 22,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/validate.ts#L15"
 				}
 			],
 			"signatures": [
@@ -245,7 +252,8 @@
 						{
 							"fileName": "cli/commands/validate.ts",
 							"line": 15,
-							"character": 22
+							"character": 22,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/validate.ts#L15"
 						}
 					],
 					"parameters": [
@@ -292,7 +300,8 @@
 				{
 					"fileName": "cli/templates/index.ts",
 					"line": 831,
-					"character": 16
+					"character": 16,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/templates/index.ts#L831"
 				}
 			],
 			"signatures": [
@@ -314,7 +323,8 @@
 						{
 							"fileName": "cli/templates/index.ts",
 							"line": 831,
-							"character": 16
+							"character": 16,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/templates/index.ts#L831"
 						}
 					],
 					"parameters": [
@@ -351,7 +361,8 @@
 				{
 					"fileName": "cli/templates/index.ts",
 					"line": 842,
-					"character": 16
+					"character": 16,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/templates/index.ts#L842"
 				}
 			],
 			"signatures": [
@@ -373,7 +384,8 @@
 						{
 							"fileName": "cli/templates/index.ts",
 							"line": 842,
-							"character": 16
+							"character": 16,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/templates/index.ts#L842"
 						}
 					],
 					"type": {
@@ -397,7 +409,8 @@
 											{
 												"fileName": "cli/templates/index.ts",
 												"line": 842,
-												"character": 49
+												"character": 49,
+												"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/templates/index.ts#L842"
 											}
 										],
 										"type": {
@@ -417,7 +430,8 @@
 											{
 												"fileName": "cli/templates/index.ts",
 												"line": 842,
-												"character": 69
+												"character": 69,
+												"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/templates/index.ts#L842"
 											}
 										],
 										"type": {
@@ -441,7 +455,8 @@
 									{
 										"fileName": "cli/templates/index.ts",
 										"line": 842,
-										"character": 47
+										"character": 47,
+										"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/templates/index.ts#L842"
 									}
 								]
 							}
@@ -475,7 +490,8 @@
 						{
 							"fileName": "core/browser-pool.ts",
 							"line": 17,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L17"
 						}
 					],
 					"signatures": [
@@ -489,7 +505,8 @@
 								{
 									"fileName": "core/browser-pool.ts",
 									"line": 17,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L17"
 								}
 							],
 							"parameters": [
@@ -549,7 +566,8 @@
 						{
 							"fileName": "core/browser-pool.ts",
 							"line": 27,
-							"character": 8
+							"character": 8,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L27"
 						}
 					],
 					"signatures": [
@@ -571,7 +589,8 @@
 								{
 									"fileName": "core/browser-pool.ts",
 									"line": 27,
-									"character": 8
+									"character": 8,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L27"
 								}
 							],
 							"type": {
@@ -605,7 +624,8 @@
 						{
 							"fileName": "core/browser-pool.ts",
 							"line": 77,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L77"
 						}
 					],
 					"signatures": [
@@ -627,7 +647,8 @@
 								{
 									"fileName": "core/browser-pool.ts",
 									"line": 77,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L77"
 								}
 							],
 							"parameters": [
@@ -662,7 +683,8 @@
 						{
 							"fileName": "core/browser-pool.ts",
 							"line": 99,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L99"
 						}
 					],
 					"signatures": [
@@ -684,7 +706,8 @@
 								{
 									"fileName": "core/browser-pool.ts",
 									"line": 99,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L99"
 								}
 							],
 							"type": {
@@ -706,7 +729,8 @@
 												{
 													"fileName": "core/browser-pool.ts",
 													"line": 100,
-													"character": 4
+													"character": 4,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L100"
 												}
 											],
 											"type": {
@@ -724,7 +748,8 @@
 												{
 													"fileName": "core/browser-pool.ts",
 													"line": 101,
-													"character": 4
+													"character": 4,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L101"
 												}
 											],
 											"type": {
@@ -742,7 +767,8 @@
 												{
 													"fileName": "core/browser-pool.ts",
 													"line": 102,
-													"character": 4
+													"character": 4,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L102"
 												}
 											],
 											"type": {
@@ -760,7 +786,8 @@
 												{
 													"fileName": "core/browser-pool.ts",
 													"line": 103,
-													"character": 4
+													"character": 4,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L103"
 												}
 											],
 											"type": {
@@ -784,7 +811,8 @@
 										{
 											"fileName": "core/browser-pool.ts",
 											"line": 99,
-											"character": 14
+											"character": 14,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L99"
 										}
 									]
 								}
@@ -802,7 +830,8 @@
 						{
 							"fileName": "core/browser-pool.ts",
 							"line": 117,
-							"character": 8
+							"character": 8,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L117"
 						}
 					],
 					"signatures": [
@@ -824,7 +853,8 @@
 								{
 									"fileName": "core/browser-pool.ts",
 									"line": 117,
-									"character": 8
+									"character": 8,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L117"
 								}
 							],
 							"type": {
@@ -856,7 +886,8 @@
 						{
 							"fileName": "core/browser-pool.ts",
 							"line": 149,
-							"character": 8
+							"character": 8,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L149"
 						}
 					],
 					"signatures": [
@@ -878,7 +909,8 @@
 								{
 									"fileName": "core/browser-pool.ts",
 									"line": 149,
-									"character": 8
+									"character": 8,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L149"
 								}
 							],
 							"type": {
@@ -923,7 +955,8 @@
 				{
 					"fileName": "core/browser-pool.ts",
 					"line": 10,
-					"character": 13
+					"character": 13,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L10"
 				}
 			],
 			"extendedTypes": [
@@ -959,7 +992,8 @@
 				{
 					"fileName": "core/browser-pool.ts",
 					"line": 266,
-					"character": 13
+					"character": 13,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/browser-pool.ts#L266"
 				}
 			],
 			"type": {
@@ -995,7 +1029,8 @@
 						{
 							"fileName": "core/config-manager.ts",
 							"line": 108,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L108"
 						}
 					],
 					"signatures": [
@@ -1009,7 +1044,8 @@
 								{
 									"fileName": "core/config-manager.ts",
 									"line": 108,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L108"
 								}
 							],
 							"parameters": [
@@ -1045,7 +1081,8 @@
 						{
 							"fileName": "core/config-manager.ts",
 							"line": 118,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L118"
 						}
 					],
 					"signatures": [
@@ -1067,7 +1104,8 @@
 								{
 									"fileName": "core/config-manager.ts",
 									"line": 118,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L118"
 								}
 							],
 							"type": {
@@ -1089,7 +1127,8 @@
 						{
 							"fileName": "core/config-manager.ts",
 							"line": 125,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L125"
 						}
 					],
 					"signatures": [
@@ -1111,7 +1150,8 @@
 								{
 									"fileName": "core/config-manager.ts",
 									"line": 125,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L125"
 								}
 							],
 							"parameters": [
@@ -1158,7 +1198,8 @@
 						{
 							"fileName": "core/config-manager.ts",
 							"line": 133,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L133"
 						}
 					],
 					"signatures": [
@@ -1180,7 +1221,8 @@
 								{
 									"fileName": "core/config-manager.ts",
 									"line": 133,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L133"
 								}
 							],
 							"parameters": [
@@ -1213,7 +1255,8 @@
 						{
 							"fileName": "core/config-manager.ts",
 							"line": 176,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L176"
 						}
 					],
 					"signatures": [
@@ -1235,7 +1278,8 @@
 								{
 									"fileName": "core/config-manager.ts",
 									"line": 176,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L176"
 								}
 							],
 							"type": {
@@ -1255,7 +1299,8 @@
 						{
 							"fileName": "core/config-manager.ts",
 							"line": 258,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L258"
 						}
 					],
 					"signatures": [
@@ -1277,7 +1322,8 @@
 								{
 									"fileName": "core/config-manager.ts",
 									"line": 258,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L258"
 								}
 							],
 							"parameters": [
@@ -1310,7 +1356,8 @@
 						{
 							"fileName": "core/config-manager.ts",
 							"line": 271,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L271"
 						}
 					],
 					"signatures": [
@@ -1332,7 +1379,8 @@
 								{
 									"fileName": "core/config-manager.ts",
 									"line": 271,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L271"
 								}
 							],
 							"type": {
@@ -1357,7 +1405,8 @@
 						{
 							"fileName": "core/config-manager.ts",
 							"line": 278,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L278"
 						}
 					],
 					"signatures": [
@@ -1379,7 +1428,8 @@
 								{
 									"fileName": "core/config-manager.ts",
 									"line": 278,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L278"
 								}
 							],
 							"parameters": [
@@ -1430,7 +1480,8 @@
 												{
 													"fileName": "core/config-manager.ts",
 													"line": 278,
-													"character": 59
+													"character": 59,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L278"
 												}
 											],
 											"type": {
@@ -1448,7 +1499,8 @@
 												{
 													"fileName": "core/config-manager.ts",
 													"line": 278,
-													"character": 75
+													"character": 75,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L278"
 												}
 											],
 											"type": {
@@ -1473,7 +1525,8 @@
 										{
 											"fileName": "core/config-manager.ts",
 											"line": 278,
-											"character": 57
+											"character": 57,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L278"
 										}
 									]
 								}
@@ -1491,7 +1544,8 @@
 						{
 							"fileName": "core/config-manager.ts",
 							"line": 298,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L298"
 						}
 					],
 					"signatures": [
@@ -1513,7 +1567,8 @@
 								{
 									"fileName": "core/config-manager.ts",
 									"line": 298,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L298"
 								}
 							],
 							"parameters": [
@@ -1572,7 +1627,8 @@
 				{
 					"fileName": "core/config-manager.ts",
 					"line": 103,
-					"character": 13
+					"character": 13,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L103"
 				}
 			]
 		},
@@ -1596,7 +1652,8 @@
 				{
 					"fileName": "core/config-manager.ts",
 					"line": 388,
-					"character": 13
+					"character": 13,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L388"
 				}
 			],
 			"type": {
@@ -1617,7 +1674,8 @@
 				{
 					"fileName": "core/config-manager.ts",
 					"line": 465,
-					"character": 16
+					"character": 16,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L465"
 				}
 			],
 			"signatures": [
@@ -1639,7 +1697,8 @@
 						{
 							"fileName": "core/config-manager.ts",
 							"line": 465,
-							"character": 16
+							"character": 16,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L465"
 						}
 					],
 					"type": {
@@ -1676,7 +1735,8 @@
 						{
 							"fileName": "core/scraper.ts",
 							"line": 46,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L46"
 						}
 					],
 					"signatures": [
@@ -1690,7 +1750,8 @@
 								{
 									"fileName": "core/scraper.ts",
 									"line": 46,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L46"
 								}
 							],
 							"parameters": [
@@ -1750,7 +1811,8 @@
 						{
 							"fileName": "core/scraper.ts",
 							"line": 57,
-							"character": 8
+							"character": 8,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L57"
 						}
 					],
 					"signatures": [
@@ -1772,7 +1834,8 @@
 								{
 									"fileName": "core/scraper.ts",
 									"line": 57,
-									"character": 8
+									"character": 8,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L57"
 								}
 							],
 							"typeParameters": [
@@ -1913,7 +1976,8 @@
 						{
 							"fileName": "core/scraper.ts",
 							"line": 187,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L187"
 						}
 					],
 					"signatures": [
@@ -1935,7 +1999,8 @@
 								{
 									"fileName": "core/scraper.ts",
 									"line": 187,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L187"
 								}
 							],
 							"typeParameters": [
@@ -2012,7 +2077,8 @@
 						{
 							"fileName": "core/scraper.ts",
 							"line": 195,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L195"
 						}
 					],
 					"signatures": [
@@ -2034,7 +2100,8 @@
 								{
 									"fileName": "core/scraper.ts",
 									"line": 195,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L195"
 								}
 							],
 							"parameters": [
@@ -2098,7 +2165,8 @@
 						{
 							"fileName": "core/scraper.ts",
 							"line": 202,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L202"
 						}
 					],
 					"signatures": [
@@ -2120,7 +2188,8 @@
 								{
 									"fileName": "core/scraper.ts",
 									"line": 202,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L202"
 								}
 							],
 							"type": {
@@ -2165,7 +2234,8 @@
 						{
 							"fileName": "core/scraper.ts",
 							"line": 209,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L209"
 						}
 					],
 					"signatures": [
@@ -2187,7 +2257,8 @@
 								{
 									"fileName": "core/scraper.ts",
 									"line": 209,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L209"
 								}
 							],
 							"parameters": [
@@ -2232,7 +2303,8 @@
 						{
 							"fileName": "core/scraper.ts",
 							"line": 222,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L222"
 						}
 					],
 					"signatures": [
@@ -2254,7 +2326,8 @@
 								{
 									"fileName": "core/scraper.ts",
 									"line": 222,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L222"
 								}
 							],
 							"parameters": [
@@ -2312,7 +2385,8 @@
 						{
 							"fileName": "core/scraper.ts",
 							"line": 235,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L235"
 						}
 					],
 					"signatures": [
@@ -2334,7 +2408,8 @@
 								{
 									"fileName": "core/scraper.ts",
 									"line": 235,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L235"
 								}
 							],
 							"parameters": [
@@ -2392,7 +2467,8 @@
 						{
 							"fileName": "core/scraper.ts",
 							"line": 248,
-							"character": 8
+							"character": 8,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L248"
 						}
 					],
 					"signatures": [
@@ -2414,7 +2490,8 @@
 								{
 									"fileName": "core/scraper.ts",
 									"line": 248,
-									"character": 8
+									"character": 8,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L248"
 								}
 							],
 							"type": {
@@ -2472,7 +2549,8 @@
 				{
 					"fileName": "core/scraper.ts",
 					"line": 38,
-					"character": 13
+					"character": 13,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L38"
 				}
 			],
 			"extendedTypes": [
@@ -2537,7 +2615,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 9,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L9"
 						}
 					],
 					"type": {
@@ -2563,7 +2642,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 11,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L11"
 						}
 					],
 					"type": {
@@ -2589,7 +2669,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 13,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L13"
 						}
 					],
 					"type": {
@@ -2611,7 +2692,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 14,
-											"character": 4
+											"character": 4,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L14"
 										}
 									],
 									"type": {
@@ -2629,7 +2711,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 15,
-											"character": 4
+											"character": 4,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L15"
 										}
 									],
 									"type": {
@@ -2650,7 +2733,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 16,
-											"character": 4
+											"character": 4,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L16"
 										}
 									],
 									"type": {
@@ -2673,7 +2757,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 13,
-									"character": 17
+									"character": 17,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L13"
 								}
 							]
 						}
@@ -2697,7 +2782,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 19,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L19"
 						}
 					],
 					"type": {
@@ -2721,7 +2807,8 @@
 				{
 					"fileName": "core/types.ts",
 					"line": 7,
-					"character": 17
+					"character": 17,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L7"
 				}
 			]
 		},
@@ -2750,7 +2837,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 26,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L26"
 						}
 					],
 					"type": {
@@ -2768,7 +2856,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 27,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L27"
 						}
 					],
 					"type": {
@@ -2792,7 +2881,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 28,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L28"
 						}
 					],
 					"type": {
@@ -2816,7 +2906,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 29,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L29"
 						}
 					],
 					"type": {
@@ -2840,7 +2931,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 30,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L30"
 						}
 					],
 					"type": {
@@ -2858,7 +2950,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 31,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L31"
 						}
 					],
 					"type": {
@@ -2876,7 +2969,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 32,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L32"
 						}
 					],
 					"type": {
@@ -2903,7 +2997,8 @@
 				{
 					"fileName": "core/types.ts",
 					"line": 25,
-					"character": 17
+					"character": 17,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L25"
 				}
 			]
 		},
@@ -2940,7 +3035,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 40,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L40"
 						}
 					],
 					"type": {
@@ -2966,7 +3062,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 42,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L42"
 						}
 					],
 					"type": {
@@ -2992,7 +3089,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 44,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L44"
 						}
 					],
 					"type": {
@@ -3018,7 +3116,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 46,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L46"
 						}
 					],
 					"type": {
@@ -3044,7 +3143,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 48,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L48"
 						}
 					],
 					"type": {
@@ -3086,7 +3186,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 50,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L50"
 						}
 					],
 					"type": {
@@ -3112,7 +3213,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 52,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L52"
 						}
 					],
 					"type": {
@@ -3138,7 +3240,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 54,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L54"
 						}
 					],
 					"type": {
@@ -3164,7 +3267,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 56,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L56"
 						}
 					],
 					"type": {
@@ -3186,7 +3290,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 57,
-											"character": 4
+											"character": 4,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L57"
 										}
 									],
 									"type": {
@@ -3204,7 +3309,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 58,
-											"character": 4
+											"character": 4,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L58"
 										}
 									],
 									"type": {
@@ -3226,7 +3332,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 56,
-									"character": 12
+									"character": 12,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L56"
 								}
 							]
 						}
@@ -3253,7 +3360,8 @@
 				{
 					"fileName": "core/types.ts",
 					"line": 38,
-					"character": 17
+					"character": 17,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L38"
 				}
 			]
 		},
@@ -3275,7 +3383,8 @@
 				{
 					"fileName": "core/types.ts",
 					"line": 65,
-					"character": 12
+					"character": 12,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L65"
 				}
 			],
 			"type": {
@@ -3322,7 +3431,8 @@
 				{
 					"fileName": "core/types.ts",
 					"line": 70,
-					"character": 12
+					"character": 12,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L70"
 				}
 			],
 			"typeParameters": [
@@ -3350,7 +3460,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 70,
-							"character": 39
+							"character": 39,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L70"
 						}
 					],
 					"signatures": [
@@ -3439,7 +3550,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 76,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L76"
 						}
 					],
 					"type": {
@@ -3461,7 +3573,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 77,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L77"
 						}
 					],
 					"type": {
@@ -3485,7 +3598,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 78,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L78"
 						}
 					],
 					"type": {
@@ -3503,7 +3617,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 79,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L79"
 						}
 					],
 					"type": {
@@ -3521,7 +3636,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 80,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L80"
 						}
 					],
 					"type": {
@@ -3541,7 +3657,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 81,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L81"
 						}
 					],
 					"type": {
@@ -3577,7 +3694,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 82,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L82"
 						}
 					],
 					"type": {
@@ -3601,7 +3719,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 83,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L83"
 						}
 					],
 					"type": {
@@ -3635,7 +3754,8 @@
 				{
 					"fileName": "core/types.ts",
 					"line": 75,
-					"character": 17
+					"character": 17,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L75"
 				}
 			],
 			"typeParameters": [
@@ -3688,7 +3808,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 90,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L90"
 						}
 					],
 					"type": {
@@ -3723,7 +3844,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 91,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L91"
 						}
 					],
 					"type": {
@@ -3761,7 +3883,8 @@
 				{
 					"fileName": "core/types.ts",
 					"line": 89,
-					"character": 17
+					"character": 17,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L89"
 				}
 			]
 		},
@@ -3790,7 +3913,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 98,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L98"
 						}
 					],
 					"type": {
@@ -3825,7 +3949,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 99,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L99"
 						}
 					],
 					"type": {
@@ -3863,7 +3988,8 @@
 				{
 					"fileName": "core/types.ts",
 					"line": 97,
-					"character": 17
+					"character": 17,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L97"
 				}
 			]
 		},
@@ -3900,7 +4026,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 107,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L107"
 						}
 					],
 					"type": {
@@ -3926,7 +4053,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 109,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L109"
 						}
 					],
 					"type": {
@@ -3954,7 +4082,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 111,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L111"
 						}
 					],
 					"type": {
@@ -3980,7 +4109,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 113,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L113"
 						}
 					],
 					"type": {
@@ -4006,7 +4136,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 115,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L115"
 						}
 					],
 					"type": {
@@ -4034,7 +4165,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 117,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L117"
 						}
 					],
 					"type": {
@@ -4062,7 +4194,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 119,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L119"
 						}
 					],
 					"type": {
@@ -4077,7 +4210,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 119,
-									"character": 9
+									"character": 9,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L119"
 								}
 							],
 							"signatures": [
@@ -4091,7 +4225,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 119,
-											"character": 9
+											"character": 9,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L119"
 										}
 									],
 									"parameters": [
@@ -4172,7 +4307,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 121,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L121"
 						}
 					],
 					"type": {
@@ -4187,7 +4323,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 121,
-									"character": 18
+									"character": 18,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L121"
 								}
 							],
 							"signatures": [
@@ -4201,7 +4338,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 121,
-											"character": 18
+											"character": 18,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L121"
 										}
 									],
 									"parameters": [
@@ -4259,7 +4397,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 123,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L123"
 						}
 					],
 					"type": {
@@ -4274,7 +4413,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 123,
-									"character": 19
+									"character": 19,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L123"
 								}
 							],
 							"signatures": [
@@ -4288,7 +4428,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 123,
-											"character": 19
+											"character": 19,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L123"
 										}
 									],
 									"parameters": [
@@ -4344,7 +4485,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 125,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L125"
 						}
 					],
 					"type": {
@@ -4372,7 +4514,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 127,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L127"
 						}
 					],
 					"type": {
@@ -4394,7 +4537,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 128,
-											"character": 4
+											"character": 4,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L128"
 										}
 									],
 									"type": {
@@ -4412,7 +4556,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 129,
-											"character": 4
+											"character": 4,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L129"
 										}
 									],
 									"type": {
@@ -4434,7 +4579,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 127,
-									"character": 14
+									"character": 14,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L127"
 								}
 							]
 						}
@@ -4460,7 +4606,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 132,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L132"
 						}
 					],
 					"type": {
@@ -4502,7 +4649,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 134,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L134"
 						}
 					],
 					"type": {
@@ -4571,7 +4719,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 136,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L136"
 						}
 					],
 					"type": {
@@ -4602,7 +4751,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 138,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L138"
 						}
 					],
 					"type": {
@@ -4637,7 +4787,8 @@
 				{
 					"fileName": "core/types.ts",
 					"line": 105,
-					"character": 17
+					"character": 17,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L105"
 				}
 			],
 			"typeParameters": [
@@ -4690,7 +4841,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 145,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L145"
 						}
 					],
 					"type": {
@@ -4710,7 +4862,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 146,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L146"
 						}
 					],
 					"type": {
@@ -4734,7 +4887,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 147,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L147"
 						}
 					],
 					"type": {
@@ -4758,7 +4912,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 148,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L148"
 						}
 					],
 					"type": {
@@ -4776,7 +4931,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 149,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L149"
 						}
 					],
 					"type": {
@@ -4794,7 +4950,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 150,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L150"
 						}
 					],
 					"type": {
@@ -4816,7 +4973,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 151,
-											"character": 4
+											"character": 4,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L151"
 										}
 									],
 									"type": {
@@ -4834,7 +4992,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 152,
-											"character": 4
+											"character": 4,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L152"
 										}
 									],
 									"type": {
@@ -4852,7 +5011,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 153,
-											"character": 4
+											"character": 4,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L153"
 										}
 									],
 									"type": {
@@ -4870,7 +5030,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 154,
-											"character": 4
+											"character": 4,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L154"
 										}
 									],
 									"type": {
@@ -4894,7 +5055,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 150,
-									"character": 12
+									"character": 12,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L150"
 								}
 							]
 						}
@@ -4918,7 +5080,8 @@
 				{
 					"fileName": "core/types.ts",
 					"line": 144,
-					"character": 17
+					"character": 17,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L144"
 				}
 			],
 			"typeParameters": [
@@ -4960,7 +5123,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 162,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L162"
 						}
 					],
 					"type": {
@@ -4978,7 +5142,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 163,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L163"
 						}
 					],
 					"type": {
@@ -4996,7 +5161,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 164,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L164"
 						}
 					],
 					"type": {
@@ -5011,7 +5177,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 164,
-									"character": 11
+									"character": 11,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L164"
 								}
 							],
 							"signatures": [
@@ -5025,7 +5192,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 164,
-											"character": 11
+											"character": 11,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L164"
 										}
 									],
 									"parameters": [
@@ -5064,7 +5232,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 165,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L165"
 						}
 					],
 					"type": {
@@ -5079,7 +5248,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 165,
-									"character": 14
+									"character": 14,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L165"
 								}
 							],
 							"signatures": [
@@ -5093,7 +5263,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 165,
-											"character": 14
+											"character": 14,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L165"
 										}
 									],
 									"parameters": [
@@ -5136,7 +5307,8 @@
 				{
 					"fileName": "core/types.ts",
 					"line": 161,
-					"character": 17
+					"character": 17,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L161"
 				}
 			],
 			"implementedBy": [
@@ -5192,7 +5364,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 186,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L186"
 						}
 					],
 					"signatures": [
@@ -5214,7 +5387,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 186,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L186"
 								}
 							],
 							"typeParameters": [
@@ -5345,7 +5519,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 193,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L193"
 						}
 					],
 					"signatures": [
@@ -5367,7 +5542,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 193,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L193"
 								}
 							],
 							"typeParameters": [
@@ -5434,7 +5610,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 196,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L196"
 						}
 					],
 					"signatures": [
@@ -5456,7 +5633,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 196,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L196"
 								}
 							],
 							"parameters": [
@@ -5510,7 +5688,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 199,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L199"
 						}
 					],
 					"signatures": [
@@ -5532,7 +5711,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 199,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L199"
 								}
 							],
 							"type": {
@@ -5567,7 +5747,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 202,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L202"
 						}
 					],
 					"signatures": [
@@ -5589,7 +5770,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 202,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L202"
 								}
 							],
 							"parameters": [
@@ -5624,7 +5806,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 205,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L205"
 						}
 					],
 					"signatures": [
@@ -5646,7 +5829,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 205,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L205"
 								}
 							],
 							"parameters": [
@@ -5694,7 +5878,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 208,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L208"
 						}
 					],
 					"signatures": [
@@ -5716,7 +5901,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 208,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L208"
 								}
 							],
 							"parameters": [
@@ -5764,7 +5950,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 211,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L211"
 						}
 					],
 					"signatures": [
@@ -5786,7 +5973,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 211,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L211"
 								}
 							],
 							"type": {
@@ -5828,7 +6016,8 @@
 				{
 					"fileName": "core/types.ts",
 					"line": 184,
-					"character": 17
+					"character": 17,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L184"
 				}
 			],
 			"extendedTypes": [
@@ -5884,7 +6073,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 218,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L218"
 						}
 					],
 					"type": {
@@ -5904,7 +6094,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 219,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L219"
 						}
 					],
 					"type": {
@@ -5924,7 +6115,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 220,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L220"
 						}
 					],
 					"type": {
@@ -5945,7 +6137,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 221,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L221"
 						}
 					],
 					"type": {
@@ -5998,7 +6191,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 222,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L222"
 						}
 					],
 					"type": {
@@ -6020,7 +6214,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 223,
-											"character": 4
+											"character": 4,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L223"
 										}
 									],
 									"type": {
@@ -6055,7 +6250,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 224,
-											"character": 4
+											"character": 4,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L224"
 										}
 									],
 									"type": {
@@ -6086,7 +6282,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 222,
-									"character": 11
+									"character": 11,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L222"
 								}
 							]
 						}
@@ -6109,7 +6306,8 @@
 				{
 					"fileName": "core/types.ts",
 					"line": 217,
-					"character": 17
+					"character": 17,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L217"
 				}
 			]
 		},
@@ -6138,7 +6336,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 7,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L7"
 						}
 					],
 					"type": {
@@ -6162,7 +6361,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 8,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L8"
 						}
 					],
 					"type": {
@@ -6186,7 +6386,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 13,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L13"
 						}
 					],
 					"signatures": [
@@ -6200,7 +6401,8 @@
 								{
 									"fileName": "plugins/index.ts",
 									"line": 13,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L13"
 								}
 							],
 							"parameters": [
@@ -6231,7 +6433,8 @@
 														{
 															"fileName": "plugins/index.ts",
 															"line": 13,
-															"character": 25
+															"character": 25,
+															"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L13"
 														}
 													],
 													"type": {
@@ -6251,7 +6454,8 @@
 														{
 															"fileName": "plugins/index.ts",
 															"line": 13,
-															"character": 51
+															"character": 51,
+															"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L13"
 														}
 													],
 													"type": {
@@ -6273,7 +6477,8 @@
 												{
 													"fileName": "plugins/index.ts",
 													"line": 13,
-													"character": 23
+													"character": 23,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L13"
 												}
 											]
 										}
@@ -6300,7 +6505,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 18,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L18"
 						}
 					],
 					"signatures": [
@@ -6314,7 +6520,8 @@
 								{
 									"fileName": "plugins/index.ts",
 									"line": 18,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L18"
 								}
 							],
 							"parameters": [
@@ -6375,7 +6582,8 @@
 				{
 					"fileName": "plugins/index.ts",
 					"line": 6,
-					"character": 13
+					"character": 13,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L6"
 				}
 			],
 			"implementedTypes": [
@@ -6412,7 +6620,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 36,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L36"
 						}
 					],
 					"type": {
@@ -6436,7 +6645,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 37,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L37"
 						}
 					],
 					"type": {
@@ -6460,7 +6670,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 42,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L42"
 						}
 					],
 					"signatures": [
@@ -6474,7 +6685,8 @@
 								{
 									"fileName": "plugins/index.ts",
 									"line": 42,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L42"
 								}
 							],
 							"parameters": [
@@ -6505,7 +6717,8 @@
 														{
 															"fileName": "plugins/index.ts",
 															"line": 42,
-															"character": 25
+															"character": 25,
+															"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L42"
 														}
 													],
 													"type": {
@@ -6526,7 +6739,8 @@
 												{
 													"fileName": "plugins/index.ts",
 													"line": 42,
-													"character": 23
+													"character": 23,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L42"
 												}
 											]
 										}
@@ -6553,7 +6767,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 46,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L46"
 						}
 					],
 					"signatures": [
@@ -6567,7 +6782,8 @@
 								{
 									"fileName": "plugins/index.ts",
 									"line": 46,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L46"
 								}
 							],
 							"parameters": [
@@ -6612,7 +6828,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 80,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L80"
 						}
 					],
 					"signatures": [
@@ -6634,7 +6851,8 @@
 								{
 									"fileName": "plugins/index.ts",
 									"line": 80,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L80"
 								}
 							],
 							"type": {
@@ -6654,7 +6872,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 87,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L87"
 						}
 					],
 					"signatures": [
@@ -6676,7 +6895,8 @@
 								{
 									"fileName": "plugins/index.ts",
 									"line": 87,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L87"
 								}
 							],
 							"type": {
@@ -6698,7 +6918,8 @@
 												{
 													"fileName": "plugins/index.ts",
 													"line": 87,
-													"character": 21
+													"character": 21,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L87"
 												}
 											],
 											"type": {
@@ -6716,7 +6937,8 @@
 												{
 													"fileName": "plugins/index.ts",
 													"line": 87,
-													"character": 35
+													"character": 35,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L87"
 												}
 											],
 											"type": {
@@ -6741,7 +6963,8 @@
 										{
 											"fileName": "plugins/index.ts",
 											"line": 87,
-											"character": 19
+											"character": 19,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L87"
 										}
 									]
 								}
@@ -6777,7 +7000,8 @@
 				{
 					"fileName": "plugins/index.ts",
 					"line": 35,
-					"character": 13
+					"character": 13,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L35"
 				}
 			],
 			"implementedTypes": [
@@ -6814,7 +7038,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 99,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L99"
 						}
 					],
 					"type": {
@@ -6838,7 +7063,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 100,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L100"
 						}
 					],
 					"type": {
@@ -6862,7 +7088,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 105,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L105"
 						}
 					],
 					"signatures": [
@@ -6876,7 +7103,8 @@
 								{
 									"fileName": "plugins/index.ts",
 									"line": 105,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L105"
 								}
 							],
 							"parameters": [
@@ -6914,7 +7142,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 109,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L109"
 						}
 					],
 					"signatures": [
@@ -6928,7 +7157,8 @@
 								{
 									"fileName": "plugins/index.ts",
 									"line": 109,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L109"
 								}
 							],
 							"parameters": [
@@ -6973,7 +7203,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 127,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L127"
 						}
 					],
 					"signatures": [
@@ -6995,7 +7226,8 @@
 								{
 									"fileName": "plugins/index.ts",
 									"line": 127,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L127"
 								}
 							],
 							"parameters": [
@@ -7028,7 +7260,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 134,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L134"
 						}
 					],
 					"signatures": [
@@ -7050,7 +7283,8 @@
 								{
 									"fileName": "plugins/index.ts",
 									"line": 134,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L134"
 								}
 							],
 							"parameters": [
@@ -7083,7 +7317,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 147,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L147"
 						}
 					],
 					"signatures": [
@@ -7105,7 +7340,8 @@
 								{
 									"fileName": "plugins/index.ts",
 									"line": 147,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L147"
 								}
 							],
 							"type": {
@@ -7147,7 +7383,8 @@
 				{
 					"fileName": "plugins/index.ts",
 					"line": 98,
-					"character": 13
+					"character": 13,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L98"
 				}
 			],
 			"implementedTypes": [
@@ -7184,7 +7421,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 156,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L156"
 						}
 					],
 					"type": {
@@ -7208,7 +7446,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 157,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L157"
 						}
 					],
 					"type": {
@@ -7232,7 +7471,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 163,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L163"
 						}
 					],
 					"signatures": [
@@ -7246,7 +7486,8 @@
 								{
 									"fileName": "plugins/index.ts",
 									"line": 163,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L163"
 								}
 							],
 							"parameters": [
@@ -7277,7 +7518,8 @@
 														{
 															"fileName": "plugins/index.ts",
 															"line": 163,
-															"character": 25
+															"character": 25,
+															"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L163"
 														}
 													],
 													"type": {
@@ -7297,7 +7539,8 @@
 														{
 															"fileName": "plugins/index.ts",
 															"line": 163,
-															"character": 48
+															"character": 48,
+															"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L163"
 														}
 													],
 													"type": {
@@ -7319,7 +7562,8 @@
 												{
 													"fileName": "plugins/index.ts",
 													"line": 163,
-													"character": 23
+													"character": 23,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L163"
 												}
 											]
 										}
@@ -7346,7 +7590,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 168,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L168"
 						}
 					],
 					"signatures": [
@@ -7360,7 +7605,8 @@
 								{
 									"fileName": "plugins/index.ts",
 									"line": 168,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L168"
 								}
 							],
 							"parameters": [
@@ -7405,7 +7651,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 210,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L210"
 						}
 					],
 					"signatures": [
@@ -7427,7 +7674,8 @@
 								{
 									"fileName": "plugins/index.ts",
 									"line": 210,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L210"
 								}
 							],
 							"type": {
@@ -7461,7 +7709,8 @@
 														{
 															"fileName": "plugins/index.ts",
 															"line": 210,
-															"character": 31
+															"character": 31,
+															"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L210"
 														}
 													],
 													"type": {
@@ -7479,7 +7728,8 @@
 														{
 															"fileName": "plugins/index.ts",
 															"line": 210,
-															"character": 49
+															"character": 49,
+															"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L210"
 														}
 													],
 													"type": {
@@ -7501,7 +7751,8 @@
 												{
 													"fileName": "plugins/index.ts",
 													"line": 210,
-													"character": 29
+													"character": 29,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L210"
 												}
 											]
 										}
@@ -7540,7 +7791,8 @@
 				{
 					"fileName": "plugins/index.ts",
 					"line": 155,
-					"character": 13
+					"character": 13,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L155"
 				}
 			],
 			"implementedTypes": [
@@ -7599,7 +7851,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 228,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L228"
 						}
 					],
 					"type": {
@@ -7623,7 +7876,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 229,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L229"
 						}
 					],
 					"type": {
@@ -7647,7 +7901,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 248,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L248"
 						}
 					],
 					"signatures": [
@@ -7661,7 +7916,8 @@
 								{
 									"fileName": "plugins/index.ts",
 									"line": 248,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L248"
 								}
 							],
 							"parameters": [
@@ -7706,7 +7962,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 280,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L280"
 						}
 					],
 					"signatures": [
@@ -7728,7 +7985,8 @@
 								{
 									"fileName": "plugins/index.ts",
 									"line": 280,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L280"
 								}
 							],
 							"type": {
@@ -7750,7 +8008,8 @@
 												{
 													"fileName": "plugins/index.ts",
 													"line": 232,
-													"character": 4
+													"character": 4,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L232"
 												}
 											],
 											"type": {
@@ -7769,7 +8028,8 @@
 												{
 													"fileName": "plugins/index.ts",
 													"line": 233,
-													"character": 4
+													"character": 4,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L233"
 												}
 											],
 											"type": {
@@ -7788,7 +8048,8 @@
 												{
 													"fileName": "plugins/index.ts",
 													"line": 234,
-													"character": 4
+													"character": 4,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L234"
 												}
 											],
 											"type": {
@@ -7807,7 +8068,8 @@
 												{
 													"fileName": "plugins/index.ts",
 													"line": 235,
-													"character": 4
+													"character": 4,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L235"
 												}
 											],
 											"type": {
@@ -7826,7 +8088,8 @@
 												{
 													"fileName": "plugins/index.ts",
 													"line": 236,
-													"character": 4
+													"character": 4,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L236"
 												}
 											],
 											"type": {
@@ -7845,7 +8108,8 @@
 												{
 													"fileName": "plugins/index.ts",
 													"line": 237,
-													"character": 4
+													"character": 4,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L237"
 												}
 											],
 											"type": {
@@ -7879,7 +8143,8 @@
 																		{
 																			"fileName": "plugins/index.ts",
 																			"line": 240,
-																			"character": 8
+																			"character": 8,
+																			"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L240"
 																		}
 																	],
 																	"type": {
@@ -7897,7 +8162,8 @@
 																		{
 																			"fileName": "plugins/index.ts",
 																			"line": 241,
-																			"character": 8
+																			"character": 8,
+																			"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L241"
 																		}
 																	],
 																	"type": {
@@ -7915,7 +8181,8 @@
 																		{
 																			"fileName": "plugins/index.ts",
 																			"line": 242,
-																			"character": 8
+																			"character": 8,
+																			"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L242"
 																		}
 																	],
 																	"type": {
@@ -7933,7 +8200,8 @@
 																		{
 																			"fileName": "plugins/index.ts",
 																			"line": 243,
-																			"character": 8
+																			"character": 8,
+																			"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L243"
 																		}
 																	],
 																	"type": {
@@ -7957,7 +8225,8 @@
 																{
 																	"fileName": "plugins/index.ts",
 																	"line": 239,
-																	"character": 6
+																	"character": 6,
+																	"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L239"
 																}
 															]
 														}
@@ -7986,7 +8255,8 @@
 										{
 											"fileName": "plugins/index.ts",
 											"line": 231,
-											"character": 20
+											"character": 20,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L231"
 										}
 									]
 								}
@@ -8004,7 +8274,8 @@
 						{
 							"fileName": "plugins/index.ts",
 							"line": 287,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L287"
 						}
 					],
 					"signatures": [
@@ -8026,7 +8297,8 @@
 								{
 									"fileName": "plugins/index.ts",
 									"line": 287,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L287"
 								}
 							],
 							"type": {
@@ -8064,7 +8336,8 @@
 				{
 					"fileName": "plugins/index.ts",
 					"line": 227,
-					"character": 13
+					"character": 13,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L227"
 				}
 			],
 			"implementedTypes": [
@@ -8101,7 +8374,8 @@
 						{
 							"fileName": "utils/logger.ts",
 							"line": 7,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L7"
 						}
 					],
 					"signatures": [
@@ -8115,7 +8389,8 @@
 								{
 									"fileName": "utils/logger.ts",
 									"line": 7,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L7"
 								}
 							],
 							"parameters": [
@@ -8161,7 +8436,8 @@
 						{
 							"fileName": "utils/logger.ts",
 							"line": 8,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L8"
 						}
 					],
 					"signatures": [
@@ -8175,7 +8451,8 @@
 								{
 									"fileName": "utils/logger.ts",
 									"line": 8,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L8"
 								}
 							],
 							"parameters": [
@@ -8221,7 +8498,8 @@
 						{
 							"fileName": "utils/logger.ts",
 							"line": 9,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L9"
 						}
 					],
 					"signatures": [
@@ -8235,7 +8513,8 @@
 								{
 									"fileName": "utils/logger.ts",
 									"line": 9,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L9"
 								}
 							],
 							"parameters": [
@@ -8281,7 +8560,8 @@
 						{
 							"fileName": "utils/logger.ts",
 							"line": 10,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L10"
 						}
 					],
 					"signatures": [
@@ -8295,7 +8575,8 @@
 								{
 									"fileName": "utils/logger.ts",
 									"line": 10,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L10"
 								}
 							],
 							"parameters": [
@@ -8347,7 +8628,8 @@
 				{
 					"fileName": "utils/logger.ts",
 					"line": 6,
-					"character": 17
+					"character": 17,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L6"
 				}
 			]
 		},
@@ -8376,7 +8658,8 @@
 						{
 							"fileName": "utils/logger.ts",
 							"line": 17,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L17"
 						}
 					],
 					"type": {
@@ -8411,7 +8694,8 @@
 						{
 							"fileName": "utils/logger.ts",
 							"line": 18,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L18"
 						}
 					],
 					"type": {
@@ -8440,7 +8724,8 @@
 						{
 							"fileName": "utils/logger.ts",
 							"line": 19,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L19"
 						}
 					],
 					"type": {
@@ -8458,7 +8743,8 @@
 						{
 							"fileName": "utils/logger.ts",
 							"line": 20,
-							"character": 2
+							"character": 2,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L20"
 						}
 					],
 					"type": {
@@ -8482,7 +8768,8 @@
 				{
 					"fileName": "utils/logger.ts",
 					"line": 16,
-					"character": 17
+					"character": 17,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L16"
 				}
 			]
 		},
@@ -8496,7 +8783,8 @@
 				{
 					"fileName": "utils/logger.ts",
 					"line": 26,
-					"character": 16
+					"character": 16,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L26"
 				}
 			],
 			"signatures": [
@@ -8518,7 +8806,8 @@
 						{
 							"fileName": "utils/logger.ts",
 							"line": 26,
-							"character": 16
+							"character": 16,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L26"
 						}
 					],
 					"parameters": [
@@ -8565,7 +8854,8 @@
 				{
 					"fileName": "utils/logger.ts",
 					"line": 84,
-					"character": 13
+					"character": 13,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L84"
 				}
 			],
 			"type": {
@@ -8594,7 +8884,8 @@
 				{
 					"fileName": "utils/validators.ts",
 					"line": 6,
-					"character": 12
+					"character": 12,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L6"
 				}
 			],
 			"type": {
@@ -8621,7 +8912,8 @@
 				{
 					"fileName": "utils/validators.ts",
 					"line": 11,
-					"character": 16
+					"character": 16,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L11"
 				}
 			],
 			"signatures": [
@@ -8643,7 +8935,8 @@
 						{
 							"fileName": "utils/validators.ts",
 							"line": 11,
-							"character": 16
+							"character": 16,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L11"
 						}
 					],
 					"typeParameters": [
@@ -8723,7 +9016,8 @@
 				{
 					"fileName": "utils/validators.ts",
 					"line": 26,
-					"character": 13
+					"character": 13,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L26"
 				}
 			],
 			"type": {
@@ -8753,7 +9047,8 @@
 								{
 									"fileName": "utils/validators.ts",
 									"line": 30,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L30"
 								}
 							],
 							"type": {
@@ -8768,7 +9063,8 @@
 										{
 											"fileName": "utils/validators.ts",
 											"line": 30,
-											"character": 9
+											"character": 9,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L30"
 										}
 									],
 									"signatures": [
@@ -8782,7 +9078,8 @@
 												{
 													"fileName": "utils/validators.ts",
 													"line": 30,
-													"character": 9
+													"character": 9,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L30"
 												}
 											],
 											"parameters": [
@@ -8828,7 +9125,8 @@
 								{
 									"fileName": "utils/validators.ts",
 									"line": 38,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L38"
 								}
 							],
 							"type": {
@@ -8843,7 +9141,8 @@
 										{
 											"fileName": "utils/validators.ts",
 											"line": 38,
-											"character": 7
+											"character": 7,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L38"
 										}
 									],
 									"signatures": [
@@ -8857,7 +9156,8 @@
 												{
 													"fileName": "utils/validators.ts",
 													"line": 38,
-													"character": 7
+													"character": 7,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L38"
 												}
 											],
 											"parameters": [
@@ -8903,7 +9203,8 @@
 								{
 									"fileName": "utils/validators.ts",
 									"line": 50,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L50"
 								}
 							],
 							"type": {
@@ -8918,7 +9219,8 @@
 										{
 											"fileName": "utils/validators.ts",
 											"line": 50,
-											"character": 18
+											"character": 18,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L50"
 										}
 									],
 									"signatures": [
@@ -8932,7 +9234,8 @@
 												{
 													"fileName": "utils/validators.ts",
 													"line": 50,
-													"character": 18
+													"character": 18,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L50"
 												}
 											],
 											"parameters": [
@@ -8978,7 +9281,8 @@
 								{
 									"fileName": "utils/validators.ts",
 									"line": 59,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L59"
 								}
 							],
 							"type": {
@@ -8993,7 +9297,8 @@
 										{
 											"fileName": "utils/validators.ts",
 											"line": 59,
-											"character": 18
+											"character": 18,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L59"
 										}
 									],
 									"signatures": [
@@ -9007,7 +9312,8 @@
 												{
 													"fileName": "utils/validators.ts",
 													"line": 59,
-													"character": 18
+													"character": 18,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L59"
 												}
 											],
 											"parameters": [
@@ -9053,7 +9359,8 @@
 								{
 									"fileName": "utils/validators.ts",
 									"line": 66,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L66"
 								}
 							],
 							"type": {
@@ -9068,7 +9375,8 @@
 										{
 											"fileName": "utils/validators.ts",
 											"line": 67,
-											"character": 4
+											"character": 4,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L67"
 										}
 									],
 									"signatures": [
@@ -9082,7 +9390,8 @@
 												{
 													"fileName": "utils/validators.ts",
 													"line": 67,
-													"character": 4
+													"character": 4,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L67"
 												}
 											],
 											"parameters": [
@@ -9110,7 +9419,8 @@
 														{
 															"fileName": "utils/validators.ts",
 															"line": 68,
-															"character": 4
+															"character": 4,
+															"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L68"
 														}
 													],
 													"signatures": [
@@ -9124,7 +9434,8 @@
 																{
 																	"fileName": "utils/validators.ts",
 																	"line": 68,
-																	"character": 4
+																	"character": 4,
+																	"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L68"
 																}
 															],
 															"parameters": [
@@ -9177,7 +9488,8 @@
 								{
 									"fileName": "utils/validators.ts",
 									"line": 78,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L78"
 								}
 							],
 							"type": {
@@ -9192,7 +9504,8 @@
 										{
 											"fileName": "utils/validators.ts",
 											"line": 79,
-											"character": 4
+											"character": 4,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L79"
 										}
 									],
 									"signatures": [
@@ -9206,7 +9519,8 @@
 												{
 													"fileName": "utils/validators.ts",
 													"line": 79,
-													"character": 4
+													"character": 4,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L79"
 												}
 											],
 											"parameters": [
@@ -9237,7 +9551,8 @@
 														{
 															"fileName": "utils/validators.ts",
 															"line": 80,
-															"character": 4
+															"character": 4,
+															"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L80"
 														}
 													],
 													"signatures": [
@@ -9251,7 +9566,8 @@
 																{
 																	"fileName": "utils/validators.ts",
 																	"line": 80,
-																	"character": 4
+																	"character": 4,
+																	"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L80"
 																}
 															],
 															"parameters": [
@@ -9317,7 +9633,8 @@
 						{
 							"fileName": "utils/validators.ts",
 							"line": 26,
-							"character": 26
+							"character": 26,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L26"
 						}
 					]
 				}
@@ -9344,7 +9661,8 @@
 				{
 					"fileName": "utils/validators.ts",
 					"line": 89,
-					"character": 13
+					"character": 13,
+					"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L89"
 				}
 			],
 			"type": {
@@ -9374,7 +9692,8 @@
 								{
 									"fileName": "utils/validators.ts",
 									"line": 93,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L93"
 								}
 							],
 							"type": {
@@ -9407,7 +9726,8 @@
 								{
 									"fileName": "utils/validators.ts",
 									"line": 98,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L98"
 								}
 							],
 							"type": {
@@ -9440,7 +9760,8 @@
 								{
 									"fileName": "utils/validators.ts",
 									"line": 103,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L103"
 								}
 							],
 							"type": {
@@ -9473,7 +9794,8 @@
 								{
 									"fileName": "utils/validators.ts",
 									"line": 108,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L108"
 								}
 							],
 							"type": {
@@ -9506,7 +9828,8 @@
 								{
 									"fileName": "utils/validators.ts",
 									"line": 113,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L113"
 								}
 							],
 							"type": {
@@ -9539,7 +9862,8 @@
 								{
 									"fileName": "utils/validators.ts",
 									"line": 118,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L118"
 								}
 							],
 							"type": {
@@ -9572,7 +9896,8 @@
 								{
 									"fileName": "utils/validators.ts",
 									"line": 123,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L123"
 								}
 							],
 							"type": {
@@ -9606,7 +9931,8 @@
 						{
 							"fileName": "utils/validators.ts",
 							"line": 89,
-							"character": 23
+							"character": 23,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L89"
 						}
 					]
 				}
@@ -9638,7 +9964,8 @@
 						{
 							"fileName": "cli/commands/generate.ts",
 							"line": 11,
-							"character": 12
+							"character": 12,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L11"
 						}
 					],
 					"type": {
@@ -9690,7 +10017,8 @@
 								{
 									"fileName": "cli/commands/generate.ts",
 									"line": 17,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L17"
 								}
 							],
 							"type": {
@@ -9712,7 +10040,8 @@
 								{
 									"fileName": "cli/commands/generate.ts",
 									"line": 18,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L18"
 								}
 							],
 							"type": {
@@ -9732,7 +10061,8 @@
 								{
 									"fileName": "cli/commands/generate.ts",
 									"line": 19,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L19"
 								}
 							],
 							"type": {
@@ -9752,7 +10082,8 @@
 								{
 									"fileName": "cli/commands/generate.ts",
 									"line": 20,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L20"
 								}
 							],
 							"type": {
@@ -9776,7 +10107,8 @@
 						{
 							"fileName": "cli/commands/generate.ts",
 							"line": 16,
-							"character": 17
+							"character": 17,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L16"
 						}
 					]
 				},
@@ -9807,7 +10139,8 @@
 								{
 									"fileName": "cli/commands/init.ts",
 									"line": 11,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/init.ts#L11"
 								}
 							],
 							"type": {
@@ -9827,7 +10160,8 @@
 								{
 									"fileName": "cli/commands/init.ts",
 									"line": 12,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/init.ts#L12"
 								}
 							],
 							"type": {
@@ -9856,7 +10190,8 @@
 								{
 									"fileName": "cli/commands/init.ts",
 									"line": 13,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/init.ts#L13"
 								}
 							],
 							"type": {
@@ -9879,7 +10214,8 @@
 						{
 							"fileName": "cli/commands/init.ts",
 							"line": 10,
-							"character": 17
+							"character": 17,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/init.ts#L10"
 						}
 					]
 				},
@@ -9910,7 +10246,8 @@
 								{
 									"fileName": "cli/commands/run.ts",
 									"line": 12,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/run.ts#L12"
 								}
 							],
 							"type": {
@@ -9930,7 +10267,8 @@
 								{
 									"fileName": "cli/commands/run.ts",
 									"line": 13,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/run.ts#L13"
 								}
 							],
 							"type": {
@@ -9950,7 +10288,8 @@
 								{
 									"fileName": "cli/commands/run.ts",
 									"line": 14,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/run.ts#L14"
 								}
 							],
 							"type": {
@@ -9970,7 +10309,8 @@
 								{
 									"fileName": "cli/commands/run.ts",
 									"line": 15,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/run.ts#L15"
 								}
 							],
 							"type": {
@@ -9994,7 +10334,8 @@
 						{
 							"fileName": "cli/commands/run.ts",
 							"line": 11,
-							"character": 17
+							"character": 17,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/run.ts#L11"
 						}
 					]
 				},
@@ -10025,7 +10366,8 @@
 								{
 									"fileName": "cli/commands/validate.ts",
 									"line": 9,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/validate.ts#L9"
 								}
 							],
 							"type": {
@@ -10046,7 +10388,8 @@
 						{
 							"fileName": "cli/commands/validate.ts",
 							"line": 8,
-							"character": 17
+							"character": 17,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/validate.ts#L8"
 						}
 					]
 				},
@@ -10075,7 +10418,8 @@
 								{
 									"fileName": "cli/templates/index.ts",
 									"line": 7,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/templates/index.ts#L7"
 								}
 							],
 							"type": {
@@ -10093,7 +10437,8 @@
 								{
 									"fileName": "cli/templates/index.ts",
 									"line": 8,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/templates/index.ts#L8"
 								}
 							],
 							"type": {
@@ -10111,7 +10456,8 @@
 								{
 									"fileName": "cli/templates/index.ts",
 									"line": 9,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/templates/index.ts#L9"
 								}
 							],
 							"type": {
@@ -10150,7 +10496,8 @@
 						{
 							"fileName": "cli/templates/index.ts",
 							"line": 6,
-							"character": 17
+							"character": 17,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/templates/index.ts#L6"
 						}
 					]
 				},
@@ -10172,7 +10519,8 @@
 						{
 							"fileName": "core/config-manager.ts",
 							"line": 12,
-							"character": 12
+							"character": 12,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L12"
 						}
 					],
 					"type": {
@@ -10222,7 +10570,8 @@
 								{
 									"fileName": "core/config-manager.ts",
 									"line": 18,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L18"
 								}
 							],
 							"type": {
@@ -10242,7 +10591,8 @@
 								{
 									"fileName": "core/config-manager.ts",
 									"line": 19,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L19"
 								}
 							],
 							"type": {
@@ -10260,7 +10610,8 @@
 								{
 									"fileName": "core/config-manager.ts",
 									"line": 20,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L20"
 								}
 							],
 							"type": {
@@ -10297,7 +10648,8 @@
 						{
 							"fileName": "core/config-manager.ts",
 							"line": 17,
-							"character": 17
+							"character": 17,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L17"
 						}
 					]
 				},
@@ -10328,7 +10680,8 @@
 								{
 									"fileName": "core/config-manager.ts",
 									"line": 27,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L27"
 								}
 							],
 							"type": {
@@ -10366,7 +10719,8 @@
 								{
 									"fileName": "core/config-manager.ts",
 									"line": 28,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L28"
 								}
 							],
 							"type": {
@@ -10400,7 +10754,8 @@
 								{
 									"fileName": "core/config-manager.ts",
 									"line": 29,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L29"
 								}
 							],
 							"type": {
@@ -10426,7 +10781,8 @@
 						{
 							"fileName": "core/config-manager.ts",
 							"line": 26,
-							"character": 17
+							"character": 17,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L26"
 						}
 					]
 				},
@@ -10477,7 +10833,8 @@
 								{
 									"fileName": "core/config-manager.ts",
 									"line": 399,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L399"
 								}
 							],
 							"signatures": [
@@ -10499,7 +10856,8 @@
 										{
 											"fileName": "core/config-manager.ts",
 											"line": 399,
-											"character": 2
+											"character": 2,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L399"
 										}
 									],
 									"parameters": [
@@ -10548,7 +10906,8 @@
 								{
 									"fileName": "core/config-manager.ts",
 									"line": 414,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L414"
 								}
 							],
 							"signatures": [
@@ -10570,7 +10929,8 @@
 										{
 											"fileName": "core/config-manager.ts",
 											"line": 414,
-											"character": 2
+											"character": 2,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L414"
 										}
 									],
 									"parameters": [
@@ -10619,7 +10979,8 @@
 								{
 									"fileName": "core/config-manager.ts",
 									"line": 432,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L432"
 								}
 							],
 							"signatures": [
@@ -10641,7 +11002,8 @@
 										{
 											"fileName": "core/config-manager.ts",
 											"line": 432,
-											"character": 2
+											"character": 2,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L432"
 										}
 									],
 									"parameters": [
@@ -10679,7 +11041,8 @@
 								{
 									"fileName": "core/config-manager.ts",
 									"line": 440,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L440"
 								}
 							],
 							"signatures": [
@@ -10701,7 +11064,8 @@
 										{
 											"fileName": "core/config-manager.ts",
 											"line": 440,
-											"character": 2
+											"character": 2,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L440"
 										}
 									],
 									"parameters": [
@@ -10732,7 +11096,8 @@
 																{
 																	"fileName": "core/config-manager.ts",
 																	"line": 441,
-																	"character": 4
+																	"character": 4,
+																	"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L441"
 																}
 															],
 															"type": {
@@ -10769,7 +11134,8 @@
 																{
 																	"fileName": "core/config-manager.ts",
 																	"line": 442,
-																	"character": 4
+																	"character": 4,
+																	"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L442"
 																}
 															],
 															"type": {
@@ -10800,7 +11166,8 @@
 														{
 															"fileName": "core/config-manager.ts",
 															"line": 440,
-															"character": 18
+															"character": 18,
+															"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L440"
 														}
 													]
 												}
@@ -10826,7 +11193,8 @@
 								{
 									"fileName": "core/config-manager.ts",
 									"line": 457,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L457"
 								}
 							],
 							"signatures": [
@@ -10848,7 +11216,8 @@
 										{
 											"fileName": "core/config-manager.ts",
 											"line": 457,
-											"character": 2
+											"character": 2,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L457"
 										}
 									],
 									"type": {
@@ -10895,7 +11264,8 @@
 						{
 							"fileName": "core/config-manager.ts",
 							"line": 393,
-							"character": 13
+							"character": 13,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L393"
 						}
 					]
 				},
@@ -10924,7 +11294,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 172,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L172"
 								}
 							],
 							"type": {
@@ -10946,7 +11317,8 @@
 												{
 													"fileName": "core/types.ts",
 													"line": 172,
-													"character": 21
+													"character": 21,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L172"
 												}
 											],
 											"type": {
@@ -10964,7 +11336,8 @@
 												{
 													"fileName": "core/types.ts",
 													"line": 172,
-													"character": 40
+													"character": 40,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L172"
 												}
 											],
 											"type": {
@@ -10986,7 +11359,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 172,
-											"character": 19
+											"character": 19,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L172"
 										}
 									]
 								}
@@ -11002,7 +11376,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 173,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L173"
 								}
 							],
 							"type": {
@@ -11024,7 +11399,8 @@
 												{
 													"fileName": "core/types.ts",
 													"line": 173,
-													"character": 23
+													"character": 23,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L173"
 												}
 											],
 											"type": {
@@ -11042,7 +11418,8 @@
 												{
 													"fileName": "core/types.ts",
 													"line": 173,
-													"character": 42
+													"character": 42,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L173"
 												}
 											],
 											"type": {
@@ -11066,7 +11443,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 173,
-											"character": 21
+											"character": 21,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L173"
 										}
 									]
 								}
@@ -11082,7 +11460,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 174,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L174"
 								}
 							],
 							"type": {
@@ -11104,7 +11483,8 @@
 												{
 													"fileName": "core/types.ts",
 													"line": 174,
-													"character": 21
+													"character": 21,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L174"
 												}
 											],
 											"type": {
@@ -11122,7 +11502,8 @@
 												{
 													"fileName": "core/types.ts",
 													"line": 174,
-													"character": 40
+													"character": 40,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L174"
 												}
 											],
 											"type": {
@@ -11150,7 +11531,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 174,
-											"character": 19
+											"character": 19,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L174"
 										}
 									]
 								}
@@ -11166,7 +11548,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 175,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L175"
 								}
 							],
 							"type": {
@@ -11188,7 +11571,8 @@
 												{
 													"fileName": "core/types.ts",
 													"line": 175,
-													"character": 21
+													"character": 21,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L175"
 												}
 											],
 											"type": {
@@ -11206,7 +11590,8 @@
 												{
 													"fileName": "core/types.ts",
 													"line": 175,
-													"character": 40
+													"character": 40,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L175"
 												}
 											],
 											"type": {
@@ -11228,7 +11613,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 175,
-											"character": 19
+											"character": 19,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L175"
 										}
 									]
 								}
@@ -11244,7 +11630,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 176,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L176"
 								}
 							],
 							"type": {
@@ -11266,7 +11653,8 @@
 												{
 													"fileName": "core/types.ts",
 													"line": 176,
-													"character": 20
+													"character": 20,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L176"
 												}
 											],
 											"type": {
@@ -11287,7 +11675,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 176,
-											"character": 18
+											"character": 18,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L176"
 										}
 									]
 								}
@@ -11303,7 +11692,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 177,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L177"
 								}
 							],
 							"type": {
@@ -11325,7 +11715,8 @@
 												{
 													"fileName": "core/types.ts",
 													"line": 177,
-													"character": 20
+													"character": 20,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L177"
 												}
 											],
 											"type": {
@@ -11346,7 +11737,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 177,
-											"character": 18
+											"character": 18,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L177"
 										}
 									]
 								}
@@ -11362,7 +11754,8 @@
 								{
 									"fileName": "core/types.ts",
 									"line": 178,
-									"character": 2
+									"character": 2,
+									"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L178"
 								}
 							],
 							"type": {
@@ -11384,7 +11777,8 @@
 												{
 													"fileName": "core/types.ts",
 													"line": 178,
-													"character": 20
+													"character": 20,
+													"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L178"
 												}
 											],
 											"type": {
@@ -11405,7 +11799,8 @@
 										{
 											"fileName": "core/types.ts",
 											"line": 178,
-											"character": 18
+											"character": 18,
+											"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L178"
 										}
 									]
 								}
@@ -11430,7 +11825,8 @@
 						{
 							"fileName": "core/types.ts",
 							"line": 171,
-							"character": 17
+							"character": 17,
+							"url": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L171"
 						}
 					]
 				}
@@ -11816,31 +12212,183 @@
 		},
 		{
 			"kind": "text",
-			"text": " | Build and serve in one command |\n\n## 🤝 Contributing\n\n1. Fork the repository\n2. Create your feature branch ("
+			"text": " | Build and serve in one command |\n\n## 🚀 Release Process\n\nThis project uses **semantic-release** for fully automated versioning and publishing. All releases are handled automatically by CI/CD based on conventional commits.\n\n### 📋 Conventional Commits\n\nUse conventional commit messages to trigger automatic releases:\n\n"
 		},
 		{
 			"kind": "code",
-			"text": "`git checkout -b feature/amazing-feature`"
+			"text": "```bash\n# Patch release (1.0.0 → 1.0.1)\ngit commit -m \"fix: resolve browser pool memory leak\"\n\n# Minor release (1.0.0 → 1.1.0)  \ngit commit -m \"feat: add new caching plugin\"\n\n# Major release (1.0.0 → 2.0.0)\ngit commit -m \"feat!: redesign configuration API\n\nBREAKING CHANGE: Configuration schema has changed\"\n\n# Other commit types (no release)\ngit commit -m \"docs: update README examples\"\ngit commit -m \"chore: update dependencies\"\ngit commit -m \"test: add browser pool tests\"\n```"
 		},
 		{
 			"kind": "text",
-			"text": ")\n3. Commit your changes ("
+			"text": "\n\n### 🔄 Automated Release Flow\n\n1. **Development**: Create feature branch, make changes with conventional commits\n2. **Pull Request**: Open PR to "
 		},
 		{
 			"kind": "code",
-			"text": "`git commit -m 'Add some amazing feature'`"
+			"text": "`main`"
 		},
 		{
 			"kind": "text",
-			"text": ")\n4. Push to the branch ("
+			"text": " branch\n3. **CI Validation**: Automated tests, linting, examples validation\n4. **Release Preview**: Comment on PR shows what would be released\n5. **Merge**: Merge PR to "
 		},
 		{
 			"kind": "code",
-			"text": "`git push origin feature/amazing-feature`"
+			"text": "`main`"
 		},
 		{
 			"kind": "text",
-			"text": ")\n5. Open a Pull Request\n\n## 📄 License\n\nThis project is licensed under the MIT License - see the [LICENSE]("
+			"text": " branch\n6. **Automatic Release**: CI/CD automatically:\n   - Analyzes commits since last release\n   - Determines next version (patch/minor/major)\n   - Generates CHANGELOG.md\n   - Creates GitHub release with notes\n   - Publishes to npm registry\n   - Deploys documentation to GitHub Pages\n   - Sends notifications\n\n### 🛠️ Release Commands\n\n"
+		},
+		{
+			"kind": "code",
+			"text": "```bash\n# Preview what would be released (dry-run)\npnpm run release:dry\n\n# Manual release (emergency only)\npnpm run release:legacy\n\n# Generate changelog manually\npnpm run changelog\n\n# Check release status\npnpm run semantic-release:dry\n```"
+		},
+		{
+			"kind": "text",
+			"text": "\n\n### 📊 Release Validation\n\nEvery release automatically runs:\n- ✅ ESLint code quality checks\n- ✅ Prettier formatting validation  \n- ✅ Jest test suite with coverage\n- ✅ TypeScript compilation\n- ✅ Examples validation\n- ✅ Documentation generation\n- ✅ Security audit\n- ✅ Bundle size analysis\n\n### 🎯 Best Practices\n\n- **Use conventional commits** for all changes\n- **Write descriptive commit messages** with clear scope\n- **Include breaking change notes** when applicable\n- **Keep commits atomic** and focused\n- **Test locally** before pushing\n- **Let CI/CD handle releases** (avoid manual versioning)\n\n## 🤝 Contributing\n\nWe welcome contributions! Please follow these guidelines:\n\n### 💻 Development Setup\n\n1. **Fork and Clone**\n   "
+		},
+		{
+			"kind": "code",
+			"text": "```bash\n   git clone https://github.com/yourusername/crawlee-scraper-toolkit.git\n   cd crawlee-scraper-toolkit\n   pnpm install\n   ```"
+		},
+		{
+			"kind": "text",
+			"text": "\n\n2. **Setup Development Environment**\n   "
+		},
+		{
+			"kind": "code",
+			"text": "```bash\n   # Install dependencies and setup hooks\n   pnpm install\n   pnpm run prepare  # Sets up husky git hooks\n   \n   # Run tests to verify setup\n   pnpm test\n   ```"
+		},
+		{
+			"kind": "text",
+			"text": "\n\n### 🎯 Development Workflow\n\n1. **Create Feature Branch**\n   "
+		},
+		{
+			"kind": "code",
+			"text": "```bash\n   git checkout -b feat/your-feature-name\n   ```"
+		},
+		{
+			"kind": "text",
+			"text": "\n\n2. **Make Changes** following conventional commits:\n   "
+		},
+		{
+			"kind": "code",
+			"text": "```bash\n   # Examples of good commit messages\n   git commit -m \"feat: add retry mechanism to browser pool\"\n   git commit -m \"fix: resolve memory leak in scraper engine\"  \n   git commit -m \"docs: add configuration examples\"\n   git commit -m \"test: add integration tests for API scraper\"\n   ```"
+		},
+		{
+			"kind": "text",
+			"text": "\n\n3. **Validate Changes**\n   "
+		},
+		{
+			"kind": "code",
+			"text": "```bash\n   pnpm run lint      # Check code style\n   pnpm run test      # Run test suite\n   pnpm run build     # Verify build works\n   ```"
+		},
+		{
+			"kind": "text",
+			"text": "\n\n4. **Submit Pull Request**\n   - Push your branch: "
+		},
+		{
+			"kind": "code",
+			"text": "`git push origin feat/your-feature-name`"
+		},
+		{
+			"kind": "text",
+			"text": "\n   - Open PR against "
+		},
+		{
+			"kind": "code",
+			"text": "`main`"
+		},
+		{
+			"kind": "text",
+			"text": " branch\n   - CI will automatically validate and show release preview\n   - Address any feedback from reviewers\n\n### 📝 Commit Message Convention\n\nWe use [Conventional Commits](https://www.conventionalcommits.org/) for automatic versioning:\n\n"
+		},
+		{
+			"kind": "code",
+			"text": "```\n<type>(<scope>): <description>\n\n[optional body]\n\n[optional footer(s)]\n```"
+		},
+		{
+			"kind": "text",
+			"text": "\n\n**Types:**\n- "
+		},
+		{
+			"kind": "code",
+			"text": "`feat`"
+		},
+		{
+			"kind": "text",
+			"text": ": New feature (minor version bump)\n- "
+		},
+		{
+			"kind": "code",
+			"text": "`fix`"
+		},
+		{
+			"kind": "text",
+			"text": ": Bug fix (patch version bump)  \n- "
+		},
+		{
+			"kind": "code",
+			"text": "`docs`"
+		},
+		{
+			"kind": "text",
+			"text": ": Documentation changes\n- "
+		},
+		{
+			"kind": "code",
+			"text": "`style`"
+		},
+		{
+			"kind": "text",
+			"text": ": Code style changes (formatting, etc.)\n- "
+		},
+		{
+			"kind": "code",
+			"text": "`refactor`"
+		},
+		{
+			"kind": "text",
+			"text": ": Code refactoring\n- "
+		},
+		{
+			"kind": "code",
+			"text": "`test`"
+		},
+		{
+			"kind": "text",
+			"text": ": Adding or updating tests\n- "
+		},
+		{
+			"kind": "code",
+			"text": "`chore`"
+		},
+		{
+			"kind": "text",
+			"text": ": Maintenance tasks\n- "
+		},
+		{
+			"kind": "code",
+			"text": "`perf`"
+		},
+		{
+			"kind": "text",
+			"text": ": Performance improvements\n- "
+		},
+		{
+			"kind": "code",
+			"text": "`ci`"
+		},
+		{
+			"kind": "text",
+			"text": ": CI/CD changes\n\n**Breaking Changes:**\n"
+		},
+		{
+			"kind": "code",
+			"text": "```bash\nfeat!: redesign configuration API\n\nBREAKING CHANGE: The configuration schema has changed.\nMigration guide available in MIGRATION.md\n```"
+		},
+		{
+			"kind": "text",
+			"text": "\n\n### 🛡️ Quality Gates\n\nAll contributions must pass:\n- **Pre-commit hooks**: Linting and formatting\n- **Commit message validation**: Conventional commit format\n- **CI pipeline**: Tests, build, examples validation\n- **Code review**: Maintainer approval required\n\n### 🚫 What Not to Do\n\n- ❌ Don't manually update version numbers\n- ❌ Don't edit CHANGELOG.md directly\n- ❌ Don't skip conventional commit format\n- ❌ Don't push directly to main branch\n- ❌ Don't bypass pre-commit hooks\n\n## 📄 License\n\nThis project is licensed under the MIT License - see the [LICENSE]("
 		},
 		{
 			"kind": "relative-link",

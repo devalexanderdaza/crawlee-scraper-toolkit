@@ -6,7 +6,7 @@
 
 # Class: MetricsPlugin
 
-Defined in: plugins/index.ts:227
+Defined in: [plugins/index.ts:227](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L227)
 
 Metrics plugin for collecting scraper metrics
 
@@ -30,7 +30,7 @@ Metrics plugin for collecting scraper metrics
 
 > **name**: `string` = `'metrics'`
 
-Defined in: plugins/index.ts:228
+Defined in: [plugins/index.ts:228](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L228)
 
 #### Implementation of
 
@@ -42,7 +42,7 @@ Defined in: plugins/index.ts:228
 
 > **version**: `string` = `'1.0.0'`
 
-Defined in: plugins/index.ts:229
+Defined in: [plugins/index.ts:229](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L229)
 
 #### Implementation of
 
@@ -54,7 +54,7 @@ Defined in: plugins/index.ts:229
 
 > **install**(`scraper`): `void`
 
-Defined in: plugins/index.ts:248
+Defined in: [plugins/index.ts:248](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L248)
 
 #### Parameters
 
@@ -76,7 +76,7 @@ Defined in: plugins/index.ts:248
 
 > **getMetrics**(): `object`
 
-Defined in: plugins/index.ts:280
+Defined in: [plugins/index.ts:280](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L280)
 
 Get metrics
 
@@ -114,7 +114,7 @@ Get metrics
 
 > **resetMetrics**(): `void`
 
-Defined in: plugins/index.ts:287
+Defined in: [plugins/index.ts:287](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L287)
 
 Reset metrics
 

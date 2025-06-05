@@ -6,7 +6,7 @@
 
 # Interface: LoggerConfig
 
-Defined in: utils/logger.ts:16
+Defined in: [utils/logger.ts:16](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L16)
 
 Logger configuration
 
@@ -16,7 +16,7 @@ Logger configuration
 
 > **level**: `"debug"` \| `"info"` \| `"warn"` \| `"error"`
 
-Defined in: utils/logger.ts:17
+Defined in: [utils/logger.ts:17](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L17)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: utils/logger.ts:17
 
 > **format**: `"json"` \| `"text"`
 
-Defined in: utils/logger.ts:18
+Defined in: [utils/logger.ts:18](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L18)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: utils/logger.ts:18
 
 > `optional` **filename**: `string`
 
-Defined in: utils/logger.ts:19
+Defined in: [utils/logger.ts:19](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L19)
 
 ***
 
@@ -40,4 +40,4 @@ Defined in: utils/logger.ts:19
 
 > **console**: `boolean`
 
-Defined in: utils/logger.ts:20
+Defined in: [utils/logger.ts:20](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/logger.ts#L20)

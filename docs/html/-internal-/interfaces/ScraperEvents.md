@@ -6,7 +6,7 @@
 
 # Interface: ScraperEvents
 
-Defined in: core/types.ts:171
+Defined in: [core/types.ts:171](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L171)
 
 Event types emitted by the scraper engine
 
@@ -16,7 +16,7 @@ Event types emitted by the scraper engine
 
 > **scraper:start**: `object`
 
-Defined in: core/types.ts:172
+Defined in: [core/types.ts:172](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L172)
 
 #### scraperId
 
@@ -32,7 +32,7 @@ Defined in: core/types.ts:172
 
 > **scraper:success**: `object`
 
-Defined in: core/types.ts:173
+Defined in: [core/types.ts:173](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L173)
 
 #### scraperId
 
@@ -48,7 +48,7 @@ Defined in: core/types.ts:173
 
 > **scraper:error**: `object`
 
-Defined in: core/types.ts:174
+Defined in: [core/types.ts:174](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L174)
 
 #### scraperId
 
@@ -64,7 +64,7 @@ Defined in: core/types.ts:174
 
 > **scraper:retry**: `object`
 
-Defined in: core/types.ts:175
+Defined in: [core/types.ts:175](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L175)
 
 #### scraperId
 
@@ -80,7 +80,7 @@ Defined in: core/types.ts:175
 
 > **pool:acquire**: `object`
 
-Defined in: core/types.ts:176
+Defined in: [core/types.ts:176](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L176)
 
 #### instanceId
 
@@ -92,7 +92,7 @@ Defined in: core/types.ts:176
 
 > **pool:release**: `object`
 
-Defined in: core/types.ts:177
+Defined in: [core/types.ts:177](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L177)
 
 #### instanceId
 
@@ -104,7 +104,7 @@ Defined in: core/types.ts:177
 
 > **pool:cleanup**: `object`
 
-Defined in: core/types.ts:178
+Defined in: [core/types.ts:178](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L178)
 
 #### removedInstances
 

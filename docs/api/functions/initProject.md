@@ -8,7 +8,7 @@
 
 > **initProject**(`options`): `Promise`\<`void`\>
 
-Defined in: cli/commands/init.ts:19
+Defined in: [cli/commands/init.ts:19](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/init.ts#L19)
 
 Initialize a new scraper project
 

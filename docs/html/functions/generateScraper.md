@@ -8,7 +8,7 @@
 
 > **generateScraper**(`options`): `Promise`\<`void`\>
 
-Defined in: cli/commands/generate.ts:59
+Defined in: [cli/commands/generate.ts:59](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L59)
 
 Generate a new scraper
 

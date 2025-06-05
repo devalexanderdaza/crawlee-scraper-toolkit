@@ -6,7 +6,7 @@
 
 # Interface: ScraperContext\<Input, Output\>
 
-Defined in: core/types.ts:75
+Defined in: [core/types.ts:75](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L75)
 
 Scraper context passed to hooks and parse function
 
@@ -26,7 +26,7 @@ Scraper context passed to hooks and parse function
 
 > **input**: `Input`
 
-Defined in: core/types.ts:76
+Defined in: [core/types.ts:76](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L76)
 
 ***
 
@@ -34,7 +34,7 @@ Defined in: core/types.ts:76
 
 > **page**: `Page`
 
-Defined in: core/types.ts:77
+Defined in: [core/types.ts:77](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L77)
 
 ***
 
@@ -42,7 +42,7 @@ Defined in: core/types.ts:77
 
 > **attempt**: `number`
 
-Defined in: core/types.ts:78
+Defined in: [core/types.ts:78](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L78)
 
 ***
 
@@ -50,7 +50,7 @@ Defined in: core/types.ts:78
 
 > **startTime**: `number`
 
-Defined in: core/types.ts:79
+Defined in: [core/types.ts:79](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L79)
 
 ***
 
@@ -58,7 +58,7 @@ Defined in: core/types.ts:79
 
 > **options**: [`ScraperExecutionOptions`](ScraperExecutionOptions.md)
 
-Defined in: core/types.ts:80
+Defined in: [core/types.ts:80](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L80)
 
 ***
 
@@ -66,7 +66,7 @@ Defined in: core/types.ts:80
 
 > **metadata**: `Record`\<`string`, `unknown`\>
 
-Defined in: core/types.ts:81
+Defined in: [core/types.ts:81](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L81)
 
 ***
 
@@ -74,7 +74,7 @@ Defined in: core/types.ts:81
 
 > `optional` **result**: `Output`
 
-Defined in: core/types.ts:82
+Defined in: [core/types.ts:82](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L82)
 
 ***
 
@@ -82,4 +82,4 @@ Defined in: core/types.ts:82
 
 > `optional` **error**: `Error`
 
-Defined in: core/types.ts:83
+Defined in: [core/types.ts:83](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L83)

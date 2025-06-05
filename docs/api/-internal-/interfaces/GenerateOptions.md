@@ -6,7 +6,7 @@
 
 # Interface: GenerateOptions
 
-Defined in: cli/commands/generate.ts:16
+Defined in: [cli/commands/generate.ts:16](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L16)
 
 Generation options
 
@@ -16,7 +16,7 @@ Generation options
 
 > `optional` **template**: [`TemplateType`](../type-aliases/TemplateType.md)
 
-Defined in: cli/commands/generate.ts:17
+Defined in: [cli/commands/generate.ts:17](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L17)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: cli/commands/generate.ts:17
 
 > `optional` **name**: `string`
 
-Defined in: cli/commands/generate.ts:18
+Defined in: [cli/commands/generate.ts:18](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L18)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: cli/commands/generate.ts:18
 
 > `optional` **output**: `string`
 
-Defined in: cli/commands/generate.ts:19
+Defined in: [cli/commands/generate.ts:19](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L19)
 
 ***
 
@@ -40,4 +40,4 @@ Defined in: cli/commands/generate.ts:19
 
 > `optional` **interactive**: `boolean`
 
-Defined in: cli/commands/generate.ts:20
+Defined in: [cli/commands/generate.ts:20](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L20)

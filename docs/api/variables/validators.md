@@ -8,7 +8,7 @@
 
 > `const` **validators**: `object`
 
-Defined in: utils/validators.ts:26
+Defined in: [utils/validators.ts:26](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/utils/validators.ts#L26)
 
 Common validation functions
 

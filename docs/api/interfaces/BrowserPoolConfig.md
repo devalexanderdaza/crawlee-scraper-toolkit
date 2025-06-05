@@ -6,7 +6,7 @@
 
 # Interface: BrowserPoolConfig
 
-Defined in: core/types.ts:7
+Defined in: [core/types.ts:7](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L7)
 
 Configuration for browser pool
 
@@ -16,7 +16,7 @@ Configuration for browser pool
 
 > **maxSize**: `number`
 
-Defined in: core/types.ts:9
+Defined in: [core/types.ts:9](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L9)
 
 Maximum number of browser instances in the pool
 
@@ -26,7 +26,7 @@ Maximum number of browser instances in the pool
 
 > **maxAge**: `number`
 
-Defined in: core/types.ts:11
+Defined in: [core/types.ts:11](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L11)
 
 Maximum age of browser instances in milliseconds
 
@@ -36,7 +36,7 @@ Maximum age of browser instances in milliseconds
 
 > **launchOptions**: `object`
 
-Defined in: core/types.ts:13
+Defined in: [core/types.ts:13](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L13)
 
 Browser launch options
 
@@ -58,6 +58,6 @@ Browser launch options
 
 > **cleanupInterval**: `number`
 
-Defined in: core/types.ts:19
+Defined in: [core/types.ts:19](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L19)
 
 Cleanup interval in milliseconds
