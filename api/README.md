@@ -412,13 +412,183 @@ pnpm run docs:serve    # Available at http://localhost:8080
 | `docs:clean` | Clean documentation directory |
 | `docs:preview` | Build and serve in one command |
 
+## 🚀 Release Process
+
+This project uses **semantic-release** for fully automated versioning and publishing. All releases are handled automatically by CI/CD based on conventional commits.
+
+### 📋 Conventional Commits
+
+Use conventional commit messages to trigger automatic releases:
+
+```bash
+# Patch release (1.0.0 → 1.0.1)
+git commit -m "fix: resolve browser pool memory leak"
+
+# Minor release (1.0.0 → 1.1.0)  
+git commit -m "feat: add new caching plugin"
+
+# Major release (1.0.0 → 2.0.0)
+git commit -m "feat!: redesign configuration API
+
+BREAKING CHANGE: Configuration schema has changed"
+
+# Other commit types (no release)
+git commit -m "docs: update README examples"
+git commit -m "chore: update dependencies"
+git commit -m "test: add browser pool tests"
+```
+
+### 🔄 Automated Release Flow
+
+1. **Development**: Create feature branch, make changes with conventional commits
+2. **Pull Request**: Open PR to `main` branch
+3. **CI Validation**: Automated tests, linting, examples validation
+4. **Release Preview**: Comment on PR shows what would be released
+5. **Merge**: Merge PR to `main` branch
+6. **Automatic Release**: CI/CD automatically:
+   - Analyzes commits since last release
+   - Determines next version (patch/minor/major)
+   - Generates CHANGELOG.md
+   - Creates GitHub release with notes
+   - Publishes to npm registry
+   - Deploys documentation to GitHub Pages
+   - Sends notifications
+
+### 🛠️ Release Commands
+
+```bash
+# Preview what would be released (dry-run)
+pnpm run release:dry
+
+# Manual release (emergency only)
+pnpm run release:legacy
+
+# Generate changelog manually
+pnpm run changelog
+
+# Check release status
+pnpm run semantic-release:dry
+```
+
+### 📊 Release Validation
+
+Every release automatically runs:
+- ✅ ESLint code quality checks
+- ✅ Prettier formatting validation  
+- ✅ Jest test suite with coverage
+- ✅ TypeScript compilation
+- ✅ Examples validation
+- ✅ Documentation generation
+- ✅ Security audit
+- ✅ Bundle size analysis
+
+### 🎯 Best Practices
+
+- **Use conventional commits** for all changes
+- **Write descriptive commit messages** with clear scope
+- **Include breaking change notes** when applicable
+- **Keep commits atomic** and focused
+- **Test locally** before pushing
+- **Let CI/CD handle releases** (avoid manual versioning)
+
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+We welcome contributions! Please follow these guidelines:
+
+### 💻 Development Setup
+
+1. **Fork and Clone**
+   ```bash
+   git clone https://github.com/devalexanderdaza/crawlee-scraper-toolkit.git
+   cd crawlee-scraper-toolkit
+   pnpm install
+   ```
+
+2. **Setup Development Environment**
+   ```bash
+   # Install dependencies and setup hooks
+   pnpm install
+   pnpm run prepare  # Sets up husky git hooks
+   
+   # Run tests to verify setup
+   pnpm test
+   ```
+
+### 🎯 Development Workflow
+
+1. **Create Feature Branch**
+   ```bash
+   git checkout -b feat/your-feature-name
+   ```
+
+2. **Make Changes** following conventional commits:
+   ```bash
+   # Examples of good commit messages
+   git commit -m "feat: add retry mechanism to browser pool"
+   git commit -m "fix: resolve memory leak in scraper engine"  
+   git commit -m "docs: add configuration examples"
+   git commit -m "test: add integration tests for API scraper"
+   ```
+
+3. **Validate Changes**
+   ```bash
+   pnpm run lint      # Check code style
+   pnpm run test      # Run test suite
+   pnpm run build     # Verify build works
+   ```
+
+4. **Submit Pull Request**
+   - Push your branch: `git push origin feat/your-feature-name`
+   - Open PR against `main` branch
+   - CI will automatically validate and show release preview
+   - Address any feedback from reviewers
+
+### 📝 Commit Message Convention
+
+We use [Conventional Commits](https://www.conventionalcommits.org/) for automatic versioning:
+
+```
+<type>(<scope>): <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+**Types:**
+- `feat`: New feature (minor version bump)
+- `fix`: Bug fix (patch version bump)  
+- `docs`: Documentation changes
+- `style`: Code style changes (formatting, etc.)
+- `refactor`: Code refactoring
+- `test`: Adding or updating tests
+- `chore`: Maintenance tasks
+- `perf`: Performance improvements
+- `ci`: CI/CD changes
+
+**Breaking Changes:**
+```bash
+feat!: redesign configuration API
+
+BREAKING CHANGE: The configuration schema has changed.
+Migration guide available in MIGRATION.md
+```
+
+### 🛡️ Quality Gates
+
+All contributions must pass:
+- **Pre-commit hooks**: Linting and formatting
+- **Commit message validation**: Conventional commit format
+- **CI pipeline**: Tests, build, examples validation
+- **Code review**: Maintainer approval required
+
+### 🚫 What Not to Do
+
+- ❌ Don't manually update version numbers
+- ❌ Don't edit CHANGELOG.md directly
+- ❌ Don't skip conventional commit format
+- ❌ Don't push directly to main branch
+- ❌ Don't bypass pre-commit hooks
 
 ## 📄 License
 
@@ -432,9 +602,9 @@ This project is licensed under the MIT License - see the [LICENSE](_media/LICENS
 
 ## 📞 Support
 
-- 📖 [Documentation](https://github.com/yourusername/crawlee-scraper-toolkit/wiki)
-- 🐛 [Issue Tracker](https://github.com/yourusername/crawlee-scraper-toolkit/issues)
-- 💬 [Discussions](https://github.com/yourusername/crawlee-scraper-toolkit/discussions)
+- 📖 [Documentation](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/wiki)
+- 🐛 [Issue Tracker](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/issues)
+- 💬 [Discussions](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/discussions)
 
 ---
 

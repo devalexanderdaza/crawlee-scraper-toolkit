@@ -12212,31 +12212,183 @@
 		},
 		{
 			"kind": "text",
-			"text": " | Build and serve in one command |\n\n## 🤝 Contributing\n\n1. Fork the repository\n2. Create your feature branch ("
+			"text": " | Build and serve in one command |\n\n## 🚀 Release Process\n\nThis project uses **semantic-release** for fully automated versioning and publishing. All releases are handled automatically by CI/CD based on conventional commits.\n\n### 📋 Conventional Commits\n\nUse conventional commit messages to trigger automatic releases:\n\n"
 		},
 		{
 			"kind": "code",
-			"text": "`git checkout -b feature/amazing-feature`"
+			"text": "```bash\n# Patch release (1.0.0 → 1.0.1)\ngit commit -m \"fix: resolve browser pool memory leak\"\n\n# Minor release (1.0.0 → 1.1.0)  \ngit commit -m \"feat: add new caching plugin\"\n\n# Major release (1.0.0 → 2.0.0)\ngit commit -m \"feat!: redesign configuration API\n\nBREAKING CHANGE: Configuration schema has changed\"\n\n# Other commit types (no release)\ngit commit -m \"docs: update README examples\"\ngit commit -m \"chore: update dependencies\"\ngit commit -m \"test: add browser pool tests\"\n```"
 		},
 		{
 			"kind": "text",
-			"text": ")\n3. Commit your changes ("
+			"text": "\n\n### 🔄 Automated Release Flow\n\n1. **Development**: Create feature branch, make changes with conventional commits\n2. **Pull Request**: Open PR to "
 		},
 		{
 			"kind": "code",
-			"text": "`git commit -m 'Add some amazing feature'`"
+			"text": "`main`"
 		},
 		{
 			"kind": "text",
-			"text": ")\n4. Push to the branch ("
+			"text": " branch\n3. **CI Validation**: Automated tests, linting, examples validation\n4. **Release Preview**: Comment on PR shows what would be released\n5. **Merge**: Merge PR to "
 		},
 		{
 			"kind": "code",
-			"text": "`git push origin feature/amazing-feature`"
+			"text": "`main`"
 		},
 		{
 			"kind": "text",
-			"text": ")\n5. Open a Pull Request\n\n## 📄 License\n\nThis project is licensed under the MIT License - see the [LICENSE]("
+			"text": " branch\n6. **Automatic Release**: CI/CD automatically:\n   - Analyzes commits since last release\n   - Determines next version (patch/minor/major)\n   - Generates CHANGELOG.md\n   - Creates GitHub release with notes\n   - Publishes to npm registry\n   - Deploys documentation to GitHub Pages\n   - Sends notifications\n\n### 🛠️ Release Commands\n\n"
+		},
+		{
+			"kind": "code",
+			"text": "```bash\n# Preview what would be released (dry-run)\npnpm run release:dry\n\n# Manual release (emergency only)\npnpm run release:legacy\n\n# Generate changelog manually\npnpm run changelog\n\n# Check release status\npnpm run semantic-release:dry\n```"
+		},
+		{
+			"kind": "text",
+			"text": "\n\n### 📊 Release Validation\n\nEvery release automatically runs:\n- ✅ ESLint code quality checks\n- ✅ Prettier formatting validation  \n- ✅ Jest test suite with coverage\n- ✅ TypeScript compilation\n- ✅ Examples validation\n- ✅ Documentation generation\n- ✅ Security audit\n- ✅ Bundle size analysis\n\n### 🎯 Best Practices\n\n- **Use conventional commits** for all changes\n- **Write descriptive commit messages** with clear scope\n- **Include breaking change notes** when applicable\n- **Keep commits atomic** and focused\n- **Test locally** before pushing\n- **Let CI/CD handle releases** (avoid manual versioning)\n\n## 🤝 Contributing\n\nWe welcome contributions! Please follow these guidelines:\n\n### 💻 Development Setup\n\n1. **Fork and Clone**\n   "
+		},
+		{
+			"kind": "code",
+			"text": "```bash\n   git clone https://github.com/devalexanderdaza/crawlee-scraper-toolkit.git\n   cd crawlee-scraper-toolkit\n   pnpm install\n   ```"
+		},
+		{
+			"kind": "text",
+			"text": "\n\n2. **Setup Development Environment**\n   "
+		},
+		{
+			"kind": "code",
+			"text": "```bash\n   # Install dependencies and setup hooks\n   pnpm install\n   pnpm run prepare  # Sets up husky git hooks\n   \n   # Run tests to verify setup\n   pnpm test\n   ```"
+		},
+		{
+			"kind": "text",
+			"text": "\n\n### 🎯 Development Workflow\n\n1. **Create Feature Branch**\n   "
+		},
+		{
+			"kind": "code",
+			"text": "```bash\n   git checkout -b feat/your-feature-name\n   ```"
+		},
+		{
+			"kind": "text",
+			"text": "\n\n2. **Make Changes** following conventional commits:\n   "
+		},
+		{
+			"kind": "code",
+			"text": "```bash\n   # Examples of good commit messages\n   git commit -m \"feat: add retry mechanism to browser pool\"\n   git commit -m \"fix: resolve memory leak in scraper engine\"  \n   git commit -m \"docs: add configuration examples\"\n   git commit -m \"test: add integration tests for API scraper\"\n   ```"
+		},
+		{
+			"kind": "text",
+			"text": "\n\n3. **Validate Changes**\n   "
+		},
+		{
+			"kind": "code",
+			"text": "```bash\n   pnpm run lint      # Check code style\n   pnpm run test      # Run test suite\n   pnpm run build     # Verify build works\n   ```"
+		},
+		{
+			"kind": "text",
+			"text": "\n\n4. **Submit Pull Request**\n   - Push your branch: "
+		},
+		{
+			"kind": "code",
+			"text": "`git push origin feat/your-feature-name`"
+		},
+		{
+			"kind": "text",
+			"text": "\n   - Open PR against "
+		},
+		{
+			"kind": "code",
+			"text": "`main`"
+		},
+		{
+			"kind": "text",
+			"text": " branch\n   - CI will automatically validate and show release preview\n   - Address any feedback from reviewers\n\n### 📝 Commit Message Convention\n\nWe use [Conventional Commits](https://www.conventionalcommits.org/) for automatic versioning:\n\n"
+		},
+		{
+			"kind": "code",
+			"text": "```\n<type>(<scope>): <description>\n\n[optional body]\n\n[optional footer(s)]\n```"
+		},
+		{
+			"kind": "text",
+			"text": "\n\n**Types:**\n- "
+		},
+		{
+			"kind": "code",
+			"text": "`feat`"
+		},
+		{
+			"kind": "text",
+			"text": ": New feature (minor version bump)\n- "
+		},
+		{
+			"kind": "code",
+			"text": "`fix`"
+		},
+		{
+			"kind": "text",
+			"text": ": Bug fix (patch version bump)  \n- "
+		},
+		{
+			"kind": "code",
+			"text": "`docs`"
+		},
+		{
+			"kind": "text",
+			"text": ": Documentation changes\n- "
+		},
+		{
+			"kind": "code",
+			"text": "`style`"
+		},
+		{
+			"kind": "text",
+			"text": ": Code style changes (formatting, etc.)\n- "
+		},
+		{
+			"kind": "code",
+			"text": "`refactor`"
+		},
+		{
+			"kind": "text",
+			"text": ": Code refactoring\n- "
+		},
+		{
+			"kind": "code",
+			"text": "`test`"
+		},
+		{
+			"kind": "text",
+			"text": ": Adding or updating tests\n- "
+		},
+		{
+			"kind": "code",
+			"text": "`chore`"
+		},
+		{
+			"kind": "text",
+			"text": ": Maintenance tasks\n- "
+		},
+		{
+			"kind": "code",
+			"text": "`perf`"
+		},
+		{
+			"kind": "text",
+			"text": ": Performance improvements\n- "
+		},
+		{
+			"kind": "code",
+			"text": "`ci`"
+		},
+		{
+			"kind": "text",
+			"text": ": CI/CD changes\n\n**Breaking Changes:**\n"
+		},
+		{
+			"kind": "code",
+			"text": "```bash\nfeat!: redesign configuration API\n\nBREAKING CHANGE: The configuration schema has changed.\nMigration guide available in MIGRATION.md\n```"
+		},
+		{
+			"kind": "text",
+			"text": "\n\n### 🛡️ Quality Gates\n\nAll contributions must pass:\n- **Pre-commit hooks**: Linting and formatting\n- **Commit message validation**: Conventional commit format\n- **CI pipeline**: Tests, build, examples validation\n- **Code review**: Maintainer approval required\n\n### 🚫 What Not to Do\n\n- ❌ Don't manually update version numbers\n- ❌ Don't edit CHANGELOG.md directly\n- ❌ Don't skip conventional commit format\n- ❌ Don't push directly to main branch\n- ❌ Don't bypass pre-commit hooks\n\n## 📄 License\n\nThis project is licensed under the MIT License - see the [LICENSE]("
 		},
 		{
 			"kind": "relative-link",
@@ -12245,7 +12397,7 @@
 		},
 		{
 			"kind": "text",
-			"text": ") file for details.\n\n## 🙏 Acknowledgments\n\n- Built on top of [Crawlee](https://crawlee.dev/) and [Playwright](https://playwright.dev/)\n- Inspired by the need for a more configurable and extensible scraping toolkit\n- Thanks to all contributors and the open-source community\n\n## 📞 Support\n\n- 📖 [Documentation](https://github.com/yourusername/crawlee-scraper-toolkit/wiki)\n- 🐛 [Issue Tracker](https://github.com/yourusername/crawlee-scraper-toolkit/issues)\n- 💬 [Discussions](https://github.com/yourusername/crawlee-scraper-toolkit/discussions)\n\n---\n\nMade with ❤️ by the Crawlee Scraper Toolkit team"
+			"text": ") file for details.\n\n## 🙏 Acknowledgments\n\n- Built on top of [Crawlee](https://crawlee.dev/) and [Playwright](https://playwright.dev/)\n- Inspired by the need for a more configurable and extensible scraping toolkit\n- Thanks to all contributors and the open-source community\n\n## 📞 Support\n\n- 📖 [Documentation](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/wiki)\n- 🐛 [Issue Tracker](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/issues)\n- 💬 [Discussions](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/discussions)\n\n---\n\nMade with ❤️ by the Crawlee Scraper Toolkit team"
 		}
 	],
 	"symbolIdMap": {
