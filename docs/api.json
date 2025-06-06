@@ -12240,11 +12240,51 @@
 		},
 		{
 			"kind": "code",
-			"text": "```bash\n# Preview what would be released (dry-run)\npnpm run release:dry\n\n# Manual release (emergency only)\npnpm run release:legacy\n\n# Generate changelog manually\npnpm run changelog\n\n# Check release status\npnpm run semantic-release:dry\n```"
+			"text": "```bash\n# 🔍 Local Analysis (Recommended for developers)\npnpm run release:analyze        # Fast offline analysis of commits\n\n# 🧪 Release Simulation\npnpm run release:dry           # Safe offline dry-run (no auth required)\npnpm run release:dry-full      # Full dry-run with GitHub/npm simulation (may fail locally)\n\n# 🔄 CI/CD Integration  \npnpm run release:preview       # CI-based release preview\npnpm run release               # Automated release (CI only)\n\n# 🛠️ Manual Tools\npnpm run changelog             # Generate changelog manually\npnpm run release:legacy        # Emergency manual release\npnpm run health-check          # Validate CI/CD configuration\n```"
 		},
 		{
 			"kind": "text",
-			"text": "\n\n### 📊 Release Validation\n\nEvery release automatically runs:\n- ✅ ESLint code quality checks\n- ✅ Prettier formatting validation  \n- ✅ Jest test suite with coverage\n- ✅ TypeScript compilation\n- ✅ Examples validation\n- ✅ Documentation generation\n- ✅ Security audit\n- ✅ Bundle size analysis\n\n### 🎯 Best Practices\n\n- **Use conventional commits** for all changes\n- **Write descriptive commit messages** with clear scope\n- **Include breaking change notes** when applicable\n- **Keep commits atomic** and focused\n- **Test locally** before pushing\n- **Let CI/CD handle releases** (avoid manual versioning)\n\n## 🤝 Contributing\n\nWe welcome contributions! Please follow these guidelines:\n\n### 💻 Development Setup\n\n1. **Fork and Clone**\n   "
+			"text": "\n\n#### Command Details\n\n| Command | Environment | Auth Required | Output |\n|---------|-------------|---------------|---------|\n| "
+		},
+		{
+			"kind": "code",
+			"text": "`release:analyze`"
+		},
+		{
+			"kind": "text",
+			"text": " | Local | ❌ No | Commit analysis + version prediction |\n| "
+		},
+		{
+			"kind": "code",
+			"text": "`release:dry`"
+		},
+		{
+			"kind": "text",
+			"text": " | Local | ❌ No | Basic semantic-release simulation |  \n| "
+		},
+		{
+			"kind": "code",
+			"text": "`release:dry-full`"
+		},
+		{
+			"kind": "text",
+			"text": " | Local | ⚠️ Optional | Full simulation (may fail without auth) |\n| "
+		},
+		{
+			"kind": "code",
+			"text": "`release:preview`"
+		},
+		{
+			"kind": "text",
+			"text": " | CI/CD | ✅ Yes | Complete release preview |\n| "
+		},
+		{
+			"kind": "code",
+			"text": "`release`"
+		},
+		{
+			"kind": "text",
+			"text": " | CI/CD | ✅ Yes | Actual release |\n\n### 📊 Release Validation\n\nEvery release automatically runs:\n- ✅ ESLint code quality checks\n- ✅ Prettier formatting validation  \n- ✅ Jest test suite with coverage\n- ✅ TypeScript compilation\n- ✅ Examples validation\n- ✅ Documentation generation\n- ✅ Security audit\n- ✅ Bundle size analysis\n\n### 🎯 Best Practices\n\n- **Use conventional commits** for all changes\n- **Write descriptive commit messages** with clear scope\n- **Include breaking change notes** when applicable\n- **Keep commits atomic** and focused\n- **Test locally** before pushing\n- **Let CI/CD handle releases** (avoid manual versioning)\n\n## 🤝 Contributing\n\nWe welcome contributions! Please follow these guidelines:\n\n### 💻 Development Setup\n\n1. **Fork and Clone**\n   "
 		},
 		{
 			"kind": "code",
