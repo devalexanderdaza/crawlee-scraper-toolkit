@@ -12212,7 +12212,15 @@
 		},
 		{
 			"kind": "text",
-			"text": " | Build and serve in one command |\n\n## 🚀 Release Process\n\nThis project uses **semantic-release** for fully automated versioning and publishing. All releases are handled automatically by CI/CD based on conventional commits.\n\n### 📋 Conventional Commits\n\nUse conventional commit messages to trigger automatic releases:\n\n"
+			"text": " | Build and serve in one command |\n| "
+		},
+		{
+			"kind": "code",
+			"text": "`docs:package`"
+		},
+		{
+			"kind": "text",
+			"text": " | Create compressed documentation archive |\n\n## 🚀 Release Process\n\nThis project uses **semantic-release** for fully automated versioning and publishing. All releases are handled automatically by CI/CD based on conventional commits.\n\n### 📋 Conventional Commits\n\nUse conventional commit messages to trigger automatic releases:\n\n"
 		},
 		{
 			"kind": "code",

@@ -384,7 +384,7 @@ Comprehensive documentation is available in multiple formats:
 ### 🔗 Quick Links
 - **[📖 Complete API Documentation](_media/README.md)** - Full API reference
 - **[🌐 Interactive HTML Docs](./docs/html/index.html)** - Browse documentation interactively  
-- **[📊 Coverage Report](./docs/coverage/lcov-report/index.html)** - Test coverage analysis
+- **[📊 Coverage Report](_media/index.html)** - Test coverage analysis
 - **[💡 Usage Examples](_media/EXAMPLES.md)** - Detailed examples documentation
 
 ### 🚀 Generate Documentation
@@ -411,6 +411,7 @@ pnpm run docs:serve    # Available at http://localhost:8080
 | `docs:serve` | Serve docs locally with HTTP server |
 | `docs:clean` | Clean documentation directory |
 | `docs:preview` | Build and serve in one command |
+| `docs:package` | Create compressed documentation archive |
 
 ## 🚀 Release Process
 
