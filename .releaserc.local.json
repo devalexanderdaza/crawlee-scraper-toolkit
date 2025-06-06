@@ -1,6 +1,8 @@
 {
   "branches": ["main"],
   "repositoryUrl": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit.git",
+  "dryRun": true,
+  "ci": false,
   "plugins": [
     [
       "@semantic-release/commit-analyzer",
@@ -47,40 +49,6 @@
       "@semantic-release/changelog",
       {
         "changelogFile": "CHANGELOG.md"
-      }
-    ],
-    [
-      "@semantic-release/npm",
-      {
-        "npmPublish": true,
-        "tarballDir": "dist"
-      }
-    ],
-    [
-      "@semantic-release/github",
-      {
-        "assets": [
-          {
-            "path": "dist/*.tgz",
-            "label": "Distribution package"
-          },
-          {
-            "path": "docs/**/*",
-            "label": "Documentation"
-          }
-        ],
-        "successComment": "🎉 This ${issue.pull_request ? 'PR is included' : 'issue has been resolved'} in version ${nextRelease.version} 🎉\n\nThe release is available on:\n- [npm package (@latest dist-tag)](https://www.npmjs.com/package/${context.payload.repository.name}/v/${nextRelease.version})\n- [GitHub release](${releases.filter(release => release.pluginName === '@semantic-release/github')[0].url})\n\nYour **[semantic-release](https://github.com/semantic-release/semantic-release)** bot 📦🚀"
-      }
-    ],
-    [
-      "@semantic-release/git",
-      {
-        "assets": [
-          "CHANGELOG.md",
-          "package.json",
-          "docs/**/*"
-        ],
-        "message": "chore: ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }
     ]
   ]

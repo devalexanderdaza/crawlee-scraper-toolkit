@@ -453,8 +453,14 @@ git commit -m "test: add browser pool tests"
 ### 🛠️ Release Commands
 
 ```bash
-# Preview what would be released (dry-run)
+# Analyze what would be released (local, fast)
+pnpm run release:analyze
+
+# Preview what would be released (dry-run, may fail locally due to Git auth)
 pnpm run release:dry
+
+# CI/CD release preview (for GitHub Actions)
+pnpm run release:preview
 
 # Manual release (emergency only)
 pnpm run release:legacy
@@ -462,8 +468,8 @@ pnpm run release:legacy
 # Generate changelog manually
 pnpm run changelog
 
-# Check release status
-pnpm run semantic-release:dry
+# Check CI/CD configuration
+pnpm run health-check
 ```
 
 ### 📊 Release Validation

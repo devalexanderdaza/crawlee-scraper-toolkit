@@ -149,6 +149,14 @@ fi
 echo ""
 
 echo -e "${BLUE}🧪 Functional Tests${NC}"
+echo -e "  🔍 Testing release analysis..."
+if pnpm run release:analyze >/dev/null 2>&1; then
+    echo -e "  ✅ release analysis works"
+else
+    echo -e "  ❌ release analysis failed"
+    ISSUES=$((ISSUES+1))
+fi
+
 echo -e "  🔍 Testing release dry-run..."
 # Note: This will fail locally due to git permissions, but succeeds in CI/CD
 if pnpm run release:dry 2>&1 | grep -q "EGITNOPERMISSION"; then

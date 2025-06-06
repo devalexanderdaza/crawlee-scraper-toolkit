@@ -1,5 +1,28 @@
 ## 1.0.0 (2025-06-05)
 
+* fix: correct commit message format in semantic-release configuration ([4aa702a](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/4aa702a))
+* fix: make husky pre-commit hook executable ([aa02c25](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/aa02c25))
+* feat: add 'examples/' to ESLint ignore patterns ([f4e3e43](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/f4e3e43))
+* feat: enhance advanced product scraper with detailed product and search result interfaces ([7c44611](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/7c44611))
+* feat: Generate comprehensive documentation for Crawlee Scraper Toolkit ([8745832](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/8745832))
+* feat: implement complete CI/CD automation with semantic-release ([eadb7cd](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/eadb7cd))
+* feat: migrate from npm to pnpm for package management ([9e8b6cf](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/9e8b6cf))
+* feat: refactor scraper examples to improve module imports and enhance error handling ([1b7e321](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/1b7e321))
+* feat: update dev scripts to use tsconfig-paths for improved module resolution ([bc4a083](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/bc4a083))
+* feat: update README and documentation links to reflect correct repository URL ([da5cfae](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/da5cfae))
+* docs: add CI/CD automation completion summary ([53c49bf](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/53c49bf))
+* Refactor code structure for improved readability and maintainability ([b5878a6](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/b5878a6))
+* chore(project): initial commit ([167f59e](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/167f59e))
+
+
+### BREAKING CHANGE
+
+* Release process now fully automated via conventional commits.
+Manual versioning and releases are deprecated in favor of semantic-release.
+
+
+## 1.0.0 (2025-06-05)
+
 * docs: add CI/CD automation completion summary ([53c49bf](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/53c49bf))
 * fix: make husky pre-commit hook executable ([aa02c25](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/aa02c25))
 * feat: add 'examples/' to ESLint ignore patterns ([f4e3e43](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/f4e3e43))
