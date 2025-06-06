@@ -1,3 +1,8 @@
+## <small>1.0.1 (2025-06-06)</small>
+
+* fix: resolve GitHub release asset conflict by using documentation archive ([d559c3e](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/d559c3e))
+* fix: update pnpm setup and cache path in CI/CD workflow ([6144ba1](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/6144ba1))
+
 ## 1.0.0 (2025-06-06)
 
 * fix: correct commit message format in semantic-release configuration ([4aa702a](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/4aa702a))

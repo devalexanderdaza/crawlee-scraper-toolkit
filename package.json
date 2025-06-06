@@ -1,6 +1,6 @@
 {
   "name": "crawlee-scraper-toolkit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A comprehensive TypeScript toolkit for building robust web scrapers with Crawlee, featuring maximum configurability and CLI generator",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
