@@ -86,7 +86,9 @@ check_script "test" || ISSUES=$((ISSUES+1))
 check_script "lint" || ISSUES=$((ISSUES+1))
 check_script "docs:build" || ISSUES=$((ISSUES+1))
 check_script "release" || ISSUES=$((ISSUES+1))
+check_script "release:analyze" || ISSUES=$((ISSUES+1))
 check_script "release:dry" || ISSUES=$((ISSUES+1))
+check_script "release:dry-full" || ISSUES=$((ISSUES+1))
 check_script "changelog" || ISSUES=$((ISSUES+1))
 echo ""
 
@@ -201,13 +203,25 @@ else
     echo -e "${YELLOW}🔧 Next steps:${NC}"
     echo "  1. Fix the issues listed above"
     echo "  2. Run this script again to verify"
-    echo "  3. Test the release process with: pnpm run release:dry"
+    echo "  3. Test the release process with: pnpm run release:analyze"
     exit 1
 fi
 
 echo ""
-echo -e "${BLUE}💡 Additional Checks:${NC}"
-echo "  - Ensure GITHUB_TOKEN has proper permissions"
+echo -e "${BLUE}💡 Release Command Guide:${NC}"
+echo -e "  ${GREEN}For Development (Local):${NC}"
+echo "    pnpm run release:analyze    # Fast offline analysis ⚡"
+echo "    pnpm run release:dry        # Safe simulation (no auth needed) 🛡️"
+echo ""
+echo -e "  ${YELLOW}For Testing (Optional Auth):${NC}"
+echo "    pnpm run release:dry-full   # Full simulation (may need auth) 🔍"
+echo ""
+echo -e "  ${CYAN}For CI/CD (GitHub Actions):${NC}"
+echo "    pnpm run release:preview    # CI-based preview 🔄"
+echo "    pnpm run release            # Actual release 🚀"
+echo ""
+echo -e "${BLUE}🔒 Additional Checks:${NC}"
+echo "  - Ensure GITHUB_TOKEN has proper permissions in CI"
 echo "  - Verify NPM_TOKEN is configured in repository secrets"
-echo "  - Test with a sample conventional commit"
+echo "  - Test with conventional commits (feat:, fix:, etc.)"
 echo "  - Monitor first automated release closely"

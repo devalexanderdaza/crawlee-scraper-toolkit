@@ -453,24 +453,32 @@ git commit -m "test: add browser pool tests"
 ### 🛠️ Release Commands
 
 ```bash
-# Analyze what would be released (local, fast)
-pnpm run release:analyze
+# 🔍 Local Analysis (Recommended for developers)
+pnpm run release:analyze        # Fast offline analysis of commits
 
-# Preview what would be released (dry-run, may fail locally due to Git auth)
-pnpm run release:dry
+# 🧪 Release Simulation
+pnpm run release:dry           # Safe offline dry-run (no auth required)
+pnpm run release:dry-full      # Full dry-run with GitHub/npm simulation (may fail locally)
 
-# CI/CD release preview (for GitHub Actions)
-pnpm run release:preview
+# 🔄 CI/CD Integration  
+pnpm run release:preview       # CI-based release preview
+pnpm run release               # Automated release (CI only)
 
-# Manual release (emergency only)
-pnpm run release:legacy
-
-# Generate changelog manually
-pnpm run changelog
-
-# Check CI/CD configuration
-pnpm run health-check
+# 🛠️ Manual Tools
+pnpm run changelog             # Generate changelog manually
+pnpm run release:legacy        # Emergency manual release
+pnpm run health-check          # Validate CI/CD configuration
 ```
+
+#### Command Details
+
+| Command | Environment | Auth Required | Output |
+|---------|-------------|---------------|---------|
+| `release:analyze` | Local | ❌ No | Commit analysis + version prediction |
+| `release:dry` | Local | ❌ No | Basic semantic-release simulation |  
+| `release:dry-full` | Local | ⚠️ Optional | Full simulation (may fail without auth) |
+| `release:preview` | CI/CD | ✅ Yes | Complete release preview |
+| `release` | CI/CD | ✅ Yes | Actual release |
 
 ### 📊 Release Validation
 
