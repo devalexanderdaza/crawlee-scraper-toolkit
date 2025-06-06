@@ -1,4 +1,4 @@
-import { CrawleeScraperEngine, ScraperDefinition, createConfig, configManager } from '../src';
+import { CrawleeScraperEngine, ScraperDefinition, createConfig, createLogger } from '../src';
 import { ScraperContext } from '../src/core/types';
 
 // Define the output type for news articles
@@ -53,7 +53,7 @@ const newsScraperDefinition: ScraperDefinition<string, NewsArticle> = {
 };
 
 async function main() {
-  // Create configuration using configManager
+  // Create configuration
   const config = createConfig()
     .browserPool({
       maxSize: 3,
@@ -70,11 +70,15 @@ async function main() {
     })
     .build();
 
-  // Update the global config manager
-  configManager.updateConfig(config);
+  // Create a logger instance using settings from the config if available
+  const logger = createLogger({
+    level: config.logging?.level || 'info',
+    format: config.logging?.format || 'text',
+    console: true, // Ensure logs go to console for the example
+  });
 
-  // Initialize engine with the configured manager
-  const engine = new CrawleeScraperEngine(configManager.getConfig(), console);
+  // Initialize engine with the specific config and logger
+  const engine = new CrawleeScraperEngine(config, logger);
   
   // Register scraper
   engine.register(newsScraperDefinition);
@@ -82,22 +86,22 @@ async function main() {
   try {
     // Execute scraper
     const searchTerm = process.argv[2] || 'technology';
-    console.log(`Searching for news about: ${searchTerm}`);
+    logger.info(`Searching for news about: ${searchTerm}`);
     
     const result = await engine.execute(newsScraperDefinition, searchTerm);
     
     if (result.success && result.data) {
-      console.log('Successfully scraped article:');
-      console.log(`Title: ${result.data.title}`);
-      console.log(`Content: ${result.data.content}`);
-      console.log(`URL: ${result.data.url}`);
-      console.log(`Scraped at: ${result.data.scrapedAt}`);
-      console.log(`Query used: ${result.data.query}`);
+      logger.info('Successfully scraped article:');
+      logger.info(`Title: ${result.data.title}`);
+      logger.info(`Content: ${result.data.content}`);
+      logger.info(`URL: ${result.data.url}`);
+      logger.info(`Scraped at: ${result.data.scrapedAt}`);
+      logger.info(`Query used: ${result.data.query}`);
     } else {
-      console.error('Scraping failed:', result.error?.message);
+      logger.error('Scraping failed:', { message: result.error?.message });
     }
-  } catch (error) {
-    console.error('Error:', error);
+  } catch (error: any) {
+    logger.error('Error:', { message: error?.message, stack: error?.stack });
   } finally {
     await engine.shutdown();
   }

@@ -7,25 +7,57 @@ import { ScraperEngineConfig, BrowserPoolConfig, ScraperExecutionOptions } from 
 import { schemas } from '@/utils/validators';
 
 /**
- * Configuration source types
+ * @file Manages scraper engine configurations from various sources like files,
+ * environment variables, and programmatic updates. It supports configuration profiles
+ * and a fluent builder API for creating configurations.
+ */
+
+/**
+ * Represents the source from which a configuration part was loaded.
+ * - `file`: Configuration loaded from a YAML or JSON file.
+ * - `env`: Configuration loaded from environment variables.
+ * - `programmatic`: Configuration applied directly via code (e.g., `updateConfig`, `applyProfile`).
+ * - `default`: The base default configuration of the toolkit.
  */
 export type ConfigSource = 'file' | 'env' | 'programmatic' | 'default';
 
 /**
- * Configuration profile
+ * Defines the structure for a configuration profile, allowing predefined sets of configurations.
  */
 export interface ConfigProfile {
+  /** The unique name of the profile (e.g., "development", "production_large_pool"). */
   name: string;
+  /** An optional description for what this profile is intended for. */
   description?: string;
+  /** The partial scraper engine configuration that this profile applies. */
   config: Partial<ScraperEngineConfig>;
 }
 
 /**
- * Configuration file format
+ * Defines the expected structure of a configuration file (e.g., `scraper.config.yaml`).
  */
 export interface ConfigFile {
+  /**
+   * A map of configuration profiles, where each key is the profile name.
+   * @example
+   * profiles:
+   *   development:
+   *     config: { browserPool: { maxSize: 2 } }
+   *   production:
+   *     config: { browserPool: { maxSize: 10 } }
+   */
   profiles?: Record<string, ConfigProfile>;
+  /** Default configuration settings to be applied if no specific profile is chosen or to serve as a base. */
   default?: Partial<ScraperEngineConfig>;
+  /**
+   * An array of paths to other configuration files to extend from.
+   * Paths are relative to the current configuration file.
+   * Configurations are merged shallowly, with later files overriding earlier ones.
+   * @example
+   * extends:
+   *   - ./base.config.yaml
+   *   - ./production.config.yaml
+   */
   extends?: string[];
 }
 
@@ -98,13 +130,22 @@ const scraperEngineConfigSchema = z
   .default({});
 
 /**
- * Configuration manager for the scraper toolkit
+ * Manages the loading, merging, and validation of scraper engine configurations.
+ * Configurations can be sourced from files (YAML/JSON), environment variables,
+ * programmatic updates, and predefined profiles.
+ * It follows a layered approach for merging configurations:
+ * Defaults < File < Environment Variables < Programmatic Updates/Profiles.
  */
 export class ConfigManager {
   private config: ScraperEngineConfig;
   private profiles = new Map<string, ConfigProfile>();
   private sources = new Map<ConfigSource, Partial<ScraperEngineConfig>>();
 
+  /**
+   * Creates an instance of ConfigManager.
+   * @param autoLoad If `true` (default), automatically loads configuration from
+   * default file paths (e.g., `./scraper.config.yaml`) and environment variables upon instantiation.
+   */
   constructor(autoLoad: boolean = true) {
     this.config = this.getDefaultConfig();
     if (autoLoad) {
@@ -113,14 +154,19 @@ export class ConfigManager {
   }
 
   /**
-   * Get the current configuration
+   * Retrieves a deep copy of the current, fully merged scraper engine configuration.
+   * @returns The current `ScraperEngineConfig` object.
    */
   getConfig(): ScraperEngineConfig {
-    return { ...this.config };
+    // Return a deep copy to prevent external modification of the internal state.
+    // Lodash merge with an empty object as the first argument achieves this.
+    return merge({}, this.config);
   }
 
   /**
-   * Update configuration programmatically
+   * Programmatically updates the current configuration with the provided partial configuration.
+   * These updates are applied with the highest precedence, overriding any other sources.
+   * @param updates A `Partial<ScraperEngineConfig>` object containing the configuration updates.
    */
   updateConfig(updates: Partial<ScraperEngineConfig>): void {
     this.sources.set('programmatic', updates);
@@ -128,11 +174,16 @@ export class ConfigManager {
   }
 
   /**
-   * Load configuration from file
+   * Loads configuration from a specified file path. Supports JSON and YAML formats.
+   * The loaded configuration is merged into the existing configuration.
+   * Can handle `extends` within configuration files to inherit from other files.
+   * @param filePath The absolute or relative path to the configuration file.
+   * @throws Error if the file is not found, unsupported format, or parsing fails.
    */
   loadFromFile(filePath: string): void {
-    if (!existsSync(filePath)) {
-      throw new Error(`Configuration file not found: ${filePath}`);
+    const resolvedPath = resolve(filePath); // Resolve to absolute path
+    if (!existsSync(resolvedPath)) {
+      throw new Error(`Configuration file not found: ${resolvedPath}`);
     }
 
     const content = readFileSync(filePath, 'utf-8');
@@ -171,7 +222,13 @@ export class ConfigManager {
   }
 
   /**
-   * Load configuration from environment variables
+   * Loads configuration settings from predefined environment variables.
+   * Environment variables typically override file configurations but are overridden
+   * by programmatic updates.
+   * Recognized environment variables include:
+   * - `BROWSER_POOL_SIZE`, `BROWSER_MAX_AGE_MS`, `BROWSER_HEADLESS`, `BROWSER_ARGS`
+   * - `SCRAPING_MAX_RETRIES`, `SCRAPING_TIMEOUT`, `SCRAPING_USER_AGENT`
+   * - `LOG_LEVEL`, `LOG_FORMAT`
    */
   loadFromEnv(): void {
     const envConfig: Partial<ScraperEngineConfig> = {};
@@ -253,27 +310,37 @@ export class ConfigManager {
   }
 
   /**
-   * Apply a configuration profile
+   * Applies a named configuration profile to the current configuration.
+   * The profile's configuration is treated as a programmatic update,
+   * overriding other sources.
+   * @param profileName The name of the profile to apply (must be loaded from a config file).
+   * @throws Error if the specified profile name is not found.
    */
   applyProfile(profileName: string): void {
     const profile = this.profiles.get(profileName);
     if (!profile) {
       throw new Error(`Profile not found: ${profileName}`);
     }
-
+    // Applying a profile is like a programmatic update with high precedence.
     this.sources.set('programmatic', profile.config);
     this.rebuildConfig();
   }
 
   /**
-   * Get available profiles
+   * Retrieves a list of all currently loaded configuration profiles.
+   * @returns An array of `ConfigProfile` objects.
    */
   getProfiles(): ConfigProfile[] {
     return Array.from(this.profiles.values());
   }
 
   /**
-   * Validate configuration
+   * Validates a given configuration object (or the current configuration if none is provided)
+   * against the defined Zod schema.
+   * @param config Optional. A `Partial<ScraperEngineConfig>` to validate. If not provided,
+   * the ConfigManager's current internal configuration is validated.
+   * @returns An object with `valid: boolean` and `errors: string[]`.
+   *          `errors` is an array of human-readable error messages if validation fails.
    */
   validateConfig(config?: Partial<ScraperEngineConfig>): { valid: boolean; errors: string[] } {
     const configToValidate = config ?? this.config;
@@ -288,23 +355,28 @@ export class ConfigManager {
           errors: error.errors.map(e => `${e.path.join('.')}: ${e.message}`),
         };
       }
+      // Should not happen if Zod is the only validation mechanism
       return { valid: false, errors: [String(error)] };
     }
   }
 
   /**
-   * Export current configuration
+   * Exports the current, fully merged configuration to a string in the specified format.
+   * @param format The desired output format, either 'json' or 'yaml'. Defaults to 'yaml'.
+   * @returns A string representation of the current configuration.
    */
   exportConfig(format: 'json' | 'yaml' = 'yaml'): string {
     if (format === 'json') {
       return JSON.stringify(this.config, null, 2);
-    } else {
+    } else { // 'yaml'
       return YAML.stringify(this.config);
     }
   }
 
   /**
-   * Get default configuration
+   * Gets the default configuration by parsing an empty object with the Zod schema,
+   * which populates all default values.
+   * @returns The default `ScraperEngineConfig`.
    */
   private getDefaultConfig(): ScraperEngineConfig {
     return scraperEngineConfigSchema.parse({});
@@ -383,21 +455,39 @@ export class ConfigManager {
 }
 
 /**
- * Global configuration manager instance
+ * A global, pre-initialized instance of `ConfigManager`.
+ * This instance automatically loads configurations from default files and environment variables
+ * upon module initialization, making it ready for immediate use.
+ * @example
+ * import { configManager } from 'crawlee-scraper-toolkit';
+ * const currentConfig = configManager.getConfig();
  */
 export const configManager = new ConfigManager();
 
 /**
- * Configuration builder for fluent API
+ * Provides a fluent (builder) API for programmatically constructing a `ScraperEngineConfig` object.
+ * Useful for creating configurations in code rather than relying on files or environment variables.
+ * An instance of this builder is typically obtained via the `createConfig()` factory function.
+ * @example
+ * import { createConfig } from 'crawlee-scraper-toolkit';
+ * const myConfig = createConfig()
+ *   .browserPool({ maxSize: 3 })
+ *   .defaultOptions({ retries: 1 })
+ *   .logging({ level: 'debug' })
+ *   .build();
  */
 export class ConfigBuilder {
   private config: Partial<ScraperEngineConfig> = {};
 
   /**
-   * Set browser pool configuration
+   * Sets or updates the browser pool configuration.
+   * Merges provided partial configuration with existing browser pool settings in the builder.
+   * @param config A `Partial<BrowserPoolConfig>` object.
+   * @returns The `ConfigBuilder` instance for chaining.
    */
   browserPool(config: Partial<BrowserPoolConfig>): ConfigBuilder {
-    const merged = { ...this.config.browserPool };
+    const merged = { ...this.config.browserPool }; // Start with existing or empty
+    // Selectively merge properties to avoid overwriting defaults with undefined
     if (config.maxSize !== undefined) merged.maxSize = config.maxSize;
     if (config.maxAge !== undefined) merged.maxAge = config.maxAge;
     if (config.cleanupInterval !== undefined) merged.cleanupInterval = config.cleanupInterval;
@@ -409,10 +499,13 @@ export class ConfigBuilder {
   }
 
   /**
-   * Set default execution options
+   * Sets or updates the default scraper execution options.
+   * Merges provided partial options with existing default options in the builder.
+   * @param options A `Partial<ScraperExecutionOptions>` object.
+   * @returns The `ConfigBuilder` instance for chaining.
    */
   defaultOptions(options: Partial<ScraperExecutionOptions>): ConfigBuilder {
-    const merged = { ...this.config.defaultOptions };
+    const merged = { ...this.config.defaultOptions }; // Start with existing or empty
     if (options.retries !== undefined) merged.retries = options.retries;
     if (options.retryDelay !== undefined) merged.retryDelay = options.retryDelay;
     if (options.timeout !== undefined) merged.timeout = options.timeout;
@@ -427,7 +520,10 @@ export class ConfigBuilder {
   }
 
   /**
-   * Add plugins
+   * Adds a list of plugin names or paths to the configuration.
+   * These plugins will be loaded by the `ScraperEngine`.
+   * @param plugins An array of strings, where each string is a plugin name or a path to a plugin module.
+   * @returns The `ConfigBuilder` instance for chaining.
    */
   plugins(plugins: string[]): ConfigBuilder {
     this.config.plugins = [...(this.config.plugins ?? []), ...plugins];
@@ -435,13 +531,16 @@ export class ConfigBuilder {
   }
 
   /**
-   * Set logging configuration
+   * Sets or updates the logging configuration.
+   * Merges provided partial logging configuration with existing settings in the builder.
+   * @param config An object with optional `level` and `format` properties.
+   * @returns The `ConfigBuilder` instance for chaining.
    */
   logging(config: {
     level?: 'debug' | 'info' | 'warn' | 'error';
     format?: 'json' | 'text';
   }): ConfigBuilder {
-    const merged = { ...this.config.logging };
+    const merged = { ...this.config.logging }; // Start with existing or empty
     if (config.level !== undefined) merged.level = config.level;
     if (config.format !== undefined) merged.format = config.format;
     this.config.logging = merged as {
@@ -452,15 +551,24 @@ export class ConfigBuilder {
   }
 
   /**
-   * Build the configuration
+   * Finalizes the configuration building process and returns the constructed
+   * partial `ScraperEngineConfig` object. This object can then be used to
+   * initialize a `ScraperEngine` or update a `ConfigManager`.
+   * @returns A `Partial<ScraperEngineConfig>` object.
    */
   build(): Partial<ScraperEngineConfig> {
-    return { ...this.config };
+    // Returns a copy to prevent further modification of the internal state via the returned object.
+    return merge({}, this.config);
   }
 }
 
 /**
- * Create a configuration builder
+ * Factory function that creates and returns a new `ConfigBuilder` instance.
+ * This is the recommended way to start programmatically building a configuration.
+ * @returns A new `ConfigBuilder` instance.
+ * @example
+ * import { createConfig } from 'crawlee-scraper-toolkit';
+ * const config = createConfig().defaultOptions({ timeout: 60000 }).build();
  */
 export function createConfig(): ConfigBuilder {
   return new ConfigBuilder();

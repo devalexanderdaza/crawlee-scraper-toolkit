@@ -9,6 +9,8 @@ import {
   createLogger
 } from '../src';
 import { ScraperContext } from '../src/core/types';
+import * as fs from 'fs'; // For creating screenshots directory
+import * as path from 'path'; // For path joining
 
 // Define the product interface
 interface Product {
@@ -52,10 +54,10 @@ interface ProductSearchResult {
 
 // Example: E-commerce product scraper with advanced features
 const productScraperDefinition: ScraperDefinition<string, ProductSearchResult> = {
-  id: 'product-scraper',
-  name: 'E-commerce Product Scraper',
-  description: 'Scrapes product information from e-commerce sites',
-  url: 'https://httpbin.org/json', // Using httpbin as a demo URL
+  id: 'book-scraper',
+  name: 'Book Scraper from books.toscrape.com',
+  description: 'Scrapes book information from the demo site books.toscrape.com',
+  url: 'https://books.toscrape.com/', // Targetting books.toscrape.com
   navigation: {
     type: 'direct',
     config: {},
@@ -71,8 +73,8 @@ const productScraperDefinition: ScraperDefinition<string, ProductSearchResult> =
   // Custom hooks for advanced functionality
   hooks: {
     beforeRequest: [
-      async (context: any) => {
-        console.log(`🔍 Starting product search for: ${context.input}`);
+      async (context: ScraperContext<string, ProductSearchResult>) => {
+        context.log.info(`🔍 Starting product search for: ${context.input}`);
         
         // Set custom headers to appear more like a real browser
         await context.page.setExtraHTTPHeaders({
@@ -87,14 +89,16 @@ const productScraperDefinition: ScraperDefinition<string, ProductSearchResult> =
     ],
     
     afterRequest: [
-      async (context: any) => {
-        console.log(`✅ Completed product search for: ${context.input}`);
+      async (context: ScraperContext<string, ProductSearchResult>) => {
+        context.log.info(`✅ Completed product search for: ${context.input}`);
         
         // Save screenshot if enabled
         if (process.env.SAVE_SCREENSHOTS === 'true') {
           const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+          const screenshotDir = path.join(__dirname, 'screenshots');
+          fs.mkdirSync(screenshotDir, { recursive: true }); // Ensure directory exists
           await context.page.screenshot({
-            path: `screenshots/product-search-${context.input}-${timestamp}.png`,
+            path: path.join(screenshotDir, `product-search-${context.input}-${timestamp}.png`),
             fullPage: true,
           });
         }
@@ -102,25 +106,27 @@ const productScraperDefinition: ScraperDefinition<string, ProductSearchResult> =
     ],
     
     onError: [
-      async (context: any) => {
-        console.error(`❌ Product search failed for: ${context.input}`, context.error?.message);
+      async (context: ScraperContext<string, ProductSearchResult> & { error: Error }) => {
+        context.log.error(`❌ Product search failed for: ${context.input}`, { message: context.error?.message });
         
         // Save error screenshot
         try {
           const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+          const screenshotDir = path.join(__dirname, 'screenshots');
+          fs.mkdirSync(screenshotDir, { recursive: true }); // Ensure directory exists
           await context.page.screenshot({
-            path: `screenshots/error-${context.input}-${timestamp}.png`,
+            path: path.join(screenshotDir, `error-${context.input}-${timestamp}.png`),
             fullPage: true,
           });
-        } catch (screenshotError) {
-          console.warn('Failed to save error screenshot:', screenshotError);
+        } catch (screenshotError: any) {
+          context.log.warn('Failed to save error screenshot:', { message: screenshotError?.message });
         }
       },
     ],
     
     onRetry: [
-      async (context: any) => {
-        console.log(`🔄 Retrying product search for: ${context.input} (attempt ${context.attempt})`);
+      async (context: ScraperContext<string, ProductSearchResult> & { attempt: number }) => {
+        context.log.info(`🔄 Retrying product search for: ${context.input} (attempt ${context.attempt})`);
         
         // Clear cookies and local storage on retry
         await context.page.context().clearCookies();
@@ -140,78 +146,91 @@ const productScraperDefinition: ScraperDefinition<string, ProductSearchResult> =
   },
   
   parse: async (context: ScraperContext<string, ProductSearchResult>): Promise<ProductSearchResult> => {
-    const { page, input } = context;
+    const { page, input, log } = context; // Assuming context.log is available
     
-    // For demo purposes, simulate API response since we can't use real e-commerce sites
-    // In a real scenario, this would wait for actual API responses
     try {
-      // Simulate waiting for API response by navigating to a demo page
-      await page.goto('https://httpbin.org/json', { waitUntil: 'networkidle' });
+      log.info(`Navigating to ${productScraperDefinition.url} for input: ${input}`);
+      await page.goto(productScraperDefinition.url, { waitUntil: 'networkidle' });
       
-      // Get the demo JSON response (we don't actually use it, just for demo)
-      await page.textContent('body');
+      log.info('Parsing product data from books.toscrape.com');
+
+      const products: Product[] = [];
+      const productPods = await page.locator('article.product_pod').all();
+
+      for (const pod of productPods) {
+        const titleElement = pod.locator('h3 a');
+        const name = await titleElement.getAttribute('title') || await titleElement.innerText();
+        let productUrl = await titleElement.getAttribute('href') || '';
+        if (!productUrl.startsWith('http')) {
+          productUrl = new URL(productUrl, productScraperDefinition.url).toString();
+        }
+
+        const priceText = await pod.locator('.price_color').innerText();
+        const currentPrice = parseFloat(priceText.replace(/[^0-9.]/g, ''));
+
+        const availabilityText = await pod.locator('.instock.availability').innerText();
+        const availability = availabilityText.trim().toLowerCase() === 'in stock';
+
+        const ratingClasses = await pod.locator('p.star-rating').getAttribute('class');
+        let ratingAverage = 0;
+        if (ratingClasses) {
+          const ratingMap: { [key: string]: number } = { 'One': 1, 'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5 };
+          const ratingWord = ratingClasses.split(' ').find(cls => ratingMap[cls]);
+          if (ratingWord) ratingAverage = ratingMap[ratingWord];
+        }
+
+        const imageRelativeUrl = await pod.locator('.image_container img').getAttribute('src') || '';
+        const imageUrl = imageRelativeUrl ? new URL(imageRelativeUrl, productScraperDefinition.url).toString() : '';
+
+        products.push({
+          id: name.replace(/\s+/g, '-').toLowerCase(), // Simple ID generation
+          name,
+          price: {
+            current: currentPrice,
+            currency: 'GBP', // Site uses GBP
+          },
+          rating: {
+            average: ratingAverage,
+            count: 0, // Review count not easily available on main page
+          },
+          availability,
+          images: [imageUrl],
+          url: productUrl,
+          category: await page.locator('.page-header.action h1').innerText() || 'Books', // Category from page title
+          description: `Book: ${name}`, // Simple description
+        });
+      }
       
-      // Create mock product data for demonstration
-      const products: Product[] = Array.from({ length: 3 }, (_, i) => ({
-        id: `product-${i + 1}`,
-        name: `Sample Product ${i + 1} - ${input}`,
-        price: {
-          current: 99.99 + (i * 50),
-          original: 149.99 + (i * 50),
-          currency: 'USD',
-          discount: 33,
-        },
-        rating: {
-          average: 4.5 - (i * 0.1),
-          count: 150 + (i * 25),
-        },
-        availability: true,
-        images: [`https://example.com/image${i + 1}.jpg`],
-        url: `https://example.com/product/${i + 1}`,
-        brand: `Brand ${String.fromCharCode(65 + i)}`,
-        category: 'Electronics',
-        description: `High-quality product related to ${input} with excellent features and specifications.`,
-      }));
-      
-      // Extract page metadata
-      const metadata = await page.evaluate(() => ({
-        title: document.title || 'Demo Page',
-        url: window.location.href,
+      const pageTitle = await page.title();
+      const metadata = {
+        title: pageTitle,
+        url: page.url(),
         timestamp: new Date().toISOString(),
-        userAgent: navigator.userAgent,
-      }));
+        userAgent: await page.evaluate(() => navigator.userAgent),
+      };
+
+      // Pagination (simplified for this example, books.toscrape has 'next' button)
+      const nextButton = page.locator('li.next a');
+      const hasMore = await nextButton.count() > 0;
+      const currentPageText = await page.locator('li.current').innerText().catch(() => "Page 1 of 1");
+      const match = currentPageText.match(/Page (\d+) of (\d+)/);
+      const currentPage = match ? parseInt(match[1], 10) : 1;
+      const totalPages = match ? parseInt(match[2], 10) : 1;
       
       return {
-        searchQuery: input,
+        searchQuery: input, // input might be a category to navigate to in a fuller example
         products,
-        totalFound: products.length,
+        totalFound: products.length, // On this page; total site count needs deeper scraping
         metadata,
         pagination: {
-          currentPage: 1,
-          totalPages: 1,
-          hasMore: false,
+          currentPage,
+          totalPages,
+          hasMore,
         },
       };
-    } catch (error) {
-      console.warn('Demo parsing fallback due to error:', error);
-      
-      // Fallback result for demo
-      return {
-        searchQuery: input,
-        products: [],
-        totalFound: 0,
-        metadata: {
-          title: 'Demo Failed',
-          url: page.url(),
-          timestamp: new Date().toISOString(),
-          userAgent: 'Demo User Agent',
-        },
-        pagination: {
-          currentPage: 1,
-          totalPages: 1,
-          hasMore: false,
-        },
-      };
+    } catch (error: any) {
+      log.error('Error during parsing books.toscrape.com:', { message: error.message, stack: error.stack });
+      throw error; // Re-throw to allow onError hook to catch it
     }
   },
   
@@ -296,14 +315,11 @@ async function main() {
     })
     .build();
 
-  // Update the global config manager
-  configManager.updateConfig(config);
-
-  // Initialize engine with the configured manager
-  const engine = new CrawleeScraperEngine(configManager.getConfig(), logger);
+  // Initialize engine with the specific config and logger
+  const engine = new CrawleeScraperEngine(config, logger);
   
   // Install plugins
-  console.log('📦 Installing plugins...');
+  logger.info('📦 Installing plugins...');
   engine.use(new RetryPlugin({ 
     maxBackoffDelay: 30000,
     backoffMultiplier: 2,
@@ -320,56 +336,58 @@ async function main() {
   engine.register(productScraperDefinition);
   
   try {
-    const searchQuery = process.argv[2] || 'laptop';
-    console.log(`🛍️ Searching for products: ${searchQuery}`);
+    const searchQuery = process.argv[2] || 'fiction'; // Example: 'fiction' category for books.toscrape
+    logger.info(`🛍️ Searching for books (input: ${searchQuery})`);
     
     const startTime = Date.now();
+    // The current parse function scrapes the main page.
+    // A more advanced version could use 'searchQuery' to navigate to a category.
     const result = await engine.execute(productScraperDefinition, searchQuery);
     const duration = Date.now() - startTime;
     
     if (result.success && result.data) {
-      console.log(`\n🎉 Successfully found ${result.data.totalFound} products in ${duration}ms`);
+      logger.info(`\n🎉 Successfully scraped ${result.data.totalFound} books in ${duration}ms from ${result.data.metadata.url}`);
       
       // Display products
       result.data.products.slice(0, 5).forEach((product: Product, index: number) => {
-        console.log(`\n${index + 1}. ${product.name}`);
-        console.log(`   💰 Price: ${product.price.currency} ${product.price.current}`);
+        logger.info(`\n${index + 1}. ${product.name}`);
+        logger.info(`   💰 Price: ${product.price.currency} ${product.price.current}`);
         if (product.price.discount) {
-          console.log(`   🏷️ Discount: ${product.price.discount}%`);
+          logger.info(`   🏷️ Discount: ${product.price.discount}%`);
         }
-        console.log(`   ⭐ Rating: ${product.rating.average}/5 (${product.rating.count} reviews)`);
-        console.log(`   🏪 Brand: ${product.brand || 'N/A'}`);
-        console.log(`   📦 Available: ${product.availability ? 'Yes' : 'No'}`);
-        console.log(`   🔗 URL: ${product.url}`);
+        logger.info(`   ⭐ Rating: ${product.rating.average}/5`); // Removed count as it's not on main page
+        // logger.info(`   🏪 Brand: ${product.brand || 'N/A'}`); // Brand not applicable for books
+        logger.info(`   📦 Available: ${product.availability ? 'Yes' : 'No'}`);
+        logger.info(`   🔗 URL: ${product.url}`);
       });
       
       if (result.data.totalFound > 5) {
-        console.log(`\n... and ${result.data.totalFound - 5} more products`);
+        logger.info(`\n... and ${result.data.totalFound - 5} more products`);
       }
       
       // Show pagination info
       if (result.data.pagination.totalPages > 1) {
-        console.log(`\n📄 Page ${result.data.pagination.currentPage} of ${result.data.pagination.totalPages}`);
+        logger.info(`\n📄 Page ${result.data.pagination.currentPage} of ${result.data.pagination.totalPages}`);
       }
       
     } else {
-      console.error('❌ Product search failed:', result.error?.message);
+      logger.error('❌ Product search failed:', { message: result.error?.message });
     }
     
     // Show metrics
-    console.log('\n📊 Performance Metrics:');
+    logger.info('\n📊 Performance Metrics:');
     const metrics = metricsPlugin.getMetrics();
-    console.log(`   Total Requests: ${metrics.totalRequests}`);
-    console.log(`   Successful: ${metrics.successfulRequests}`);
-    console.log(`   Failed: ${metrics.failedRequests}`);
-    console.log(`   Success Rate: ${((metrics.successfulRequests / metrics.totalRequests) * 100).toFixed(1)}%`);
-    console.log(`   Average Duration: ${metrics.averageDuration.toFixed(0)}ms`);
+    logger.info(`   Total Requests: ${metrics.totalRequests}`);
+    logger.info(`   Successful: ${metrics.successfulRequests}`);
+    logger.info(`   Failed: ${metrics.failedRequests}`);
+    logger.info(`   Success Rate: ${((metrics.successfulRequests / metrics.totalRequests) * 100).toFixed(1)}%`);
+    logger.info(`   Average Duration: ${metrics.averageDuration.toFixed(0)}ms`);
     
-  } catch (error) {
-    console.error('💥 Unexpected error:', error);
+  } catch (error: any) {
+    logger.error('💥 Unexpected error:', { message: error?.message, stack: error?.stack });
   } finally {
     await engine.shutdown();
-    console.log('\n🔚 Engine shutdown complete');
+    logger.info('\n🔚 Engine shutdown complete');
   }
 }
 
