@@ -34,6 +34,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: 📦 Setup pnpm
+        id: pnpm-setup
         uses: pnpm/action-setup@v3
         with:
           version: ${{ env.PNPM_VERSION }}
@@ -43,11 +44,10 @@ jobs:
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
       - name: 💾 Setup pnpm cache
         uses: actions/cache@v4
         with:
-          path: ${{ env.STORE_PATH }}
+          path: ${{ steps.pnpm-setup.outputs.store_path }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
@@ -318,7 +318,14 @@ jobs:
       - name: 📚 Generate fresh documentation
         run: pnpm run docs:build
 
-      - name: 🚀 Semantic Release
+      - name: � Create documentation archive
+        run: |
+          cd docs
+          tar -czf ../docs-archive.tar.gz .
+          cd ..
+          echo "📦 Documentation archive created: $(du -h docs-archive.tar.gz)"
+
+      - name: �🚀 Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

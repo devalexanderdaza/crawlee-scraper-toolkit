@@ -407,6 +407,7 @@ pnpm run docs:serve    # Available at http://localhost:8080
 | `docs:serve` | Serve docs locally with HTTP server |
 | `docs:clean` | Clean documentation directory |
 | `docs:preview` | Build and serve in one command |
+| `docs:package` | Create compressed documentation archive |
 
 ## 🚀 Release Process
 

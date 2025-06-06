@@ -26,6 +26,7 @@
     "docs:build": "./scripts/docs.sh",
     "docs:clean": "rm -rf docs/",
     "docs:preview": "pnpm run docs:build && pnpm run docs:serve",
+    "docs:package": "./scripts/package-docs.sh",
     "changelog": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -s",
     "changelog:all": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -s -r 0",
     "semantic-release": "semantic-release",

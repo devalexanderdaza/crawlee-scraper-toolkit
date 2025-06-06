@@ -65,11 +65,11 @@
             "label": "Distribution package"
           },
           {
-            "path": "docs/**/*",
-            "label": "Documentation"
+            "path": "docs-archive.tar.gz",
+            "label": "Documentation Archive"
           }
         ],
-        "successComment": "🎉 This ${issue.pull_request ? 'PR is included' : 'issue has been resolved'} in version ${nextRelease.version} 🎉\n\nThe release is available on:\n- [npm package (@latest dist-tag)](https://www.npmjs.com/package/${context.payload.repository.name}/v/${nextRelease.version})\n- [GitHub release](${releases.filter(release => release.pluginName === '@semantic-release/github')[0].url})\n\nYour **[semantic-release](https://github.com/semantic-release/semantic-release)** bot 📦🚀"
+        "successComment": "🎉 This ${issue.pull_request ? 'PR is included' : 'issue has been resolved'} in version ${nextRelease.version} 🎉\n\nThe release is available on:\n- [npm package (@latest dist-tag)](https://www.npmjs.com/package/${context.payload.repository.name}/v/${nextRelease.version})\n- [GitHub release](${releases.filter(release => release.pluginName === '@semantic-release/github')[0].url})\n- [Documentation](https://devalexanderdaza.github.io/crawlee-scraper-toolkit/)\n\nYour **[semantic-release](https://github.com/semantic-release/semantic-release)** bot 📦🚀"
       }
     ],
     [
