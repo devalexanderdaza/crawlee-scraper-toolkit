@@ -162,7 +162,7 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     needs: [examples]
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' || github.event_name != 'workflow_run')
 
     steps:
       - name: 📥 Checkout code
@@ -196,10 +196,13 @@ jobs:
           path: dist/
 
       - name: 📥 Download documentation
-        uses: actions/download-artifact@v4
+        uses: dawidd6/action-download-artifact@v3
         with:
           name: documentation
           path: docs/
+          workflow: docs.yml
+          workflow_conclusion: success
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🚀 Semantic Release
         env:
