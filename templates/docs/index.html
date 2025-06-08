@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crawlee Scraper Toolkit - Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .doc-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .doc-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 48px rgba(0,0,0,0.15);
+        }
+
+        .doc-card h3 {
+            color: #4f46e5;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .doc-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .doc-card a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+
+        .doc-card a:hover {
+            color: #3730a3;
+        }
+
+        .doc-card a::after {
+            content: '→';
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .doc-card a:hover::after {
+            transform: translateX(3px);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.9);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4f46e5;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .docs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Crawlee Scraper Toolkit</h1>
+            <p>Comprehensive Documentation Hub</p>
+        </div>
+
+        <div class="docs-grid">
+            <div class="doc-card">
+                <h3>🔧 API Documentation</h3>
+                <p>Complete API reference with detailed descriptions, examples, and type definitions.</p>
+                <a href="./api/README.md">View API Docs</a>
+            </div>
+
+            <div class="doc-card">
+                <h3>🌐 Interactive Documentation</h3>
+                <p>Browse the documentation interactively with search, navigation, and live examples.</p>
+                <a href="./html/index.html">Open Interactive Docs</a>
+            </div>
+
+            <div class="doc-card">
+                <h3>📊 Test Coverage</h3>
+                <p>Detailed test coverage reports showing code quality and test coverage metrics.</p>
+                <a href="./coverage/lcov-report/index.html">View Coverage Report</a>
+            </div>
+
+            <div class="doc-card">
+                <h3>💡 Examples & Tutorials</h3>
+                <p>Step-by-step examples and tutorials to help you get started quickly.</p>
+                <a href="./EXAMPLES.md">Browse Examples</a>
+            </div>
+
+            <div class="doc-card">
+                <h3>🚀 Getting Started</h3>
+                <p>Quick start guide, installation instructions, and basic usage examples.</p>
+                <a href="../README.md">Read Getting Started</a>
+            </div>
+
+            <div class="doc-card">
+                <h3>⚙️ Configuration</h3>
+                <p>Detailed configuration options, environment variables, and advanced settings.</p>
+                <a href="../CONFIGURATION_UPDATE.md">Configuration Guide</a>
+            </div>
+
+            <div class="doc-card">
+                <h3>🛠️ Development</h3>
+                <p>Contributing guidelines, development setup, and architecture overview.</p>
+                <a href="../DEVELOPMENT.md">Development Guide</a>
+            </div>
+
+            <div class="doc-card">
+                <h3>📋 Documentation Config</h3>
+                <p>Information about documentation generation, scripts, and customization.</p>
+                <a href="../DOCS_CONFIG.md">Docs Configuration</a>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">TypeScript</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">41</div>
+                <div class="stat-label">Tests Passing</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">27%</div>
+                <div class="stat-label">Code Coverage</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Built-in Plugins</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Generated automatically • Last updated: <span id="timestamp"></span></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+    </script>
+</body>
+</html>

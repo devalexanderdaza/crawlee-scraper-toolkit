@@ -197,7 +197,7 @@ EOF
 
 # Create HTML documentation index
 echo -e "${BLUE}🌐 Creating HTML documentation index...${NC}"
-cp docs/docs-index.html docs/index.html
+cp templates/docs/index.html docs/index.html
 
 echo -e "${GREEN}✅ Documentation generation complete!${NC}"
 echo ""
