@@ -125,7 +125,8 @@ jobs:
 
       - name: 🧪 Run tests with coverage
         run: |
-          if ([ "${{ matrix.node-version }}" == "20" ] && [ "${{ matrix.os }}" == "ubuntu-latest" ]); then
+          echo "🔍 Running tests on Node.js ${{ matrix.node-version }} (${matrix.os})"
+          if [[ "${{ matrix.node-version }}" == "20" && "${{ matrix.os }}" == "ubuntu-latest" ]]; then
             echo "🔍 Running tests with coverage on primary matrix"
             pnpm run test:coverage
           else
