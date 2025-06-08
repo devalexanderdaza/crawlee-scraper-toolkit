@@ -149,11 +149,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 🎭 Install Playwright browsers
-        run: pnpm exec playwright install --with-deps chromium
-
       - name: 🚀 Run example
-        run: timeout 30s pnpm run example:all
+        run: timeout 30s pnpm run example:news
+
+      - name: 🚀 Run products example
+        run: timeout 30s pnpm run example:products
+
+      - name: 🚀 Run api example
+        run: timeout 30s pnpm run example:api
 
   # ==========================================
   # RELEASE
