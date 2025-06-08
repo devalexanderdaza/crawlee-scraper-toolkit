@@ -77,9 +77,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: 📥 Install dependencies
-        run: |
-          cp .npmrc.ci .npmrc
-          pnpm install --frozen-lockfile
+        run: pnpm install
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -151,9 +149,7 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: 📥 Install dependencies
-        run: |
-          cp .npmrc.ci .npmrc
-          pnpm install --frozen-lockfile
+        run: pnpm install
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -210,9 +206,7 @@ jobs:
           run_install: false
 
       - name: 📥 Install dependencies
-        run: |
-          cp .npmrc.ci .npmrc
-          pnpm install --frozen-lockfile
+        run: pnpm install
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
