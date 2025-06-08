@@ -2,6 +2,8 @@
 
 This document provides detailed explanations of the included examples.
 
+**Note:** The code snippets provided below are simplified excerpts. For the complete and runnable source code, please refer to the files in the `/examples` directory of this repository.
+
 ## 🗞️ News Scraper Example
 
 The news scraper demonstrates basic scraping functionality:

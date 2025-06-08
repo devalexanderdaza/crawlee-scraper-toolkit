@@ -68,7 +68,7 @@ test(utils): add validator tests
 feat!: redesign configuration API
 
 BREAKING CHANGE: Configuration schema has changed.
-Old format is no longer supported. See MIGRATION.md for upgrade guide.
+Old format is no longer supported. Ensure to check the main README or CHANGELOG for migration notes if applicable.
 ```
 
 ## 🛠️ Configuration Files
@@ -229,5 +229,3 @@ To improve the release process:
 5. **Gather Feedback**: Collect team input on process improvements
 
 ---
-
-🔄 **Last Updated**: This document is automatically updated with each release.
