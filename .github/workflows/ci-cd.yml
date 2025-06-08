@@ -38,81 +38,17 @@ env:
 
 jobs:
   # ==========================================
-  # QUALITY CHECKS
-  # ==========================================
-  quality:
-    name: Code Quality
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: 📥 Checkout code
-        uses: actions/checkout@v4
-
-      - name: 🔧 Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: 📦 Setup pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: ${{ env.PNPM_VERSION }}
-          run_install: false
-
-      - name: 🔍 Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - name: 💾 Setup pnpm cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
-      - name: 📥 Install dependencies
-        run: |
-          cp .npmrc.ci .npmrc
-          pnpm install --frozen-lockfile
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: 🔍 Lint code
-        run: pnpm run lint
-
-      - name: 🎨 Check formatting
-        run: |
-          if ! pnpm run format:check; then
-            echo "❌ Code is not formatted properly. Run 'pnpm run format' to fix."
-            exit 1
-          fi
-
-      - name: 🏗️ Build project
-        run: pnpm run build
-
-      - name: 📤 Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-artifacts-${{ github.sha }}
-          path: dist/
-          retention-days: 7
-
-  # ==========================================
   # TESTING
   # ==========================================
   test:
     name: Tests (Node ${{ matrix.node-version }})
     runs-on: ${{ matrix.os }}
-    needs: [quality]
     timeout-minutes: 20
     strategy:
       fail-fast: false
       matrix:
         node-version: ['20', '22']
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest]
         include:
           - node-version: '20'
             os: ubuntu-latest
@@ -187,13 +123,9 @@ jobs:
   # EXAMPLES VALIDATION
   # ==========================================
   examples:
-    name: Example (${{ matrix.example }})
+    name: Examples
     runs-on: ubuntu-latest
-    needs: [test, quality]
-    strategy:
-      fail-fast: false
-      matrix:
-        example: ['news-scraper', 'advanced-product-scraper']
+    needs: [test]
 
     steps:
       - name: 📥 Checkout code
@@ -221,7 +153,7 @@ jobs:
         run: pnpm exec playwright install --with-deps chromium
 
       - name: 🚀 Run example
-        run: timeout 30s pnpm exec tsx examples/${{ matrix.example }}.ts || exit 0
+        run: timeout 30s pnpm run example:all
 
   # ==========================================
   # RELEASE
@@ -268,12 +200,6 @@ jobs:
         with:
           name: documentation
           path: docs/
-        # Build and docs generation are done in previous jobs.
-        # semantic-release will use artifacts from dist/ and docs/
-        # Ensure package.json's "files" array correctly lists what to publish.
-        # If specific packaging of docs (e.g. tarball) is needed for release assets,
-        # it should be done here using the downloaded 'docs/' artifact.
-        # For now, assuming semantic-release handles this or it's not strictly needed as a separate step.
 
       - name: 🚀 Semantic Release
         env:

@@ -49,6 +49,9 @@
     "cli": "ts-node -r tsconfig-paths/register src/cli/index.ts",
     "example:news": "ts-node -r tsconfig-paths/register --project tsconfig.examples.json examples/news-scraper.ts",
     "example:products": "ts-node -r tsconfig-paths/register --project tsconfig.examples.json examples/advanced-product-scraper.ts",
+    "example:api": "ts-node -r tsconfig-paths/register --project tsconfig.examples.json examples/api-scraper.ts",
+    "example:form": "ts-node -r tsconfig-paths/register --project tsconfig.examples.json examples/form-scraper-json.ts",
+    "example:all": "pnpm run example:news && pnpm run example:products && pnpm run example:api && pnpm run example:form",
     "postinstall": "pnpm dlx playwright install"
   },
   "keywords": [
