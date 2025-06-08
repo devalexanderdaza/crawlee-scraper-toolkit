@@ -18,6 +18,9 @@ on:
       - '*.gitattributes'
       - '*.gitmodules'
   workflow_dispatch:
+  workflow_run:
+    workflows: ["Documentation"]
+    types: [completed]
 
 permissions:
   contents: read
@@ -186,7 +189,7 @@ jobs:
   examples:
     name: Example (${{ matrix.example }})
     runs-on: ubuntu-latest
-    needs: [quality]
+    needs: [test, quality]
     strategy:
       fail-fast: false
       matrix:
@@ -226,7 +229,7 @@ jobs:
   security:
     name: Security Audit
     runs-on: ubuntu-latest
-    needs: [quality]
+    needs: [examples]
 
     steps:
       - name: 📥 Checkout code
@@ -269,61 +272,12 @@ jobs:
           output: "results.sarif"
 
   # ==========================================
-  # DOCUMENTATION
-  # ==========================================
-
-  docs:
-    name: Generate Documentation
-    runs-on: ubuntu-latest
-    needs: [quality]
-    if: github.ref == 'refs/heads/main'
-
-    steps:
-      - name: 📥 Checkout code
-        uses: actions/checkout@v4
-
-      - name: 🔧 Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-
-      - name: 📦 Setup pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: ${{ env.PNPM_VERSION }}
-          run_install: false
-
-      - name: 📥 Install dependencies
-        run: |
-          cp .npmrc.ci .npmrc
-          pnpm install
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: 📚 Generate documentation
-        run: pnpm run docs:clean && pnpm run docs:build
-
-      - name: 📤 Upload documentation artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: documentation
-          path: docs/
-          retention-days: 30
-
-      - name: 🚀 Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        if: github.ref == 'refs/heads/main'
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
-
-  # ==========================================
   # RELEASE
   # ==========================================
   release:
     name: Release
     runs-on: ubuntu-latest
-    needs: [quality, test, examples, security]
+    needs: [security]
     if: github.ref == 'refs/heads/main'
 
     steps:
