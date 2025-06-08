@@ -72,7 +72,7 @@ jobs:
       - name: 📥 Install dependencies
         run: |
           cp .npmrc.ci .npmrc
-          pnpm install --frozen-lockfile
+          pnpm install --ci
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -146,7 +146,7 @@ jobs:
       - name: 📥 Install dependencies
         run: |
           cp .npmrc.ci .npmrc
-          pnpm install --frozen-lockfile
+          pnpm install --ci
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -209,7 +209,7 @@ jobs:
       - name: 📥 Install dependencies
         run: |
           cp .npmrc.ci .npmrc
-          pnpm install --frozen-lockfile
+          pnpm install --ci
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -245,7 +245,7 @@ jobs:
       - name: 📥 Install dependencies
         run: |
           cp .npmrc.ci .npmrc
-          pnpm install --frozen-lockfile
+          pnpm install --ci
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -291,7 +291,7 @@ jobs:
       - name: 📥 Install dependencies
         run: |
           cp .npmrc.ci .npmrc
-          pnpm install --frozen-lockfile
+          pnpm install --ci
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -342,7 +342,7 @@ jobs:
       - name: 📥 Install dependencies
         run: |
           cp .npmrc.ci .npmrc
-          pnpm install --frozen-lockfile
+          pnpm install --ci
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
