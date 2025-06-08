@@ -156,6 +156,12 @@ Useful for scrapers that need to interact with forms. Provides a structure for f
 ### Advanced Template
 A comprehensive template that includes setup for custom hooks, plugins, and more complex configurations. Suitable for sophisticated scraping tasks requiring fine-grained control.
 
+### Infinite Scroll Template
+Handles pages with infinite scrolling pagination. Ideal for sites that load more content as the user scrolls.
+
+### JS-Heavy Site Template
+Provides a robust setup for sites that rely heavily on JavaScript for rendering content, focusing on advanced waitFor strategies and interaction patterns.
+
 ## ⚙️ Configuration
 
 ### Configuration File
@@ -373,6 +379,12 @@ pnpm crawlee-scraper validate --config=./config/scraper.yaml
 ```bash
 pnpm crawlee-scraper run --scraper=my-scraper --input="search term" --profile=production
 ```
+
+### Update Project Configurations (In Development)
+```bash
+pnpm crawlee-scraper update
+```
+Helps migrate existing project and scraper configurations to the latest version of the toolkit. This command is currently under development.
 
 ## 🔍 Examples
 

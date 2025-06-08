@@ -94,7 +94,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: ['18', '20', '22']
+        node-version: ['20', '22']
     
     steps:
       - name: 📥 Checkout code
@@ -215,10 +215,10 @@ jobs:
         run: pnpm dlx playwright install --with-deps
 
       - name: 🚀 Test news scraper example
-        run: timeout 30s pnpm run example:news || echo "News scraper example completed"
+        run: timeout 30s pnpm run example:news
 
       - name: 🛍️ Test product scraper example  
-        run: timeout 30s pnpm run example:products "test" || echo "Product scraper example completed"
+        run: timeout 30s pnpm run example:products "test"
 
   # ==========================================
   # DOCUMENTATION

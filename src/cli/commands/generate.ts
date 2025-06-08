@@ -46,7 +46,7 @@ const toolkitDetails = getToolkitVersionDetails();
 /**
  * Template types available
  */
-export type TemplateType = 'basic' | 'api' | 'form' | 'advanced';
+export type TemplateType = 'basic' | 'api' | 'form' | 'advanced' | 'infinite-scroll' | 'js-heavy';
 
 /**
  * Generation options
@@ -157,6 +157,8 @@ async function promptForConfig(options: GenerateOptions): Promise<ScraperConfig>
         { name: 'API - Extract data from API responses', value: 'api' },
         { name: 'Form - Fill and submit forms', value: 'form' },
         { name: 'Advanced - Custom navigation and parsing', value: 'advanced' },
+        { name: 'Infinite Scroll - Handles infinite scroll pagination', value: 'infinite-scroll' },
+        { name: 'JS-Heavy Site - For sites with complex JavaScript interactions', value: 'js-heavy' },
       ],
       default: options.template || 'basic',
     },
@@ -257,6 +259,8 @@ async function promptForTemplateConfig(
 
     case 'basic':
     case 'advanced':
+    case 'infinite-scroll':
+    case 'js-heavy':
       const waitAnswers = await inquirer.prompt([
         {
           type: 'list',

@@ -29,7 +29,7 @@
     "emitDecoratorMetadata": true,
     "moduleResolution": "node",
     "allowImportingTsExtensions": false,
-    "verbatimModuleSyntax": false,
+    "verbatimModuleSyntax": true,
     "isolatedModules": true,
     "useDefineForClassFields": true,
     "baseUrl": "./src",
