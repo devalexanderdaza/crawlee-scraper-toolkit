@@ -14706,7 +14706,7 @@
 		}
 	],
 	"packageName": "crawlee-scraper-toolkit",
-	"packageVersion": "2.0.0",
+	"packageVersion": "2.0.1",
 	"readme": [
 		{
 			"kind": "text",
@@ -14918,7 +14918,15 @@
 		},
 		{
 			"kind": "text",
-			"text": ".\nAlternatively, "
+			"text": ".\nWhen installing from a local clone of this repository, run "
+		},
+		{
+			"kind": "code",
+			"text": "`pnpm install && pnpm run build`"
+		},
+		{
+			"kind": "text",
+			"text": " beforehand so the compiled CLI is generated with its path aliases properly resolved.\nAlternatively, "
 		},
 		{
 			"kind": "code",

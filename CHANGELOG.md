@@ -1,3 +1,9 @@
+## <small>2.0.2 (2025-06-08)</small>
+
+* fix(ci-cd): simplify dependency installation steps ([c931731](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/c931731))
+* fix(cli): ensure global installation works ([237923a](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/237923a))
+* Fix global CLI installation (#5) ([2f96364](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/2f96364)), closes [#5](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/issues/5)
+
 ## <small>2.0.1 (2025-06-08)</small>
 
 * fix: adjust release job dependencies and update npm configuration for package-lock handling ([cdaa9ee](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/cdaa9ee))
