@@ -357,8 +357,21 @@ jobs:
           name: build-artifacts-${{ github.sha }}
           path: dist/
 
-      - name: 🚀 Release
+      - name: 📥 Download documentation
+        uses: actions/download-artifact@v4
+        with:
+          name: documentation
+          path: docs/
+        # Build and docs generation are done in previous jobs.
+        # semantic-release will use artifacts from dist/ and docs/
+        # Ensure package.json's "files" array correctly lists what to publish.
+        # If specific packaging of docs (e.g. tarball) is needed for release assets,
+        # it should be done here using the downloaded 'docs/' artifact.
+        # For now, assuming semantic-release handles this or it's not strictly needed as a separate step.
+
+      - name: 🚀 Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: pnpm exec semantic-release
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release
