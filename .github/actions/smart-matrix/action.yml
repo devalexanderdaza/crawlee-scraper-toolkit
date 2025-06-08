@@ -1,0 +1,49 @@
+name: 'Smart Test Matrix'
+description: 'Intelligent test matrix with conditional execution'
+
+inputs:
+  full-matrix:
+    description: 'Run full matrix or optimized subset'
+    required: false
+    default: 'false'
+
+outputs:
+  matrix:
+    description: 'Generated test matrix'
+    value: ${{ steps.generate-matrix.outputs.matrix }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: 🧮 Generate smart test matrix
+      id: generate-matrix
+      shell: bash
+      run: |
+        # Determine if this is a critical change
+        CRITICAL_PATHS=("src/core/" "src/cli/" "package.json" ".github/workflows/")
+        IS_CRITICAL=false
+        
+        # Check if any critical files changed
+        if [ "${{ github.event_name }}" == "pull_request" ]; then
+          CHANGED_FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }}...${{ github.sha }} || echo "")
+          for path in "${CRITICAL_PATHS[@]}"; do
+            if echo "$CHANGED_FILES" | grep -q "$path"; then
+              IS_CRITICAL=true
+              break
+            fi
+          done
+        fi
+        
+        # Generate matrix based on conditions
+        if [ "${{ inputs.full-matrix }}" == "true" ] || [ "$IS_CRITICAL" == "true" ] || [ "${{ github.ref }}" == "refs/heads/main" ]; then
+          # Full matrix for critical changes or main branch
+          MATRIX='{"node-version": ["20", "22"], "os": ["ubuntu-latest"], "include": [{"node-version": "20", "os": "windows-latest", "experimental": true}]}'
+          echo "🔍 Using FULL test matrix (critical changes detected)"
+        else
+          # Minimal matrix for non-critical changes
+          MATRIX='{"node-version": ["20"], "os": ["ubuntu-latest"]}'
+          echo "🔍 Using MINIMAL test matrix (non-critical changes)"
+        fi
+        
+        echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
+        echo "Generated matrix: $MATRIX"

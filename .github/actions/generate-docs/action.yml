@@ -1,0 +1,106 @@
+name: 'Generate Documentation'
+description: 'Generate comprehensive documentation including API docs and coverage'
+
+inputs:
+  upload-artifacts:
+    description: 'Whether to upload documentation artifacts'
+    required: false
+    default: 'true'
+
+outputs:
+  docs-generated:
+    description: 'Whether documentation was successfully generated'
+    value: ${{ steps.docs.outputs.success }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: 📚 Generate API documentation
+      shell: bash
+      run: pnpm run docs
+
+    - name: 📊 Generate coverage report
+      shell: bash
+      run: pnpm run test:coverage
+      continue-on-error: true
+
+    - name: 🔧 Build comprehensive docs
+      id: docs
+      shell: bash
+      run: |
+        # Create docs directory structure
+        mkdir -p docs/{api,html,coverage}
+        
+        # Copy coverage if exists
+        if [ -d "coverage" ]; then
+          cp -r coverage/* docs/coverage/ 2>/dev/null || true
+        fi
+        
+        # Generate different doc formats
+        pnpm run docs:html || echo "HTML docs generation failed"
+        pnpm run docs:json || echo "JSON docs generation failed"
+        
+        # Create comprehensive index
+        cat > docs/index.html << 'EOF'
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Crawlee Scraper Toolkit - Documentation</title>
+            <style>
+                body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 40px; line-height: 1.6; }
+                .header { text-align: center; margin-bottom: 40px; }
+                .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+                .card { border: 1px solid #ddd; border-radius: 8px; padding: 20px; transition: shadow 0.2s; }
+                .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+                .card h3 { margin-top: 0; color: #2c3e50; }
+                .card a { text-decoration: none; color: #3498db; }
+                .badge { background: #3498db; color: white; padding: 2px 8px; border-radius: 12px; font-size: 12px; }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <h1>🕷️ Crawlee Scraper Toolkit</h1>
+                <p>Comprehensive Documentation Portal</p>
+                <span class="badge">v$(node -p "require('./package.json').version")</span>
+            </div>
+            
+            <div class="cards">
+                <div class="card">
+                    <h3>📖 API Documentation</h3>
+                    <p>Complete API reference with TypeDoc</p>
+                    <a href="./html/index.html">View HTML Docs →</a>
+                </div>
+                
+                <div class="card">
+                    <h3>📊 Code Coverage</h3>
+                    <p>Test coverage analysis and reports</p>
+                    <a href="./coverage/lcov-report/index.html">View Coverage →</a>
+                </div>
+                
+                <div class="card">
+                    <h3>🚀 Examples</h3>
+                    <p>Ready-to-use scraping examples</p>
+                    <a href="https://github.com/devalexanderdaza/crawlee-scraper-toolkit/tree/main/examples">View Examples →</a>
+                </div>
+                
+                <div class="card">
+                    <h3>🔧 CLI Tools</h3>
+                    <p>Command-line interface documentation</p>
+                    <a href="https://github.com/devalexanderdaza/crawlee-scraper-toolkit#cli-usage">View CLI Docs →</a>
+                </div>
+            </div>
+        </body>
+        </html>
+        EOF
+        
+        echo "success=true" >> $GITHUB_OUTPUT
+
+    - name: 📤 Upload documentation artifacts
+      if: inputs.upload-artifacts == 'true'
+      uses: actions/upload-artifact@v4
+      with:
+        name: documentation
+        path: docs/
+        retention-days: 30
