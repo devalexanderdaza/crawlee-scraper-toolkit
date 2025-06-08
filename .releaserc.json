@@ -1,5 +1,4 @@
 {
-  "$schema": "https://raw.githubusercontent.com/semantic-release/semantic-release/master/.releaserc.schema.json",
   "branches": ["main"],
   "repositoryUrl": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit.git",
   "plugins": [
