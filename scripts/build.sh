@@ -13,6 +13,8 @@ rm -rf dist/
 # Run TypeScript compiler
 echo "📦 Compiling TypeScript..."
 pnpm exec tsc
+echo "🔄 Rewriting path aliases..."
+pnpm exec tsc-alias
 
 # Make CLI executable
 echo "🔧 Making CLI executable..."
