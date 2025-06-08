@@ -1,7 +1,8 @@
 import chalk from 'chalk';
 import ora from 'ora';
 import { existsSync } from 'fs';
-import { CrawleeScraperEngine, ScraperDefinition } from '@/core/scraper'; // Added ScraperDefinition
+import { CrawleeScraperEngine } from '@/core/scraper';
+import { ScraperDefinition } from '@/core/types';
 import { ConfigManager } from '@/core/config-manager';
 import { createLogger } from '@/utils/logger';
 import { resolve as pathResolve, isAbsolute } from 'path'; // For resolving path

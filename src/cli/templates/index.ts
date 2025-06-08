@@ -128,10 +128,7 @@ if (require.main === module) {
   main().catch(console.error);
 }
 
-// If this script is run directly (e.g., `node dist/index.js`)
-if (require.main === module) {
-  main().catch(console.error);
-}
+
 
 // Note: The primary export 'definition' is used when this scraper is run by 'crawlee-scraper run'.
 // The main() function is for direct execution or testing of this specific scraper.
