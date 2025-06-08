@@ -1,4 +1,4 @@
-[**crawlee-scraper-toolkit v1.0.0**](../README.md)
+[**crawlee-scraper-toolkit v1.0.1**](../README.md)
 
 ***
 
@@ -6,9 +6,12 @@
 
 # Class: CrawleeScraperEngine
 
-Defined in: [core/scraper.ts:38](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L38)
+Defined in: [core/scraper.ts:47](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L47)
 
-Main scraper engine implementation
+The main engine for managing and executing scrapers.
+It handles the browser pool, plugin lifecycle, global and scraper-specific hooks,
+and the overall execution flow of scraper definitions.
+Emits various events throughout the scraping lifecycle (see [ScraperEvents](../-internal-/interfaces/ScraperEvents.md)).
 
 ## Extends
 
@@ -24,7 +27,9 @@ Main scraper engine implementation
 
 > **new CrawleeScraperEngine**(`config`, `logger`): `CrawleeScraperEngine`
 
-Defined in: [core/scraper.ts:46](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L46)
+Defined in: [core/scraper.ts:60](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L60)
+
+Creates an instance of the CrawleeScraperEngine.
 
 #### Parameters
 
@@ -32,9 +37,13 @@ Defined in: [core/scraper.ts:46](https://github.com/devalexanderdaza/crawlee-scr
 
 [`ScraperEngineConfig`](../interfaces/ScraperEngineConfig.md)
 
+The configuration object for the scraper engine. See [ScraperEngineConfig](../interfaces/ScraperEngineConfig.md).
+
 ##### logger
 
-[`Logger`](../interfaces/Logger.md)
+[`Logger`](../-internal-/interfaces/Logger.md)
+
+An instance of a logger conforming to the [Logger](../-internal-/interfaces/Logger.md) interface.
 
 #### Returns
 
@@ -50,9 +59,18 @@ Defined in: [core/scraper.ts:46](https://github.com/devalexanderdaza/crawlee-scr
 
 > **execute**\<`Input`, `Output`\>(`definition`, `input`, `options?`): `Promise`\<[`ScraperResult`](../interfaces/ScraperResult.md)\<`Output`\>\>
 
-Defined in: [core/scraper.ts:57](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L57)
+Defined in: [core/scraper.ts:91](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L91)
 
-Execute a scraper with given input
+Executes a registered scraper definition with the given input and runtime options.
+This method orchestrates the entire scraping lifecycle for a single task, including:
+- Input validation.
+- Acquiring a browser instance from the pool.
+- Executing `beforeRequest`, scraper `parse`, `afterRequest`, `onSuccess` hooks.
+- Handling retries with `onRetry` hooks upon failure.
+- Managing errors with `onError` hooks.
+- Output validation.
+- Releasing the browser instance.
+Emits `scraper:start`, `scraper:success`, `scraper:error`, and `scraper:retry` events.
 
 #### Type Parameters
 
@@ -60,9 +78,13 @@ Execute a scraper with given input
 
 `Input`
 
+The type of the input data the scraper expects.
+
 ##### Output
 
 `Output`
+
+The type of the data the scraper's `parse` function will return.
 
 #### Parameters
 
@@ -70,17 +92,26 @@ Execute a scraper with given input
 
 [`ScraperDefinition`](../interfaces/ScraperDefinition.md)\<`Input`, `Output`\>
 
+The [ScraperDefinition](../interfaces/ScraperDefinition.md) to execute.
+
 ##### input
 
 `Input`
+
+The input data to pass to the scraper.
 
 ##### options?
 
 `Partial`\<[`ScraperExecutionOptions`](../interfaces/ScraperExecutionOptions.md)\>
 
+Optional. Partial [ScraperExecutionOptions](../interfaces/ScraperExecutionOptions.md) that can override
+               default and definition-specific options for this execution.
+
 #### Returns
 
 `Promise`\<[`ScraperResult`](../interfaces/ScraperResult.md)\<`Output`\>\>
+
+A Promise that resolves to a [ScraperResult](../interfaces/ScraperResult.md) containing the outcome of the execution.
 
 #### Implementation of
 
@@ -92,9 +123,10 @@ Execute a scraper with given input
 
 > **register**\<`Input`, `Output`\>(`definition`): `void`
 
-Defined in: [core/scraper.ts:187](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L187)
+Defined in: [core/scraper.ts:227](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L227)
 
-Register a scraper definition
+Registers a scraper definition with the engine, making it available for execution.
+If a definition with the same ID already exists, it will be overwritten.
 
 #### Type Parameters
 
@@ -102,15 +134,21 @@ Register a scraper definition
 
 `Input`
 
+The type of the input data the scraper definition expects.
+
 ##### Output
 
 `Output`
+
+The type of the data the scraper definition will output.
 
 #### Parameters
 
 ##### definition
 
 [`ScraperDefinition`](../interfaces/ScraperDefinition.md)\<`Input`, `Output`\>
+
+The [ScraperDefinition](../interfaces/ScraperDefinition.md) to register.
 
 #### Returns
 
@@ -126,9 +164,9 @@ Register a scraper definition
 
 > **getDefinition**(`id`): `undefined` \| [`ScraperDefinition`](../interfaces/ScraperDefinition.md)\<`unknown`, `unknown`\>
 
-Defined in: [core/scraper.ts:195](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L195)
+Defined in: [core/scraper.ts:237](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L237)
 
-Get a registered scraper definition
+Retrieves a registered scraper definition by its ID.
 
 #### Parameters
 
@@ -136,9 +174,13 @@ Get a registered scraper definition
 
 `string`
 
+The unique identifier of the scraper definition.
+
 #### Returns
 
 `undefined` \| [`ScraperDefinition`](../interfaces/ScraperDefinition.md)\<`unknown`, `unknown`\>
+
+The [ScraperDefinition](../interfaces/ScraperDefinition.md) if found, otherwise `undefined`.
 
 #### Implementation of
 
@@ -150,13 +192,15 @@ Get a registered scraper definition
 
 > **listDefinitions**(): [`ScraperDefinition`](../interfaces/ScraperDefinition.md)\<`unknown`, `unknown`\>[]
 
-Defined in: [core/scraper.ts:202](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L202)
+Defined in: [core/scraper.ts:246](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L246)
 
-List all registered scrapers
+Lists all currently registered scraper definitions.
 
 #### Returns
 
 [`ScraperDefinition`](../interfaces/ScraperDefinition.md)\<`unknown`, `unknown`\>[]
+
+An array of [ScraperDefinition](../interfaces/ScraperDefinition.md) objects.
 
 #### Implementation of
 
@@ -168,15 +212,18 @@ List all registered scrapers
 
 > **use**(`plugin`): `void`
 
-Defined in: [core/scraper.ts:209](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L209)
+Defined in: [core/scraper.ts:256](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L256)
 
-Install a plugin
+Installs a plugin, allowing it to extend the engine's functionality.
+The plugin's `install` method will be called with this engine instance.
 
 #### Parameters
 
 ##### plugin
 
 [`ScraperPlugin`](../interfaces/ScraperPlugin.md)
+
+The [ScraperPlugin](../interfaces/ScraperPlugin.md) instance to install.
 
 #### Returns
 
@@ -192,9 +239,10 @@ Install a plugin
 
 > **addHook**(`hook`, `handler`): `void`
 
-Defined in: [core/scraper.ts:222](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L222)
+Defined in: [core/scraper.ts:299](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L299)
 
-Add a global hook
+Adds a global hook handler for a specified lifecycle event.
+Global hooks are executed for all scrapers managed by this engine.
 
 #### Parameters
 
@@ -202,9 +250,13 @@ Add a global hook
 
 [`ScraperHook`](../type-aliases/ScraperHook.md)
 
+The [ScraperHook](../type-aliases/ScraperHook.md) event type (e.g., 'beforeRequest', 'onError').
+
 ##### handler
 
-[`HookHandler`](../type-aliases/HookHandler.md)
+[`HookHandler`](../type-aliases/HookHandler.md)\<`unknown`, `unknown`\>
+
+The [HookHandler](../type-aliases/HookHandler.md) function to execute when the event occurs.
 
 #### Returns
 
@@ -220,9 +272,9 @@ Add a global hook
 
 > **removeHook**(`hook`, `handler`): `void`
 
-Defined in: [core/scraper.ts:235](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L235)
+Defined in: [core/scraper.ts:317](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L317)
 
-Remove a global hook
+Removes a previously added global hook handler.
 
 #### Parameters
 
@@ -230,9 +282,14 @@ Remove a global hook
 
 [`ScraperHook`](../type-aliases/ScraperHook.md)
 
+The [ScraperHook](../type-aliases/ScraperHook.md) event type.
+
 ##### handler
 
-[`HookHandler`](../type-aliases/HookHandler.md)
+[`HookHandler`](../type-aliases/HookHandler.md)\<`unknown`, `unknown`\>
+
+The specific [HookHandler](../type-aliases/HookHandler.md) function to remove.
+               It must be the same function reference that was originally added.
 
 #### Returns
 
@@ -248,13 +305,17 @@ Remove a global hook
 
 > **shutdown**(): `Promise`\<`void`\>
 
-Defined in: [core/scraper.ts:248](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L248)
+Defined in: [core/scraper.ts:336](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/scraper.ts#L336)
 
-Shutdown the engine and cleanup resources
+Gracefully shuts down the scraper engine.
+This includes uninstalling all plugins that have an `uninstall` method
+and shutting down the browser pool, closing all browser instances.
 
 #### Returns
 
 `Promise`\<`void`\>
+
+A Promise that resolves when shutdown is complete.
 
 #### Implementation of
 

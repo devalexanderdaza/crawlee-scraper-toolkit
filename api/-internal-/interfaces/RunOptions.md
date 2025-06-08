@@ -1,4 +1,4 @@
-[**crawlee-scraper-toolkit v1.0.0**](../../README.md)
+[**crawlee-scraper-toolkit v1.0.1**](../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: RunOptions
 
-Defined in: [cli/commands/run.ts:11](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/run.ts#L11)
+Defined in: [cli/commands/run.ts:13](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/run.ts#L13)
 
 Run options
 
@@ -16,7 +16,9 @@ Run options
 
 > `optional` **scraper**: `string`
 
-Defined in: [cli/commands/run.ts:12](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/run.ts#L12)
+Defined in: [cli/commands/run.ts:15](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/run.ts#L15)
+
+Path to the compiled scraper JS file (e.g., ./dist/my-scraper/index.js or ./scrapers/my-scraper.js)
 
 ***
 
@@ -24,7 +26,7 @@ Defined in: [cli/commands/run.ts:12](https://github.com/devalexanderdaza/crawlee
 
 > `optional` **input**: `string`
 
-Defined in: [cli/commands/run.ts:13](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/run.ts#L13)
+Defined in: [cli/commands/run.ts:16](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/run.ts#L16)
 
 ***
 
@@ -32,7 +34,7 @@ Defined in: [cli/commands/run.ts:13](https://github.com/devalexanderdaza/crawlee
 
 > `optional` **config**: `string`
 
-Defined in: [cli/commands/run.ts:14](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/run.ts#L14)
+Defined in: [cli/commands/run.ts:17](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/run.ts#L17)
 
 ***
 
@@ -40,4 +42,4 @@ Defined in: [cli/commands/run.ts:14](https://github.com/devalexanderdaza/crawlee
 
 > `optional` **profile**: `string`
 
-Defined in: [cli/commands/run.ts:15](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/run.ts#L15)
+Defined in: [cli/commands/run.ts:18](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/run.ts#L18)

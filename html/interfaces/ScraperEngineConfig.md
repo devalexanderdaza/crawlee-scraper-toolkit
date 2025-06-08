@@ -1,4 +1,4 @@
-[**crawlee-scraper-toolkit v1.0.0**](../README.md)
+[**crawlee-scraper-toolkit v1.0.1**](../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ScraperEngineConfig
 
-Defined in: [core/types.ts:217](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L217)
+Defined in: [core/types.ts:326](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L326)
 
 Configuration for the scraper engine
 
@@ -16,7 +16,7 @@ Configuration for the scraper engine
 
 > **browserPool**: [`BrowserPoolConfig`](BrowserPoolConfig.md)
 
-Defined in: [core/types.ts:218](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L218)
+Defined in: [core/types.ts:327](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L327)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [core/types.ts:218](https://github.com/devalexanderdaza/crawlee-scra
 
 > **defaultOptions**: [`ScraperExecutionOptions`](ScraperExecutionOptions.md)
 
-Defined in: [core/types.ts:219](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L219)
+Defined in: [core/types.ts:328](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L328)
 
 ***
 
@@ -32,7 +32,9 @@ Defined in: [core/types.ts:219](https://github.com/devalexanderdaza/crawlee-scra
 
 > **plugins**: `string`[]
 
-Defined in: [core/types.ts:220](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L220)
+Defined in: [core/types.ts:330](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L330)
+
+List of plugin names or paths to be automatically installed upon engine initialization.
 
 ***
 
@@ -40,7 +42,10 @@ Defined in: [core/types.ts:220](https://github.com/devalexanderdaza/crawlee-scra
 
 > **globalHooks**: `Partial`\<`Record`\<[`ScraperHook`](../type-aliases/ScraperHook.md), [`HookHandler`](../type-aliases/HookHandler.md)[]\>\>
 
-Defined in: [core/types.ts:221](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L221)
+Defined in: [core/types.ts:335](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L335)
+
+Global lifecycle hooks to be applied to all scrapers.
+Keys are hook names (`ScraperHook`), and values are arrays of `HookHandler` functions.
 
 ***
 
@@ -48,12 +53,18 @@ Defined in: [core/types.ts:221](https://github.com/devalexanderdaza/crawlee-scra
 
 > **logging**: `object`
 
-Defined in: [core/types.ts:222](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L222)
+Defined in: [core/types.ts:337](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L337)
+
+Configuration for the engine's logger.
 
 #### level
 
 > **level**: `"debug"` \| `"info"` \| `"warn"` \| `"error"`
 
+Minimum log level to output.
+
 #### format
 
 > **format**: `"json"` \| `"text"`
+
+Format of the log output.

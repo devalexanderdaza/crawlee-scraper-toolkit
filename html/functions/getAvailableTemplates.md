@@ -1,4 +1,4 @@
-[**crawlee-scraper-toolkit v1.0.0**](../README.md)
+[**crawlee-scraper-toolkit v1.0.1**](../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getAvailableTemplates**(): `object`[]
 
-Defined in: [cli/templates/index.ts:842](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/templates/index.ts#L842)
+Defined in: [cli/templates/index.ts:1142](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/templates/index.ts#L1142)
 
 Get all available templates
 

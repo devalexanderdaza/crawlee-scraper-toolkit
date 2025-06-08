@@ -1,4 +1,4 @@
-[**crawlee-scraper-toolkit v1.0.0**](../../README.md)
+[**crawlee-scraper-toolkit v1.0.1**](../../README.md)
 
 ***
 
@@ -6,9 +6,10 @@
 
 # Interface: ScraperEvents
 
-Defined in: [core/types.ts:171](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L171)
+Defined in: [core/types.ts:271](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L271)
 
-Event types emitted by the scraper engine
+Defines the structure of events emitted by the ScraperEngine.
+Consumers can listen to these events using `engine.on('eventName', handler)`.
 
 ## Properties
 
@@ -16,7 +17,9 @@ Event types emitted by the scraper engine
 
 > **scraper:start**: `object`
 
-Defined in: [core/types.ts:172](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L172)
+Defined in: [core/types.ts:273](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L273)
+
+Emitted when a scraper execution starts. Payload includes scraper ID and input.
 
 #### scraperId
 
@@ -32,7 +35,9 @@ Defined in: [core/types.ts:172](https://github.com/devalexanderdaza/crawlee-scra
 
 > **scraper:success**: `object`
 
-Defined in: [core/types.ts:173](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L173)
+Defined in: [core/types.ts:275](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L275)
+
+Emitted when a scraper execution succeeds. Payload includes scraper ID and the result.
 
 #### scraperId
 
@@ -48,7 +53,9 @@ Defined in: [core/types.ts:173](https://github.com/devalexanderdaza/crawlee-scra
 
 > **scraper:error**: `object`
 
-Defined in: [core/types.ts:174](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L174)
+Defined in: [core/types.ts:277](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L277)
+
+Emitted when a scraper execution fails. Payload includes scraper ID and the error.
 
 #### scraperId
 
@@ -64,7 +71,9 @@ Defined in: [core/types.ts:174](https://github.com/devalexanderdaza/crawlee-scra
 
 > **scraper:retry**: `object`
 
-Defined in: [core/types.ts:175](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L175)
+Defined in: [core/types.ts:279](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L279)
+
+Emitted when a scraper execution attempt is being retried. Payload includes scraper ID and attempt number.
 
 #### scraperId
 
@@ -74,13 +83,19 @@ Defined in: [core/types.ts:175](https://github.com/devalexanderdaza/crawlee-scra
 
 > **attempt**: `number`
 
+#### error
+
+> **error**: `Error`
+
 ***
 
 ### pool:acquire
 
 > **pool:acquire**: `object`
 
-Defined in: [core/types.ts:176](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L176)
+Defined in: [core/types.ts:281](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L281)
+
+Emitted when a browser instance is acquired from the pool. Payload includes instance ID.
 
 #### instanceId
 
@@ -92,7 +107,9 @@ Defined in: [core/types.ts:176](https://github.com/devalexanderdaza/crawlee-scra
 
 > **pool:release**: `object`
 
-Defined in: [core/types.ts:177](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L177)
+Defined in: [core/types.ts:283](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L283)
+
+Emitted when a browser instance is released back to the pool. Payload includes instance ID.
 
 #### instanceId
 
@@ -104,7 +121,9 @@ Defined in: [core/types.ts:177](https://github.com/devalexanderdaza/crawlee-scra
 
 > **pool:cleanup**: `object`
 
-Defined in: [core/types.ts:178](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L178)
+Defined in: [core/types.ts:285](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L285)
+
+Emitted when the browser pool performs a cleanup operation. Payload includes number of removed instances.
 
 #### removedInstances
 

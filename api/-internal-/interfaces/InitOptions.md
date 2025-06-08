@@ -1,4 +1,4 @@
-[**crawlee-scraper-toolkit v1.0.0**](../../README.md)
+[**crawlee-scraper-toolkit v1.0.1**](../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: InitOptions
 
-Defined in: [cli/commands/init.ts:10](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/init.ts#L10)
+Defined in: [cli/commands/init.ts:43](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/init.ts#L43)
 
 Project initialization options
 
@@ -16,7 +16,7 @@ Project initialization options
 
 > `optional` **name**: `string`
 
-Defined in: [cli/commands/init.ts:11](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/init.ts#L11)
+Defined in: [cli/commands/init.ts:44](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/init.ts#L44)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [cli/commands/init.ts:11](https://github.com/devalexanderdaza/crawle
 
 > `optional` **template**: `"basic"` \| `"advanced"`
 
-Defined in: [cli/commands/init.ts:12](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/init.ts#L12)
+Defined in: [cli/commands/init.ts:45](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/init.ts#L45)
 
 ***
 
@@ -32,4 +32,4 @@ Defined in: [cli/commands/init.ts:12](https://github.com/devalexanderdaza/crawle
 
 > `optional` **typescript**: `boolean`
 
-Defined in: [cli/commands/init.ts:13](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/init.ts#L13)
+Defined in: [cli/commands/init.ts:46](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/init.ts#L46)

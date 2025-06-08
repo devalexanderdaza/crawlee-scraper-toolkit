@@ -1,4 +1,4 @@
-[**crawlee-scraper-toolkit v1.0.0**](../README.md)
+[**crawlee-scraper-toolkit v1.0.1**](../README.md)
 
 ***
 
@@ -6,9 +6,10 @@
 
 # Interface: ScraperContext\<Input, Output\>
 
-Defined in: [core/types.ts:75](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L75)
+Defined in: [core/types.ts:109](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L109)
 
-Scraper context passed to hooks and parse function
+Context object passed to the `parse` function and to all hook handlers.
+It provides access to the current scraping state and resources.
 
 ## Type Parameters
 
@@ -16,9 +17,13 @@ Scraper context passed to hooks and parse function
 
 `Input` = `unknown`
 
+The type of the input data for the scraper.
+
 ### Output
 
 `Output` = `unknown`
+
+The type of the output data from the scraper's parse function.
 
 ## Properties
 
@@ -26,7 +31,9 @@ Scraper context passed to hooks and parse function
 
 > **input**: `Input`
 
-Defined in: [core/types.ts:76](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L76)
+Defined in: [core/types.ts:111](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L111)
+
+The input data provided for the current scraping task.
 
 ***
 
@@ -34,7 +41,9 @@ Defined in: [core/types.ts:76](https://github.com/devalexanderdaza/crawlee-scrap
 
 > **page**: `Page`
 
-Defined in: [core/types.ts:77](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L77)
+Defined in: [core/types.ts:113](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L113)
+
+The Playwright `Page` object for interacting with the browser.
 
 ***
 
@@ -42,7 +51,9 @@ Defined in: [core/types.ts:77](https://github.com/devalexanderdaza/crawlee-scrap
 
 > **attempt**: `number`
 
-Defined in: [core/types.ts:78](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L78)
+Defined in: [core/types.ts:115](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L115)
+
+The current attempt number for this scraping task (1 for first attempt, 2 for first retry, etc.).
 
 ***
 
@@ -50,7 +61,9 @@ Defined in: [core/types.ts:78](https://github.com/devalexanderdaza/crawlee-scrap
 
 > **startTime**: `number`
 
-Defined in: [core/types.ts:79](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L79)
+Defined in: [core/types.ts:117](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L117)
+
+Timestamp (ms since epoch) when the current scraping attempt started.
 
 ***
 
@@ -58,7 +71,9 @@ Defined in: [core/types.ts:79](https://github.com/devalexanderdaza/crawlee-scrap
 
 > **options**: [`ScraperExecutionOptions`](ScraperExecutionOptions.md)
 
-Defined in: [core/types.ts:80](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L80)
+Defined in: [core/types.ts:119](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L119)
+
+The execution options applicable to the current scraping task.
 
 ***
 
@@ -66,7 +81,9 @@ Defined in: [core/types.ts:80](https://github.com/devalexanderdaza/crawlee-scrap
 
 > **metadata**: `Record`\<`string`, `unknown`\>
 
-Defined in: [core/types.ts:81](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L81)
+Defined in: [core/types.ts:121](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L121)
+
+A key-value store for sharing custom data between hooks or within a scraping lifecycle.
 
 ***
 
@@ -74,7 +91,10 @@ Defined in: [core/types.ts:81](https://github.com/devalexanderdaza/crawlee-scrap
 
 > `optional` **result**: `Output`
 
-Defined in: [core/types.ts:82](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L82)
+Defined in: [core/types.ts:126](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L126)
+
+The result from the `parse` function. Available in `afterRequest` and `onSuccess` hooks if parsing was successful.
+Potentially available in `onError` if error occurred after parsing.
 
 ***
 
@@ -82,4 +102,17 @@ Defined in: [core/types.ts:82](https://github.com/devalexanderdaza/crawlee-scrap
 
 > `optional` **error**: `Error`
 
-Defined in: [core/types.ts:83](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L83)
+Defined in: [core/types.ts:131](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L131)
+
+The error object if an error occurred. Available in `onError` and `afterRequest` hooks if an error was thrown.
+Also available in `onRetry` hook.
+
+***
+
+### log
+
+> **log**: [`Logger`](../-internal-/interfaces/Logger.md)
+
+Defined in: [core/types.ts:133](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L133)
+
+Logger instance for logging within the scraper context, e.g., in parse function or hooks.

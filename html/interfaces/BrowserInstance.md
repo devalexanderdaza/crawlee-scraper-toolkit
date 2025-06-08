@@ -1,4 +1,4 @@
-[**crawlee-scraper-toolkit v1.0.0**](../README.md)
+[**crawlee-scraper-toolkit v1.0.1**](../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: BrowserInstance
 
-Defined in: [core/types.ts:25](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L25)
+Defined in: [core/types.ts:31](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L31)
 
 Browser instance in the pool
 
@@ -16,7 +16,7 @@ Browser instance in the pool
 
 > **id**: `string`
 
-Defined in: [core/types.ts:26](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L26)
+Defined in: [core/types.ts:32](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L32)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [core/types.ts:26](https://github.com/devalexanderdaza/crawlee-scrap
 
 > **browser**: `Browser`
 
-Defined in: [core/types.ts:27](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L27)
+Defined in: [core/types.ts:33](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L33)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [core/types.ts:27](https://github.com/devalexanderdaza/crawlee-scrap
 
 > **context**: `BrowserContext`
 
-Defined in: [core/types.ts:28](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L28)
+Defined in: [core/types.ts:34](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L34)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [core/types.ts:28](https://github.com/devalexanderdaza/crawlee-scrap
 
 > **page**: `Page`
 
-Defined in: [core/types.ts:29](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L29)
+Defined in: [core/types.ts:35](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L35)
 
 ***
 
@@ -48,7 +48,7 @@ Defined in: [core/types.ts:29](https://github.com/devalexanderdaza/crawlee-scrap
 
 > **lastUsed**: `number`
 
-Defined in: [core/types.ts:30](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L30)
+Defined in: [core/types.ts:36](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L36)
 
 ***
 
@@ -56,7 +56,7 @@ Defined in: [core/types.ts:30](https://github.com/devalexanderdaza/crawlee-scrap
 
 > **inUse**: `boolean`
 
-Defined in: [core/types.ts:31](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L31)
+Defined in: [core/types.ts:37](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L37)
 
 ***
 
@@ -64,4 +64,4 @@ Defined in: [core/types.ts:31](https://github.com/devalexanderdaza/crawlee-scrap
 
 > **createdAt**: `number`
 
-Defined in: [core/types.ts:32](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L32)
+Defined in: [core/types.ts:38](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L38)

@@ -1,4 +1,4 @@
-[**crawlee-scraper-toolkit v1.0.0**](../README.md)
+[**crawlee-scraper-toolkit v1.0.1**](../README.md)
 
 ***
 
@@ -20,6 +20,7 @@
 - [ConfigProfile](interfaces/ConfigProfile.md)
 - [ConfigFile](interfaces/ConfigFile.md)
 - [ScraperEvents](interfaces/ScraperEvents.md)
+- [Logger](interfaces/Logger.md)
 
 ## Type Aliases
 

@@ -1,4 +1,4 @@
-[**crawlee-scraper-toolkit v1.0.0**](../README.md)
+[**crawlee-scraper-toolkit v1.0.1**](../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Class: ProxyPlugin
 
-Defined in: [plugins/index.ts:98](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L98)
+Defined in: [plugins/index.ts:99](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L99)
 
 Proxy rotation plugin
 
@@ -20,7 +20,7 @@ Proxy rotation plugin
 
 > **new ProxyPlugin**(`proxies`): `ProxyPlugin`
 
-Defined in: [plugins/index.ts:105](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L105)
+Defined in: [plugins/index.ts:106](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L106)
 
 #### Parameters
 
@@ -38,7 +38,9 @@ Defined in: [plugins/index.ts:105](https://github.com/devalexanderdaza/crawlee-s
 
 > **name**: `string` = `'proxy'`
 
-Defined in: [plugins/index.ts:99](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L99)
+Defined in: [plugins/index.ts:100](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L100)
+
+The unique name of the plugin.
 
 #### Implementation of
 
@@ -50,7 +52,9 @@ Defined in: [plugins/index.ts:99](https://github.com/devalexanderdaza/crawlee-sc
 
 > **version**: `string` = `'1.0.0'`
 
-Defined in: [plugins/index.ts:100](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L100)
+Defined in: [plugins/index.ts:101](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L101)
+
+The version of the plugin (e.g., semver string).
 
 #### Implementation of
 
@@ -62,7 +66,11 @@ Defined in: [plugins/index.ts:100](https://github.com/devalexanderdaza/crawlee-s
 
 > **install**(`scraper`): `void`
 
-Defined in: [plugins/index.ts:109](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L109)
+Defined in: [plugins/index.ts:110](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L110)
+
+Called when the plugin is installed via `engine.use(plugin)`.
+This method should implement the plugin's setup logic, such as
+registering global hooks, modifying engine properties, etc.
 
 #### Parameters
 
@@ -84,7 +92,7 @@ Defined in: [plugins/index.ts:109](https://github.com/devalexanderdaza/crawlee-s
 
 > **addProxy**(`proxy`): `void`
 
-Defined in: [plugins/index.ts:127](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L127)
+Defined in: [plugins/index.ts:128](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L128)
 
 Add proxy to the rotation
 
@@ -104,7 +112,7 @@ Add proxy to the rotation
 
 > **removeProxy**(`proxy`): `void`
 
-Defined in: [plugins/index.ts:134](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L134)
+Defined in: [plugins/index.ts:135](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L135)
 
 Remove proxy from rotation
 
@@ -124,7 +132,7 @@ Remove proxy from rotation
 
 > **getProxies**(): `string`[]
 
-Defined in: [plugins/index.ts:147](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L147)
+Defined in: [plugins/index.ts:148](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L148)
 
 Get current proxy list
 

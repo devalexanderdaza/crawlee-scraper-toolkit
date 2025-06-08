@@ -1,4 +1,4 @@
-[**crawlee-scraper-toolkit v1.0.0**](../README.md)
+[**crawlee-scraper-toolkit v1.0.1**](../README.md)
 
 ***
 
@@ -6,9 +6,14 @@
 
 # Interface: WaitStrategy
 
-Defined in: [core/types.ts:97](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L97)
+Defined in: [core/types.ts:158](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L158)
 
-Wait strategy for determining when page is ready
+Defines the strategy for determining when a page is considered "ready" after navigation
+or an action, before proceeding with parsing or further interactions.
+- `selector`: Waits for a specific DOM selector to be present and visible.
+- `response`: Waits for a specific network response (e.g., an API call).
+- `timeout`: Waits for a fixed duration.
+- `custom`: A user-defined wait logic.
 
 ## Properties
 
@@ -16,7 +21,9 @@ Wait strategy for determining when page is ready
 
 > **type**: `"custom"` \| `"selector"` \| `"response"` \| `"timeout"`
 
-Defined in: [core/types.ts:98](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L98)
+Defined in: [core/types.ts:160](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L160)
+
+The type of wait strategy to employ.
 
 ***
 
@@ -24,4 +31,6 @@ Defined in: [core/types.ts:98](https://github.com/devalexanderdaza/crawlee-scrap
 
 > **config**: `Record`\<`string`, `unknown`\>
 
-Defined in: [core/types.ts:99](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L99)
+Defined in: [core/types.ts:162](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L162)
+
+Configuration object specific to the chosen wait `type`.

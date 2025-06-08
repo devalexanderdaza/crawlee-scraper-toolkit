@@ -1,4 +1,4 @@
-[**crawlee-scraper-toolkit v1.0.0**](../README.md)
+[**crawlee-scraper-toolkit v1.0.1**](../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: ScraperExecutionOptions
 
-Defined in: [core/types.ts:38](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L38)
+Defined in: [core/types.ts:54](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L54)
 
 Scraper execution options
 
@@ -16,7 +16,7 @@ Scraper execution options
 
 > **retries**: `number`
 
-Defined in: [core/types.ts:40](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L40)
+Defined in: [core/types.ts:56](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L56)
 
 Number of retry attempts
 
@@ -26,7 +26,7 @@ Number of retry attempts
 
 > **retryDelay**: `number`
 
-Defined in: [core/types.ts:42](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L42)
+Defined in: [core/types.ts:58](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L58)
 
 Delay between retries in milliseconds
 
@@ -36,7 +36,7 @@ Delay between retries in milliseconds
 
 > **timeout**: `number`
 
-Defined in: [core/types.ts:44](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L44)
+Defined in: [core/types.ts:60](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L60)
 
 Request timeout in milliseconds
 
@@ -46,7 +46,7 @@ Request timeout in milliseconds
 
 > **useProxyRotation**: `boolean`
 
-Defined in: [core/types.ts:46](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L46)
+Defined in: [core/types.ts:62](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L62)
 
 Whether to use proxy rotation
 
@@ -56,7 +56,7 @@ Whether to use proxy rotation
 
 > **headers**: `Record`\<`string`, `string`\>
 
-Defined in: [core/types.ts:48](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L48)
+Defined in: [core/types.ts:64](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L64)
 
 Custom headers
 
@@ -66,7 +66,7 @@ Custom headers
 
 > **userAgent**: `string`
 
-Defined in: [core/types.ts:50](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L50)
+Defined in: [core/types.ts:66](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L66)
 
 User agent string
 
@@ -76,7 +76,7 @@ User agent string
 
 > **javascript**: `boolean`
 
-Defined in: [core/types.ts:52](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L52)
+Defined in: [core/types.ts:68](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L68)
 
 Whether to enable JavaScript
 
@@ -86,9 +86,9 @@ Whether to enable JavaScript
 
 > **loadImages**: `boolean`
 
-Defined in: [core/types.ts:54](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L54)
+Defined in: [core/types.ts:70](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L70)
 
-Whether to load images
+Whether to load images during page navigation. Defaults to false.
 
 ***
 
@@ -96,14 +96,22 @@ Whether to load images
 
 > **viewport**: `object`
 
-Defined in: [core/types.ts:56](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L56)
+Defined in: [core/types.ts:75](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L75)
 
-Viewport configuration
+Viewport configuration for the browser page.
 
 #### width
 
 > **width**: `number`
 
+Viewport width in pixels.
+
 #### height
 
 > **height**: `number`
+
+Viewport height in pixels.
+
+#### See
+
+https://playwright.dev/docs/api/class-page#page-set-viewport-size

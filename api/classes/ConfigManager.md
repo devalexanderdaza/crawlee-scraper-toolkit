@@ -1,4 +1,4 @@
-[**crawlee-scraper-toolkit v1.0.0**](../README.md)
+[**crawlee-scraper-toolkit v1.0.1**](../README.md)
 
 ***
 
@@ -6,9 +6,13 @@
 
 # Class: ConfigManager
 
-Defined in: [core/config-manager.ts:103](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L103)
+Defined in: [core/config-manager.ts:139](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L139)
 
-Configuration manager for the scraper toolkit
+Manages the loading, merging, and validation of scraper engine configurations.
+Configurations can be sourced from files (YAML/JSON), environment variables,
+programmatic updates, and predefined profiles.
+It follows a layered approach for merging configurations:
+Defaults < File < Environment Variables < Programmatic Updates/Profiles.
 
 ## Constructors
 
@@ -16,13 +20,18 @@ Configuration manager for the scraper toolkit
 
 > **new ConfigManager**(`autoLoad`): `ConfigManager`
 
-Defined in: [core/config-manager.ts:108](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L108)
+Defined in: [core/config-manager.ts:149](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L149)
+
+Creates an instance of ConfigManager.
 
 #### Parameters
 
 ##### autoLoad
 
 `boolean` = `true`
+
+If `true` (default), automatically loads configuration from
+default file paths (e.g., `./scraper.config.yaml`) and environment variables upon instantiation.
 
 #### Returns
 
@@ -34,13 +43,15 @@ Defined in: [core/config-manager.ts:108](https://github.com/devalexanderdaza/cra
 
 > **getConfig**(): [`ScraperEngineConfig`](../interfaces/ScraperEngineConfig.md)
 
-Defined in: [core/config-manager.ts:118](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L118)
+Defined in: [core/config-manager.ts:160](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L160)
 
-Get the current configuration
+Retrieves a deep copy of the current, fully merged scraper engine configuration.
 
 #### Returns
 
 [`ScraperEngineConfig`](../interfaces/ScraperEngineConfig.md)
+
+The current `ScraperEngineConfig` object.
 
 ***
 
@@ -48,15 +59,18 @@ Get the current configuration
 
 > **updateConfig**(`updates`): `void`
 
-Defined in: [core/config-manager.ts:125](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L125)
+Defined in: [core/config-manager.ts:171](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L171)
 
-Update configuration programmatically
+Programmatically updates the current configuration with the provided partial configuration.
+These updates are applied with the highest precedence, overriding any other sources.
 
 #### Parameters
 
 ##### updates
 
 `Partial`\<[`ScraperEngineConfig`](../interfaces/ScraperEngineConfig.md)\>
+
+A `Partial<ScraperEngineConfig>` object containing the configuration updates.
 
 #### Returns
 
@@ -68,9 +82,11 @@ Update configuration programmatically
 
 > **loadFromFile**(`filePath`): `void`
 
-Defined in: [core/config-manager.ts:133](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L133)
+Defined in: [core/config-manager.ts:183](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L183)
 
-Load configuration from file
+Loads configuration from a specified file path. Supports JSON and YAML formats.
+The loaded configuration is merged into the existing configuration.
+Can handle `extends` within configuration files to inherit from other files.
 
 #### Parameters
 
@@ -78,9 +94,15 @@ Load configuration from file
 
 `string`
 
+The absolute or relative path to the configuration file.
+
 #### Returns
 
 `void`
+
+#### Throws
+
+Error if the file is not found, unsupported format, or parsing fails.
 
 ***
 
@@ -88,9 +110,15 @@ Load configuration from file
 
 > **loadFromEnv**(): `void`
 
-Defined in: [core/config-manager.ts:176](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L176)
+Defined in: [core/config-manager.ts:233](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L233)
 
-Load configuration from environment variables
+Loads configuration settings from predefined environment variables.
+Environment variables typically override file configurations but are overridden
+by programmatic updates.
+Recognized environment variables include:
+- `BROWSER_POOL_SIZE`, `BROWSER_MAX_AGE_MS`, `BROWSER_HEADLESS`, `BROWSER_ARGS`
+- `SCRAPING_MAX_RETRIES`, `SCRAPING_TIMEOUT`, `SCRAPING_USER_AGENT`
+- `LOG_LEVEL`, `LOG_FORMAT`
 
 #### Returns
 
@@ -102,9 +130,11 @@ Load configuration from environment variables
 
 > **applyProfile**(`profileName`): `void`
 
-Defined in: [core/config-manager.ts:258](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L258)
+Defined in: [core/config-manager.ts:319](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L319)
 
-Apply a configuration profile
+Applies a named configuration profile to the current configuration.
+The profile's configuration is treated as a programmatic update,
+overriding other sources.
 
 #### Parameters
 
@@ -112,9 +142,15 @@ Apply a configuration profile
 
 `string`
 
+The name of the profile to apply (must be loaded from a config file).
+
 #### Returns
 
 `void`
+
+#### Throws
+
+Error if the specified profile name is not found.
 
 ***
 
@@ -122,13 +158,15 @@ Apply a configuration profile
 
 > **getProfiles**(): [`ConfigProfile`](../-internal-/interfaces/ConfigProfile.md)[]
 
-Defined in: [core/config-manager.ts:271](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L271)
+Defined in: [core/config-manager.ts:333](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L333)
 
-Get available profiles
+Retrieves a list of all currently loaded configuration profiles.
 
 #### Returns
 
 [`ConfigProfile`](../-internal-/interfaces/ConfigProfile.md)[]
+
+An array of `ConfigProfile` objects.
 
 ***
 
@@ -136,9 +174,10 @@ Get available profiles
 
 > **validateConfig**(`config?`): `object`
 
-Defined in: [core/config-manager.ts:278](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L278)
+Defined in: [core/config-manager.ts:345](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L345)
 
-Validate configuration
+Validates a given configuration object (or the current configuration if none is provided)
+against the defined Zod schema.
 
 #### Parameters
 
@@ -146,9 +185,15 @@ Validate configuration
 
 `Partial`\<[`ScraperEngineConfig`](../interfaces/ScraperEngineConfig.md)\>
 
+Optional. A `Partial<ScraperEngineConfig>` to validate. If not provided,
+the ConfigManager's current internal configuration is validated.
+
 #### Returns
 
 `object`
+
+An object with `valid: boolean` and `errors: string[]`.
+         `errors` is an array of human-readable error messages if validation fails.
 
 ##### valid
 
@@ -164,16 +209,20 @@ Validate configuration
 
 > **exportConfig**(`format`): `string`
 
-Defined in: [core/config-manager.ts:298](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L298)
+Defined in: [core/config-manager.ts:368](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L368)
 
-Export current configuration
+Exports the current, fully merged configuration to a string in the specified format.
 
 #### Parameters
 
 ##### format
+
+The desired output format, either 'json' or 'yaml'. Defaults to 'yaml'.
 
 `"json"` | `"yaml"`
 
 #### Returns
 
 `string`
+
+A string representation of the current configuration.

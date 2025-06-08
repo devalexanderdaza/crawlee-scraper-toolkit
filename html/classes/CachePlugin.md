@@ -1,4 +1,4 @@
-[**crawlee-scraper-toolkit v1.0.0**](../README.md)
+[**crawlee-scraper-toolkit v1.0.1**](../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Class: CachePlugin
 
-Defined in: [plugins/index.ts:35](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L35)
+Defined in: [plugins/index.ts:36](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L36)
 
 Cache plugin for caching scraper results
 
@@ -20,7 +20,7 @@ Cache plugin for caching scraper results
 
 > **new CachePlugin**(`options`): `CachePlugin`
 
-Defined in: [plugins/index.ts:42](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L42)
+Defined in: [plugins/index.ts:43](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L43)
 
 #### Parameters
 
@@ -40,7 +40,9 @@ Defined in: [plugins/index.ts:42](https://github.com/devalexanderdaza/crawlee-sc
 
 > **name**: `string` = `'cache'`
 
-Defined in: [plugins/index.ts:36](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L36)
+Defined in: [plugins/index.ts:37](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L37)
+
+The unique name of the plugin.
 
 #### Implementation of
 
@@ -52,7 +54,9 @@ Defined in: [plugins/index.ts:36](https://github.com/devalexanderdaza/crawlee-sc
 
 > **version**: `string` = `'1.0.0'`
 
-Defined in: [plugins/index.ts:37](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L37)
+Defined in: [plugins/index.ts:38](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L38)
+
+The version of the plugin (e.g., semver string).
 
 #### Implementation of
 
@@ -64,7 +68,11 @@ Defined in: [plugins/index.ts:37](https://github.com/devalexanderdaza/crawlee-sc
 
 > **install**(`scraper`): `void`
 
-Defined in: [plugins/index.ts:46](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L46)
+Defined in: [plugins/index.ts:47](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L47)
+
+Called when the plugin is installed via `engine.use(plugin)`.
+This method should implement the plugin's setup logic, such as
+registering global hooks, modifying engine properties, etc.
 
 #### Parameters
 
@@ -86,7 +94,7 @@ Defined in: [plugins/index.ts:46](https://github.com/devalexanderdaza/crawlee-sc
 
 > **clearCache**(): `void`
 
-Defined in: [plugins/index.ts:80](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L80)
+Defined in: [plugins/index.ts:81](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L81)
 
 Clear cache
 
@@ -100,7 +108,7 @@ Clear cache
 
 > **getCacheStats**(): `object`
 
-Defined in: [plugins/index.ts:87](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L87)
+Defined in: [plugins/index.ts:88](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L88)
 
 Get cache statistics
 

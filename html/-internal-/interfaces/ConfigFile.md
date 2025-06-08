@@ -1,4 +1,4 @@
-[**crawlee-scraper-toolkit v1.0.0**](../../README.md)
+[**crawlee-scraper-toolkit v1.0.1**](../../README.md)
 
 ***
 
@@ -6,9 +6,9 @@
 
 # Interface: ConfigFile
 
-Defined in: [core/config-manager.ts:26](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L26)
+Defined in: [core/config-manager.ts:39](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L39)
 
-Configuration file format
+Defines the expected structure of a configuration file (e.g., `scraper.config.yaml`).
 
 ## Properties
 
@@ -16,7 +16,19 @@ Configuration file format
 
 > `optional` **profiles**: `Record`\<`string`, [`ConfigProfile`](ConfigProfile.md)\>
 
-Defined in: [core/config-manager.ts:27](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L27)
+Defined in: [core/config-manager.ts:49](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L49)
+
+A map of configuration profiles, where each key is the profile name.
+
+#### Example
+
+```ts
+profiles:
+  development:
+    config: { browserPool: { maxSize: 2 } }
+  production:
+    config: { browserPool: { maxSize: 10 } }
+```
 
 ***
 
@@ -24,7 +36,9 @@ Defined in: [core/config-manager.ts:27](https://github.com/devalexanderdaza/craw
 
 > `optional` **default**: `Partial`\<[`ScraperEngineConfig`](../../interfaces/ScraperEngineConfig.md)\>
 
-Defined in: [core/config-manager.ts:28](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L28)
+Defined in: [core/config-manager.ts:51](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L51)
+
+Default configuration settings to be applied if no specific profile is chosen or to serve as a base.
 
 ***
 
@@ -32,4 +46,16 @@ Defined in: [core/config-manager.ts:28](https://github.com/devalexanderdaza/craw
 
 > `optional` **extends**: `string`[]
 
-Defined in: [core/config-manager.ts:29](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L29)
+Defined in: [core/config-manager.ts:61](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L61)
+
+An array of paths to other configuration files to extend from.
+Paths are relative to the current configuration file.
+Configurations are merged shallowly, with later files overriding earlier ones.
+
+#### Example
+
+```ts
+extends:
+  - ./base.config.yaml
+  - ./production.config.yaml
+```

@@ -1,4 +1,4 @@
-[**crawlee-scraper-toolkit v1.0.0**](../README.md)
+[**crawlee-scraper-toolkit v1.0.1**](../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Class: MetricsPlugin
 
-Defined in: [plugins/index.ts:227](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L227)
+Defined in: [plugins/index.ts:229](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L229)
 
 Metrics plugin for collecting scraper metrics
 
@@ -30,7 +30,9 @@ Metrics plugin for collecting scraper metrics
 
 > **name**: `string` = `'metrics'`
 
-Defined in: [plugins/index.ts:228](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L228)
+Defined in: [plugins/index.ts:230](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L230)
+
+The unique name of the plugin.
 
 #### Implementation of
 
@@ -42,7 +44,9 @@ Defined in: [plugins/index.ts:228](https://github.com/devalexanderdaza/crawlee-s
 
 > **version**: `string` = `'1.0.0'`
 
-Defined in: [plugins/index.ts:229](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L229)
+Defined in: [plugins/index.ts:231](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L231)
+
+The version of the plugin (e.g., semver string).
 
 #### Implementation of
 
@@ -54,7 +58,11 @@ Defined in: [plugins/index.ts:229](https://github.com/devalexanderdaza/crawlee-s
 
 > **install**(`scraper`): `void`
 
-Defined in: [plugins/index.ts:248](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L248)
+Defined in: [plugins/index.ts:250](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L250)
+
+Called when the plugin is installed via `engine.use(plugin)`.
+This method should implement the plugin's setup logic, such as
+registering global hooks, modifying engine properties, etc.
 
 #### Parameters
 
@@ -76,7 +84,7 @@ Defined in: [plugins/index.ts:248](https://github.com/devalexanderdaza/crawlee-s
 
 > **getMetrics**(): `object`
 
-Defined in: [plugins/index.ts:280](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L280)
+Defined in: [plugins/index.ts:282](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L282)
 
 Get metrics
 
@@ -114,7 +122,7 @@ Get metrics
 
 > **resetMetrics**(): `void`
 
-Defined in: [plugins/index.ts:287](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L287)
+Defined in: [plugins/index.ts:289](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L289)
 
 Reset metrics
 

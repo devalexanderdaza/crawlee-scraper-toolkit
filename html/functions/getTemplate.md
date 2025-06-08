@@ -1,4 +1,4 @@
-[**crawlee-scraper-toolkit v1.0.0**](../README.md)
+[**crawlee-scraper-toolkit v1.0.1**](../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **getTemplate**(`type`): [`Template`](../-internal-/interfaces/Template.md)
 
-Defined in: [cli/templates/index.ts:831](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/templates/index.ts#L831)
+Defined in: [cli/templates/index.ts:1131](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/templates/index.ts#L1131)
 
 Get template by type
 

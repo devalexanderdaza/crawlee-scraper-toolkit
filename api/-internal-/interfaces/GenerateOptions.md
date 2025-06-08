@@ -1,4 +1,4 @@
-[**crawlee-scraper-toolkit v1.0.0**](../../README.md)
+[**crawlee-scraper-toolkit v1.0.1**](../../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Interface: GenerateOptions
 
-Defined in: [cli/commands/generate.ts:16](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L16)
+Defined in: [cli/commands/generate.ts:54](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L54)
 
 Generation options
 
@@ -16,7 +16,7 @@ Generation options
 
 > `optional` **template**: [`TemplateType`](../type-aliases/TemplateType.md)
 
-Defined in: [cli/commands/generate.ts:17](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L17)
+Defined in: [cli/commands/generate.ts:55](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L55)
 
 ***
 
@@ -24,7 +24,7 @@ Defined in: [cli/commands/generate.ts:17](https://github.com/devalexanderdaza/cr
 
 > `optional` **name**: `string`
 
-Defined in: [cli/commands/generate.ts:18](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L18)
+Defined in: [cli/commands/generate.ts:56](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L56)
 
 ***
 
@@ -32,7 +32,7 @@ Defined in: [cli/commands/generate.ts:18](https://github.com/devalexanderdaza/cr
 
 > `optional` **output**: `string`
 
-Defined in: [cli/commands/generate.ts:19](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L19)
+Defined in: [cli/commands/generate.ts:57](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L57)
 
 ***
 
@@ -40,4 +40,4 @@ Defined in: [cli/commands/generate.ts:19](https://github.com/devalexanderdaza/cr
 
 > `optional` **interactive**: `boolean`
 
-Defined in: [cli/commands/generate.ts:20](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L20)
+Defined in: [cli/commands/generate.ts:58](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/generate.ts#L58)

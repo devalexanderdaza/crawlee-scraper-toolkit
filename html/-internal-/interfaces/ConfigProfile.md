@@ -1,4 +1,4 @@
-[**crawlee-scraper-toolkit v1.0.0**](../../README.md)
+[**crawlee-scraper-toolkit v1.0.1**](../../README.md)
 
 ***
 
@@ -6,9 +6,9 @@
 
 # Interface: ConfigProfile
 
-Defined in: [core/config-manager.ts:17](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L17)
+Defined in: [core/config-manager.ts:27](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L27)
 
-Configuration profile
+Defines the structure for a configuration profile, allowing predefined sets of configurations.
 
 ## Properties
 
@@ -16,7 +16,9 @@ Configuration profile
 
 > **name**: `string`
 
-Defined in: [core/config-manager.ts:18](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L18)
+Defined in: [core/config-manager.ts:29](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L29)
+
+The unique name of the profile (e.g., "development", "production_large_pool").
 
 ***
 
@@ -24,7 +26,9 @@ Defined in: [core/config-manager.ts:18](https://github.com/devalexanderdaza/craw
 
 > `optional` **description**: `string`
 
-Defined in: [core/config-manager.ts:19](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L19)
+Defined in: [core/config-manager.ts:31](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L31)
+
+An optional description for what this profile is intended for.
 
 ***
 
@@ -32,4 +36,6 @@ Defined in: [core/config-manager.ts:19](https://github.com/devalexanderdaza/craw
 
 > **config**: `Partial`\<[`ScraperEngineConfig`](../../interfaces/ScraperEngineConfig.md)\>
 
-Defined in: [core/config-manager.ts:20](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L20)
+Defined in: [core/config-manager.ts:33](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/config-manager.ts#L33)
+
+The partial scraper engine configuration that this profile applies.

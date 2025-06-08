@@ -1,4 +1,4 @@
-[**crawlee-scraper-toolkit v1.0.0**](../README.md)
+[**crawlee-scraper-toolkit v1.0.1**](../README.md)
 
 ***
 
@@ -6,7 +6,7 @@
 
 # Class: RateLimitPlugin
 
-Defined in: [plugins/index.ts:155](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L155)
+Defined in: [plugins/index.ts:156](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L156)
 
 Rate limiting plugin
 
@@ -20,7 +20,7 @@ Rate limiting plugin
 
 > **new RateLimitPlugin**(`options`): `RateLimitPlugin`
 
-Defined in: [plugins/index.ts:163](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L163)
+Defined in: [plugins/index.ts:164](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L164)
 
 #### Parameters
 
@@ -44,7 +44,9 @@ Defined in: [plugins/index.ts:163](https://github.com/devalexanderdaza/crawlee-s
 
 > **name**: `string` = `'rateLimit'`
 
-Defined in: [plugins/index.ts:156](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L156)
+Defined in: [plugins/index.ts:157](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L157)
+
+The unique name of the plugin.
 
 #### Implementation of
 
@@ -56,7 +58,9 @@ Defined in: [plugins/index.ts:156](https://github.com/devalexanderdaza/crawlee-s
 
 > **version**: `string` = `'1.0.0'`
 
-Defined in: [plugins/index.ts:157](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L157)
+Defined in: [plugins/index.ts:158](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L158)
+
+The version of the plugin (e.g., semver string).
 
 #### Implementation of
 
@@ -68,7 +72,11 @@ Defined in: [plugins/index.ts:157](https://github.com/devalexanderdaza/crawlee-s
 
 > **install**(`scraper`): `void`
 
-Defined in: [plugins/index.ts:168](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L168)
+Defined in: [plugins/index.ts:169](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L169)
+
+Called when the plugin is installed via `engine.use(plugin)`.
+This method should implement the plugin's setup logic, such as
+registering global hooks, modifying engine properties, etc.
 
 #### Parameters
 
@@ -90,7 +98,7 @@ Defined in: [plugins/index.ts:168](https://github.com/devalexanderdaza/crawlee-s
 
 > **getStats**(): `Record`\<`string`, \{ `requests`: `number`; `window`: `number`; \}\>
 
-Defined in: [plugins/index.ts:210](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L210)
+Defined in: [plugins/index.ts:211](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/plugins/index.ts#L211)
 
 Get rate limit statistics
 

@@ -1,4 +1,4 @@
-[**crawlee-scraper-toolkit v1.0.0**](../README.md)
+[**crawlee-scraper-toolkit v1.0.1**](../README.md)
 
 ***
 
@@ -8,7 +8,7 @@
 
 > **initProject**(`options`): `Promise`\<`void`\>
 
-Defined in: [cli/commands/init.ts:19](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/init.ts#L19)
+Defined in: [cli/commands/init.ts:52](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/cli/commands/init.ts#L52)
 
 Initialize a new scraper project
 

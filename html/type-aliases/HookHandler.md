@@ -1,28 +1,38 @@
-[**crawlee-scraper-toolkit v1.0.0**](../README.md)
+[**crawlee-scraper-toolkit v1.0.1**](../README.md)
 
 ***
 
 [crawlee-scraper-toolkit](../globals.md) / HookHandler
 
-# Type Alias: HookHandler()\<T\>
+# Type Alias: HookHandler()\<Input, Output\>
 
-> **HookHandler**\<`T`\> = (`context`) => `Promise`\<`void`\> \| `void`
+> **HookHandler**\<`Input`, `Output`\> = (`context`) => `Promise`\<`void`\> \| `void`
 
-Defined in: [core/types.ts:70](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L70)
+Defined in: [core/types.ts:99](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/blob/main/src/core/types.ts#L99)
 
-Hook handler function
+Defines the signature for a hook handler function.
 
 ## Type Parameters
 
-### T
+### Input
 
-`T` = `unknown`
+`Input` = `unknown`
+
+The type of the input data for the scraper.
+
+### Output
+
+`Output` = `unknown`
+
+The type of the output data from the scraper's parse function.
 
 ## Parameters
 
 ### context
 
-[`ScraperContext`](../interfaces/ScraperContext.md)\<`T`\>
+[`ScraperContext`](../interfaces/ScraperContext.md)\<`Input`, `Output`\>
+
+The scraper context, providing access to input, page, options, etc.
 
 ## Returns
 
