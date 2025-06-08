@@ -32,6 +32,7 @@ export class RetryPlugin implements ScraperPlugin {
 /**
  * Cache plugin for caching scraper results
  */
+// @todo Future enhancement: Implement pluggable storage adapters (e.g., FileSystem, Redis) beyond the default in-memory store.
 export class CachePlugin implements ScraperPlugin {
   name = 'cache';
   version = '1.0.0';
@@ -224,6 +225,7 @@ export class RateLimitPlugin implements ScraperPlugin {
 /**
  * Metrics plugin for collecting scraper metrics
  */
+// @todo Future enhancement: Implement metrics exporters for common monitoring platforms (e.g., Prometheus, Grafana, StatsD) or a structured JSON logger.
 export class MetricsPlugin implements ScraperPlugin {
   name = 'metrics';
   version = '1.0.0';

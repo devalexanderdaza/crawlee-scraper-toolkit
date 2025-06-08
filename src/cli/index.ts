@@ -8,6 +8,7 @@ import { generateScraper } from './commands/generate';
 import { initProject } from './commands/init';
 import { validateConfig } from './commands/validate';
 import { runScraper } from './commands/run';
+import { updateProject } from './commands/update';
 import { createLogger, LoggerConfig } from '@/utils/logger';
 import { Logger } from '@/core/types';
 
@@ -71,6 +72,14 @@ program
   .option('-c, --config <path>', 'Configuration file path')
   .option('--profile <name>', 'Configuration profile to use')
   .action(runScraper);
+
+// Update command
+program
+  .command('update')
+  .description('Update project configurations to the latest toolkit version (In Development)')
+  // .option('-p, --projectPath <path>', 'Path to the project to update', '.') // Ejemplo de opción futura
+  // .option('--dry-run', 'Simulate update without making changes') // Ejemplo de opción futura
+  .action(updateProject);
 
 // Error handling
 program.on('command:*', () => {

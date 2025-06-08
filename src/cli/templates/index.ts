@@ -834,11 +834,298 @@ export interface FieldConfig {
 /**
  * Template registry
  */
+const infiniteScrollTemplate: Template = {
+  name: 'Infinite Scroll Scraper',
+  description: 'Handles pages with infinite scrolling pagination.',
+  files: {
+    'src/index.ts': `import { Actor } from 'apify';
+import { PlaywrightCrawler, log } from 'crawlee';
+
+interface Input {
+    startUrls: string[];
+    maxScrolls: number;
+    scrollDelayMs: number;
+}
+
+interface Output {
+    url: string;
+    title: string | null;
+    scrapedItemCount: number;
+    // Add other fields you want to scrape
+}
+
+async function main() {
+    await Actor.init();
+
+    const {
+        startUrls = ['https://example.com/scrollable-page'], // Replace with your target URL
+        maxScrolls = 10,
+        scrollDelayMs = 1000,
+    } = await Actor.getInput<Input>() ?? {} as Input;
+
+    const crawler = new PlaywrightCrawler({
+        requestHandlerTimeoutSecs: 120,
+        async requestHandler({ request, page, enqueueLinks, log: crawlerLog }) {
+            crawlerLog.info(\`Processing \${request.url}...\`);
+            const title = await page.title();
+            let scrapedItemCount = 0;
+
+            let currentScroll = 0;
+            let lastHeight = await page.evaluate(() => document.body.scrollHeight);
+
+            while (currentScroll < maxScrolls) {
+                crawlerLog.info(\`Scrolling... (Attempt \${currentScroll + 1}/\${maxScrolls})\`);
+                await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+                await page.waitForTimeout(scrollDelayMs); // Wait for content to load
+
+                const newHeight = await page.evaluate(() => document.body.scrollHeight);
+                if (newHeight === lastHeight) {
+                    crawlerLog.info('No new content loaded after scroll. Stopping.');
+                    break;
+                }
+                lastHeight = newHeight;
+
+                // Add your scraping logic here for newly loaded items
+                // Example: count newly loaded items
+                // const newItems = await page.locator('.newly-loaded-item').count();
+                // scrapedItemCount += newItems;
+                // crawlerLog.info(\`Found \${newItems} new items.\`);
+
+                currentScroll++;
+            }
+
+            // Scrape initial items or items present after scrolling
+            // Example:
+            // const items = await page.locator('.item-selector').all();
+            // for (const item of items) {
+            //     // process item
+            //     scrapedItemCount++;
+            // }
+
+            crawlerLog.info(\`Finished scrolling for \${request.url}. Total items (example): \${scrapedItemCount}\`);
+
+            await Actor.pushData({ url: request.url, title, scrapedItemCount });
+
+            // Example: Add logic to enqueue next pages if any, or detail pages
+            // await enqueueLinks({
+            //     selector: '.next-page-selector',
+            // });
+        },
+        // Add other PlaywrightCrawler options as needed (e.g., proxyConfiguration)
+    });
+
+    await crawler.run(startUrls);
+
+    await Actor.exit();
+}
+
+main().catch((err) => {
+    log.error('Actor failed:', err);
+    process.exit(1);
+});
+`,
+    'README.md': `# Infinite Scroll Scraper Template
+
+This template is designed for scraping web pages that use infinite scrolling to load content. Instead of traditional pagination links, new content is loaded dynamically as the user scrolls down the page.
+
+## How it Works
+
+1.  **Initial Load**: The scraper navigates to the start URL.
+2.  **Scrolling Loop**:
+    *   It scrolls to the bottom of the page using \`window.scrollTo(0, document.body.scrollHeight)\`.
+    *   It waits for a specified delay (\`scrollDelayMs\`) to allow new content to load.
+    *   It checks if new content has actually loaded by comparing the page height before and after the scroll. If the height hasn't changed, it assumes no new content is available and stops scrolling.
+    *   This process repeats up to a maximum number of scrolls (\`maxScrolls\`) to prevent indefinite loops.
+3.  **Data Extraction**: You should add your data extraction logic *within* the scrolling loop if you want to process items as they load, or *after* the loop if you want to process all items once scrolling is complete. The current example includes placeholders for this.
+4.  **Output**: Scraped data is pushed to the Apify dataset.
+
+## Configuration
+
+The scraper accepts the following input parameters (defined in \`INPUT_SCHEMA.json\` if you use Apify Console, or passed via API):
+
+*   \`startUrls\`: An array of URLs to start scraping from.
+*   \`maxScrolls\`: The maximum number of times the scraper will scroll down the page. (Default: 10)
+*   \`scrollDelayMs\`: The time (in milliseconds) to wait after each scroll for new content to load. (Default: 1000)
+
+## Customization
+
+*   **Target URL**: Change \`startUrls\` in your input to the page you want to scrape.
+*   **Scraping Logic**: Modify the \`requestHandler\` function:
+    *   Implement the logic to identify and extract data from newly loaded items within or after the scroll loop. Update selectors like \`.newly-loaded-item\` or \`.item-selector\`.
+    *   If necessary, adjust how \`scrapedItemCount\` is calculated.
+*   **Scroll Parameters**: Adjust \`maxScrolls\` and \`scrollDelayMs\` based on the target website's behavior. Some sites may require longer delays or more/less scrolls.
+*   **Stopping Condition**: Enhance the condition for stopping the scroll loop if the height check is not reliable for your target site (e.g., look for a "no more items" element).
+*   **Enqueueing Links**: If items link to detail pages, add \`enqueueLinks\` calls.
+
+Remember to install dependencies (\`pnpm install\`) and build the Actor (\`pnpm build\`) before running.
+`,
+  },
+};
+
+const jsHeavySiteTemplate: Template = {
+  name: 'JS-Heavy Site Scraper',
+  description: 'Scrapes sites with heavy JavaScript, focusing on advanced waitFor strategies.',
+  files: {
+    'src/index.ts': `import { Actor } from 'apify';
+import { PlaywrightCrawler, log } from 'crawlee';
+
+interface Input {
+    startUrls: string[];
+    waitForSelectorTimeoutMs: number;
+}
+
+interface Output {
+    url: string;
+    title: string | null;
+    dataFromDynamicContent?: string;
+    eventTriggered?: boolean;
+    // Add other fields you want to scrape
+}
+
+async function main() {
+    await Actor.init();
+
+    const {
+        startUrls = ['https://example.com/js-heavy-page'], // Replace with your target URL
+        waitForSelectorTimeoutMs = 5000,
+    } = await Actor.getInput<Input>() ?? {} as Input;
+
+    const crawler = new PlaywrightCrawler({
+        requestHandlerTimeoutSecs: 180, // Increased timeout for potentially slow JS sites
+        navigationTimeoutSecs: 120,
+        async requestHandler({ request, page, enqueueLinks, log: crawlerLog }) {
+            crawlerLog.info(\`Processing \${request.url}...\`);
+            const title = await page.title();
+            let output: Output = { url: request.url, title, scrapedItemCount: 0 };
+
+            // Example 1: Wait for a specific element that appears after JS execution
+            try {
+                const dynamicElement = await page.waitForSelector('#dynamically-loaded-content', { timeout: waitForSelectorTimeoutMs });
+                if (dynamicElement) {
+                    output.dataFromDynamicContent = await dynamicElement.textContent() ?? "N/A";
+                    crawlerLog.info('Successfully captured data from dynamically loaded content.');
+                }
+            } catch (e) {
+                crawlerLog.warning(\`Could not find #dynamically-loaded-content within \${waitForSelectorTimeoutMs}ms.\`);
+            }
+
+            // Example 2: Wait for a specific function to return true
+            // This is useful if a global variable is set or a condition is met after JS processing
+            try {
+                await page.waitForFunction(() => (window as any).myAppReady === true, { timeout: 10000 });
+                crawlerLog.info('Condition window.myAppReady === true was met.');
+                // You can now safely interact with elements that depend on this condition
+            } catch (e) {
+                crawlerLog.warning('waitForFunction condition was not met in time.');
+            }
+
+            // Example 3: Wait for a specific network request to finish
+            // Useful if data is fetched via AJAX and you need to wait for that data
+            try {
+                const [response] = await Promise.all([
+                    page.waitForResponse(resp => resp.url().includes('/api/data') && resp.status() === 200, { timeout: 15000 }),
+                    // Add the action that triggers the network request if necessary, e.g., clicking a button
+                    // page.click('#load-data-button'),
+                ]);
+                const responseBody = await response.json();
+                crawlerLog.info('Received response from /api/data:', responseBody);
+                // Process responseBody
+            } catch (e) {
+                crawlerLog.warning('Did not receive expected network response from /api/data in time.');
+            }
+
+            // Example 4: Wait for a specific event to be emitted on the page
+            // This requires the page to use \`window.dispatchEvent(new CustomEvent('myCustomEvent'))\` or similar
+            try {
+                await page.waitForEvent('myCustomEvent', { timeout: 10000 });
+                crawlerLog.info('myCustomEvent was dispatched on the page.');
+                output.eventTriggered = true;
+            } catch (e) {
+                crawlerLog.warning('waitForEvent: myCustomEvent was not dispatched in time.');
+            }
+
+            // Add your main scraping logic here, assuming JS has loaded
+            // const mainContent = await page.locator('#main-content-area').textContent();
+            // output.mainContent = mainContent;
+
+
+            await Actor.pushData(output);
+
+            // Example: Add logic to enqueue next pages if any
+            // await enqueueLinks({
+            //     selector: '.next-page-selector',
+            // });
+        },
+        // Consider using preNavigationHooks or postNavigationHooks for complex interactions
+        // headless: 'new', // Try different headless modes if issues arise
+    });
+
+    await crawler.run(startUrls);
+
+    await Actor.exit();
+}
+
+main().catch((err) => {
+    log.error('Actor failed:', err);
+    process.exit(1);
+});
+`,
+    'README.md': `# JS-Heavy Site Scraper Template
+
+This template is designed for scraping websites that heavily rely on JavaScript to render content, fetch data, or handle user interactions. It demonstrates various \`waitFor\` strategies provided by Playwright to ensure elements are available and actions are completed before proceeding with scraping.
+
+## Key Features & Strategies
+
+*   \`page.waitForSelector(selector, options)\`: Waits for an element matching the selector to appear in the DOM. Useful for content that loads dynamically.
+    *   Example: Waiting for \`#dynamically-loaded-content\`.
+*   \`page.waitForFunction(fn, arg, options)\`: Waits until the provided function, executed in the page context, returns a truthy value.
+    *   Example: Waiting for a global flag like \`window.myAppReady === true\`.
+*   \`page.waitForResponse(urlOrPredicate, options)\`: Waits for a network response that matches a URL or a predicate function.
+    *   Example: Waiting for an API call like \`/api/data\` to complete.
+*   \`page.waitForEvent(event, optionsOrPredicate)\`: Waits for a specific DOM event to be emitted on the page.
+    *   Example: Waiting for a custom event \`myCustomEvent\` that might signify JS initialization is complete.
+*   **Increased Timeouts**: Default timeouts for \`requestHandlerTimeoutSecs\` and \`navigationTimeoutSecs\` are increased as JS-heavy sites can be slower to load and process.
+
+## How it Works
+
+1.  **Navigation**: The scraper navigates to the start URL.
+2.  **Waiting Strategies**: Before attempting to extract data, the \`requestHandler\` employs one or more \`waitFor\` methods to ensure the page is in the desired state.
+    *   The examples in \`src/index.ts\` show how to use these methods. Uncomment or adapt them as needed.
+3.  **Data Extraction**: Once the necessary conditions are met (e.g., elements are visible, API calls have returned), your data extraction logic can run.
+4.  **Output**: Scraped data is pushed to the Apify dataset.
+
+## Configuration
+
+The scraper accepts the following input parameters:
+
+*   \`startUrls\`: An array of URLs to start scraping from.
+*   \`waitForSelectorTimeoutMs\`: Timeout in milliseconds for \`page.waitForSelector\`. (Default: 5000)
+
+## Customization
+
+*   **Target URL**: Change \`startUrls\` in your input.
+*   **Waiting Logic**: This is the most crucial part to customize.
+    *   Analyze your target website's behavior using browser developer tools (Network tab, Console, Elements panel).
+    *   Identify which elements, network calls, or JavaScript events signal that the content you need is ready.
+    *   Choose the appropriate \`waitFor\` methods and configure their selectors, predicates, and timeouts.
+    *   You might need to chain multiple \`waitFor\` calls or use them in combination with actions like clicks (\`page.click()\`).
+*   **Scraping Logic**: Implement your data extraction logic after the \`waitFor\` conditions are met.
+*   **Error Handling**: The examples include basic \`try...catch\` blocks for \`waitFor\` methods. Enhance this as needed.
+*   **Headless Mode**: Experiment with \`headless: false\` or \`headless: 'new'\` in \`PlaywrightCrawler\` options if you encounter issues specific to headless browsing. Some JS-heavy sites behave differently in headless mode.
+*   **Proxy Configuration**: Essential for sites that might block based on IP. Configure \`proxyConfiguration\` in \`PlaywrightCrawler\`.
+
+Remember to install dependencies (\`pnpm install\`) and build the Actor (\`pnpm build\`) before running.
+`,
+  },
+};
+
 const templates: Record<TemplateType, Template> = {
   basic: basicTemplate,
   api: apiTemplate,
   form: formTemplate,
   advanced: advancedTemplate,
+  'infinite-scroll': infiniteScrollTemplate,
+  'js-heavy': jsHeavySiteTemplate,
 };
 
 /**

@@ -40,6 +40,9 @@ pnpm cli validate config.json
 
 # Run a scraper
 pnpm cli run scraper-config.json
+
+# Update project (In Development)
+pnpm cli update
 ```
 
 ## 📦 Project Structure
