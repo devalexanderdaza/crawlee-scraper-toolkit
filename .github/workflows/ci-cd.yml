@@ -19,6 +19,7 @@ on:
       - 'LICENSE'
       - '*.gitattributes'
       - '*.gitmodules'
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

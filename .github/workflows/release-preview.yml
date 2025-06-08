@@ -8,6 +8,7 @@ on:
       - 'package.json'
       - '.releaserc.json'
       - 'CHANGELOG.md'
+  workflow_dispatch:
 
 permissions:
   contents: read
