@@ -1,4 +1,4 @@
-import { CrawleeScraperEngine, ScraperDefinition, createConfig, createLogger } from '../src';
+import { CrawleeScraperEngine, ScraperDefinition, configManager, createConfig, createLogger } from '../src';
 import { ScraperContext } from '../src/core/types';
 
 // Define the output type for news articles
@@ -29,14 +29,14 @@ const newsScraperDefinition: ScraperDefinition<string, NewsArticle> = {
   requiresCaptcha: false,
   parse: async (context: ScraperContext<string, NewsArticle>): Promise<NewsArticle> => {
     const { page } = context;
-    
+
     // Wait for the page to load completely
     await page.waitForLoadState('networkidle');
-    
+
     // Extract content from httpbin HTML page with better error handling
     const title = await page.textContent('h1').catch(() => 'No title found') || 'No title found';
     const content = await page.textContent('p').catch(() => 'No content found') || 'No content found';
-    
+
     return {
       query: context.input,
       title,
@@ -54,10 +54,23 @@ const newsScraperDefinition: ScraperDefinition<string, NewsArticle> = {
 
 async function main() {
   // Create configuration
-  const config = createConfig()
+  const partialConfig = createConfig()
     .browserPool({
       maxSize: 3,
       maxAge: 20 * 60 * 1000, // 20 minutes
+      launchOptions: {
+        headless: process.env.HEADLESS !== 'false',
+        timeout: 30000,
+        args: [
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
+          '--disable-dev-shm-usage',
+          '--disable-accelerated-2d-canvas',
+          '--no-first-run',
+          '--no-zygote',
+          '--disable-gpu',
+        ],
+      },
     })
     .defaultOptions({
       retries: 2,
@@ -72,24 +85,28 @@ async function main() {
 
   // Create a logger instance using settings from the config if available
   const logger = createLogger({
-    level: config.logging?.level || 'info',
-    format: config.logging?.format || 'text',
+    level: partialConfig.logging?.level || 'info',
+    format: partialConfig.logging?.format || 'text',
     console: true, // Ensure logs go to console for the example
   });
 
+  // Update config manager and get complete configuration
+  configManager.updateConfig(partialConfig);
+  const config = configManager.getConfig();
+
   // Initialize engine with the specific config and logger
   const engine = new CrawleeScraperEngine(config, logger);
-  
+
   // Register scraper
   engine.register(newsScraperDefinition);
-  
+
   try {
     // Execute scraper
     const searchTerm = process.argv[2] || 'technology';
     logger.info(`Searching for news about: ${searchTerm}`);
-    
+
     const result = await engine.execute(newsScraperDefinition, searchTerm);
-    
+
     if (result.success && result.data) {
       logger.info('Successfully scraped article:');
       logger.info(`Title: ${result.data.title}`);

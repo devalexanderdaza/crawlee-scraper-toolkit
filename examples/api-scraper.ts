@@ -4,6 +4,7 @@ import {
   createConfig,
   createLogger,
   ScraperContext,
+  configManager,
 } from '../src'; // Assuming 'src' is the root of compiled sources or use 'crawlee-scraper-toolkit'
 
 // Define the expected structure of the API response (e.g., a User)
@@ -80,10 +81,10 @@ const apiScraperDefinition: ScraperDefinition<string, ApiScraperOutput> = {
         await route.fulfill({ response });
       } catch (e: any) {
         log.error(`Error during request/response interception for ${targetApiUrl}: ${e.message}`, { error: e });
-        // Abort the request if any step fails, so the page.goto() doesn't hang indefinitely on a failed interception
-        if (!route.ishandled()) { // Check if route is already handled (e.g. fulfilled/aborted)
-          await route.abort();
-        }
+        // If there's an error, we can abort the route or fulfill with an empty response
+        await route.abort();
+        // Optionally, you could throw an error here if you want to fail the scraper
+        // throw new Error(`Failed to fetch or parse data for user ID: ${userId}`);
       }
     });
 
@@ -111,12 +112,7 @@ const apiScraperDefinition: ScraperDefinition<string, ApiScraperOutput> = {
       throw new Error(`Failed to capture data for user ID: ${userId}. Check interception logic and network activity.`);
     }
 
-    return {
-      userId: capturedData.id,
-      userName: capturedData.name,
-      userEmail: capturedData.email,
-      companyName: capturedData.company.name,
-    };
+    return capturedData;
   },
   options: {
     retries: 2,
@@ -129,13 +125,16 @@ const apiScraperDefinition: ScraperDefinition<string, ApiScraperOutput> = {
 const logger = createLogger({ level: 'info', format: 'text', console: true });
 
 async function main() {
-  const config = createConfig()
+  const partialConfig = createConfig()
     .defaultOptions({
       retries: 2,
       timeout: 25000,
     })
     .logging({ level: 'info', format: 'text' })
     .build();
+
+  configManager.updateConfig(partialConfig);
+  const config = configManager.getConfig();
 
   const engine = new CrawleeScraperEngine(config, logger);
   engine.register(apiScraperDefinition);

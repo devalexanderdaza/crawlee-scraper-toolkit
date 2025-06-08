@@ -4,6 +4,7 @@ import {
   createConfig,
   createLogger,
   ScraperContext,
+  configManager,
 } from '../src'; // Assuming 'src' is the root of compiled sources or use 'crawlee-scraper-toolkit'
 
 // Define the structure of the data we are submitting
@@ -51,7 +52,7 @@ const formScraperDefinition: ScraperDefinition<MyFormData, FormScraperOutput> = 
     config: {},
   },
   waitStrategy: {
-    type: 'load', // Wait for the initial form page to load
+    type: 'custom',
     config: { waitUntil: 'domcontentloaded' }
   },
   requiresCaptcha: false,
@@ -130,10 +131,31 @@ const formScraperDefinition: ScraperDefinition<MyFormData, FormScraperOutput> = 
 const logger = createLogger({ level: 'info', format: 'text', console: true });
 
 async function main() {
-  const config = createConfig()
+  const partialConfig = createConfig()
+    .browserPool({
+      maxSize: 5, // Increased for better concurrency
+      maxAge: 30 * 60 * 1000, // 30 minutes
+      launchOptions: {
+        headless: process.env.HEADLESS !== 'false',
+        timeout: 30000,
+        args: [
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
+          '--disable-dev-shm-usage',
+          '--disable-accelerated-2d-canvas',
+          '--no-first-run',
+          '--no-zygote',
+          '--disable-gpu',
+        ],
+      },
+    })
     .defaultOptions({ retries: 1, timeout: 35000 })
     .logging({ level: 'info', format: 'text' })
     .build();
+
+  // Update the config manager with our partial config
+  configManager.updateConfig(partialConfig);
+  const config = configManager.getConfig();
 
   const engine = new CrawleeScraperEngine(config, logger);
   engine.register(formScraperDefinition);

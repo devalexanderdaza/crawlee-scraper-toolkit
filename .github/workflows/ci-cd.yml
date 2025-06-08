@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.matrix.outputs.matrix }}
-    
+
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
@@ -60,7 +60,7 @@ jobs:
   quality:
     name: Code Quality
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
@@ -104,7 +104,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix: ${{ fromJson(needs.matrix-generator.outputs.matrix) }}
-    
+
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
@@ -125,7 +125,7 @@ jobs:
 
       - name: 🧪 Run tests with coverage
         run: |
-          if [ "${{ matrix.node-version }}" == "20" ] && [ "${{ matrix.os }}" == "ubuntu-latest" ]; then
+          if ([ "${{ matrix.node-version }}" == "20" ] && [ "${{ matrix.os }}" == "ubuntu-latest" ]); then
             echo "🔍 Running tests with coverage on primary matrix"
             pnpm run test:coverage
           else
@@ -161,7 +161,7 @@ jobs:
       fail-fast: false
       matrix:
         example: ['news', 'products']
-    
+
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
@@ -215,7 +215,7 @@ jobs:
     name: Generate Documentation
     runs-on: ubuntu-latest
     needs: [quality, test]
-    
+
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
@@ -265,7 +265,7 @@ jobs:
   security:
     name: Security Audit
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
@@ -296,13 +296,13 @@ jobs:
 
   # ==========================================
   # RELEASE (main branch only)
-  # ==========================================  
+  # ==========================================
   release:
     name: Release
     runs-on: ubuntu-latest
     needs: [quality, test, examples, docs, security]
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    
+
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
@@ -355,7 +355,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [matrix-generator, quality, test, examples, docs, security, release]
     if: always()
-    
+
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
@@ -370,9 +370,9 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: |
           echo "🔍 Running advanced CI/CD analytics..."
-          
+
           # This could be enhanced to store metrics in a database
           # or send to monitoring systems like DataDog, New Relic, etc.
-          
+
           echo "📊 Pipeline completed for main branch"
           echo "🚀 All optimizations are active and working"
