@@ -1,0 +1,11 @@
+# CI-specific NPM configuration
+# This file is used in CI/CD environments
+
+# Default registry (NPM)
+registry=https://registry.npmjs.org/
+
+# Ensure packages are published as public
+access=public
+
+# Disable package-lock for pnpm projects
+package-lock=false
