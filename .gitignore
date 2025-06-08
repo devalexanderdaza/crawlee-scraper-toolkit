@@ -3,15 +3,19 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
 # Build outputs
 dist/
 build/
+out/
 *.tsbuildinfo
+.tsbuildinfo
 
 # Coverage
 coverage/
 *.lcov
+.nyc_output/
 
 # Environment variables
 .env
@@ -20,20 +24,39 @@ coverage/
 .env.test.local
 .env.production.local
 
-# IDE
+# Registry configuration (keep .npmrc.example)
+.npmrc
+.npmrc.backup
+.npmrc.local
+.npmrc.*
+!.npmrc.example
+
+# IDE and editors
 .vscode/
+!.vscode/extensions.json
+!.vscode/settings.json.example
 .idea/
 *.swp
 *.swo
 *~
+.vimrc.local
+.project
+.settings/
+.classpath
 
 # OS
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
 
 # Logs
 logs/
 *.log
+lerna-debug.log*
 
 # Runtime data
 pids/
@@ -44,19 +67,100 @@ pids/
 # Temporary folders
 tmp/
 temp/
+.tmp/
 
-# Crawlee storage
+# Crawlee and scraping storage
 storage/
 apify_storage/
+crawlee_storage/
 
 # Playwright
 test-results/
 playwright-report/
 playwright/.cache/
+.playwright/
 
-# Documentation archives
+# Testing
+.jest/
+test-output/
+
+# Documentation generation artifacts
 docs-archive.tar.gz
 *.docs.tar.gz
+docs-*.zip
+typedoc-output/
 
+# Documentation (generated content - keep structure)
 docs/*
 !docs/.gitkeep
+!docs/README.md
+
+# Release and CI/CD artifacts
+release-notes.txt
+release-preview.log
+ci-analysis-*.json
+performance-report-*.json
+health-check-*.log
+dual-publish-report-*.json
+package-analysis-*.json
+.release-it.json
+
+# Scripts output and temporary files
+scripts/*.log
+scripts/temp-*
+scripts/.temp/
+
+# Cache directories
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+.tscache/
+
+# Package managers
+.yarn/
+.pnp.*
+.pnpm-store/
+
+# Husky
+.husky/_/
+
+# TypeScript
+*.tsbuildinfo
+
+# Optional REPL history
+.node_repl_history
+
+# Lock files (for libraries, uncomment if needed)
+# package-lock.json
+# yarn.lock
+
+# Local development files
+*.local
+.local
+
+# Backup files
+*.backup
+*.bak
+*.orig
+*.rej
+
+# Archives and compressed files
+*.tar.gz
+*.zip
+*.rar
+*.7z
+*.tgz
+
+# Runtime and process files
+.pid
+*.pid.lock
+
+# Additional temporary files
+.scratch/
+.workspace/
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
+
+# End of file

@@ -1,0 +1,174 @@
+name: 'Dual Registry Publisher'
+description: 'Publish package to both NPM and GitHub Packages registries'
+
+inputs:
+  npm-token:
+    description: 'NPM authentication token'
+    required: true
+  github-token:
+    description: 'GitHub authentication token'
+    required: true
+  dry-run:
+    description: 'Perform a dry run without actually publishing'
+    required: false
+    default: 'false'
+  package-version:
+    description: 'Package version to publish'
+    required: false
+
+outputs:
+  npm-published:
+    description: 'Whether package was published to NPM'
+    value: ${{ steps.npm-publish.outputs.published }}
+  github-published:
+    description: 'Whether package was published to GitHub Packages'
+    value: ${{ steps.github-publish.outputs.published }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: 📋 Pre-publish validation
+      shell: bash
+      run: |
+        echo "🔍 Validating package for dual registry publishing..."
+        
+        # Check if package.json exists
+        if [ ! -f "package.json" ]; then
+          echo "❌ package.json not found"
+          exit 1
+        fi
+        
+        # Check if build artifacts exist
+        if [ ! -d "dist" ]; then
+          echo "❌ dist directory not found - run build first"
+          exit 1
+        fi
+        
+        # Get package info
+        PACKAGE_NAME=$(node -p "require('./package.json').name")
+        PACKAGE_VERSION=$(node -p "require('./package.json').version")
+        
+        echo "📦 Package: $PACKAGE_NAME"
+        echo "🏷️  Version: $PACKAGE_VERSION"
+        echo "🎯 Target Registries: NPM + GitHub Packages"
+        
+        # Validate package structure
+        REQUIRED_FILES=("dist/index.js" "dist/index.d.ts" "package.json" "README.md")
+        for file in "${REQUIRED_FILES[@]}"; do
+          if [ ! -f "$file" ]; then
+            echo "⚠️  Warning: $file not found"
+          else
+            echo "✅ $file found"
+          fi
+        done
+
+    - name: 🔧 Configure NPM registry
+      shell: bash
+      run: |
+        echo "🔧 Configuring NPM registry..."
+        npm config set registry https://registry.npmjs.org/
+        npm config set //registry.npmjs.org/:_authToken ${{ inputs.npm-token }}
+        echo "✅ NPM registry configured"
+
+    - name: 📦 Publish to NPM
+      id: npm-publish
+      shell: bash
+      run: |
+        echo "🚀 Publishing to NPM registry..."
+        
+        if [ "${{ inputs.dry-run }}" == "true" ]; then
+          echo "🔍 NPM Dry run mode - would publish:"
+          npm publish --dry-run
+          echo "published=dry-run" >> $GITHUB_OUTPUT
+        else
+          # Attempt to publish to NPM
+          if npm publish --access public; then
+            echo "✅ Successfully published to NPM"
+            echo "published=true" >> $GITHUB_OUTPUT
+          else
+            echo "❌ Failed to publish to NPM (might already exist)"
+            echo "published=false" >> $GITHUB_OUTPUT
+          fi
+        fi
+
+    - name: 🔧 Configure GitHub Packages registry
+      shell: bash
+      run: |
+        echo "🔧 Configuring GitHub Packages registry..."
+        
+        # Create scoped .npmrc for GitHub Packages
+        cat > .npmrc.github << EOF
+        @devalexanderdaza:registry=https://npm.pkg.github.com
+        //npm.pkg.github.com/:_authToken=${{ inputs.github-token }}
+        EOF
+        
+        echo "✅ GitHub Packages registry configured"
+
+    - name: 📦 Publish to GitHub Packages
+      id: github-publish
+      shell: bash
+      run: |
+        echo "🚀 Publishing to GitHub Packages..."
+        
+        # Create scoped package.json for GitHub Packages
+        ORIGINAL_NAME=$(node -p "require('./package.json').name")
+        SCOPED_NAME="@devalexanderdaza/${ORIGINAL_NAME}"
+        
+        # Backup original package.json
+        cp package.json package.json.backup
+        
+        # Update package.json for GitHub Packages
+        node -e "
+          const pkg = require('./package.json');
+          pkg.name = '$SCOPED_NAME';
+          pkg.publishConfig = {
+            registry: 'https://npm.pkg.github.com',
+            access: 'public'
+          };
+          require('fs').writeFileSync('package.json', JSON.stringify(pkg, null, 2));
+        "
+        
+        if [ "${{ inputs.dry-run }}" == "true" ]; then
+          echo "🔍 GitHub Packages dry run mode - would publish:"
+          npm publish --dry-run --registry=https://npm.pkg.github.com
+          echo "published=dry-run" >> $GITHUB_OUTPUT
+        else
+          # Attempt to publish to GitHub Packages
+          if npm publish --registry=https://npm.pkg.github.com; then
+            echo "✅ Successfully published to GitHub Packages as $SCOPED_NAME"
+            echo "published=true" >> $GITHUB_OUTPUT
+          else
+            echo "❌ Failed to publish to GitHub Packages (might already exist)"
+            echo "published=false" >> $GITHUB_OUTPUT
+          fi
+        fi
+        
+        # Restore original package.json
+        mv package.json.backup package.json
+
+    - name: 📊 Publishing summary
+      shell: bash
+      run: |
+        echo "📊 Dual Registry Publishing Summary:"
+        echo "=================================="
+        
+        NPM_STATUS="${{ steps.npm-publish.outputs.published }}"
+        GITHUB_STATUS="${{ steps.github-publish.outputs.published }}"
+        
+        case "$NPM_STATUS" in
+          "true") echo "✅ NPM: Published successfully" ;;
+          "false") echo "⚠️  NPM: Publication failed or already exists" ;;
+          "dry-run") echo "🔍 NPM: Dry run completed" ;;
+        esac
+        
+        case "$GITHUB_STATUS" in
+          "true") echo "✅ GitHub Packages: Published successfully" ;;
+          "false") echo "⚠️  GitHub Packages: Publication failed or already exists" ;;
+          "dry-run") echo "🔍 GitHub Packages: Dry run completed" ;;
+        esac
+        
+        echo ""
+        echo "🔗 Package Links:"
+        PACKAGE_NAME=$(node -p "require('./package.json').name")
+        echo "📦 NPM: https://www.npmjs.com/package/$PACKAGE_NAME"
+        echo "📦 GitHub: https://github.com/devalexanderdaza/crawlee-scraper-toolkit/packages"

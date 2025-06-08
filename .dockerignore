@@ -1,0 +1,105 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Source maps and build info
+*.map
+*.tsbuildinfo
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Temporary
+tmp/
+temp/
+
+# Git
+.git/
+.gitignore
+
+# CI/CD
+.github/
+scripts/
+.releaserc*.json
+
+# CI/CD specific scripts
+scripts/ci-analyzer.ts
+scripts/test-dual-publish.ts
+scripts/validate-dual-publish.ts
+scripts/dual-publish-manager.sh
+scripts/analyze-release.sh
+
+# Documentation
+docs/
+examples/
+templates/
+*.md
+!README.md
+
+# Testing
+test-results/
+playwright-report/
+playwright/.cache/
+.jest/
+
+# Build artifacts (only include dist/ for production)
+# Uncomment if building for development:
+# dist/
+
+# Cache
+.cache/
+.eslintcache
+
+# Package manager files
+.pnpm-store/
+.yarn/
+
+# Development configuration
+.eslintrc.js
+.prettierrc
+.commitlintrc.json
+.editorconfig
+jest.config.js
+typedoc.json
+.releaserc*.json
+
+# Registry configuration
+.npmrc*
+!.npmrc.example
+
+# TypeScript configuration
+tsconfig*.json
+!tsconfig.json
+
+# Backup files
+*.backup
+*.bak
+
+# Archives
+*.tar.gz
+*.zip

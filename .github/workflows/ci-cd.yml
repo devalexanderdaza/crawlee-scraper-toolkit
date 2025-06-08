@@ -19,6 +19,11 @@ on:
       - '*.gitmodules'
   workflow_dispatch:
 
+permissions:
+  contents: read
+  packages: write
+  id-token: write
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -334,12 +339,13 @@ jobs:
           name: documentation
           path: docs/
 
-      - name: 🚀 Semantic Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+      - name: 🚀 Dual Registry Publication
+        uses: ./.github/actions/dual-registry-publisher
+        with:
+          npm-token: ${{ secrets.NPM_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          package-scope: '@devalexanderdaza'
+          dry-run: false
 
   # ==========================================
   # NOTIFICATION & ANALYTICS

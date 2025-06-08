@@ -1,0 +1,84 @@
+# Git Line Endings
+* text=auto eol=lf
+
+# Source code
+*.js text eol=lf
+*.ts text eol=lf
+*.jsx text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Shell scripts (should always use LF)
+*.sh text eol=lf
+
+# Configuration files
+*.rc text eol=lf
+.*rc text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+.editorconfig text eol=lf
+.releaserc*.json text eol=lf
+
+# Documentation
+*.txt text eol=lf
+*.rst text eol=lf
+LICENSE text eol=lf
+CHANGELOG* text eol=lf
+README* text eol=lf
+
+# Windows-specific files
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+*.zip binary
+*.tar.gz binary
+
+# Archive files should be treated as binary
+*.tar binary
+*.gz binary
+*.7z binary
+*.rar binary
+
+# Package files
+*.tgz binary
+package-lock.json text eol=lf
+yarn.lock text eol=lf
+pnpm-lock.yaml text eol=lf
+
+# Exclude from exports
+.github/ export-ignore
+.vscode/ export-ignore
+.idea/ export-ignore
+tests/ export-ignore
+coverage/ export-ignore
+docs/ export-ignore
+examples/ export-ignore
+scripts/ export-ignore
+*.test.* export-ignore
+*.spec.* export-ignore
+
+# Language-specific attributes
+*.ts linguist-language=TypeScript
+*.js linguist-language=JavaScript
+*.md linguist-documentation
+*.yml linguist-language=YAML
+*.yaml linguist-language=YAML
+
+# Generated files
+dist/* linguist-generated
+coverage/* linguist-generated
+docs/* linguist-generated
