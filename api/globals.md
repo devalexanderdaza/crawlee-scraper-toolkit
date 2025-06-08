@@ -1,8 +1,8 @@
-[**crawlee-scraper-toolkit v1.0.1**](README.md)
+[**crawlee-scraper-toolkit v2.0.0**](README.md)
 
 ***
 
-# crawlee-scraper-toolkit v1.0.1
+# crawlee-scraper-toolkit v2.0.0
 
 ## Modules
 
