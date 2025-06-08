@@ -235,7 +235,13 @@ jobs:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: false
+
+      - name: Configure Git Author
+        run: |
+          git config user.name "Alexander Daza"
+          git config user.email "dev.alexander.daza@gmail.com"
 
       - name: 🔧 Setup Node.js
         uses: actions/setup-node@v4
@@ -251,7 +257,6 @@ jobs:
 
       - name: 📥 Install dependencies
         run: |
-          cp .npmrc.ci .npmrc
           pnpm install --frozen-lockfile
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

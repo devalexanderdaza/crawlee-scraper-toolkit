@@ -1,6 +1,10 @@
 {
+  "$schema": "https://raw.githubusercontent.com/semantic-release/semantic-release/master/.releaserc.schema.json",
   "branches": ["main"],
   "repositoryUrl": "https://github.com/devalexanderdaza/crawlee-scraper-toolkit.git",
+  "ci": false,
+  "dryRun": false,
+  "npmPublish": true,
   "plugins": [
     [
       "@semantic-release/commit-analyzer",
@@ -63,10 +67,6 @@
           {
             "path": "dist/*.tgz",
             "label": "Distribution package"
-          },
-          {
-            "path": "docs-archive.tar.gz",
-            "label": "Documentation Archive"
           }
         ],
         "successComment": "🎉 This ${issue.pull_request ? 'PR is included' : 'issue has been resolved'} in version ${nextRelease.version} 🎉\n\nThe release is available on:\n- [npm package (@latest dist-tag)](https://www.npmjs.com/package/${context.payload.repository.name}/v/${nextRelease.version})\n- [GitHub release](${releases.filter(release => release.pluginName === '@semantic-release/github')[0].url})\n- [Documentation](https://devalexanderdaza.github.io/crawlee-scraper-toolkit/)\n\nYour **[semantic-release](https://github.com/semantic-release/semantic-release)** bot 📦🚀"
@@ -80,7 +80,7 @@
           "package.json",
           "docs/**/*"
         ],
-        "message": "chore: ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        "message": "chore(release): ${nextRelease.version} 🚀\n\n[skip ci]\n\n🎉 This release includes the following changes:\n\n${nextRelease.notes}"
       }
     ]
   ]
