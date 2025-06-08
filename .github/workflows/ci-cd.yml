@@ -231,7 +231,7 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-    needs: [build, examples]
+    needs: [build]
 
     steps:
       - name: 📥 Checkout code
@@ -258,7 +258,7 @@ jobs:
           run_install: false
 
       - name: 📥 Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       - name: 🏗️ Build project
         run: pnpm run build
