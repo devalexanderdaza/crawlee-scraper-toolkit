@@ -72,7 +72,7 @@ jobs:
       - name: 📥 Install dependencies
         run: |
           cp .npmrc.ci .npmrc
-          pnpm install --ci
+          pnpm install --frozen-lockfile
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
