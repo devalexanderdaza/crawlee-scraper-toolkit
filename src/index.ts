@@ -1,17 +1,17 @@
 /**
  * @fileoverview Crawlee Scraper Toolkit - Main Entry Point
- * 
+ *
  * A comprehensive TypeScript toolkit for building robust web scrapers with Crawlee,
  * featuring maximum configurability, plugin system, and CLI generator.
- * 
+ *
  * @author Alexander Daza <dev.alexander.daza@gmail.com>
  * @version 1.0.0
  * @license MIT
- * 
+ *
  * @example
  * ```typescript
  * import { CrawleeScraperEngine, createConfig, ScraperDefinition } from 'crawlee-scraper-toolkit';
- * 
+ *
  * // Create a simple scraper
  * const scraper: ScraperDefinition = {
  *   id: 'my-scraper',
@@ -27,7 +27,7 @@
  *     };
  *   }
  * };
- * 
+ *
  * // Configure and run
  * const config = createConfig().build();
  * const engine = new CrawleeScraperEngine(config);

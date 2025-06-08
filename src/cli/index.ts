@@ -8,12 +8,21 @@ import { generateScraper } from './commands/generate';
 import { initProject } from './commands/init';
 import { validateConfig } from './commands/validate';
 import { runScraper } from './commands/run';
+import { updateProject } from './commands/update';
+import { createLogger, LoggerConfig } from '@/utils/logger';
+import { Logger } from '@/core/types';
+
+const loggerConfig: LoggerConfig = {
+  level: 'info',
+  format: 'text',
+  console: true,
+};
+
+const logger: Logger = createLogger(loggerConfig);
 
 const program = new Command();
 
-program
-  .name('crawlee-scraper')
-  .description('CLI tool for Crawlee Scraper Toolkit');
+program.name('crawlee-scraper').description('CLI tool for Crawlee Scraper Toolkit');
 
 // Get version from package.json
 try {
@@ -22,7 +31,7 @@ try {
   const packageJson = JSON.parse(packageJsonContent);
   program.version(packageJson.version);
 } catch (error) {
-  console.warn(chalk.yellow('Could not read version from package.json. Using fallback version.'));
+  logger.warn(chalk.yellow('Could not read version from package.json. Using fallback version.'));
   // Fallback version if reading fails (should ideally not happen)
   program.version('1.0.1'); // Ensure this fallback is sensible or updated
 }
@@ -64,10 +73,18 @@ program
   .option('--profile <name>', 'Configuration profile to use')
   .action(runScraper);
 
+// Update command
+program
+  .command('update')
+  .description('Update project configurations to the latest toolkit version (In Development)')
+  // .option('-p, --projectPath <path>', 'Path to the project to update', '.') // Ejemplo de opción futura
+  // .option('--dry-run', 'Simulate update without making changes') // Ejemplo de opción futura
+  .action(updateProject);
+
 // Error handling
 program.on('command:*', () => {
-  console.error(chalk.red(`Invalid command: ${program.args.join(' ')}`));
-  console.log(chalk.yellow('See --help for a list of available commands.'));
+  logger.error(chalk.red(`Invalid command: ${program.args.join(' ')}`));
+  logger.info(chalk.yellow('See --help for a list of available commands.'));
   process.exit(1);
 });
 

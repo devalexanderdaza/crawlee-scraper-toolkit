@@ -106,7 +106,7 @@ const productScraperDefinition: ScraperDefinition<string, ProductSearchResult> =
     ],
     
     onError: [
-      async (context: ScraperContext<string, ProductSearchResult> & { error: Error }) => {
+      async (context: ScraperContext<string, ProductSearchResult>) => {
         context.log.error(`❌ Product search failed for: ${context.input}`, { message: context.error?.message });
         
         // Save error screenshot
@@ -125,7 +125,7 @@ const productScraperDefinition: ScraperDefinition<string, ProductSearchResult> =
     ],
     
     onRetry: [
-      async (context: ScraperContext<string, ProductSearchResult> & { attempt: number }) => {
+      async (context: ScraperContext<string, ProductSearchResult>) => {
         context.log.info(`🔄 Retrying product search for: ${context.input} (attempt ${context.attempt})`);
         
         // Clear cookies and local storage on retry
@@ -176,7 +176,9 @@ const productScraperDefinition: ScraperDefinition<string, ProductSearchResult> =
         if (ratingClasses) {
           const ratingMap: { [key: string]: number } = { 'One': 1, 'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5 };
           const ratingWord = ratingClasses.split(' ').find(cls => ratingMap[cls]);
-          if (ratingWord) ratingAverage = ratingMap[ratingWord];
+          if (ratingWord && ratingMap[ratingWord] !== undefined) {
+            ratingAverage = ratingMap[ratingWord];
+          }
         }
 
         const imageRelativeUrl = await pod.locator('.image_container img').getAttribute('src') || '';
@@ -214,8 +216,8 @@ const productScraperDefinition: ScraperDefinition<string, ProductSearchResult> =
       const hasMore = await nextButton.count() > 0;
       const currentPageText = await page.locator('li.current').innerText().catch(() => "Page 1 of 1");
       const match = currentPageText.match(/Page (\d+) of (\d+)/);
-      const currentPage = match ? parseInt(match[1], 10) : 1;
-      const totalPages = match ? parseInt(match[2], 10) : 1;
+      const currentPage = match && match[1] ? parseInt(match[1], 10) : 1;
+      const totalPages = match && match[2] ? parseInt(match[2], 10) : 1;
       
       return {
         searchQuery: input, // input might be a category to navigate to in a fuller example
@@ -279,7 +281,7 @@ async function main() {
   });
   
   // Create advanced configuration
-  const config = createConfig()
+  const partialConfig = createConfig()
     .browserPool({
       maxSize: 5,
       maxAge: 30 * 60 * 1000, // 30 minutes
@@ -315,7 +317,11 @@ async function main() {
     })
     .build();
 
-  // Initialize engine with the specific config and logger
+  // Update config manager and get complete configuration
+  configManager.updateConfig(partialConfig);
+  const config = configManager.getConfig();
+
+  // Initialize engine with the complete config and logger
   const engine = new CrawleeScraperEngine(config, logger);
   
   // Install plugins

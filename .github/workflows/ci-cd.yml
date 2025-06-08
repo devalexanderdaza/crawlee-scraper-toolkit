@@ -2,7 +2,7 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main ]
     paths-ignore:
       - '.devcontainer/**'
       - '.vscode/**'
@@ -12,7 +12,7 @@ on:
       # Note: README.md and other critical .md files are NOT ignored here
       # as they might be part of documentation build or important project files.
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main ]
     paths-ignore:
       - '.devcontainer/**'
       - '.vscode/**'
@@ -27,6 +27,7 @@ concurrency:
 env:
   NODE_VERSION: '20'
   PNPM_VERSION: '9'
+  STORE_PATH: ${{ github.workspace }}/.pnpm-store
 
 jobs:
   # ==========================================
@@ -93,7 +94,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: ['18', '20', '22']
+        node-version: ['20', '22']
     
     steps:
       - name: 📥 Checkout code
@@ -214,10 +215,10 @@ jobs:
         run: pnpm dlx playwright install --with-deps
 
       - name: 🚀 Test news scraper example
-        run: timeout 30s pnpm run example:news || echo "News scraper example completed"
+        run: timeout 30s pnpm run example:news
 
       - name: 🛍️ Test product scraper example  
-        run: timeout 30s pnpm run example:products "test" || echo "Product scraper example completed"
+        run: timeout 30s pnpm run example:products "test"
 
   # ==========================================
   # DOCUMENTATION

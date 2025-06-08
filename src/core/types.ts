@@ -39,6 +39,16 @@ export interface BrowserInstance {
 }
 
 /**
+ * Represents the version details of the scraper toolkit.
+ * This can include information about the toolkit version, dependencies, and development dependencies.
+ */
+export interface ToolkitVersionDetails {
+  version: string;
+  dependencies: Record<string, string>;
+  devDependencies: Record<string, string>;
+}
+
+/**
  * Scraper execution options
  */
 export interface ScraperExecutionOptions {
@@ -86,7 +96,9 @@ export type ScraperHook = 'beforeRequest' | 'afterRequest' | 'onSuccess' | 'onEr
  * @template Output The type of the output data from the scraper's parse function.
  * @param context The scraper context, providing access to input, page, options, etc.
  */
-export type HookHandler<Input = unknown, Output = unknown> = (context: ScraperContext<Input, Output>) => Promise<void> | void;
+export type HookHandler<Input = unknown, Output = unknown> = (
+  context: ScraperContext<Input, Output>
+) => Promise<void> | void;
 
 /**
  * Context object passed to the `parse` function and to all hook handlers.
@@ -154,8 +166,6 @@ export interface WaitStrategy {
  * Defines the structure and behavior of a scraper.
  * @template Input The type of the input data this scraper expects.
  * @template Output The type of the data this scraper is expected to output after parsing.
- */
-export interface ScraperDefinition<Input = unknown, Output = unknown> {
  */
 export interface ScraperDefinition<Input = unknown, Output = unknown> {
   /** Unique identifier for the scraper */
@@ -281,8 +291,6 @@ export interface ScraperEvents {
  * and executing scraping tasks. It also emits events related to the scraping lifecycle.
  */
 export interface ScraperEngine extends EventEmitter<ScraperEvents> {
- */
-export interface ScraperEngine extends EventEmitter<ScraperEvents> {
   /** Execute a scraper with given input */
   execute<Input, Output>(
     definition: ScraperDefinition<Input, Output>,
@@ -339,8 +347,8 @@ export interface ScraperEngineConfig {
  * This interface is compatible with common loggers like Winston or pino.
  */
 export interface Logger {
-  debug: (message: string, ...meta: any[]) => void;
-  info: (message: string, ...meta: any[]) => void;
-  warn: (message: string, ...meta: any[]) => void;
-  error: (message: string, ...meta: any[]) => void;
+  debug: (message: string, ...meta: unknown[]) => void;
+  info: (message: string, ...meta: unknown[]) => void;
+  warn: (message: string, ...meta: unknown[]) => void;
+  error: (message: string, ...meta: unknown[]) => void;
 }

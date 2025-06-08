@@ -10,10 +10,9 @@ import {
   ScraperPlugin,
   ScraperEvents,
   ScraperEngineConfig,
-  Logger as ILogger, // Use ILogger to avoid conflict with local Logger class/var if any
+  Logger,
 } from './types';
 import { BrowserPool } from './browser-pool';
-import { Logger } from '@/utils/logger'; // This is likely the concrete logger implementation
 
 // Helper interfaces for navigation configs (internal, no need for extensive JSDoc for public API)
 interface FormConfig {
@@ -47,7 +46,7 @@ interface TimeoutConfig {
  */
 export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements ScraperEngine {
   private browserPool: BrowserPool;
-  private logger: ILogger; // Use the imported ILogger type
+  private logger: Logger;
   private config: ScraperEngineConfig;
   private definitions = new Map<string, ScraperDefinition<unknown, unknown>>();
   private plugins = new Map<string, ScraperPlugin>();
@@ -56,15 +55,17 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
   /**
    * Creates an instance of the CrawleeScraperEngine.
    * @param config The configuration object for the scraper engine. See {@link ScraperEngineConfig}.
-   * @param logger An instance of a logger conforming to the {@link ILogger} interface.
+   * @param logger An instance of a logger conforming to the {@link Logger} interface.
    */
-  constructor(config: ScraperEngineConfig, logger: ILogger) {
+  constructor(config: ScraperEngineConfig, logger: Logger) {
     super();
     this.config = config;
     this.logger = logger;
     this.browserPool = new BrowserPool(config.browserPool, logger);
     this.initializeGlobalHooks();
-    this.logger.info('CrawleeScraperEngine initialized.', { browserPoolConfig: config.browserPool.maxSize });
+    this.logger.info('CrawleeScraperEngine initialized.', {
+      browserPoolConfig: config.browserPool.maxSize,
+    });
   }
 
   /**
@@ -126,6 +127,7 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
           startTime,
           options: executionOptions,
           metadata: {},
+          log: this.logger,
         };
 
         // Execute hooks and scraper logic
@@ -165,6 +167,7 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
           startTime,
           options: executionOptions,
           metadata: {},
+          log: this.logger,
           error: lastError,
         };
 
@@ -264,7 +267,10 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
         try {
           existingPlugin.uninstall(this);
         } catch (error) {
-          this.logger.error(`Error uninstalling existing plugin "${plugin.name}" before re-installation.`, { error });
+          this.logger.error(
+            `Error uninstalling existing plugin "${plugin.name}" before re-installation.`,
+            { error }
+          );
         }
       }
     }
@@ -274,7 +280,10 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
       plugin.install(this);
       this.logger.info(`Plugin "${plugin.name}" installed successfully.`);
     } catch (error) {
-      this.logger.error(`Error during installation of plugin "${plugin.name}". Plugin may not function correctly.`, { error });
+      this.logger.error(
+        `Error during installation of plugin "${plugin.name}". Plugin may not function correctly.`,
+        { error }
+      );
       // Optionally, remove the plugin if install fails
       this.plugins.delete(plugin.name);
       throw error; // Re-throw error if install is critical

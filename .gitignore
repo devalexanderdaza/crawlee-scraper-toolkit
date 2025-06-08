@@ -58,3 +58,5 @@ playwright/.cache/
 docs-archive.tar.gz
 *.docs.tar.gz
 
+docs/*
+!docs/.gitkeep
