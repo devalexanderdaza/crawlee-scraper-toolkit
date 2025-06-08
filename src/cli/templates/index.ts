@@ -1145,4 +1145,3 @@ export function getAvailableTemplates(): Array<{ type: TemplateType; template: T
     template,
   }));
 }
-
