@@ -1,0 +1,17 @@
+name: 'Setup Playwright'
+description: 'Setup and cache Playwright browsers'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: 💾 Cache Playwright browsers
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/ms-playwright
+        key: playwright-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          playwright-${{ runner.os }}-
+
+    - name: 🎭 Install Playwright browsers
+      shell: bash
+      run: pnpm dlx playwright install --with-deps

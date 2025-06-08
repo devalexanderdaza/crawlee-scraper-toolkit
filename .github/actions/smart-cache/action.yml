@@ -1,0 +1,58 @@
+name: 'Smart Cache Manager'
+description: 'Advanced caching strategy for build artifacts, dependencies, and compiled assets'
+
+inputs:
+  cache-key-suffix:
+    description: 'Additional suffix for cache key'
+    required: false
+    default: ''
+  enable-build-cache:
+    description: 'Enable build artifacts caching'
+    required: false
+    default: 'true'
+
+outputs:
+  cache-hit:
+    description: 'Whether cache was hit'
+    value: ${{ steps.cache-check.outputs.cache-hit }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: 🔍 Generate cache keys
+      shell: bash
+      run: |
+        # Generate comprehensive cache key
+        CACHE_KEY="cache-v2-${{ runner.os }}-$(echo '${{ hashFiles('package.json', 'pnpm-lock.yaml', 'tsconfig.json', '.github/workflows/**') }}' | head -c 12)"
+        echo "CACHE_KEY=${CACHE_KEY}${{ inputs.cache-key-suffix }}" >> $GITHUB_ENV
+        
+        # Fallback keys for partial cache hits
+        echo "CACHE_FALLBACK_1=cache-v2-${{ runner.os }}-$(echo '${{ hashFiles('package.json', 'pnpm-lock.yaml') }}' | head -c 12)" >> $GITHUB_ENV
+        echo "CACHE_FALLBACK_2=cache-v2-${{ runner.os }}-" >> $GITHUB_ENV
+
+    - name: 💾 Restore comprehensive cache
+      id: cache-check
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.pnpm
+          ~/.cache/ms-playwright
+          node_modules/.cache
+          dist/
+          .tsbuildinfo
+        key: ${{ env.CACHE_KEY }}
+        restore-keys: |
+          ${{ env.CACHE_FALLBACK_1 }}
+          ${{ env.CACHE_FALLBACK_2 }}
+
+    - name: 📊 Cache statistics
+      shell: bash
+      run: |
+        echo "🔍 Cache Status: ${{ steps.cache-check.outputs.cache-hit == 'true' && 'HIT' || 'MISS' }}"
+        echo "🔑 Cache Key: ${{ env.CACHE_KEY }}"
+        
+        if [ "${{ steps.cache-check.outputs.cache-hit }}" == "true" ]; then
+          echo "✅ Full cache restored - significant time savings expected"
+        else
+          echo "⚠️ Cache miss - will rebuild from scratch"
+        fi

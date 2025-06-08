@@ -1,0 +1,78 @@
+name: 'Optimized Build'
+description: 'Smart build with incremental compilation and caching'
+
+inputs:
+  skip-if-cached:
+    description: 'Skip build if artifacts are cached'
+    required: false
+    default: 'true'
+
+outputs:
+  build-skipped:
+    description: 'Whether build was skipped due to cache'
+    value: ${{ steps.build-check.outputs.skipped }}
+  
+runs:
+  using: 'composite'
+  steps:
+    - name: 🔍 Check if build needed
+      id: build-check
+      shell: bash
+      run: |
+        if [ "${{ inputs.skip-if-cached }}" == "true" ] && [ -f "dist/index.js" ] && [ -f "dist/index.d.ts" ]; then
+          echo "✅ Build artifacts found in cache - skipping build"
+          echo "skipped=true" >> $GITHUB_OUTPUT
+        else
+          echo "🔨 Build required"
+          echo "skipped=false" >> $GITHUB_OUTPUT
+        fi
+
+    - name: 🏗️ Incremental TypeScript build
+      if: steps.build-check.outputs.skipped != 'true'
+      shell: bash
+      run: |
+        echo "🔨 Starting optimized build process..."
+        
+        # Use TypeScript incremental compilation
+        pnpm exec tsc --incremental
+        
+        # Make CLI executable
+        chmod +x dist/cli/index.js
+        
+        # Copy templates efficiently
+        if [ -d "templates" ]; then
+          rsync -av --delete templates/ dist/templates/ 2>/dev/null || cp -r templates/ dist/ 2>/dev/null || true
+        fi
+        
+        # Copy package.json for version info
+        cp package.json dist/
+        
+        echo "✅ Build completed successfully"
+
+    - name: 🔍 Verify build artifacts
+      shell: bash
+      run: |
+        echo "🔍 Verifying build artifacts..."
+        
+        REQUIRED_FILES=("dist/index.js" "dist/index.d.ts" "dist/cli/index.js")
+        MISSING_FILES=()
+        
+        for file in "${REQUIRED_FILES[@]}"; do
+          if [ ! -f "$file" ]; then
+            MISSING_FILES+=("$file")
+          fi
+        done
+        
+        if [ ${#MISSING_FILES[@]} -eq 0 ]; then
+          echo "✅ All required build artifacts present"
+          
+          # Show build stats
+          echo "📊 Build Statistics:"
+          echo "   Main bundle: $(ls -lh dist/index.js | awk '{print $5}')"
+          echo "   CLI bundle: $(ls -lh dist/cli/index.js | awk '{print $5}')"
+          echo "   Total files: $(find dist -type f | wc -l)"
+        else
+          echo "❌ Missing build artifacts:"
+          printf '   %s\n' "${MISSING_FILES[@]}"
+          exit 1
+        fi

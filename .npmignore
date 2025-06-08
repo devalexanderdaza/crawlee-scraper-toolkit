@@ -1,23 +1,49 @@
-# Source files
+# Source files (only include compiled dist/)
 src/
 tests/
+coverage/
 
 # Configuration files
 .eslintrc.js
 .prettierrc
+.commitlintrc.json
 jest.config.js
 tsconfig.json
+tsconfig.examples.json
+typedoc.json
 .gitignore
+.gitattributes
+
+# CI/CD and automation
+.github/
+.husky/
+scripts/
+.releaserc*.json
 
 # Development files
 *.test.ts
 *.spec.ts
-coverage/
 .nyc_output/
+test-results/
+playwright-report/
+playwright/.cache/
 
-# Documentation (except README)
+# Documentation source (keep README.md and LICENSE)
 docs/
 examples/
+templates/
+DUAL_PUBLISH_IMPLEMENTATION.md
+CHANGELOG.md
+
+# Build artifacts and logs
+*.log
+logs/
+release-preview.log
+ci-analysis-*.json
+performance-report-*.json
+health-check-*.log
+dual-publish-report-*.json
+package-analysis-*.json
 
 # Git
 .git/
@@ -26,19 +52,60 @@ examples/
 # IDE
 .vscode/
 .idea/
+*.swp
+*.swo
 
-# Logs
-*.log
-logs/
-
-# Environment
+# Environment and configuration
 .env*
+.npmrc*
+!.npmrc.example
+.nvmrc
+
+# TypeScript configuration files
+tsconfig*.json
+!tsconfig.json
 
 # Temporary
 tmp/
 temp/
+.tmp/
 
 # OS
 .DS_Store
 Thumbs.db
+._*
+
+# Cache
+.cache/
+.eslintcache
+.stylelintcache
+
+# Package managers cache
+.yarn/
+.pnpm-store/
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Backup files
+*.backup
+*.bak
+*.orig
+
+# Archives
+*.tar.gz
+*.zip
+*.7z
+*.rar
+*.tgz
+
+# Additional exclusions for npm package
+.editorconfig
+.commitlintrc.json
+.release-it.json
+
+# Exclude all markdown files except README and LICENSE
+*.md
+!README.md
+!LICENSE
 

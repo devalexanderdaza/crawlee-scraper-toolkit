@@ -8,10 +8,15 @@ on:
       - 'package.json'
       - '.releaserc.json'
       - 'CHANGELOG.md'
+  workflow_dispatch:
 
 permissions:
   contents: read
   pull-requests: write
+
+env:
+  NODE_VERSION: '20'
+  PNPM_VERSION: '9'
 
 jobs:
   release-preview:
@@ -26,20 +31,17 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 📦 Setup Node.js
-        uses: actions/setup-node@v4
+      - name: � Setup Node.js and pnpm
+        uses: ./.github/actions/setup-node-pnpm
         with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: 📥 Install dependencies
-        run: npm ci
+          node-version: ${{ env.NODE_VERSION }}
+          pnpm-version: ${{ env.PNPM_VERSION }}
 
       - name: 🏗️ Build project
-        run: npm run build
+        run: pnpm run build
 
       - name: 🧪 Run tests
-        run: npm test
+        run: pnpm test
 
       - name: 🔍 Preview release
         env:
@@ -52,7 +54,7 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           
           # Run semantic-release dry-run and capture output
-          npm run release:preview > release-preview.log 2>&1 || true
+          pnpm run release:preview > release-preview.log 2>&1 || true
           
           echo "### 📋 Release Analysis:" >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
