@@ -357,6 +357,7 @@ console.log(`Success rate: ${metrics.successfulRequests / metrics.totalRequests 
 The `crawlee-scraper` CLI provides several commands to manage your scraping projects.
 These commands can be run using `pnpm crawlee-scraper <command>` or `npx crawlee-scraper <command>` if `crawlee-scraper-toolkit` is a project dependency (as shown in the Quick Start).
 If you've installed `crawlee-scraper-toolkit` globally (e.g., `pnpm add -g crawlee-scraper-toolkit`), you can invoke the commands directly: `crawlee-scraper <command>`.
+When installing from a local clone of this repository, run `pnpm install && pnpm run build` beforehand so the compiled CLI is generated with its path aliases properly resolved.
 Alternatively, `pnpm dlx crawlee-scraper <command>` can be used to ensure you're executing the latest version of the CLI without local installation.
 
 ### Generate Scraper
