@@ -1,3 +1,9 @@
+## <small>2.0.1 (2025-06-08)</small>
+
+* fix: adjust release job dependencies and update npm configuration for package-lock handling ([cdaa9ee](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/cdaa9ee))
+* fix: remove schema reference from release configuration ([fd3c094](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/fd3c094))
+* chore: release ([fa1ba91](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/fa1ba91))
+
 ## 2.0.0 (2025-06-08)
 
 * fix: add documentation download step before semantic release in CI/CD pipeline ([84ad877](https://github.com/devalexanderdaza/crawlee-scraper-toolkit/commit/84ad877))

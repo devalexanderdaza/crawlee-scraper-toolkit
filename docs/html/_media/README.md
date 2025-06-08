@@ -1,4 +1,4 @@
-**crawlee-scraper-toolkit v1.0.1**
+**crawlee-scraper-toolkit v2.0.0**
 
 ***
 
@@ -405,10 +405,10 @@ Check the `examples/` directory for complete working examples:
 Comprehensive documentation is available in multiple formats:
 
 ### 🔗 Quick Links
-- **[📖 Complete API Documentation](./docs/api/README.md)** - Full API reference
+- **[📖 Complete API Documentation](_media/README.md)** - Full API reference
 - **[🌐 Interactive HTML Docs](./docs/html/index.html)** - Browse documentation interactively  
-- **[📊 Coverage Report](./docs/coverage/lcov-report/index.html)** - Test coverage analysis
-- **[💡 Usage Examples](./docs/EXAMPLES.md)** - Detailed examples documentation
+- **[📊 Coverage Report](_media/index.html)** - Test coverage analysis
+- **[💡 Usage Examples](_media/EXAMPLES.md)** - Detailed examples documentation
 
 ### 🚀 Generate Documentation
 

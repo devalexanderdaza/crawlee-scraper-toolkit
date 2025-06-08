@@ -14706,7 +14706,7 @@
 		}
 	],
 	"packageName": "crawlee-scraper-toolkit",
-	"packageVersion": "1.0.1",
+	"packageVersion": "2.0.0",
 	"readme": [
 		{
 			"kind": "text",
@@ -15004,7 +15004,8 @@
 		},
 		{
 			"kind": "relative-link",
-			"text": "./docs/EXAMPLES.md"
+			"text": "./docs/EXAMPLES.md",
+			"target": 4
 		},
 		{
 			"kind": "text",
@@ -15829,7 +15830,7 @@
 		{
 			"kind": "relative-link",
 			"text": "LICENSE",
-			"target": 4
+			"target": 5
 		},
 		{
 			"kind": "text",
@@ -18408,7 +18409,8 @@
 			"1": "src/index.ts",
 			"2": "docs/api/README.md",
 			"3": "docs/coverage/lcov-report/index.html",
-			"4": "LICENSE"
+			"4": "docs/EXAMPLES.md",
+			"5": "LICENSE"
 		},
 		"reflections": {
 			"1": 0
