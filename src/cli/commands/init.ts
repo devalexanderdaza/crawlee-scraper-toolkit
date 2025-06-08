@@ -1,8 +1,41 @@
 import inquirer from 'inquirer';
 import chalk from 'chalk';
 import ora from 'ora';
-import { existsSync, mkdirSync, writeFileSync } from 'fs';
-import { join } from 'path';
+import { existsSync, mkdirSync, writeFileSync, readFileSync } from 'fs';
+import { join, resolve as pathResolve } from 'path';
+
+// Helper to get main package.json details
+function getToolkitVersionDetails() {
+  try {
+    const packageJsonPath = pathResolve(__dirname, '../../../package.json');
+    const packageJsonContent = readFileSync(packageJsonPath, 'utf-8');
+    const packageJson = JSON.parse(packageJsonContent);
+    return {
+      version: packageJson.version,
+      dependencies: packageJson.dependencies,
+      devDependencies: packageJson.devDependencies,
+    };
+  } catch (error) {
+    console.warn(chalk.yellow('Could not read main package.json for dynamic versions. Using fallback versions.'));
+    // Fallback versions if reading fails
+    return {
+      version: '1.0.1', // Needs to be updated if this file is copied without context
+      dependencies: {
+        'crawlee': '^3.7.0',
+        'playwright': '^1.40.0',
+      },
+      devDependencies: {
+        '@types/node': '^20.10.0',
+        'typescript': '^5.3.0',
+        'ts-node': '^10.9.0',
+        'jest': '^29.7.0',
+        '@types/jest': '^29.5.0',
+      }
+    };
+  }
+}
+
+const toolkitDetails = getToolkitVersionDetails();
 
 /**
  * Project initialization options
@@ -128,16 +161,17 @@ async function createProject(config: Required<InitOptions>): Promise<void> {
       'scraper:run': 'crawlee-scraper run',
     },
     dependencies: {
-      'crawlee-scraper-toolkit': '^1.0.0',
-      'playwright': '^1.40.0',
+      'crawlee-scraper-toolkit': `^${toolkitDetails.version}`,
+      'playwright': toolkitDetails.dependencies?.playwright || '^1.40.0',
+      'crawlee': toolkitDetails.dependencies?.crawlee || '^3.7.0',
     },
     devDependencies: {
-      '@types/node': '^20.10.0',
-      'jest': '^29.7.0',
+      '@types/node': toolkitDetails.devDependencies?.['@types/node'] || '^20.10.0',
+      'jest': toolkitDetails.devDependencies?.jest || '^29.7.0',
       ...(config.typescript ? {
-        'typescript': '^5.3.0',
-        'ts-node': '^10.9.0',
-        '@types/jest': '^29.5.0',
+        'typescript': toolkitDetails.devDependencies?.typescript || '^5.3.0',
+        'ts-node': toolkitDetails.devDependencies?.['ts-node'] || '^10.9.0',
+        '@types/jest': toolkitDetails.devDependencies?.['@types/jest'] || '^29.5.0',
       } : {}),
     },
   };

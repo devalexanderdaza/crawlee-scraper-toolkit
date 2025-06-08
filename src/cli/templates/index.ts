@@ -20,9 +20,9 @@ const basicTemplate: Template = {
 import { createLogger } from 'crawlee-scraper-toolkit/utils';
 
 // Scraper definition
-const {{name}}Definition: ScraperDefinition<string, any> = {
-  id: '{{name}}',
-  name: '{{description}}',
+export const definition: ScraperDefinition<string, any> = {
+  id: '{{name}}', // This will be replaced by the actual scraper name during generation
+  name: '{{name}}', // This will be replaced
   description: '{{description}}',
   url: '{{url}}',
   navigation: {{navigation}},
@@ -99,13 +99,17 @@ async function main() {
   }, logger);
 
   // Register the scraper
-  engine.register({{name}}Definition);
+  // Register the scraper
+  // For standalone execution, the definition is already available.
+  // If this were part of a larger system where definitions are dynamically loaded,
+  // engine.register(definition) would be used by that system.
 
   // Example usage
   const input = process.argv[2] || 'default-input';
   
   try {
-    const result = await engine.execute({{name}}Definition, input);
+    // When running directly, execute the local 'definition'
+    const result = await engine.execute(definition, input);
     
     if (result.success) {
       console.log('Scraping successful!');
@@ -124,7 +128,13 @@ if (require.main === module) {
   main().catch(console.error);
 }
 
-export { {{name}}Definition };
+// If this script is run directly (e.g., `node dist/index.js`)
+if (require.main === module) {
+  main().catch(console.error);
+}
+
+// Note: The primary export 'definition' is used when this scraper is run by 'crawlee-scraper run'.
+// The main() function is for direct execution or testing of this specific scraper.
 `,
     'README.md': `# {{name}}
 
@@ -179,9 +189,9 @@ const apiTemplate: Template = {
 import { createLogger } from 'crawlee-scraper-toolkit/utils';
 
 // Scraper definition for API-based extraction
-const {{name}}Definition: ScraperDefinition<string, any> = {
-  id: '{{name}}',
-  name: '{{description}}',
+export const definition: ScraperDefinition<string, any> = {
+  id: '{{name}}', // This will be replaced
+  name: '{{name}}', // This will be replaced
   description: '{{description}}',
   url: '{{url}}',
   navigation: {{navigation}},
@@ -262,13 +272,13 @@ async function main() {
   }, logger);
 
   // Register the scraper
-  engine.register({{name}}Definition);
+  // engine.register(definition); // Not needed for standalone main() with local definition
 
   // Example usage
   const input = process.argv[2] || 'default-query';
   
   try {
-    const result = await engine.execute({{name}}Definition, input);
+    const result = await engine.execute(definition, input);
     
     if (result.success) {
       console.log('API scraping successful!');
@@ -287,7 +297,9 @@ if (require.main === module) {
   main().catch(console.error);
 }
 
-export { {{name}}Definition };
+if (require.main === module) {
+  main().catch(console.error);
+}
 `,
     'README.md': `# {{name}} - API Scraper
 
@@ -334,9 +346,9 @@ const formTemplate: Template = {
 import { createLogger } from 'crawlee-scraper-toolkit/utils';
 
 // Scraper definition for form-based extraction
-const {{name}}Definition: ScraperDefinition<string, any> = {
-  id: '{{name}}',
-  name: '{{description}}',
+export const definition: ScraperDefinition<string, any> = {
+  id: '{{name}}', // Will be replaced
+  name: '{{name}}', // Will be replaced
   description: '{{description}}',
   url: '{{url}}',
   navigation: {{navigation}},
@@ -428,13 +440,13 @@ async function main() {
   }, logger);
 
   // Register the scraper
-  engine.register({{name}}Definition);
+  // engine.register(definition); // Not needed for standalone main()
 
   // Example usage
   const input = process.argv[2] || 'default-search';
   
   try {
-    const result = await engine.execute({{name}}Definition, input);
+    const result = await engine.execute(definition, input);
     
     if (result.success) {
       console.log('Form scraping successful!');
@@ -454,7 +466,9 @@ if (require.main === module) {
   main().catch(console.error);
 }
 
-export { {{name}}Definition };
+if (require.main === module) {
+  main().catch(console.error);
+}
 `,
     'README.md': `# {{name}} - Form Scraper
 
@@ -505,9 +519,9 @@ import { createLogger } from 'crawlee-scraper-toolkit/utils';
 import { RetryPlugin, CachePlugin, MetricsPlugin } from 'crawlee-scraper-toolkit/plugins';
 
 // Advanced scraper definition with custom hooks and plugins
-const {{name}}Definition: ScraperDefinition<string, any> = {
-  id: '{{name}}',
-  name: '{{description}}',
+export const definition: ScraperDefinition<string, any> = {
+  id: '{{name}}', // Will be replaced
+  name: '{{name}}', // Will be replaced
   description: '{{description}}',
   url: '{{url}}',
   navigation: {{navigation}},
@@ -706,14 +720,14 @@ async function main() {
   engine.use(new MetricsPlugin());
 
   // Register the scraper
-  engine.register({{name}}Definition);
+  // engine.register(definition); // Not needed for standalone main()
 
   // Example usage
   const input = process.argv[2] || 'default-input';
   
   try {
-    console.log('Starting advanced scraper...');
-    const result = await engine.execute({{name}}Definition, input);
+    console.log('Starting advanced scraper...'); // This console.log should ideally use the logger too
+    const result = await engine.execute(definition, input);
     
     if (result.success) {
       console.log('Advanced scraping successful!');
@@ -738,7 +752,9 @@ if (require.main === module) {
   main().catch(console.error);
 }
 
-export { {{name}}Definition };
+if (require.main === module) {
+  main().catch(console.error);
+}
 `,
     'README.md': `# {{name}} - Advanced Scraper
 

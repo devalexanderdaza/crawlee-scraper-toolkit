@@ -46,8 +46,10 @@ pnpm install
 
 ### 2. Generate Your First Scraper
 
+After initializing and installing dependencies, you can use the CLI bundled with the project:
 ```bash
-pnpm dlx crawlee-scraper generate
+pnpm crawlee-scraper generate
+# or npx crawlee-scraper generate
 ```
 
 Follow the interactive prompts to configure your scraper.
@@ -55,7 +57,8 @@ Follow the interactive prompts to configure your scraper.
 ### 3. Run the Scraper
 
 ```bash
-pnpm dlx crawlee-scraper run --scraper=my-scraper --input="search term"
+pnpm crawlee-scraper run --scraper=my-scraper --input="search term"
+# or npx crawlee-scraper run --scraper=my-scraper --input="search term"
 ```
 
 ## 🔧 Programmatic Usage
@@ -128,7 +131,9 @@ const config = createConfig()
   .build();
 
 // Create engine with custom config
-const engine = new CrawleeScraperEngine(config, logger);
+// const logger = configManager.getLogger(); // Assuming you want to use the logger from configManager
+// Or, create a new logger instance if you have specific needs for this engine
+const engine = new CrawleeScraperEngine(config, configManager.getLogger());
 
 // Install plugins
 engine.use(new RetryPlugin({ maxBackoffDelay: 30000 }));
@@ -137,19 +142,19 @@ engine.use(new CachePlugin({ defaultTtl: 10 * 60 * 1000 }));
 
 ## 📋 Scraper Templates
 
-The toolkit includes several pre-built templates:
+The toolkit includes several pre-built templates to get you started quickly:
 
 ### Basic Template
-Simple page scraping with configurable selectors.
+Ideal for simple page scraping tasks. Allows configuration of selectors to extract data from static or dynamically rendered pages.
 
 ### API Template
-Intercepts API responses for data extraction.
+Designed for scenarios where data can be more reliably extracted by intercepting and processing API (e.g., JSON) responses triggered by website interactions.
 
 ### Form Template
-Fills and submits forms to retrieve results.
+Useful for scrapers that need to interact with forms. Provides a structure for filling input fields, submitting forms, and then extracting data from the results.
 
 ### Advanced Template
-Full-featured template with custom hooks and plugins.
+A comprehensive template that includes setup for custom hooks, plugins, and more complex configurations. Suitable for sophisticated scraping tasks requiring fine-grained control.
 
 ## ⚙️ Configuration
 
@@ -343,24 +348,30 @@ console.log(`Success rate: ${metrics.successfulRequests / metrics.totalRequests 
 
 ## 🛠️ CLI Commands
 
+The `crawlee-scraper` CLI provides several commands to manage your scraping projects.
+These commands can be run using `pnpm crawlee-scraper <command>` or `npx crawlee-scraper <command>` if `crawlee-scraper-toolkit` is a project dependency (as shown in the Quick Start).
+If you've installed `crawlee-scraper-toolkit` globally (e.g., `pnpm add -g crawlee-scraper-toolkit`), you can invoke the commands directly: `crawlee-scraper <command>`.
+Alternatively, `pnpm dlx crawlee-scraper <command>` can be used to ensure you're executing the latest version of the CLI without local installation.
+
 ### Generate Scraper
 ```bash
-crawlee-scraper generate --template=basic --name=my-scraper
+pnpm crawlee-scraper generate --template=basic --name=my-scraper
 ```
 
 ### Initialize Project
 ```bash
-crawlee-scraper init --name=my-project --template=advanced
+pnpm dlx crawlee-scraper init --name=my-project --template=advanced
+# (Using pnpm dlx for init is recommended to get the latest project scaffolder)
 ```
 
 ### Validate Configuration
 ```bash
-crawlee-scraper validate --config=./config/scraper.yaml
+pnpm crawlee-scraper validate --config=./config/scraper.yaml
 ```
 
 ### Run Scraper
 ```bash
-crawlee-scraper run --scraper=my-scraper --input="search term" --profile=production
+pnpm crawlee-scraper run --scraper=my-scraper --input="search term" --profile=production
 ```
 
 ## 🔍 Examples
@@ -413,26 +424,52 @@ pnpm run docs:serve    # Available at http://localhost:8080
 
 This project uses **semantic-release** for fully automated versioning and publishing. All releases are handled automatically by CI/CD based on conventional commits.
 
+For a more comprehensive guide to the release process, including advanced troubleshooting, emergency procedures, and configuration details, please see the [Detailed Release Process Documentation](./docs/RELEASE.md).
+
 ### 📋 Conventional Commits
 
-Use conventional commit messages to trigger automatic releases:
+Use conventional commit messages to trigger automatic releases. The commit message should be structured as follows:
 
+```
+<type>(<scope>): <description>
+
+[optional body]
+
+[optional footer(s) e.g. BREAKING CHANGE:, Closes #issue]
+```
+
+**Commit Types & Version Impact:**
+
+| Type         | Description                                                          | Version Bump          | Example                                            |
+|--------------|----------------------------------------------------------------------|-----------------------|----------------------------------------------------|
+| `feat`       | A new feature                                                        | **Minor** (1.0.0 → 1.1.0) | `feat: add caching plugin`                         |
+| `fix`        | A bug fix                                                            | **Patch** (1.0.0 → 1.0.1) | `fix: resolve memory leak`                       |
+| `feat!`      | A commit that introduces a breaking API change (correlates with `feat`) | **Major** (1.0.0 → 2.0.0) | `feat!: redesign configuration API`                |
+| `fix!`       | A commit that introduces a breaking API change (correlates with `fix`)  | **Major** (1.0.0 → 2.0.0) | `fix!: change default behavior of existing method` |
+| `perf`       | A code change that improves performance                              | **Patch** (sometimes None) | `perf: improve scraping speed by 20%`              |
+| `docs`       | Documentation only changes                                           | None                  | `docs: update README examples`                     |
+| `style`      | Changes that do not affect the meaning of the code (white-space, etc) | None                  | `style: fix code formatting`                       |
+| `refactor`   | A code change that neither fixes a bug nor adds a feature            | None                  | `refactor: simplify parser logic`                  |
+| `test`       | Adding missing tests or correcting existing tests                    | None                  | `test: add unit tests for browser pool`            |
+| `chore`      | Changes to the build process or auxiliary tools and libraries        | None                  | `chore: update dependencies`                       |
+| `ci`         | Changes to CI configuration files and scripts                        | None                  | `ci: update GitHub Actions workflow`               |
+
+**Scope Examples:** `core`, `cli`, `docs`, `api`, `utils`. e.g., `feat(core): add browser pool management`.
+
+**Breaking Changes:**
+Must be indicated at the very beginning of the commit body or footer, starting with `BREAKING CHANGE:`.
 ```bash
-# Patch release (1.0.0 → 1.0.1)
-git commit -m "fix: resolve browser pool memory leak"
+feat!: redesign configuration API
 
-# Minor release (1.0.0 → 1.1.0)  
-git commit -m "feat: add new caching plugin"
+BREAKING CHANGE: The configuration schema has changed.
+Old format is no longer supported. See MIGRATION.md for upgrade guide.
+```
+Or (for non-`!` commits):
+```bash
+refactor: internal restructuring of user module
 
-# Major release (1.0.0 → 2.0.0)
-git commit -m "feat!: redesign configuration API
-
-BREAKING CHANGE: Configuration schema has changed"
-
-# Other commit types (no release)
-git commit -m "docs: update README examples"
-git commit -m "chore: update dependencies"
-git commit -m "test: add browser pool tests"
+BREAKING CHANGE: User session handling has been modified.
+Refer to the updated documentation for details.
 ```
 
 ### 🔄 Automated Release Flow
@@ -502,28 +539,78 @@ Every release automatically runs:
 - **Test locally** before pushing
 - **Let CI/CD handle releases** (avoid manual versioning)
 
+### 🔧 Troubleshooting Common Release Issues
+
+*   **Release Not Triggered**:
+    *   Ensure your commit messages strictly follow the [Conventional Commits](#-conventional-commits) format.
+    *   Verify the commit was pushed to the `main` branch (for production releases) or the relevant branch for previews.
+    *   Check that the commit message does not include `[skip ci]` or similar tags that prevent CI execution.
+*   **Incorrect Version Bump**:
+    *   Carefully review your commit history to ensure `feat`, `fix`, and `BREAKING CHANGE:` annotations are used correctly according to the version impact table.
+    *   Ensure any breaking changes are clearly documented in the commit body or footer, starting with `BREAKING CHANGE:`.
+
 ## 🤝 Contributing
 
 We welcome contributions! Please follow these guidelines:
 
 ### 💻 Development Setup
 
-1. **Fork and Clone**
-   ```bash
-   git clone https://github.com/devalexanderdaza/crawlee-scraper-toolkit.git
-   cd crawlee-scraper-toolkit
-   pnpm install
-   ```
+1.  **Fork and Clone**
+    ```bash
+    git clone https://github.com/devalexanderdaza/crawlee-scraper-toolkit.git
+    cd crawlee-scraper-toolkit
+    ```
 
-2. **Setup Development Environment**
-   ```bash
-   # Install dependencies and setup hooks
-   pnpm install
-   pnpm run prepare  # Sets up husky git hooks
-   
-   # Run tests to verify setup
-   pnpm test
-   ```
+2.  **Core Prerequisites & Environment Setup**
+    *   **Node.js:** This project uses Node.js version `>=20.0.0` (as specified in `.nvmrc`). We recommend using [nvm](https://github.com/nvm-sh/nvm) (Node Version Manager).
+        ```bash
+        # Install and use the project's Node.js version (reads .nvmrc)
+        nvm install
+        nvm use
+        # Verify
+        node --version
+        ```
+    *   **pnpm:** This project uses [pnpm](https://pnpm.io/) (version `>=8.0.0`, see `package.json` `packageManager` field) as the package manager.
+        ```bash
+        # Install pnpm globally (if you don't have it)
+        npm install -g pnpm@latest
+        # Or, enable corepack (recommended, comes with Node.js >=16.10)
+        # corepack enable && corepack prepare pnpm@latest --activate
+        # Verify
+        pnpm --version
+        ```
+        This project includes an `.npmrc` file with settings like `auto-install-peers=true`. Key structure files: `.nvmrc`, `.npmrc`, `pnpm-lock.yaml`, `tsconfig.json`.
+
+3.  **Install Dependencies & Setup Hooks**
+    ```bash
+    # Install all project dependencies using pnpm
+    pnpm install
+
+    # Setup Husky git hooks (for linting, commit messages, etc.)
+    pnpm run prepare
+    ```
+
+4.  **Verify Setup**
+    ```bash
+    # Run tests to ensure everything is working
+    pnpm test
+    ```
+
+### 🛠️ Common Development Commands
+
+A list of common commands you might use during development:
+
+*   `pnpm dev`: Run the application in development mode (e.g., with hot reloading, if applicable).
+*   `pnpm build`: Build the project for production.
+*   `pnpm test`: Run the full test suite.
+*   `pnpm test:watch`: Run tests in interactive watch mode.
+*   `pnpm test:coverage`: Generate a test coverage report.
+*   `pnpm lint`: Check code for linting issues using ESLint.
+*   `pnpm lint:fix`: Attempt to automatically fix linting issues.
+*   `pnpm format`: Format code using Prettier.
+*   `pnpm example:news`: Run the basic news scraper example.
+*   `pnpm example:products`: Run the advanced product scraper example.
+*   `pnpm cli -- --help`: Run the toolkit's CLI locally to see its commands. (Note: `pnpm cli` itself might run a default command; use `--` to pass arguments to the CLI script).
 
 ### 🎯 Development Workflow
 
@@ -619,5 +706,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Made with ❤️ by the Crawlee Scraper Toolkit team
+Made with ❤️ by devalexanderdaza
 

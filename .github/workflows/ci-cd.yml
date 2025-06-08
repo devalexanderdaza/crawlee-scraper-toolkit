@@ -3,8 +3,22 @@ name: CI/CD Pipeline
 on:
   push:
     branches: [ main, develop ]
+    paths-ignore:
+      - '.devcontainer/**'
+      - '.vscode/**'
+      - 'LICENSE'
+      - '*.gitattributes'
+      - '*.gitmodules'
+      # Note: README.md and other critical .md files are NOT ignored here
+      # as they might be part of documentation build or important project files.
   pull_request:
     branches: [ main, develop ]
+    paths-ignore:
+      - '.devcontainer/**'
+      - '.vscode/**'
+      - 'LICENSE'
+      - '*.gitattributes'
+      - '*.gitmodules'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -96,10 +110,15 @@ jobs:
           version: ${{ env.PNPM_VERSION }}
           run_install: false
 
+      - name: 🔍 Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
       - name: 💾 Setup pnpm cache
         uses: actions/cache@v4
         with:
-          path: ~/.pnpm-store
+          path: ${{ env.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
@@ -107,7 +126,15 @@ jobs:
       - name: 📥 Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: 🎭 Install Playwright
+      - name: 💾 Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            playwright-${{ runner.os }}-
+
+      - name: 🎭 Install Playwright browsers
         run: pnpm dlx playwright install --with-deps
 
       - name: 🧪 Run tests
@@ -153,6 +180,19 @@ jobs:
           version: ${{ env.PNPM_VERSION }}
           run_install: false
 
+      - name: 🔍 Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: 💾 Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
       - name: 📥 Install dependencies
         run: pnpm install --frozen-lockfile
 
@@ -162,7 +202,15 @@ jobs:
           name: build-artifacts
           path: dist/
 
-      - name: 🎭 Install Playwright
+      - name: 💾 Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            playwright-${{ runner.os }}-
+
+      - name: 🎭 Install Playwright browsers
         run: pnpm dlx playwright install --with-deps
 
       - name: 🚀 Test news scraper example
@@ -311,12 +359,12 @@ jobs:
         with:
           name: documentation
           path: docs/
-
-      - name: 🏗️ Build project
-        run: pnpm run build
-
-      - name: 📚 Generate fresh documentation
-        run: pnpm run docs:build
+      # Build and docs generation are done in previous jobs.
+      # semantic-release will use artifacts from dist/ and docs/
+      # Ensure package.json's "files" array correctly lists what to publish.
+      # If specific packaging of docs (e.g. tarball) is needed for release assets,
+      # it should be done here using the downloaded 'docs/' artifact.
+      # For now, assuming semantic-release handles this or it's not strictly needed as a separate step.
 
       - name: 🚀 Semantic Release
         env:

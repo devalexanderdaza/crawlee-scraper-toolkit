@@ -10,11 +10,12 @@ import {
   ScraperPlugin,
   ScraperEvents,
   ScraperEngineConfig,
+  Logger as ILogger, // Use ILogger to avoid conflict with local Logger class/var if any
 } from './types';
 import { BrowserPool } from './browser-pool';
-import { Logger } from '@/utils/logger';
+import { Logger } from '@/utils/logger'; // This is likely the concrete logger implementation
 
-// Helper interfaces for navigation configs
+// Helper interfaces for navigation configs (internal, no need for extensive JSDoc for public API)
 interface FormConfig {
   inputSelector?: string;
   submitSelector?: string;
@@ -33,26 +34,58 @@ interface TimeoutConfig {
 }
 
 /**
- * Main scraper engine implementation
+ * @file Provides the core implementation of the ScraperEngine, orchestrating
+ * the entire scraping lifecycle including browser management, hook execution,
+ * plugin integration, and data parsing.
+ */
+
+/**
+ * The main engine for managing and executing scrapers.
+ * It handles the browser pool, plugin lifecycle, global and scraper-specific hooks,
+ * and the overall execution flow of scraper definitions.
+ * Emits various events throughout the scraping lifecycle (see {@link ScraperEvents}).
  */
 export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements ScraperEngine {
   private browserPool: BrowserPool;
-  private logger: Logger;
+  private logger: ILogger; // Use the imported ILogger type
   private config: ScraperEngineConfig;
   private definitions = new Map<string, ScraperDefinition<unknown, unknown>>();
   private plugins = new Map<string, ScraperPlugin>();
-  private globalHooks = new Map<ScraperHook, HookHandler[]>();
+  private globalHooks = new Map<ScraperHook, HookHandler<unknown, unknown>[]>();
 
-  constructor(config: ScraperEngineConfig, logger: Logger) {
+  /**
+   * Creates an instance of the CrawleeScraperEngine.
+   * @param config The configuration object for the scraper engine. See {@link ScraperEngineConfig}.
+   * @param logger An instance of a logger conforming to the {@link ILogger} interface.
+   */
+  constructor(config: ScraperEngineConfig, logger: ILogger) {
     super();
     this.config = config;
     this.logger = logger;
     this.browserPool = new BrowserPool(config.browserPool, logger);
     this.initializeGlobalHooks();
+    this.logger.info('CrawleeScraperEngine initialized.', { browserPoolConfig: config.browserPool.maxSize });
   }
 
   /**
-   * Execute a scraper with given input
+   * Executes a registered scraper definition with the given input and runtime options.
+   * This method orchestrates the entire scraping lifecycle for a single task, including:
+   * - Input validation.
+   * - Acquiring a browser instance from the pool.
+   * - Executing `beforeRequest`, scraper `parse`, `afterRequest`, `onSuccess` hooks.
+   * - Handling retries with `onRetry` hooks upon failure.
+   * - Managing errors with `onError` hooks.
+   * - Output validation.
+   * - Releasing the browser instance.
+   * Emits `scraper:start`, `scraper:success`, `scraper:error`, and `scraper:retry` events.
+   *
+   * @template Input The type of the input data the scraper expects.
+   * @template Output The type of the data the scraper's `parse` function will return.
+   * @param definition The {@link ScraperDefinition} to execute.
+   * @param input The input data to pass to the scraper.
+   * @param options Optional. Partial {@link ScraperExecutionOptions} that can override
+   *                default and definition-specific options for this execution.
+   * @returns A Promise that resolves to a {@link ScraperResult} containing the outcome of the execution.
    */
   async execute<Input, Output>(
     definition: ScraperDefinition<Input, Output>,
@@ -182,7 +215,11 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
   }
 
   /**
-   * Register a scraper definition
+   * Registers a scraper definition with the engine, making it available for execution.
+   * If a definition with the same ID already exists, it will be overwritten.
+   * @template Input The type of the input data the scraper definition expects.
+   * @template Output The type of the data the scraper definition will output.
+   * @param definition The {@link ScraperDefinition} to register.
    */
   register<Input, Output>(definition: ScraperDefinition<Input, Output>): void {
     this.logger.info('Registering scraper definition', { scraperId: definition.id });
@@ -190,21 +227,28 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
   }
 
   /**
-   * Get a registered scraper definition
+   * Retrieves a registered scraper definition by its ID.
+   * @param id The unique identifier of the scraper definition.
+   * @returns The {@link ScraperDefinition} if found, otherwise `undefined`.
    */
   getDefinition(id: string): ScraperDefinition | undefined {
+    this.logger.debug('Retrieving scraper definition', { scraperId: id });
     return this.definitions.get(id);
   }
 
   /**
-   * List all registered scrapers
+   * Lists all currently registered scraper definitions.
+   * @returns An array of {@link ScraperDefinition} objects.
    */
   listDefinitions(): ScraperDefinition[] {
+    this.logger.debug('Listing all scraper definitions');
     return Array.from(this.definitions.values());
   }
 
   /**
-   * Install a plugin
+   * Installs a plugin, allowing it to extend the engine's functionality.
+   * The plugin's `install` method will be called with this engine instance.
+   * @param plugin The {@link ScraperPlugin} instance to install.
    */
   use(plugin: ScraperPlugin): void {
     this.logger.info('Installing plugin', {
@@ -212,43 +256,79 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
       version: plugin.version,
     });
 
+    if (this.plugins.has(plugin.name)) {
+      this.logger.warn(`Plugin "${plugin.name}" is already installed. Re-installing.`);
+      // Optionally, call uninstall on the existing plugin if it exists and supports it
+      const existingPlugin = this.plugins.get(plugin.name);
+      if (existingPlugin?.uninstall) {
+        try {
+          existingPlugin.uninstall(this);
+        } catch (error) {
+          this.logger.error(`Error uninstalling existing plugin "${plugin.name}" before re-installation.`, { error });
+        }
+      }
+    }
+
     this.plugins.set(plugin.name, plugin);
-    plugin.install(this);
+    try {
+      plugin.install(this);
+      this.logger.info(`Plugin "${plugin.name}" installed successfully.`);
+    } catch (error) {
+      this.logger.error(`Error during installation of plugin "${plugin.name}". Plugin may not function correctly.`, { error });
+      // Optionally, remove the plugin if install fails
+      this.plugins.delete(plugin.name);
+      throw error; // Re-throw error if install is critical
+    }
   }
 
   /**
-   * Add a global hook
+   * Adds a global hook handler for a specified lifecycle event.
+   * Global hooks are executed for all scrapers managed by this engine.
+   * @param hook The {@link ScraperHook} event type (e.g., 'beforeRequest', 'onError').
+   * @param handler The {@link HookHandler} function to execute when the event occurs.
    */
-  addHook(hook: ScraperHook, handler: HookHandler): void {
+  addHook(hook: ScraperHook, handler: HookHandler<unknown, unknown>): void {
     if (!this.globalHooks.has(hook)) {
       this.globalHooks.set(hook, []);
     }
     const handlers = this.globalHooks.get(hook);
+    // Ensure handlers is not undefined (shouldn't be due to above check, but for type safety)
     if (handlers) {
       handlers.push(handler);
+      this.logger.debug(`Added global hook for "${hook}" event.`);
     }
   }
 
   /**
-   * Remove a global hook
+   * Removes a previously added global hook handler.
+   * @param hook The {@link ScraperHook} event type.
+   * @param handler The specific {@link HookHandler} function to remove.
+   *                It must be the same function reference that was originally added.
    */
-  removeHook(hook: ScraperHook, handler: HookHandler): void {
+  removeHook(hook: ScraperHook, handler: HookHandler<unknown, unknown>): void {
     const handlers = this.globalHooks.get(hook);
     if (handlers) {
       const index = handlers.indexOf(handler);
       if (index > -1) {
         handlers.splice(index, 1);
+        this.logger.debug(`Removed global hook for "${hook}" event.`);
+      } else {
+        this.logger.warn(`Attempted to remove a global hook for "${hook}" that was not found.`);
       }
     }
   }
 
   /**
-   * Shutdown the engine and cleanup resources
+   * Gracefully shuts down the scraper engine.
+   * This includes uninstalling all plugins that have an `uninstall` method
+   * and shutting down the browser pool, closing all browser instances.
+   * @returns A Promise that resolves when shutdown is complete.
    */
   async shutdown(): Promise<void> {
-    this.logger.info('Shutting down scraper engine');
+    this.logger.info('Shutting down scraper engine...');
 
     // Uninstall plugins
+    this.logger.debug('Uninstalling plugins...');
     for (const plugin of this.plugins.values()) {
       if (plugin.uninstall) {
         plugin.uninstall(this);

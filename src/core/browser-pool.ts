@@ -1,31 +1,53 @@
-import { chromium, Page, LaunchOptions } from 'playwright';
+import { chromium, Page, LaunchOptions, Browser } from 'playwright'; // Added Browser for clarity
 import { EventEmitter } from 'eventemitter3';
 import { v4 as uuidv4 } from 'uuid';
-import { BrowserInstance, BrowserPoolConfig } from './types';
-import { Logger } from '@/utils/logger';
+import { BrowserInstance, BrowserPoolConfig, Logger as ILogger } from './types'; // Use ILogger
 
 /**
- * Enhanced browser pool with better resource management and crawlee integration
+ * @file Implements a pool for managing Playwright browser instances.
+ * This helps in reusing browser instances to improve performance and control resource usage
+ * by limiting the maximum number of concurrent browsers.
+ */
+
+/**
+ * Manages a pool of Playwright browser instances.
+ * This class handles the creation, acquisition, release, and cleanup of browser instances,
+ * ensuring efficient reuse and adherence to configured limits (e.g., max size, instance age).
+ * It emits events related to pool operations like 'pool:acquire', 'pool:release', 'pool:cleanup'.
+ * @extends EventEmitter
  */
 export class BrowserPool extends EventEmitter {
   private pool: BrowserInstance[] = [];
   private config: BrowserPoolConfig;
-  private logger: Logger;
+  private logger: ILogger; // Use the imported ILogger type
   private cleanupTimer?: ReturnType<typeof setTimeout>;
   private isShuttingDown = false;
 
-  constructor(config: BrowserPoolConfig, logger: Logger) {
+  /**
+   * Creates an instance of BrowserPool.
+   * @param config The configuration object for the browser pool. See {@link BrowserPoolConfig}.
+   * @param logger An instance of a logger conforming to the {@link ILogger} interface.
+   */
+  constructor(config: BrowserPoolConfig, logger: ILogger) {
     super();
     this.config = config;
     this.logger = logger;
     this.startCleanupTimer();
+    this.logger.info('BrowserPool initialized', { maxSize: config.maxSize, maxAge: config.maxAge });
   }
 
   /**
-   * Acquire a browser instance from the pool
+   * Acquires a browser instance from the pool.
+   * If an idle instance is available, it's reused.
+   * If the pool is not full, a new instance is created.
+   * If the pool is full and no instances are idle, it waits for one to become available.
+   * Emits 'pool:acquire' event when an instance is acquired.
+   * @returns A Promise that resolves to an available {@link BrowserInstance}.
+   * @throws Error if the pool is shutting down or if waiting for an instance times out.
    */
   async acquire(): Promise<BrowserInstance> {
     if (this.isShuttingDown) {
+      this.logger.warn('Attempted to acquire browser instance while pool is shutting down.');
       throw new Error('Browser pool is shutting down');
     }
 
@@ -72,29 +94,34 @@ export class BrowserPool extends EventEmitter {
   }
 
   /**
-   * Release a browser instance back to the pool
+   * Releases a previously acquired browser instance back to the pool,
+   * marking it as available for reuse.
+   * Emits 'pool:release' event.
+   * @param instance The {@link BrowserInstance} to release.
    */
   release(instance: BrowserInstance): void {
     const poolInstance = this.pool.find(i => i.id === instance.id);
 
     if (poolInstance) {
+      if (!poolInstance.inUse) {
+        this.logger.warn('Attempted to release an instance that was not marked as in-use.', { instanceId: instance.id });
+      }
       poolInstance.inUse = false;
       poolInstance.lastUsed = Date.now();
-
-      this.logger.debug('Released browser instance to pool', {
-        instanceId: poolInstance.id,
-      });
-
+      this.logger.debug('Released browser instance to pool', { instanceId: poolInstance.id });
       this.emit('pool:release', { instanceId: poolInstance.id });
     } else {
-      this.logger.warn('Attempted to release unknown browser instance', {
-        instanceId: instance.id,
-      });
+      this.logger.warn('Attempted to release an unknown or already destroyed browser instance.', { instanceId: instance.id });
     }
   }
 
   /**
-   * Get pool statistics
+   * Retrieves statistics about the current state of the browser pool.
+   * @returns An object containing:
+   *  - `total`: The total number of browser instances currently managed by the pool (both active and idle).
+   *  - `inUse`: The number of browser instances currently acquired and in use.
+   *  - `available`: The number of idle browser instances available for immediate acquisition.
+   *  - `maxSize`: The maximum number of browser instances the pool is configured to allow.
    */
   getStats(): {
     total: number;
@@ -102,20 +129,30 @@ export class BrowserPool extends EventEmitter {
     available: number;
     maxSize: number;
   } {
-    const inUse = this.pool.filter(i => i.inUse).length;
-    return {
+    const inUseCount = this.pool.filter(i => i.inUse).length;
+    const stats = {
       total: this.pool.length,
-      inUse,
-      available: this.pool.length - inUse,
+      inUse: inUseCount,
+      available: this.pool.length - inUseCount,
       maxSize: this.config.maxSize,
     };
+    this.logger.debug('Browser pool stats requested.', stats);
+    return stats;
   }
 
   /**
-   * Cleanup old instances
+   * Periodically cleans up old and unused browser instances from the pool.
+   * An instance is considered old if it has not been used for a duration exceeding
+   * `config.maxAge` and is not currently in use.
+   * This method is typically called by an internal timer.
+   * Emits 'pool:cleanup' event with the number of removed instances.
+   * @returns A Promise that resolves when the cleanup operation is complete.
    */
   async cleanupOldInstances(): Promise<void> {
-    if (this.isShuttingDown) return;
+    if (this.isShuttingDown) {
+      this.logger.debug('Cleanup skipped as pool is shutting down.');
+      return;
+    }
 
     const now = Date.now();
     const instancesToRemove: BrowserInstance[] = [];
@@ -144,10 +181,13 @@ export class BrowserPool extends EventEmitter {
   }
 
   /**
-   * Shutdown the pool and close all browsers
+   * Shuts down the browser pool.
+   * This process involves stopping the cleanup timer and closing all active browser instances
+   * managed by the pool. No new instances can be acquired after shutdown is initiated.
+   * @returns A Promise that resolves when all browser instances have been closed and resources are freed.
    */
   async shutdown(): Promise<void> {
-    this.logger.info('Shutting down browser pool');
+    this.logger.info('Shutting down browser pool...');
     this.isShuttingDown = true;
 
     if (this.cleanupTimer) {
@@ -261,7 +301,13 @@ export class BrowserPool extends EventEmitter {
 }
 
 /**
- * Default browser pool configuration
+ * Provides a default configuration for the {@link BrowserPool}.
+ * This configuration can be used as a base and customized as needed.
+ * Key defaults include:
+ * - `maxSize`: 5 browser instances.
+ * - `maxAge`: 30 minutes for an instance before it's recycled.
+ * - `headless`: True (or as per `BROWSER_HEADLESS` env var).
+ * - `cleanupInterval`: 5 minutes.
  */
 export const defaultBrowserPoolConfig: BrowserPoolConfig = {
   maxSize: 5,
