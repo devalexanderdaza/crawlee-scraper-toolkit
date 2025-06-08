@@ -4,9 +4,10 @@ import ora from 'ora';
 import { existsSync, mkdirSync, writeFileSync, readFileSync } from 'fs';
 import { join, resolve as pathResolve } from 'path';
 import { getTemplate } from '../templates';
+import { ToolkitVersionDetails } from '@/core/types';
 
 // Helper to get main package.json details
-function getToolkitVersionDetails() {
+function getToolkitVersionDetails(): ToolkitVersionDetails {
   try {
     const packageJsonPath = pathResolve(__dirname, '../../../package.json');
     const packageJsonContent = readFileSync(packageJsonPath, 'utf-8');
@@ -17,21 +18,25 @@ function getToolkitVersionDetails() {
       devDependencies: packageJson.devDependencies,
     };
   } catch (error) {
-    console.warn(chalk.yellow('Could not read main package.json for dynamic versions. Using fallback versions.'));
+    console.warn(
+      chalk.yellow(
+        'Could not read main package.json for dynamic versions. Using fallback versions.'
+      )
+    );
     // Fallback versions if reading fails (should ideally not happen in deployed package)
     return {
       version: '1.0.1', // Needs to be updated if this file is copied without context
       dependencies: {
-        'crawlee': '^3.7.0',
-        'playwright': '^1.40.0',
+        crawlee: '^3.7.0',
+        playwright: '^1.40.0',
       },
       devDependencies: {
         '@types/node': '^20.10.0',
-        'typescript': '^5.3.0',
+        typescript: '^5.3.0',
         'ts-node': '^10.9.0',
-        'jest': '^29.7.0',
+        jest: '^29.7.0',
         '@types/jest': '^29.5.0',
-      }
+      },
     };
   }
 }
@@ -106,14 +111,13 @@ export async function generateScraper(options: GenerateOptions): Promise<void> {
   try {
     await generateScraperFiles(config, options.output || './scrapers');
     spinner.succeed(chalk.green('Scraper generated successfully!'));
-    
+
     console.log();
     console.log(chalk.yellow('Next steps:'));
     console.log(`  1. cd ${options.output || './scrapers'}/${config.name}`);
     console.log('  2. npm install');
     console.log('  3. npm run dev');
     console.log();
-    
   } catch (error) {
     spinner.fail(chalk.red('Failed to generate scraper'));
     console.error(chalk.red(error instanceof Error ? error.message : String(error)));
@@ -133,7 +137,8 @@ async function promptForConfig(options: GenerateOptions): Promise<ScraperConfig>
       default: options.name || 'my-scraper',
       validate: (input: string) => {
         if (!input.trim()) return 'Name is required';
-        if (!/^[a-z0-9-_]+$/.test(input)) return 'Name must contain only lowercase letters, numbers, hyphens, and underscores';
+        if (!/^[a-z0-9-_]+$/.test(input))
+          return 'Name must contain only lowercase letters, numbers, hyphens, and underscores';
         return true;
       },
     },
@@ -172,7 +177,7 @@ async function promptForConfig(options: GenerateOptions): Promise<ScraperConfig>
 
   // Template-specific questions
   const templateConfig = await promptForTemplateConfig(answers.template, answers.url);
-  
+
   return {
     ...answers,
     ...templateConfig,
@@ -213,13 +218,13 @@ async function promptForTemplateConfig(
           default: 'button[type="submit"]',
         },
       ]);
-      
+
       config.navigation = {
         type: 'form',
         inputSelector: formAnswers.inputSelector,
         submitSelector: formAnswers.submitSelector,
       };
-      
+
       config.waitStrategy = { type: 'selector', selector: '.results' };
       break;
 
@@ -238,15 +243,15 @@ async function promptForTemplateConfig(
           default: '/api/',
         },
       ]);
-      
+
       config.navigation = {
         type: 'api',
         paramName: apiAnswers.paramName,
       };
-      
-      config.waitStrategy = { 
-        type: 'response', 
-        urlPattern: apiAnswers.urlPattern 
+
+      config.waitStrategy = {
+        type: 'response',
+        urlPattern: apiAnswers.urlPattern,
       };
       break;
 
@@ -330,13 +335,13 @@ async function promptForOutputFields(): Promise<ScraperConfig['outputFields']> {
         type: 'input',
         name: 'name',
         message: 'Field name:',
-        validate: (input: string) => input.trim() ? true : 'Field name is required',
+        validate: (input: string) => (input.trim() ? true : 'Field name is required'),
       },
       {
         type: 'input',
         name: 'selector',
         message: 'CSS selector:',
-        validate: (input: string) => input.trim() ? true : 'Selector is required',
+        validate: (input: string) => (input.trim() ? true : 'Selector is required'),
       },
       {
         type: 'list',
@@ -409,30 +414,30 @@ async function createConfigFromOptions(options: GenerateOptions): Promise<Scrape
  */
 async function generateScraperFiles(config: ScraperConfig, outputDir: string): Promise<void> {
   const scraperDir = join(outputDir, config.name);
-  
+
   // Create directory
   if (!existsSync(outputDir)) {
     mkdirSync(outputDir, { recursive: true });
   }
-  
+
   if (!existsSync(scraperDir)) {
     mkdirSync(scraperDir, { recursive: true });
   }
 
   // Get template files
   const template = getTemplate(config.template);
-  
+
   // Generate files
   for (const [filename, content] of Object.entries(template.files)) {
     const filePath = join(scraperDir, filename);
     const processedContent = processTemplate(content, config);
-    
+
     // Create subdirectories if needed
     const dir = join(filePath, '..');
     if (!existsSync(dir)) {
       mkdirSync(dir, { recursive: true });
     }
-    
+
     writeFileSync(filePath, processedContent);
   }
 
@@ -450,23 +455,20 @@ async function generateScraperFiles(config: ScraperConfig, outputDir: string): P
     },
     dependencies: {
       'crawlee-scraper-toolkit': `^${toolkitDetails.version}`, // Use current toolkit version
-      'playwright': toolkitDetails.dependencies?.playwright || '^1.40.0', // From toolkit's deps
+      playwright: toolkitDetails.dependencies?.playwright || '^1.40.0', // From toolkit's deps
       // Crawlee is a peer/direct dep of the toolkit, but generated scrapers might need it directly too
-      'crawlee': toolkitDetails.dependencies?.crawlee || '^3.7.0',
+      crawlee: toolkitDetails.dependencies?.crawlee || '^3.7.0',
     },
     devDependencies: {
       '@types/node': toolkitDetails.devDependencies?.['@types/node'] || '^20.10.0',
-      'typescript': toolkitDetails.devDependencies?.typescript || '^5.3.0',
+      typescript: toolkitDetails.devDependencies?.typescript || '^5.3.0',
       'ts-node': toolkitDetails.devDependencies?.['ts-node'] || '^10.9.0',
-      'jest': toolkitDetails.devDependencies?.jest || '^29.7.0',
+      jest: toolkitDetails.devDependencies?.jest || '^29.7.0',
       '@types/jest': toolkitDetails.devDependencies?.['@types/jest'] || '^29.5.0',
     },
   };
 
-  writeFileSync(
-    join(scraperDir, 'package.json'),
-    JSON.stringify(packageJson, null, 2)
-  );
+  writeFileSync(join(scraperDir, 'package.json'), JSON.stringify(packageJson, null, 2));
 
   // Generate TypeScript config
   const tsConfig = {
@@ -484,10 +486,7 @@ async function generateScraperFiles(config: ScraperConfig, outputDir: string): P
     exclude: ['node_modules', 'dist'],
   };
 
-  writeFileSync(
-    join(scraperDir, 'tsconfig.json'),
-    JSON.stringify(tsConfig, null, 2)
-  );
+  writeFileSync(join(scraperDir, 'tsconfig.json'), JSON.stringify(tsConfig, null, 2));
 }
 
 /**
@@ -503,4 +502,3 @@ function processTemplate(template: string, config: ScraperConfig): string {
     .replace(/\{\{outputFields\}\}/g, JSON.stringify(config.outputFields, null, 2))
     .replace(/\{\{options\}\}/g, JSON.stringify(config.options, null, 2));
 }
-

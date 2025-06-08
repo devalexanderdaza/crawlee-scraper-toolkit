@@ -2,7 +2,7 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main ]
     paths-ignore:
       - '.devcontainer/**'
       - '.vscode/**'
@@ -12,7 +12,7 @@ on:
       # Note: README.md and other critical .md files are NOT ignored here
       # as they might be part of documentation build or important project files.
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main ]
     paths-ignore:
       - '.devcontainer/**'
       - '.vscode/**'
@@ -27,6 +27,7 @@ concurrency:
 env:
   NODE_VERSION: '20'
   PNPM_VERSION: '9'
+  STORE_PATH: ${{ github.workspace }}/.pnpm-store
 
 jobs:
   # ==========================================

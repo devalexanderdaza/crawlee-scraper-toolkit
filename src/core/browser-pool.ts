@@ -1,7 +1,7 @@
-import { chromium, Page, LaunchOptions, Browser } from 'playwright'; // Added Browser for clarity
+import { chromium, Page, LaunchOptions } from 'playwright'; // Added Browser for clarity
 import { EventEmitter } from 'eventemitter3';
 import { v4 as uuidv4 } from 'uuid';
-import { BrowserInstance, BrowserPoolConfig, Logger as ILogger } from './types'; // Use ILogger
+import { BrowserInstance, BrowserPoolConfig, Logger } from './types';
 
 /**
  * @file Implements a pool for managing Playwright browser instances.
@@ -19,16 +19,16 @@ import { BrowserInstance, BrowserPoolConfig, Logger as ILogger } from './types';
 export class BrowserPool extends EventEmitter {
   private pool: BrowserInstance[] = [];
   private config: BrowserPoolConfig;
-  private logger: ILogger; // Use the imported ILogger type
+  private logger: Logger;
   private cleanupTimer?: ReturnType<typeof setTimeout>;
   private isShuttingDown = false;
 
   /**
    * Creates an instance of BrowserPool.
    * @param config The configuration object for the browser pool. See {@link BrowserPoolConfig}.
-   * @param logger An instance of a logger conforming to the {@link ILogger} interface.
+   * @param logger An instance of a logger conforming to the {@link Logger} interface.
    */
-  constructor(config: BrowserPoolConfig, logger: ILogger) {
+  constructor(config: BrowserPoolConfig, logger: Logger) {
     super();
     this.config = config;
     this.logger = logger;
@@ -104,14 +104,18 @@ export class BrowserPool extends EventEmitter {
 
     if (poolInstance) {
       if (!poolInstance.inUse) {
-        this.logger.warn('Attempted to release an instance that was not marked as in-use.', { instanceId: instance.id });
+        this.logger.warn('Attempted to release an instance that was not marked as in-use.', {
+          instanceId: instance.id,
+        });
       }
       poolInstance.inUse = false;
       poolInstance.lastUsed = Date.now();
       this.logger.debug('Released browser instance to pool', { instanceId: poolInstance.id });
       this.emit('pool:release', { instanceId: poolInstance.id });
     } else {
-      this.logger.warn('Attempted to release an unknown or already destroyed browser instance.', { instanceId: instance.id });
+      this.logger.warn('Attempted to release an unknown or already destroyed browser instance.', {
+        instanceId: instance.id,
+      });
     }
   }
 

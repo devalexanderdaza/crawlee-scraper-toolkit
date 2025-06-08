@@ -368,7 +368,8 @@ export class ConfigManager {
   exportConfig(format: 'json' | 'yaml' = 'yaml'): string {
     if (format === 'json') {
       return JSON.stringify(this.config, null, 2);
-    } else { // 'yaml'
+    } else {
+      // 'yaml'
       return YAML.stringify(this.config);
     }
   }
