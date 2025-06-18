@@ -220,7 +220,11 @@ LOG_LEVEL=info
 
 - **RetryPlugin**: Exponential backoff retry logic
 - **CachePlugin**: Result caching with TTL
-- **ProxyPlugin**: Proxy rotation support
+- **ProxyPlugin**: Proxy rotation support.
+  - When a proxy is used (either through rotation logic activated by `useProxyRotation: true` or by directly setting `proxyUrl` in `ScraperExecutionOptions`), the engine now creates a temporary Playwright `BrowserContext` for that specific request.
+  - This temporary context is configured with the specified proxy settings. A new page is then created within this context for the scraping task.
+  - This approach ensures that proxy configurations are isolated to individual requests and do not interfere with the main browser pool or other concurrent operations. The temporary context and its page are closed after the request attempt, ensuring clean resource management.
+  - The `proxyUrl` property in `ScraperExecutionOptions` is the key to enabling this behavior for a given execution.
 - **RateLimitPlugin**: Request rate limiting
 - **MetricsPlugin**: Performance metrics collection
 

@@ -11,8 +11,9 @@ import {
   ScraperEvents,
   ScraperEngineConfig,
   Logger,
+  BrowserContext, // Added BrowserContext
 } from './types';
-import { BrowserPool } from './browser-pool';
+import { BrowserPool, BrowserInstance } from './browser-pool'; // Added BrowserInstance for typing
 
 // Helper interfaces for navigation configs (internal, no need for extensive JSDoc for public API)
 interface FormConfig {
@@ -117,12 +118,33 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
     let attempts = 0;
 
     for (attempts = 1; attempts <= executionOptions.retries + 1; attempts++) {
-      const instance = await this.browserPool.acquire();
+      const instance: BrowserInstance = await this.browserPool.acquire();
+      let pageForScraping = instance.page; // Use original page by default
+      let tempBrowserContext: BrowserContext | undefined; // For proxy-specific context
 
       try {
+        // If a proxy URL is specified, create a temporary browser context and page
+        if (executionOptions.proxyUrl) {
+          this.logger.debug('Creating temporary browser context for proxy', { proxyUrl: executionOptions.proxyUrl, scraperId: definition.id });
+          tempBrowserContext = await instance.browser.newContext({
+            proxy: {
+              server: executionOptions.proxyUrl,
+              // Potentially add username/password here if your proxy needs authentication
+              // username: 'your_username',
+              // password: 'your_password',
+            },
+            // Inherit other context options from the main browser instance or defaults
+            // For example, viewport, userAgent (though userAgent might be overridden later by executeScraper)
+            viewport: instance.page.viewportSize(),
+            userAgent: (await instance.browser.newPage()).evaluate(() => navigator.userAgent) // A way to get default UA
+          });
+          pageForScraping = await tempBrowserContext.newPage();
+          this.logger.debug('Temporary page created for proxy usage.', { scraperId: definition.id });
+        }
+
         const context: ScraperContext<Input, Output> = {
           input,
-          page: instance.page,
+          page: pageForScraping, // Use the potentially proxied page
           attempt: attempts,
           startTime,
           options: executionOptions,
@@ -174,12 +196,20 @@ export class CrawleeScraperEngine extends EventEmitter<ScraperEvents> implements
         await this.executeHooks('onError', context, definition);
 
         if (attempts <= executionOptions.retries) {
-          this.emit('scraper:retry', { scraperId: definition.id, attempt: attempts });
+          this.emit('scraper:retry', { scraperId: definition.id, attempt: attempts, error: lastError });
           await this.executeHooks('onRetry', context, definition);
           await this.delay(executionOptions.retryDelay);
         }
       } finally {
+        // Close the temporary browser context if it was created
+        if (tempBrowserContext) {
+          this.logger.debug('Closing temporary browser context.', { scraperId: definition.id });
+          await tempBrowserContext.close();
+          this.logger.debug('Temporary browser context closed.', { scraperId: definition.id });
+        }
+        // Release the main browser instance back to the pool
         this.browserPool.release(instance);
+        this.logger.debug('Browser instance released to pool.', { instanceId: instance.id, scraperId: definition.id });
       }
     }
 

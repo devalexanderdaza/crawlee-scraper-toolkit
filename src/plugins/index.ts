@@ -116,21 +116,22 @@ export class ProxyPlugin implements ScraperPlugin {
       const proxy = this.proxies[this.currentIndex];
       this.currentIndex = (this.currentIndex + 1) % this.proxies.length;
 
-      // Set proxy for the browser context
-      // Note: This would require browser context recreation in practice
-      context.metadata.proxy = proxy;
+      // Asigna el proxy seleccionado a las opciones de ejecución del contexto.
+      // Nota: La aplicación real de este proxy a la solicitud dependerá
+      // de cómo el motor de scraping o el gestor del navegador utilicen esta opción.
+      context.options.proxyUrl = proxy;
     }
   }
 
   /**
-   * Add proxy to the rotation
+   * Añade un proxy a la rotación.
    */
   addProxy(proxy: string): void {
     this.proxies.push(proxy);
   }
 
   /**
-   * Remove proxy from rotation
+   * Elimina un proxy de la rotación.
    */
   removeProxy(proxy: string): void {
     const index = this.proxies.indexOf(proxy);
@@ -143,7 +144,7 @@ export class ProxyPlugin implements ScraperPlugin {
   }
 
   /**
-   * Get current proxy list
+   * Obtiene la lista actual de proxies.
    */
   getProxies(): string[] {
     return [...this.proxies];

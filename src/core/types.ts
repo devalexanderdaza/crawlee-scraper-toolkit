@@ -68,6 +68,8 @@ export interface ScraperExecutionOptions {
   javascript: boolean;
   /** Whether to load images during page navigation. Defaults to false. */
   loadImages: boolean;
+  /** URL del servidor proxy a utilizar para las solicitudes. */
+  proxyUrl?: string;
   /**
    * Viewport configuration for the browser page.
    * @see https://playwright.dev/docs/api/class-page#page-set-viewport-size
