@@ -68,7 +68,7 @@ export interface ScraperExecutionOptions {
   javascript: boolean;
   /** Whether to load images during page navigation. Defaults to false. */
   loadImages: boolean;
-  /** URL del servidor proxy a utilizar para las solicitudes. */
+  /** URL of the proxy server to use for requests. */
   proxyUrl?: string;
   /**
    * Viewport configuration for the browser page.
